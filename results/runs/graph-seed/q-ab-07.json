@@ -1,0 +1,1994 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-07",
+  "category": "absence",
+  "question_text": "Did anyone propose machine learning or neural networks for OCR or any other pipeline?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Did anyone propose machine learning or neural networks for OCR or any other pipeline?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Did anyone propose machine learning or neural networks for OCR or any other pipeline?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "machine learning"
+      },
+      "result_text": "{\n  \"query\": \"machine learning\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "neural network"
+      },
+      "result_text": "{\n  \"query\": \"neural network\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "OCR"
+      },
+      "result_text": "{\n  \"query\": \"OCR\",\n  \"genre\": null,\n  \"found\": 12,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ocr-job-queue-notes.md\",\n      \"title\": \"Job queues for OCR batches — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-136.md\",\n      \"title\": \"Foxglove OCR batch, May\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "pipeline"
+      },
+      "result_text": "{\n  \"query\": \"pipeline\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Larkspur Archive routes OCR through a remote API"
+      },
+      "result_text": "{\n  \"query\": \"Larkspur Archive routes OCR through a remote API\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Foxglove routes OCR through a local GPU cluster"
+      },
+      "result_text": "{\n  \"query\": \"Foxglove routes OCR through a local GPU cluster\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 7,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-004.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-104.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-104.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-004.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-004.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/larkspur-archive.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-003.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/ocr-comparison.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/larkspur-archive.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-104.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-104.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/foxglove-archive.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-104.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-113.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/gpu-cluster-notes.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/hocr-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/foxglove-archive.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 11,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ocr-comparison.md"
+      },
+      "result_text": "{\n  \"query\": \"ocr-comparison.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "gpu-cluster-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"gpu-cluster-notes.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 13,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "hocr-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"hocr-notes.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 14,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/ocr-comparison.md"
+      },
+      "result_text": "{\n  \"path\": \"references/ocr-comparison.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-006.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 15,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/gpu-cluster-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/gpu-cluster-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-104.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-113.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 16,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/hocr-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/hocr-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-104.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/ocr-job-queue-notes.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 17,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-003.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-003.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-006.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-006.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-104.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-104.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-113.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-113.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "deep learning"
+      },
+      "result_text": "{\n  \"query\": \"deep learning\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ML"
+      },
+      "result_text": "{\n  \"query\": \"ML\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "neural"
+      },
+      "result_text": "{\n  \"query\": \"neural\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "model"
+      },
+      "result_text": "{\n  \"query\": \"model\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-104.md\",\n      \"title\": \"Rill billing model discussion\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "larkspur-archive.md"
+      },
+      "result_text": "{\n  \"query\": \"larkspur-archive.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 26,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "foxglove-archive.md"
+      },
+      "result_text": "{\n  \"query\": \"foxglove-archive.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "projects/larkspur-archive.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/larkspur-archive.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-011.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-007.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/bellweather-books.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/quill-and-marrow.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/dev-okonkwo.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/june-park.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/rowan-ellery.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/silas-brandt.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-011.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-007.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/bellweather-books.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/quill-and-marrow.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-010.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "projects/foxglove-archive.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/foxglove-archive.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-104.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-113.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-114.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-118.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-103.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-105.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-108.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-112.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-114.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-118.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-120.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/harrowgate-press.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/saltmarsh-creative.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/aurelio-finch.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/elif-yilmaz.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/gwen-torvald.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/marta-quintana.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-104.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-106.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-107.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-113.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-114.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-117.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-122.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-123.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-125.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-136.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-144.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-104.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-113.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-118.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-103.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-112.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/harrowgate-press.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/saltmarsh-creative.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-113.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "AI"
+      },
+      "result_text": "{\n  \"query\": \"AI\",\n  \"genre\": null,\n  \"found\": 3,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "artificial intelligence"
+      },
+      "result_text": "{\n  \"query\": \"artificial intelligence\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 31,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-004.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 32,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-109.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-109.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-109.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-107.md\"\n    },\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-103.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 33,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-008.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-003.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-003.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-001.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-002.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-008.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/embedded-single-board-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-109.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-109.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-107.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-116.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/perchboard.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-107.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-109.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-103.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-103.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-103.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-109.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-101.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/perchboard.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-103.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-109.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/signage-panel-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "tesseract"
+      },
+      "result_text": "{\n  \"query\": \"tesseract\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 38,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "cloud vision"
+      },
+      "result_text": "{\n  \"query\": \"cloud vision\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 39,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/ocr-job-queue-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/ocr-job-queue-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-job-queue-notes.md\",\n      \"title\": \"Job queues for OCR batches — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/ocr-job-queue-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/ocr-job-queue-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-107.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"incoming\",\n      \"path\": \"references/hocr-notes.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "hOCR for OCR output"
+      },
+      "result_text": "{\n  \"query\": \"hOCR for OCR output\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Local OCR vs remote OCR"
+      },
+      "result_text": "{\n  \"query\": \"Local OCR vs remote OCR\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "GPU cluster"
+      },
+      "result_text": "{\n  \"query\": \"GPU cluster\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-004"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-004\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 45,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/"
+      },
+      "result_text": "{\n  \"query\": \"projects/\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 46,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-003"
+      },
+      "result_text": "{\n  \"query\": \"s-003\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-004"
+      },
+      "result_text": "{\n  \"query\": \"d-004\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-104"
+      },
+      "result_text": "{\n  \"query\": \"d-104\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 49,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ocr-comparison"
+      },
+      "result_text": "{\n  \"query\": \"ocr-comparison\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 50,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "gpu-cluster-notes"
+      },
+      "result_text": "{\n  \"query\": \"gpu-cluster-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/gpu-cluster-notes.md\",\n      \"title\": \"The two-GPU bench — bench note\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 51,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "hocr-notes"
+      },
+      "result_text": "{\n  \"query\": \"hocr-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ocr-job-queue-notes"
+      },
+      "result_text": "{\n  \"query\": \"ocr-job-queue-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-job-queue-notes.md\",\n      \"title\": \"Job queues for OCR batches — reading notes\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-006"
+      },
+      "result_text": "{\n  \"query\": \"s-006\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-104"
+      },
+      "result_text": "{\n  \"query\": \"s-104\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 55,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-113"
+      },
+      "result_text": "{\n  \"query\": \"s-113\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 56,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-114"
+      },
+      "result_text": "{\n  \"query\": \"d-114\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-114.md\",\n      \"title\": \"Foxglove names scans by box and leaf, not by title\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 57,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-113"
+      },
+      "result_text": "{\n  \"query\": \"d-113\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 58,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-118"
+      },
+      "result_text": "{\n  \"query\": \"d-118\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-118.md\",\n      \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 59,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-103"
+      },
+      "result_text": "{\n  \"query\": \"m-103\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-103.md\",\n      \"title\": \"Foxglove kickoff with Harrowgate Press\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 60,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-105"
+      },
+      "result_text": "{\n  \"query\": \"m-105\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-105.md\",\n      \"title\": \"Copperleaf all-hands, February\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 61,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-112"
+      },
+      "result_text": "{\n  \"query\": \"m-112\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-112.md\",\n      \"title\": \"Foxglove mid-project review with Harrowgate\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 62,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-114"
+      },
+      "result_text": "{\n  \"query\": \"m-114\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-114.md\",\n      \"title\": \"Foxglove annex planning with Harrowgate\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 63,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-118"
+      },
+      "result_text": "{\n  \"query\": \"m-118\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-118.md\",\n      \"title\": \"Copperleaf all-hands, June\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 64,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-120"
+      },
+      "result_text": "{\n  \"query\": \"m-120\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-120.md\",\n      \"title\": \"Summer planning, half-day\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 65,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-106"
+      },
+      "result_text": "{\n  \"query\": \"s-106\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-106.md\",\n      \"title\": \"Weekly review, early February\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 66,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-107"
+      },
+      "result_text": "{\n  \"query\": \"s-107\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 67,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-114"
+      },
+      "result_text": "{\n  \"query\": \"s-114\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-114.md\",\n      \"title\": \"Weekly review, mid-March\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 68,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-117"
+      },
+      "result_text": "{\n  \"query\": \"s-117\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-117.md\",\n      \"title\": \"Weekly review, late March\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 69,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-122"
+      },
+      "result_text": "{\n  \"query\": \"s-122\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 70,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-123"
+      },
+      "result_text": "{\n  \"query\": \"s-123\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-123.md\",\n      \"title\": \"Weekly review, mid-April\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 71,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-125"
+      },
+      "result_text": "{\n  \"query\": \"s-125\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 72,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-136"
+      },
+      "result_text": "{\n  \"query\": \"s-136\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-136.md\",\n      \"title\": \"Foxglove OCR batch, May\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 73,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-144"
+      },
+      "result_text": "{\n  \"query\": \"s-144\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-144.md\",\n      \"title\": \"Weekly review, mid-June\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 74,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-004"
+      },
+      "result_text": "{\n  \"query\": \"m-004\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"title\": \"Studio all-hands, March\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 75,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-007"
+      },
+      "result_text": "{\n  \"query\": \"m-007\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 76,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-005"
+      },
+      "result_text": "{\n  \"query\": \"m-005\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 77,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-008"
+      },
+      "result_text": "{\n  \"query\": \"m-008\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 78,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-001"
+      },
+      "result_text": "{\n  \"query\": \"m-001\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 79,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-002"
+      },
+      "result_text": "{\n  \"query\": \"s-002\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 80,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-101"
+      },
+      "result_text": "{\n  \"query\": \"m-101\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-101.md\",\n      \"title\": \"Perchboard kickoff with Bayline Transit\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 81,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-103"
+      },
+      "result_text": "{\n  \"query\": \"s-103\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-103.md\",\n      \"title\": \"Perchboard firmware first boot\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 82,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-107"
+      },
+      "result_text": "{\n  \"query\": \"m-107\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-107.md\",\n      \"title\": \"Perchboard architecture review\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 83,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-116"
+      },
+      "result_text": "{\n  \"query\": \"m-116\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 84,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-117"
+      },
+      "result_text": "{\n  \"query\": \"m-117\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 85,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "embedded-single-board-notes"
+      },
+      "result_text": "{\n  \"query\": \"embedded-single-board-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"title\": \"Single-board computers for signage — field research summary\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 86,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "signage-panel-notes"
+      },
+      "result_text": "{\n  \"query\": \"signage-panel-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/signage-panel-notes.md\",\n      \"title\": \"Signage panels for platform displays — field research summary\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 87,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "wayfare"
+      },
+      "result_text": "{\n  \"query\": \"wayfare\",\n  \"genre\": null,\n  \"found\": 11,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 88,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "perchboard"
+      },
+      "result_text": "{\n  \"query\": \"perchboard\",\n  \"genre\": null,\n  \"found\": 22,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-102.md\",\n      \"title\": \"Perchboard displays speak MQTT 5.0\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-103.md\",\n      \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"title\": \"Perchboard moves to an edge relay per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-110.md\",\n      \"title\": \"Perchboard syncs fleet clocks with chrony\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-112.md\",\n      \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-117.md\",\n      \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-101.md\",\n      \"title\": \"Perchboard kickoff with Bayline Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-107.md\",\n      \"title\": \"Perchboard architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-103.md\",\n      \"title\": \"Perchboard firmware first boot\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-112.md\",\n      \"title\": \"Perchboard chrony fleet rollout\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-116.md\",\n      \"title\": \"Perchboard palette legibility testing\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-121.md\",\n      \"title\": \"Perchboard depot QA sweep, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-124.md\",\n      \"title\": \"Perchboard provisioning, Granite Pier\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-127.md\",\n      \"title\": \"Perchboard provisioning, Tram Junction\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-131.md\",\n      \"title\": \"Perchboard provisioning, Lighthouse Point\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-134.md\",\n      \"title\": \"Perchboard depot QA sweep, May\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-138.md\",\n      \"title\": \"Perchboard ship prep and QA sweep\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-143.md\",\n      \"title\": \"Perchboard depot QA sweep, June\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 89,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "larkspur"
+      },
+      "result_text": "{\n  \"query\": \"larkspur\",\n  \"genre\": null,\n  \"found\": 7,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/larkspur-archive.md\",\n      \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 90,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "foxglove"
+      },
+      "result_text": "{\n  \"query\": \"foxglove\",\n  \"genre\": null,\n  \"found\": 14,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/foxglove-archive.md\",\n      \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-114.md\",\n      \"title\": \"Foxglove names scans by box and leaf, not by title\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-118.md\",\n      \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-103.md\",\n      \"title\": \"Foxglove kickoff with Harrowgate Press\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-112.md\",\n      \"title\": \"Foxglove mid-project review with Harrowgate\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-114.md\",\n      \"title\": \"Foxglove annex planning with Harrowgate\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-136.md\",\n      \"title\": \"Foxglove OCR batch, May\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 91,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/larkspur-archive.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/larkspur-archive.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/larkspur-archive.md\",\n      \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 92,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/foxglove-archive.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/foxglove-archive.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/foxglove-archive.md\",\n      \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 93,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/ocr-comparison.md"
+      },
+      "result_text": "{\n  \"query\": \"references/ocr-comparison.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 94,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/gpu-cluster-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/gpu-cluster-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/gpu-cluster-notes.md\",\n      \"title\": \"The two-GPU bench — bench note\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 95,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/hocr-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/hocr-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 96,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/ocr-job-queue-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/ocr-job-queue-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/ocr-job-queue-notes.md\",\n      \"title\": \"Job queues for OCR batches — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 97,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-004.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 98,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-104.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-104.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 99,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-003.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-003.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 100,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-104.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-104.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 101,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-113.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-113.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 102,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 103,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-006.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-006.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 104,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-107.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-107.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 105,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-125.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-125.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 106,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-136.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-136.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-136.md\",\n      \"title\": \"Foxglove OCR batch, May\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 107,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-010.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-010.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 108,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-007.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-007.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 109,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-103.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-103.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-103.md\",\n      \"title\": \"Foxglove kickoff with Harrowgate Press\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 110,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-112.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-112.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-112.md\",\n      \"title\": \"Foxglove mid-project review with Harrowgate\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 111,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-114.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-114.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-114.md\",\n      \"title\": \"Foxglove annex planning with Harrowgate\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 112,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-113.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-113.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 113,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-114.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-114.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-114.md\",\n      \"title\": \"Foxglove names scans by box and leaf, not by title\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 114,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-118.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-118.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-118.md\",\n      \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 115,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-122.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-122.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 116,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-118.md"
+      },
+      "result_text": "{\n  \"query\": \"m-118.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 117,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-118.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-118.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-118.md\",\n      \"title\": \"Copperleaf all-hands, June\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 118,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-120.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-120.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-120.md\",\n      \"title\": \"Summer planning, half-day\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 119,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-144.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-144.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-144.md\",\n      \"title\": \"Weekly review, mid-June\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 120,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-105.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-105.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-105.md\",\n      \"title\": \"Copperleaf all-hands, February\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 121,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-117.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-117.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 122,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 123,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-109.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-109.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 124,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-003.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-003.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 125,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-008.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 126,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-103.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-103.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-103.md\",\n      \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 127,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-109.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-109.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"title\": \"Perchboard moves to an edge relay per station\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 128,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/embedded-single-board-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/embedded-single-board-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"title\": \"Single-board computers for signage — field research summary\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 129,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/signage-panel-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/signage-panel-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/signage-panel-notes.md\",\n      \"title\": \"Signage panels for platform displays — field research summary\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 130,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/wayfare.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/wayfare.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 131,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/perchboard.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/perchboard.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 132,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "orgs/bellweather-books.md"
+      },
+      "result_text": "{\n  \"query\": \"orgs/bellweather-books.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/bellweather-books.md\",\n      \"title\": \"Bellweather Books\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 133,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "orgs/quill-and-marrow.md"
+      },
+      "result_text": "{\n  \"query\": \"orgs/quill-and-marrow.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/quill-and-marrow.md\",\n      \"title\": \"Quill & Marrow\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 134,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "orgs/harrowgate-press.md"
+      },
+      "result_text": "{\n  \"query\": \"orgs/harrowgate-press.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/harrowgate-press.md\",\n      \"title\": \"Harrowgate Press\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 135,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "orgs/saltmarsh-creative.md"
+      },
+      "result_text": "{\n  \"query\": \"orgs/saltmarsh-creative.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/saltmarsh-creative.md\",\n      \"title\": \"Saltmarsh Creative\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 136,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/dev-okonkwo.md"
+      },
+      "result_text": "{\n  \"query\": \"people/dev-okonkwo.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/dev-okonkwo.md\",\n      \"title\": \"Dev Okonkwo\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 137,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/june-park.md"
+      },
+      "result_text": "{\n  \"query\": \"people/june-park.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/june-park.md\",\n      \"title\": \"June Park\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 138,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/rowan-ellery.md"
+      },
+      "result_text": "{\n  \"query\": \"people/rowan-ellery.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/rowan-ellery.md\",\n      \"title\": \"Rowan Ellery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 139,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/silas-brandt.md"
+      },
+      "result_text": "{\n  \"query\": \"people/silas-brandt.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/silas-brandt.md\",\n      \"title\": \"Silas Brandt\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 140,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/aurelio-finch.md"
+      },
+      "result_text": "{\n  \"query\": \"people/aurelio-finch.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/aurelio-finch.md\",\n      \"title\": \"Aurelio Finch\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 141,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/elif-yilmaz.md"
+      },
+      "result_text": "{\n  \"query\": \"people/elif-yilmaz.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/elif-yilmaz.md\",\n      \"title\": \"Elif Yilmaz\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 142,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/gwen-torvald.md"
+      },
+      "result_text": "{\n  \"query\": \"people/gwen-torvald.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/gwen-torvald.md\",\n      \"title\": \"Gwen Torvald\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 143,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/marta-quintana.md"
+      },
+      "result_text": "{\n  \"query\": \"people/marta-quintana.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/marta-quintana.md\",\n      \"title\": \"Marta Quintana\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 144,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-002.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-002.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 145,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-009.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-009.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 146,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-008.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-008.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 147,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-102.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-102.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-102.md\",\n      \"title\": \"Perchboard displays speak MQTT 5.0\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 148,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-110.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-110.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-110.md\",\n      \"title\": \"Perchboard syncs fleet clocks with chrony\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 149,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-112.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-112.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-112.md\",\n      \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 150,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-117.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-117.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-117.md\",\n      \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 151,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-112.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-112.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-112.md\",\n      \"title\": \"Perchboard chrony fleet rollout\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 152,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-116.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-116.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-116.md\",\n      \"title\": \"Perchboard palette legibility testing\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 153,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-121.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-121.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-121.md\",\n      \"title\": \"Perchboard depot QA sweep, April\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 154,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-124.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-124.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-124.md\",\n      \"title\": \"Perchboard provisioning, Granite Pier\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 155,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-127.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-127.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-127.md\",\n      \"title\": \"Perchboard provisioning, Tram Junction\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 156,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-131.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-131.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-131.md\",\n      \"title\": \"Perchboard provisioning, Lighthouse Point\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 157,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-134.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-134.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-134.md\",\n      \"title\": \"Perchboard depot QA sweep, May\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 158,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-138.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-138.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-138.md\",\n      \"title\": \"Perchboard ship prep and QA sweep\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 159,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-143.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-143.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-143.md\",\n      \"title\": \"Perchboard depot QA sweep, June\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 160,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-001.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-001.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 161,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-005.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-005.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 162,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-008.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-008.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 163,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-002.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-002.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 164,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-101.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-101.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-101.md\",\n      \"title\": \"Perchboard kickoff with Bayline Transit\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 165,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-107.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-107.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-107.md\",\n      \"title\": \"Perchboard architecture review\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 166,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-116.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-116.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 167,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-103.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-103.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-103.md\",\n      \"title\": \"Perchboard firmware first boot\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 168,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-117.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-117.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 169,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 170,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-109.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-109.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 171,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-105.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-105.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-105.md\",\n      \"title\": \"Copperleaf all-hands, February\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 172,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-118.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-118.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-118.md\",\n      \"title\": \"Copperleaf all-hands, June\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 173,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-120.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-120.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-120.md\",\n      \"title\": \"Summer planning, half-day\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 174,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-122.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-122.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 175,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-123.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-123.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-123.md\",\n      \"title\": \"Weekly review, mid-April\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 176,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-144.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-144.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-144.md\",\n      \"title\": \"Weekly review, mid-June\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 177,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-113.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-113.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on my searches of the knowledge base using the graph traversal tools, I found **no evidence** that anyone proposed machine learning or neural networks for OCR or any other pipeline.\n\n**Evidence from searches:**\n- Search for \"machine learning\": 0 matches\n- Search for \"neural network\": 0 matches  \n- Search for \"deep learning\": 0 matches\n- Search for \"ML\": 0 matches\n- Search for \"neural\": 0 matches\n- Search for \"artificial intelligence\": 0 matches\n\n**OCR-related records found** (12 total):\n- `decisions/d-004.md` — \"Larkspur Archive routes OCR through a remote API\"\n- `decisions/d-104.md` — \"Foxglove routes OCR through a local GPU cluster\"\n- `references/ocr-comparison.md` — \"Local OCR vs remote OCR API — benchmark notes\"\n- `references/gpu-cluster-notes.md` — \"The two-GPU bench — bench note\"\n- `references/hocr-notes.md` — \"hOCR for OCR output — reading notes\"\n- `references/ocr-job-queue-notes.md` — \"Job queues for OCR batches — reading notes\"\n- `sessions/s-003.md` — \"Larkspur OCR pipeline wiring\"\n- `sessions/s-104.md` — \"Foxglove OCR pipeline wiring\"\n- `sessions/s-006.md` — \"Larkspur OCR latency benchmark\"\n- `sessions/s-107.md` — \"Foxglove OCR batch, February\"\n- `sessions/s-113.md` — \"Foxglove OCR throughput benchmark\"\n- `sessions/s-125.md` — \"Foxglove OCR batch, April\"\n- `sessions/s-136.md` — \"Foxglove OCR batch, May\"\n\nThe only potentially relevant signal is `d-104.md` mentioning a \"local GPU cluster\" for Foxglove's OCR, which *could* imply neural-network-based OCR (e.g., Tesseract LSTM or similar), but the record title and graph connections contain no explicit mention of machine learning, neural networks, or ML models. The other OCR records discuss remote APIs, benchmarking, job queues, and hOCR output format — none reference ML/neural approaches.\n\nThe three \"AI\" matches were in titles containing \"maintenance\" (`m-117.md`, `s-004.md`, `s-109.md`), which are unrelated to machine learning.\n\n**Conclusion:** The knowledge base contains no records proposing machine learning or neural networks for OCR or any other pipeline.",
+  "started_at": "2026-10-28T18:24:13.966Z",
+  "finished_at": "2026-10-28T18:36:02.857Z"
+}

@@ -1,0 +1,178 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-sy-01",
+  "category": "synthesis",
+  "question_text": "Summarize the Wayfare program: client, scope, architecture arc, palette, and ship date.",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Summarize the Wayfare program: client, scope, architecture arc, palette, and ship date."
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Summarize the Wayfare program: client, scope, architecture arc, palette, and ship date.",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Wayfare program client scope architecture arc palette ship date"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "question_id": "Wayfare program"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "wayfare.md"
+      },
+      "result_text": "Tool error (get): Error: invalid record path: \"wayfare.md\" — expected <genre>/<id>.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "programs/wayfare.md"
+      },
+      "result_text": "Tool error (get): Error: invalid record path: \"programs/wayfare.md\" — expected <genre>/<id>.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/wayfare.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: decisions/wayfare.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Wayfare"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "specs/wayfare.md"
+      },
+      "result_text": "Tool error (get): Error: invalid record path: \"specs/wayfare.md\" — expected <genre>/<id>.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-009.md"
+      },
+      "result_text": "---\nid: d-009\ngenre: decisions\ntitle: \"Wayfare adopts a green-and-amber palette for outdoor readability\"\ncreated: 2026-04-15\nprovenance: hand-authored\ntags: [wayfare, design]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: sessions/s-008.md\n  - type: influenced_by\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: Ashport Central's platform is sunlit most of the day; the first\npalette washed out in daylight.\n\nOptions considered: the original blue-on-dark palette; green-and-amber after\nOdessa's contrast testing at the platform (s-008) and the WCAG contrast\nnotes.\n\nDecision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.\n\nConsequences: renderer theming is a config swap; June owns the design tokens.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Wayfare Program Summary**\n\n| Aspect | Details |\n|--------|---------|\n| **Client** | Halcyon Transit (`projects/wayfare.md: client: halcyon-transit`) |\n| **Scope** | Realtime departure displays for three pilot stations — Ashport Central, Ferry Quay, Millbrook Bridge — with sub-second perceived freshness, outdoor readability, and a June ship date (`projects/wayfare.md: \"Scope agreed at the kickoff…sub-second perceived freshness, outdoor readability, and a June ship date\"`) |\n| **Architecture Arc** | 1. **Initial (d-003)**: Per-display autonomy — each display runs its own single-board computer with local fallback rendering, no central station server (`decisions/d-003.md: \"each Wayfare display runs its own single-board computer with local fallback rendering and no central station server\"`).<br>2. **Evolved (d-008)**: After field maintenance pain (firmware drift, ~90 min manual reflash per display), moved to **one edge-gateway hub per station** — firmware flashes once per station, displays pull from gateway, telemetry funnels through it (`decisions/d-008.md: \"each pilot station gets an edge gateway hub…This supersedes d-003\"`).<br>**Messaging**: Displays speak MQTT 3.1.1 to a transit-side broker with retained messages for state recovery (`decisions/d-002.md: \"the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side broker\"`) |\n| **Palette** | Green-and-amber — green for live departures, amber for alerts/delays, chosen for outdoor readability (tested above WCAG contrast floor in daylight at Ashport Central) (`decisions/d-009.md: \"Wayfare's displays render in green-and-amber — green for live departures, amber for alerts and delays\"`) |\n| **Ship Date** | **2026-06-12** (shipped; retro in meeting m-008) (`projects/wayfare.md: \"Shipped 2026-06-12; ship retro in m-008\"`) |",
+  "started_at": "2026-10-27T21:42:37.711Z",
+  "finished_at": "2026-10-27T21:43:03.909Z"
+}

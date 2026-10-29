@@ -1,0 +1,69 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-04",
+  "category": "point-lookup",
+  "question_text": "Which three pilot stations did the Wayfare program cover?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which three pilot stations did the Wayfare program cover?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which three pilot stations did the Wayfare program cover?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"projects\": \"project records with status and an optional client org\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"projects\",\n      \"count\": 12,\n      \"records\": [\n        {\n          \"id\": \"beacon-grid\",\n          \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n          \"path\": \"projects/beacon-grid.md\"\n        },\n        {\n          \"id\": \"cinderboard\",\n          \"title\": \"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\n          \"path\": \"projects/cinderboard.md\"\n        },\n        {\n          \"id\": \"cometline\",\n          \"title\": \"Cometline — exhibit kiosk for Millhaven Observatory\",\n          \"path\": \"projects/cometline.md\"\n        },\n        {\n          \"id\": \"curlew-crm\",\n          \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/curlew-crm.md\"\n        },\n        {\n          \"id\": \"driftline\",\n          \"title\": \"Driftline — ferry-schedule print service for Bayline Transit\",\n          \"path\": \"projects/driftline.md\"\n        },\n        {\n          \"id\": \"foxglove-archive\",\n          \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n          \"path\": \"projects/foxglove-archive.md\"\n        },\n        {\n          \"id\": \"kestrel-crm\",\n          \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/kestrel-crm.md\"\n        },\n        {\n          \"id\": \"larkspur-archive\",\n          \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n          \"path\": \"projects/larkspur-archive.md\"\n        },\n        {\n          \"id\": \"ledgerline\",\n          \"title\": \"Ledgerline — internal timesheet and invoicing service\",\n          \"path\": \"projects/ledgerline.md\"\n        },\n        {\n          \"id\": \"perchboard\",\n          \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n          \"path\": \"projects/perchboard.md\"\n        },\n        {\n          \"id\": \"rill\",\n          \"title\": \"Rill — internal timesheet and invoicing service\",\n          \"path\": \"projects/rill.md\"\n        },\n        {\n          \"id\": \"wayfare\",\n          \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n          \"path\": \"projects/wayfare.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:** The three pilot stations covered by the Wayfare program were **Ashport Central, Ferry Quay, and Millbrook Bridge**.\n\n**Evidence:** From the Wayfare project record (`projects/wayfare.md`):\n\n> \"Wayfare is Meridian Studio's realtime departure-display program for Halcyon Transit: platform displays for three pilot stations — **Ashport Central, Ferry Quay, Millbrook Bridge** — fed by live vehicle-position data.\"",
+  "started_at": "2026-10-27T21:53:28.537Z",
+  "finished_at": "2026-10-27T21:53:40.600Z"
+}

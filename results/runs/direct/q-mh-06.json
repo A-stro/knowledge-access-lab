@@ -1,0 +1,234 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-06",
+  "category": "multi-hop",
+  "question_text": "What influenced the cancellation of the Kestrel CRM experiment?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What influenced the cancellation of the Kestrel CRM experiment?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What influenced the cancellation of the Kestrel CRM experiment?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Kestrel CRM"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 5
+    },
+    {
+      "seq": 2,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*kestrel*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 7
+    },
+    {
+      "seq": 3,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Kestrel"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 4
+    },
+    {
+      "seq": 4,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 5,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 7
+    },
+    {
+      "seq": 6,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "projects"
+      },
+      "result_text": ".gitkeep\nbeacon-grid.md\ncinderboard.md\ncometline.md\ncurlew-crm.md\ndriftline.md\nfoxglove-archive.md\nkestrel-crm.md\nlarkspur-archive.md\nledgerline.md\nperchboard.md\nrill.md\nwayfare.md",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 7,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "orgs"
+      },
+      "result_text": ".gitkeep\nbayline-transit.md\nbellweather-books.md\ncopperleaf-studio.md\nfathom-data-works.md\ngreenline-utilities.md\nhalcyon-transit.md\nharrowgate-press.md\njuniper-field-services.md\nmeridian-studio.md\nmillhaven-observatory.md\nnorthpost-analytics.md\nquill-and-marrow.md\nridgeway-power.md\nsaltmarsh-creative.md\nwharfworks-collective.md",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 8,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "people"
+      },
+      "result_text": ".gitkeep\namara-diallo.md\naurelio-finch.md\nbram-oyelaran.md\ndara-whitlock.md\ndev-okonkwo.md\nelif-yilmaz.md\ngwen-torvald.md\nida-kovacs.md\nines-marchetti.md\njune-park.md\nkatrin-ilic.md\nlorna-vey.md\nmara-voss.md\nmarta-quintana.md\nnadia-moreau.md\nnils-aasen.md\nnoor-haddad.md\nodessa-klein.md\npavel-sorokin.md\npetra-lindqvist.md\nrashid-bello.md\nrowan-ellery.md\nsilas-brandt.md\nsofia-reyes.md\nteodor-blum.md\ntheo-kanda.md\ntomas-berg.md\nyusuf-adeyemi.md",
+      "is_error": false,
+      "duration_ms": 5
+    },
+    {
+      "seq": 9,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "meetings"
+      },
+      "result_text": ".gitkeep\nm-001.md\nm-002.md\nm-003.md\nm-004.md\nm-005.md\nm-006.md\nm-007.md\nm-008.md\nm-101.md\nm-102.md\nm-103.md\nm-104.md\nm-105.md\nm-106.md\nm-107.md\nm-108.md\nm-109.md\nm-110.md\nm-111.md\nm-112.md\nm-113.md\nm-114.md\nm-115.md\nm-116.md\nm-117.md\nm-118.md\nm-119.md\nm-120.md",
+      "is_error": false,
+      "duration_ms": 5
+    },
+    {
+      "seq": 10,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "decisions"
+      },
+      "result_text": ".gitkeep\nd-001.md\nd-002.md\nd-003.md\nd-004.md\nd-005.md\nd-006.md\nd-007.md\nd-008.md\nd-009.md\nd-010.md\nd-011.md\nd-101.md\nd-102.md\nd-103.md\nd-104.md\nd-105.md\nd-106.md\nd-107.md\nd-108.md\nd-109.md\nd-110.md\nd-111.md\nd-112.md\nd-113.md\nd-114.md\nd-115.md\nd-116.md\nd-117.md\nd-118.md",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 11,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "references"
+      },
+      "result_text": ".gitkeep\narchival-handling-notes.md\narchive-metadata-notes.md\nbackup-rotation-notes.md\nchrony-notes.md\nclickhouse-notes.md\ndouble-entry-notes.md\nduckdb-notes.md\nembedded-single-board-notes.md\nenclosure-install-notes.md\nferry-timetable-notes.md\nfilestore-naming-notes.md\nfleet-provisioning-notes.md\ngpu-cluster-notes.md\nhocr-notes.md\niiif-overview.md\nkiosk-browser-notes.md\nlatency-budget-notes.md\nmqtt-311-notes.md\nmqtt-5-notes.md\nmqtt-broker-ops-notes.md\nocr-comparison.md\nocr-job-queue-notes.md\npostgres-operations-notes.md\nrate-card-notes.md\nrunbook-notes.md\nscan-resolution-notes.md\nschema-migration-notes.md\nsignage-legibility-notes.md\nsignage-panel-notes.md\nsqlite-wal-notes.md\nstatic-site-gallery-notes.md\nthermal-printer-notes.md\nvisitor-dwell-notes.md\nwcag-contrast-notes.md",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 12,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "sessions"
+      },
+      "result_text": ".gitkeep\ns-001.md\ns-002.md\ns-003.md\ns-004.md\ns-005.md\ns-006.md\ns-007.md\ns-008.md\ns-009.md\ns-010.md\ns-101.md\ns-102.md\ns-103.md\ns-104.md\ns-105.md\ns-106.md\ns-107.md\ns-108.md\ns-109.md\ns-110.md\ns-111.md\ns-112.md\ns-113.md\ns-114.md\ns-115.md\ns-116.md\ns-117.md\ns-118.md\ns-119.md\ns-120.md\ns-121.md\ns-122.md\ns-123.md\ns-124.md\ns-125.md\ns-126.md\ns-127.md\ns-128.md\ns-129.md\ns-130.md\ns-131.md\ns-132.md\ns-133.md\ns-134.md\ns-135.md\ns-136.md\ns-137.md\ns-138.md\ns-139.md\ns-140.md\ns-141.md\ns-142.md\ns-143.md\ns-144.md\ns-145.md\ns-146.md\ns-147.md\ns-148.md",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 13,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "---\nid: kestrel-crm\ngenre: projects\ntitle: \"Kestrel CRM — cancelled internal client-tracker experiment\"\ncreated: 2026-03-31\nupdated: 2026-04-24\nstatus: cancelled\nprovenance: hand-authored\ntags: [internal, experiment]\nrelated:\n  - type: mentions\n    to: meetings/m-004.md\n  - type: mentions\n    to: meetings/m-006.md\n  - type: mentions\n    to: decisions/d-010.md\n  - type: mentions\n    to: sessions/s-009.md\n  - type: mentions\n    to: people/theo-kanda.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nKestrel was Theo Kanda's proposal for an internal CRM experiment — a\nlightweight tracker for studio client relationships — announced at the March\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\n\nCancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 14,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "---\nid: s-009\ngenre: sessions\ntitle: \"Kestrel teardown and data export\"\ncreated: 2026-04-24\nprovenance: hand-authored\ntags: [kestrel, teardown]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nTheo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\ndown the prototype: contact pages, the ops trial entries, and the import\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 15,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "---\nid: m-004\ngenre: meetings\ntitle: \"Studio all-hands, March\"\ncreated: 2026-03-30\nprovenance: hand-authored\ntags: [all-hands, planning]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nMarch all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\nlightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 16,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 17,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-006.md"
+      },
+      "result_text": "---\nid: m-006\ngenre: meetings\ntitle: \"Kestrel CRM go/no-go\"\ncreated: 2026-04-20\nprovenance: hand-authored\ntags: [kestrel, decision]\nattendees: [mara-voss, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nGo/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —\nthe studio's client count does not justify the maintenance surface. No-go;\nd-010 cancelled the experiment the next day, with data export and teardown\nin s-009.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The cancellation of the Kestrel CRM experiment was influenced by **two key factors**:\n\n1. **Operational burden fell solely on Lorna Vey** — The two-week ops trial load landed entirely on Lorna with no one else able to own the tool going forward. As recorded in the go/no-go meeting (m-006): \"the ops load fell on Lorna alone and no one can own the tool going forward.\"\n\n2. **Insufficient client volume to justify maintenance** — The studio's client count did not justify the maintenance surface required for the CRM. Decision d-010 states: \"the studio's client count does not justify the maintenance surface.\"\n\nThese factors were discussed at the Kestrel go/no-go meeting (m-006) on 2026-04-20, leading to the cancellation decision (d-010) the next day, with data export and teardown completed in session s-009.\n\n**Evidence:**\n- **projects/kestrel-crm.md**: \"Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on Lorna alone, no one could own it.\"\n- **meetings/m-006.md**: \"the ops load fell on Lorna alone and no one can own the tool going forward — the studio's client count does not justify the maintenance surface.\"\n- **decisions/d-010.md**: \"Context: Kestrel has run as a two-week ops trial on top of Lorna's existing load; Theo's prototype works, but no one can own the tool going forward.\" and \"Decision: cancel the Kestrel CRM experiment... — the studio's client count does not justify the maintenance surface.\"",
+  "started_at": "2026-10-27T23:18:00.441Z",
+  "finished_at": "2026-10-27T23:18:46.477Z"
+}

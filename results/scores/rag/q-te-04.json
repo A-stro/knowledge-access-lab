@@ -1,0 +1,81 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-04",
+  "category": "temporal",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-te-04.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "created: 2026-03-30",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "Beacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "orgs/greenline-utilities.md",
+        "passage": "created: 2026-04-01",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "created: 2026-04-02",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0.4,
+    "records_found_ratio": 0.4
+  },
+  "retrieval": {
+    "steps": 3,
+    "error_steps": 1,
+    "result_bytes": 3834
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:47:16.456Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly gives the pause date (2026-05-26) and includes the Beacon Grid project record date (2026-04-02), but omits the March 30 all-hands/“started next week” context and the Greenline record dated 2026-04-01, presenting 2026-04-02 as the sole engagement start.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:47:31.950Z"
+  }
+}

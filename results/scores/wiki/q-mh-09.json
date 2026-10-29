@@ -1,0 +1,70 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-mh-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "IIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          5
+        ]
+      },
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "  - type: relates_to\n    to: references/archive-metadata-notes.md",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          5
+        ]
+      },
+      {
+        "record": "references/archive-metadata-notes.md",
+        "passage": "Fifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          4
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          6
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 6,
+    "error_steps": 0,
+    "result_bytes": 7504
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:57:50.479Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The answer correctly identifies iiif-overview as the note influencing d-011 and its relates_to connection to the archive-metadata notes and the fifteen Dublin Core elements with Quill & Marrow's house style. However, it omits the note's key rationale—that IIIF keeps a client's scans portable across viewer implementations—and adds an unsupported parenthetical list of specific Dublin Core elements.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:58:09.187Z"
+  }
+}

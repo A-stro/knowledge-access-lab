@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-05",
+  "category": "synthesis",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-sy-05.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "Decision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Context: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig;",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          6
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          6
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0.667,
+    "records_found_ratio": 0.667
+  },
+  "retrieval": {
+    "steps": 7,
+    "error_steps": 1,
+    "result_bytes": 8708
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:44:27.375Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer accurately captures the shift from March's board-by-board, per-display autonomy to June's edge-gateway hub per station, and identifies firmware drift and roughly ninety-minute manual reflashes after six weeks in the field as the drivers. It also correctly notes that the change made flashing a station-level visit and contains no contradictions with the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:45:03.998Z"
+  }
+}

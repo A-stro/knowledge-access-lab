@@ -1,0 +1,79 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-04",
+  "category": "temporal",
+  "question_text": "When was Beacon Grid paused, and when did its engagement begin?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When was Beacon Grid paused, and when did its engagement begin?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When was Beacon Grid paused, and when did its engagement begin?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Beacon Grid paused engagement began"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "When was Beacon Grid paused, and when did its engagement begin?"
+      },
+      "result_text": "{\n  \"question\": \"q-te-04\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"para\": 3,\n      \"score\": 0.742059,\n      \"passage\": \"Consequences: no database server to operate; ingestion is batch-oriented.\\nGreenline later flagged access-approval processes, and the project paused\\n(2026-05-26).\"\n    },\n    {\n      \"path\": \"projects/beacon-grid.md\",\n      \"para\": 1,\n      \"score\": 0.673786,\n      \"passage\": \"Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\\nto Wayfare's final stretch.\"\n    },\n    {\n      \"path\": \"projects/beacon-grid.md\",\n      \"para\": 0,\n      \"score\": 0.632349,\n      \"passage\": \"Beacon Grid is a load-monitoring dashboard for Greenline Utilities: ingesting\\nsensor feeds and Northpost Analytics load forecasts into DuckDB (decision\\nd-006) over MQTT (decision d-007), queried for the operations wallboard.\\nSilas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built\\nthe ingestion spike (s-007).\"\n    },\n    {\n      \"path\": \"decisions/d-007.md\",\n      \"para\": 3,\n      \"score\": 0.618677,\n      \"passage\": \"Consequences: one consumption pattern across two projects; sensor gateways\\nstay quiet.\"\n    },\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"para\": 2,\n      \"score\": 0.615175,\n      \"passage\": \"Decision: Beacon Grid lands sensor data in DuckDB and queries it with plain\\nSQL — the wallboard needs joins more than a retention engine, informed by\\nduckdb-notes.\"\n    },\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"para\": 1,\n      \"score\": 0.60782,\n      \"passage\": \"Options considered: a time-series server for raw telemetry; DuckDB embedded\\nover Parquet and CSV.\"\n    },\n    {\n      \"path\": \"orgs/greenline-utilities.md\",\n      \"para\": 0,\n      \"score\": 0.60781,\n      \"passage\": \"Greenline Utilities is Ashport's municipal power and water utility. Meridian's\\nBeacon Grid project builds a load-monitoring dashboard over its operations\\ndata, paused since May while Greenline works through a data-access\\nclarification.\"\n    },\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"para\": 0,\n      \"score\": 0.593901,\n      \"passage\": \"Context: Greenline's wallboard needs ad-hoc joins across sensor feeds and\\nNorthpost load forecasts.\"\n    },\n    {\n      \"path\": \"decisions/d-007.md\",\n      \"para\": 0,\n      \"score\": 0.591589,\n      \"passage\": \"Context: Greenline sensor arrays publish at short intervals; REST polling on a\\ntimer would hammer their gateways.\"\n    },\n    {\n      \"path\": \"decisions/d-007.md\",\n      \"para\": 1,\n      \"score\": 0.585078,\n      \"passage\": \"Options considered: REST polling on a timer; MQTT subscriptions to sensor\\ntopics.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/beacon-grid.md"
+      },
+      "result_text": "---\nid: beacon-grid\ngenre: projects\ntitle: \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\"\ncreated: 2026-04-02\nupdated: 2026-05-26\nstatus: paused\nclient: greenline-utilities\nprovenance: hand-authored\ntags: [utilities, monitoring, duckdb]\nrelated:\n  - type: mentions\n    to: orgs/greenline-utilities.md\n  - type: mentions\n    to: orgs/northpost-analytics.md\n  - type: mentions\n    to: decisions/d-006.md\n  - type: mentions\n    to: decisions/d-007.md\n  - type: mentions\n    to: sessions/s-007.md\n---\n\nBeacon Grid is a load-monitoring dashboard for Greenline Utilities: ingesting\nsensor feeds and Northpost Analytics load forecasts into DuckDB (decision\nd-006) over MQTT (decision d-007), queried for the operations wallboard.\nSilas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built\nthe ingestion spike (s-007).\n\nPaused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the evidence, I can answer the question:\n\n**Beacon Grid's engagement began on 2026-04-02** (the project's `created` date) and **was paused on 2026-05-26**.\n\n**Evidence:**\n\n- From `projects/beacon-grid.md` (frontmatter): `created: 2026-04-02` — this is the project creation/engagement start date\n- From `projects/beacon-grid.md` (body): \"Paused 2026-05-26 pending Greenline's data-access clarification\"\n- Also confirmed in `decisions/d-006.md` (para 3): \"Greenline later flagged access-approval processes, and the project paused (2026-05-26)\"",
+  "started_at": "2026-10-27T21:47:04.697Z",
+  "finished_at": "2026-10-27T21:47:16.453Z"
+}

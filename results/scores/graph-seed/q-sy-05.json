@@ -1,0 +1,62 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-05",
+  "category": "synthesis",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-sy-05.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "Decision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Context: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          8,
+          23
+        ]
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig;",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          12
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 24,
+    "error_steps": 0,
+    "result_bytes": 17404
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:35:42.611Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The answer correctly identifies the shift from one single-board computer per display to an edge-gateway hub per station and attributes it to field maintenance pain documented in s-004 and reviewed in m-005. However, it omits key supporting details: local fallback rendering, the six-week field period, firmware drift, roughly ninety-minute manual reflashes per display, and the resulting reduction in maintenance effort by the June ship retro.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:36:05.594Z"
+  }
+}

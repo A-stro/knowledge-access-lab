@@ -1,0 +1,59 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-08",
+  "category": "synthesis",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-sy-08.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "people/june-park.md",
+        "passage": "She designed the Wayfare\ndisplay interface and owns its design tokens, and she designed the Larkspur\nArchive's reading experience. She ran the platform contrast testing with\nOdessa and prototyped the IIIF viewer with Dev.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3,
+          7,
+          8,
+          9,
+          41,
+          59
+        ]
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "Rowan asked for a\nwallboard-style collection status page; June takes it.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          26,
+          46,
+          64
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 90,
+    "error_steps": 0,
+    "result_bytes": 26445
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:47:00.100Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The agent incorrectly concludes that no evidence is available, while the reference documents June Park’s specific design, testing, prototyping, and collection-status contributions across Wayfare, Larkspur, and related work.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:47:20.574Z"
+  }
+}

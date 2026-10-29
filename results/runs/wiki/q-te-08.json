@@ -1,0 +1,91 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-08",
+  "category": "temporal",
+  "question_text": "In what order were the Larkspur project's three major work sessions recorded?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: In what order were the Larkspur project's three major work sessions recorded?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: In what order were the Larkspur project's three major work sessions recorded?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"sessions\": \"work-session records\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"sessions\",\n      \"count\": 58,\n      \"records\": [\n        {\n          \"id\": \"s-001\",\n          \"title\": \"Ledgerline schema bootstrap\",\n          \"path\": \"sessions/s-001.md\"\n        },\n        {\n          \"id\": \"s-002\",\n          \"title\": \"Wayfare display firmware first light\",\n          \"path\": \"sessions/s-002.md\"\n        },\n        {\n          \"id\": \"s-003\",\n          \"title\": \"Larkspur OCR pipeline wiring\",\n          \"path\": \"sessions/s-003.md\"\n        },\n        {\n          \"id\": \"s-004\",\n          \"title\": \"Wayfare field maintenance pain\",\n          \"path\": \"sessions/s-004.md\"\n        },\n        {\n          \"id\": \"s-005\",\n          \"title\": \"Ledgerline invoice PDF export\",\n          \"path\": \"sessions/s-005.md\"\n        },\n        {\n          \"id\": \"s-006\",\n          \"title\": \"Larkspur OCR latency benchmark\",\n          \"path\": \"sessions/s-006.md\"\n        },\n        {\n          \"id\": \"s-007\",\n          \"title\": \"Beacon Grid DuckDB ingestion spike\",\n          \"path\": \"sessions/s-007.md\"\n        },\n        {\n          \"id\": \"s-008\",\n          \"title\": \"Wayfare palette contrast testing\",\n          \"path\": \"sessions/s-008.md\"\n        },\n        {\n          \"id\": \"s-009\",\n          \"title\": \"Kestrel teardown and data export\",\n          \"path\": \"sessions/s-009.md\"\n        },\n        {\n          \"id\": \"s-010\",\n          \"title\": \"Larkspur IIIF viewer prototype\",\n          \"path\": \"sessions/s-010.md\"\n        },\n        {\n          \"id\": \"s-101\",\n          \"title\": \"Rill schema bootstrap\",\n          \"path\": \"sessions/s-101.md\"\n        },\n        {\n          \"id\": \"s-102\",\n          \"title\": \"Rill backup rotation setup\",\n          \"path\": \"sessions/s-102.md\"\n        },\n        {\n          \"id\": \"s-103\",\n          \"title\": \"Perchboard firmware first boot\",\n          \"path\": \"sessions/s-103.md\"\n        },\n        {\n          \"id\": \"s-104\",\n          \"title\": \"Foxglove OCR pipeline wiring\",\n          \"path\": \"sessions/s-104.md\"\n        },\n        {\n          \"id\": \"s-105\",\n          \"title\": \"Rill invoice CSV export\",\n          \"path\": \"sessions/s-105.md\"\n        },\n        {\n          \"id\": \"s-106\",\n          \"title\": \"Weekly review, early February\",\n          \"path\": \"sessions/s-106.md\"\n        },\n        {\n          \"id\": \"s-107\",\n          \"title\": \"Foxglove OCR batch, February\",\n          \"path\": \"sessions/s-107.md\"\n        },\n        {\n          \"id\": \"s-108\",\n          \"title\": \"Weekly review, mid-February\",\n          \"path\": \"sessions/s-108.md\"\n        },\n        {\n          \"id\": \"s-109\",\n          \"title\": \"Perchboard field maintenance pain\",\n          \"path\": \"sessions/s-109.md\"\n        },\n        {\n          \"id\": \"s-110\",\n          \"title\": \"Rill billing run, February\",\n          \"path\": \"sessions/s-110.md\"\n        },\n        {\n          \"id\": \"s-111\",\n          \"title\": \"Cinderboard ClickHouse ingestion spike\",\n          \"path\": \"sessions/s-111.md\"\n        },\n        {\n          \"id\": \"s-112\",\n          \"title\": \"Perchboard chrony fleet rollout\",\n          \"path\": \"sessions/s-112.md\"\n        },\n        {\n          \"id\": \"s-113\",\n          \"title\": \"Foxglove OCR throughput benchmark\",\n          \"path\": \"sessions/s-113.md\"\n        },\n        {\n          \"id\": \"s-114\",\n          \"title\": \"Weekly review, mid-March\",\n          \"path\": \"sessions/s-114.md\"\n        },\n        {\n          \"id\": \"s-115\",\n          \"title\": \"Curlew teardown and data export\",\n          \"path\": \"sessions/s-115.md\"\n        },\n        {\n          \"id\": \"s-116\",\n          \"title\": \"Perchboard palette legibility testing\",\n          \"path\": \"sessions/s-116.md\"\n        },\n        {\n          \"id\": \"s-117\",\n          \"title\": \"Weekly review, late March\",\n          \"path\": \"sessions/s-117.md\"\n        },\n        {\n          \"id\": \"s-118\",\n          \"title\": \"Cinderboard ingest ops check, March\",\n          \"path\": \"sessions/s-118.md\"\n        },\n        {\n          \"id\": \"s-119\",\n          \"title\": \"Rill billing run, March\",\n          \"path\": \"sessions/s-119.md\"\n        },\n        {\n          \"id\": \"s-120\",\n          \"title\": \"Cometline attract loop tuning\",\n          \"path\": \"sessions/s-120.md\"\n        },\n        {\n          \"id\": \"s-121\",\n          \"title\": \"Perchboard depot QA sweep, April\",\n          \"path\": \"sessions/s-121.md\"\n        },\n        {\n          \"id\": \"s-122\",\n          \"title\": \"Foxglove static gallery prototype\",\n          \"path\": \"sessions/s-122.md\"\n        },\n        {\n          \"id\": \"s-123\",\n          \"title\": \"Weekly review, mid-April\",\n          \"path\": \"sessions/s-123.md\"\n        },\n        {\n          \"id\": \"s-124\",\n          \"title\": \"Perchboard provisioning, Granite Pier\",\n          \"path\": \"sessions/s-124.md\"\n        },\n        {\n          \"id\": \"s-125\",\n          \"title\": \"Foxglove OCR batch, April\",\n          \"path\": \"sessions/s-125.md\"\n        },\n        {\n          \"id\": \"s-126\",\n          \"title\": \"Cinderboard ingest ops check, April\",\n          \"path\": \"sessions/s-126.md\"\n        },\n        {\n          \"id\": \"s-127\",\n          \"title\": \"Perchboard provisioning, Tram Junction\",\n          \"path\": \"sessions/s-127.md\"\n        },\n        {\n          \"id\": \"s-128\",\n          \"title\": \"Cinderboard pause handoff notes\",\n          \"path\": \"sessions/s-128.md\"\n        },\n        {\n          \"id\": \"s-129\",\n          \"title\": \"Cometline kiosk hardening\",\n          \"path\": \"sessions/s-129.md\"\n        },\n        {\n          \"id\": \"s-130\",\n          \"title\": \"Weekly review, late April\",\n          \"path\": \"sessions/s-130.md\"\n        },\n        {\n          \"id\": \"s-131\",\n          \"title\": \"Perchboard provisioning, Lighthouse Point\",\n          \"path\": \"sessions/s-131.md\"\n        },\n        {\n          \"id\": \"s-132\",\n          \"title\": \"Rill billing run, April\",\n          \"path\": \"sessions/s-132.md\"\n        },\n        {\n          \"id\": \"s-133\",\n          \"title\": \"Rill schema migration session\",\n          \"path\": \"sessions/s-133.md\"\n        },\n        {\n          \"id\": \"s-134\",\n          \"title\": \"Perchboard depot QA sweep, May\",\n          \"path\": \"sessions/s-134.md\"\n        },\n        {\n          \"id\": \"s-135\",\n          \"title\": \"Rill access audit\",\n          \"path\": \"sessions/s-135.md\"\n        },\n        {\n          \"id\": \"s-136\",\n          \"title\": \"Foxglove OCR batch, May\",\n          \"path\": \"sessions/s-136.md\"\n        },\n        {\n          \"id\": \"s-137\",\n          \"title\": \"Weekly review, mid-May\",\n          \"path\": \"sessions/s-137.md\"\n        },\n        {\n          \"id\": \"s-138\",\n          \"title\": \"Perchboard ship prep and QA sweep\",\n          \"path\": \"sessions/s-138.md\"\n        },\n        {\n          \"id\": \"s-139\",\n          \"title\": \"Driftline print service wiring\",\n          \"path\": \"sessions/s-139.md\"\n        },\n        {\n          \"id\": \"s-140\",\n          \"title\": \"Driftline ship checklist\",\n          \"path\": \"sessions/s-140.md\"\n        },\n        {\n          \"id\": \"s-141\",\n          \"title\": \"Rill billing run, May\",\n          \"path\": \"sessions/s-141.md\"\n        },\n        {\n          \"id\": \"s-142\",\n          \"title\": \"Weekly review, late May\",\n          \"path\": \"sessions/s-142.md\"\n        },\n        {\n          \"id\": \"s-143\",\n          \"title\": \"Perchboard depot QA sweep, June\",\n          \"path\": \"sessions/s-143.md\"\n        },\n        {\n          \"id\": \"s-144\",\n          \"title\": \"Weekly review, mid-June\",\n          \"path\": \"sessions/s-144.md\"\n        },\n        {\n          \"id\": \"s-145\",\n          \"title\": \"Rill restore rehearsal, June\",\n          \"path\": \"sessions/s-145.md\"\n        },\n        {\n          \"id\": \"s-146\",\n          \"title\": \"Studio runbook refresh\",\n          \"path\": \"sessions/s-146.md\"\n        },\n        {\n          \"id\": \"s-147\",\n          \"title\": \"Weekly review, late June\",\n          \"path\": \"sessions/s-147.md\"\n        },\n        {\n          \"id\": \"s-148\",\n          \"title\": \"Rill billing run, June\",\n          \"path\": \"sessions/s-148.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-003.md"
+      },
+      "result_text": "---\nid: s-003\ngenre: sessions\ntitle: \"Larkspur OCR pipeline wiring\"\ncreated: 2026-03-16\nprovenance: hand-authored\ntags: [larkspur, ocr]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: references/archive-metadata-notes.md\n---\n\nDev and Silas wired the OCR pipeline per d-004: scan intake, page splitting,\nremote API calls with retries, and metadata fields per the Dublin Core house\nstyle. The first full batch of 300 pages cleared in an evening at the\nbenchmark's assumed rate.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-006.md"
+      },
+      "result_text": "---\nid: s-006\ngenre: sessions\ntitle: \"Larkspur OCR latency benchmark\"\ncreated: 2026-04-18\nprovenance: hand-authored\ntags: [larkspur, ocr, benchmark]\nrelated:\n  - type: contradicts\n    to: decisions/d-004.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: references/ocr-comparison.md\n---\n\nSilas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed.\nThe linearity assumption behind d-004 does not hold for archival material;\nbatching and preprocessing now set the schedule, not API capacity.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-010.md"
+      },
+      "result_text": "---\nid: s-010\ngenre: sessions\ntitle: \"Larkspur IIIF viewer prototype\"\ncreated: 2026-05-10\nprovenance: hand-authored\ntags: [larkspur, iiif]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: meetings/m-007.md\n  - type: mentions\n    to: references/archive-metadata-notes.md\n---\n\nJune and Dev prototyped the IIIF viewer per d-011 over the first scanned\ncollection: deep zoom on full-page spreads, page order from manifests,\nmetadata rendering per the Dublin Core house style. Rowan's team flipped\nthrough a test collection the same afternoon; it was shown at the\nBellweather review (m-007) two days later.\n",
+      "is_error": false,
+      "duration_ms": 3
+    }
+  ],
+  "final_answer": "Based on the three Larkspur project work sessions in the knowledge base, here is the order they were recorded by their creation dates:\n\n1. **s-003: Larkspur OCR pipeline wiring** — created 2026-03-16\n2. **s-006: Larkspur OCR latency benchmark** — created 2026-04-18\n3. **s-010: Larkspur IIIF viewer prototype** — created 2026-05-10\n\n**Evidence:**\n\n- **sessions/s-003.md** — `created: 2026-03-16` — \"Larkspur OCR pipeline wiring\"\n- **sessions/s-006.md** — `created: 2026-04-18` — \"Larkspur OCR latency benchmark\"\n- **sessions/s-010.md** — `created: 2026-05-10` — \"Larkspur IIIF viewer prototype\"",
+  "started_at": "2026-10-27T22:05:02.583Z",
+  "finished_at": "2026-10-27T22:05:23.337Z"
+}

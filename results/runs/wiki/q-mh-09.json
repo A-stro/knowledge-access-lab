@@ -1,0 +1,113 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "question_text": "The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-011.md"
+      },
+      "result_text": "---\nid: d-011\ngenre: decisions\ntitle: \"Larkspur Archive ships an IIIF viewer, not a custom gallery\"\ncreated: 2026-05-07\nprovenance: hand-authored\ntags: [larkspur, viewer]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/iiif-overview.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather wants its digitized collections viewable and portable; a\ncustom gallery would lock scans to one interface.\n\nOptions considered: a custom-built gallery; an IIIF-based viewer over\nstandardized image and manifest APIs.\n\nDecision: Larkspur ships an IIIF-based viewer — deep zoom, page order, and\nmetadata from standardized manifests — so the scans stay portable across\nviewer implementations, informed by iiif-overview.\n\nConsequences: viewer work is integration rather than invention; prototyped\nin s-010 and shown at the Bellweather review (m-007).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/iiif-overview.md"
+      },
+      "result_text": "---\nid: iiif-overview\ngenre: references\ntitle: \"IIIF for archival viewers — reading notes\"\ncreated: 2026-05-04\nprovenance: hand-authored\ntags: [iiif, reading-notes]\nsource: \"reading notes, IIIF Image and Presentation APIs\"\nrelated:\n  - type: relates_to\n    to: references/archive-metadata-notes.md\n---\n\nIIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.\n\nInformed d-011.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/archive-metadata-notes.md"
+      },
+      "result_text": "---\nid: archive-metadata-notes\ngenre: references\ntitle: \"Dublin Core for archive metadata — reading notes\"\ncreated: 2026-03-18\nprovenance: hand-authored\ntags: [metadata, reading-notes]\nsource: \"reading notes, Dublin Core usage guide\"\nrelated:\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n---\n\nFifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "links",
+      "harness_tool": "mcp__wiki_lane__links",
+      "arguments": {
+        "path": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"path\": \"references/iiif-overview.md\",\n  \"title\": \"IIIF for archival viewers — reading notes\",\n  \"outgoing\": [\n    {\n      \"type\": \"relates_to\",\n      \"to\": \"references/archive-metadata-notes.md\"\n    }\n  ],\n  \"incoming\": [\n    {\n      \"type\": \"influenced_by\",\n      \"from\": \"decisions/d-011.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "links",
+      "harness_tool": "mcp__wiki_lane__links",
+      "arguments": {
+        "path": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/archive-metadata-notes.md\",\n  \"title\": \"Dublin Core for archive metadata — reading notes\",\n  \"outgoing\": [\n    {\n      \"type\": \"mentions\",\n      \"to\": \"orgs/quill-and-marrow.md\"\n    }\n  ],\n  \"incoming\": [\n    {\n      \"type\": \"mentions\",\n      \"from\": \"sessions/s-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"sessions/s-010.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"from\": \"references/iiif-overview.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:**\n\nThe IIIF viewer decision (d-011) drew on the reference note **`references/iiif-overview.md`** (\"IIIF for archival viewers — reading notes\").\n\nThat reference note connects to the earlier metadata work through its explicit `relates_to` link to **`references/archive-metadata-notes.md`** (\"Dublin Core for archive metadata — reading notes\"), which documents the Dublin Core metadata schema work — including the fifteen Dublin Core elements (title, creator, date, subject, rights) and the house style Quill & Marrow drafted on top of them for the Larkspur archive metadata.\n\n**Evidence:**\n\n- Decision d-011 states it was \"informed by iiif-overview\" and lists `references/iiif-overview.md` as `influenced_by`【decisions/d-011.md†related.influenced_by】.\n- The `iiif-overview` note declares `relates_to: references/archive-metadata-notes.md`【references/iiif-overview.md†related】.\n- The `archive-metadata-notes` note records the Dublin Core metadata work: \"Fifteen Dublin Core elements cover the descriptive fields the archive needs… Quill & Marrow drafted the house style on top of them for the Larkspur metadata\"【references/archive-metadata-notes.md†body】.",
+  "started_at": "2026-10-27T21:57:13.823Z",
+  "finished_at": "2026-10-27T21:57:50.475Z"
+}

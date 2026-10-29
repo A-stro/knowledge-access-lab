@@ -1,0 +1,332 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-02",
+  "category": "multi-hop",
+  "question_text": "Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Wayfare transport"
+      },
+      "result_text": "{\n  \"query\": \"Wayfare transport\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Wayfare"
+      },
+      "result_text": "{\n  \"query\": \"Wayfare\",\n  \"genre\": null,\n  \"found\": 11,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Beacon Grid"
+      },
+      "result_text": "{\n  \"query\": \"Beacon Grid\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-007.md\",\n      \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/beacon-grid.md\",\n      \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-007.md\",\n      \"title\": \"Beacon Grid DuckDB ingestion spike\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 4,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "incoming",
+        "edge_types": [
+          "influenced_by"
+        ],
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-008.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "edge_types": [
+          "influenced_by"
+        ],
+        "direction": "incoming",
+        "path": "decisions/d-007.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-007.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "incoming",
+        "path": "decisions/d-002.md",
+        "edge_types": [
+          "influenced_by"
+        ]
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-002.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "edge_types": [
+          "influenced_by"
+        ],
+        "direction": "incoming",
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-003.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-009.md",
+        "direction": "incoming",
+        "edge_types": [
+          "influenced_by"
+        ]
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-009.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "incoming",
+        "edge_types": [
+          "influenced_by"
+        ],
+        "path": "decisions/d-006.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-006.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "Wayfare"
+      },
+      "result_text": "{\n  \"query\": \"Wayfare\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "Beacon Grid"
+      },
+      "result_text": "{\n  \"query\": \"Beacon Grid\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 12,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "reference"
+      },
+      "result_text": "{\n  \"query\": \"reference\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "r-"
+      },
+      "result_text": "{\n  \"query\": \"r-\",\n  \"genre\": \"references\",\n  \"found\": 8,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/gpu-cluster-notes.md\",\n      \"title\": \"The two-GPU bench — bench note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/kiosk-browser-notes.md\",\n      \"title\": \"Kiosk-mode browsers — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/mqtt-broker-ops-notes.md\",\n      \"title\": \"Broker operations — ops note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ocr-job-queue-notes.md\",\n      \"title\": \"Job queues for OCR batches — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"title\": \"Thermal printers for counter schedules — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/visitor-dwell-notes.md\",\n      \"title\": \"Kiosk dwell observations — field note\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/mqtt-broker-ops-notes.md",
+        "direction": "outgoing",
+        "edge_types": [
+          "influenced_by"
+        ]
+      },
+      "result_text": "{\n  \"path\": \"references/mqtt-broker-ops-notes.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/mqtt-broker-ops-notes.md",
+        "direction": "outgoing",
+        "edge_types": [
+          "mentions",
+          "relates_to"
+        ]
+      },
+      "result_text": "{\n  \"path\": \"references/mqtt-broker-ops-notes.md\",\n  \"neighbors\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "references/mqtt-broker-ops-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/mqtt-broker-ops-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-118.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 17,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "references/kiosk-browser-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/kiosk-browser-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-106.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-120.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-007.md",
+        "direction": "outgoing"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-007.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/mqtt-311-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/beacon-grid.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-002.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "outgoing",
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-008.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-003.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "outgoing",
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-002.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/mqtt-311-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-003.md",
+        "direction": "outgoing"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-003.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/embedded-single-board-notes.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "mqtt-311-notes"
+      },
+      "result_text": "{\n  \"query\": \"mqtt-311-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/mqtt-311-notes.md\",\n      \"title\": \"MQTT 3.1.1 — reading notes\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:** The reference note **MQTT 3.1.1 — reading notes** (`references/mqtt-311-notes.md`) influenced both decisions:\n\n1. **Wayfare decision:** `decisions/d-002.md` — \"Wayfare displays speak MQTT\"  \n2. **Beacon Grid decision:** `decisions/d-007.md` — \"Beacon Grid ingests over MQTT rather than REST polling\"\n\n**Evidence:**\n\n- `decisions/d-002.md` has an outgoing `influenced_by` edge to `references/mqtt-311-notes.md`  \n- `decisions/d-007.md` has an outgoing `influenced_by` edge to `references/mqtt-311-notes.md`  \n- `references/mqtt-311-notes.md` is titled \"MQTT 3.1.1 — reading notes\"",
+  "started_at": "2026-10-28T16:30:03.802Z",
+  "finished_at": "2026-10-28T16:31:32.377Z"
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-mh-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "IIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "  - type: relates_to\n    to: references/archive-metadata-notes.md",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "references/archive-metadata-notes.md",
+        "passage": "Fifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 38,
+    "error_steps": 38,
+    "result_bytes": 2167
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:03:49.290Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference answer identifies the iiif-overview reading notes and explains their connection to the archive-metadata notes, while the agent incorrectly claims no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:03:51.075Z"
+  }
+}

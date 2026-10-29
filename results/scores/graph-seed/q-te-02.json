@@ -1,0 +1,63 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-02",
+  "category": "temporal",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-te-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "created: 2026-03-04",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          7,
+          41
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "created: 2026-04-08",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          5,
+          8,
+          48
+        ]
+      },
+      {
+        "record": "decisions/d-009.md",
+        "passage": "created: 2026-04-15",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0.667
+  },
+  "retrieval": {
+    "steps": 56,
+    "error_steps": 0,
+    "result_bytes": 21502
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:58:38.286Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly places d-003 before d-008 and notes that d-008 supersedes d-003, but it omits d-009 (green-and-amber palette, 2026-04-15) and substitutes d-002 as one of the three architecture decisions, so it does not provide the reference's set or full sequence.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:59:16.224Z"
+  }
+}

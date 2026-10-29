@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-04",
+  "category": "synthesis",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-sy-04.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-004.md",
+        "passage": "March all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          28
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          28
+        ]
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "lightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          28
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          28
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 28,
+    "error_steps": 3,
+    "result_bytes": 22008
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:22:54.179Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The agent identifies the wrong March all-hands (m-108/Copperleaf) rather than m-004/Meridian and reports an entirely different set of projects and statuses. It omits Ledgerline, Wayfare, Larkspur Archive, Kestrel CRM, and Beacon Grid, replacing them with Curlew, Perchboard, Foxglove, and Cinderboard.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:22:59.743Z"
+  }
+}

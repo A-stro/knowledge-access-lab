@@ -1,0 +1,79 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-01",
+  "category": "point-lookup",
+  "question_text": "What datastore does the Ledgerline service use?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What datastore does the Ledgerline service use?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What datastore does the Ledgerline service use?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Ledgerline service datastore"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "What datastore does the Ledgerline service use?"
+      },
+      "result_text": "{\n  \"question\": \"q-pl-01\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"para\": 0,\n      \"score\": 0.784053,\n      \"passage\": \"Context: Ledgerline needs a datastore for timesheets, invoices, and client\\nrecords. Studio write volume is small — one billing run a month plus daily\\ntimesheets.\"\n    },\n    {\n      \"path\": \"references/sqlite-wal-notes.md\",\n      \"para\": 1,\n      \"score\": 0.762888,\n      \"passage\": \"Informed the Ledgerline datastore decision (d-001).\"\n    },\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"para\": 2,\n      \"score\": 0.760552,\n      \"passage\": \"Decision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;\\nPostgres stays out of scope until a second-writer need appears.\"\n    },\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"para\": 1,\n      \"score\": 0.737528,\n      \"passage\": \"Options considered: Postgres (operational weight, a server to babysit)\\nversus SQLite (single file, WAL mode, embedded).\"\n    },\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"para\": 3,\n      \"score\": 0.682175,\n      \"passage\": \"Consequences: zero server operations; backups are file copies; the\\nsingle-writer ceiling is accepted. Informed by the WAL-mode reading notes\\n(sqlite-wal-notes).\"\n    },\n    {\n      \"path\": \"decisions/d-101.md\",\n      \"para\": 1,\n      \"score\": 0.642527,\n      \"passage\": \"Options considered: an embedded single-file datastore (zero server,\\nsingle-writer ceiling) versus PostgreSQL (one server, real concurrent\\nwriters).\"\n    },\n    {\n      \"path\": \"sessions/s-001.md\",\n      \"para\": 0,\n      \"score\": 0.638213,\n      \"passage\": \"Dev and Noor bootstrapped the Ledgerline schema per d-001: timesheets,\\nclients, invoices, and a billing-runs table. SQLite WAL mode went in from the\\nfirst migration; Lorna's ops fields — deposit reconciliation, client notes —\\nmade the cut for v1.\"\n    },\n    {\n      \"path\": \"decisions/d-101.md\",\n      \"para\": 2,\n      \"score\": 0.602896,\n      \"passage\": \"Decision: use PostgreSQL as the sole datastore for Rill — the studio already\\noperates it for the filestore index, and multi-writer billing fits. Informed\\nby the operations reading notes (postgres-operations-notes).\"\n    },\n    {\n      \"path\": \"decisions/d-101.md\",\n      \"para\": 0,\n      \"score\": 0.60183,\n      \"passage\": \"Context: Rill needs a datastore for timesheets, rate cards, and client\\nrecords. Studio invoicing wants concurrent writers during billing runs.\"\n    },\n    {\n      \"path\": \"projects/ledgerline.md\",\n      \"para\": 0,\n      \"score\": 0.594699,\n      \"passage\": \"Ledgerline is Meridian Studio's internal timesheet and invoicing service —\\nthe studio bills its clients through it. SQLite-backed (decision d-001), with\\nflat monthly billing per client adopted in March (decision d-005) after the\\npricing discussion in m-003. Invoice PDF export landed in the March sprint\\n(s-005).\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 13
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-001.md"
+      },
+      "result_text": "---\nid: d-001\ngenre: decisions\ntitle: \"Ledgerline stores its data in SQLite\"\ncreated: 2026-02-18\nprovenance: hand-authored\ntags: [ledgerline, storage]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/sqlite-wal-notes.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: Ledgerline needs a datastore for timesheets, invoices, and client\nrecords. Studio write volume is small — one billing run a month plus daily\ntimesheets.\n\nOptions considered: Postgres (operational weight, a server to babysit)\nversus SQLite (single file, WAL mode, embedded).\n\nDecision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;\nPostgres stays out of scope until a second-writer need appears.\n\nConsequences: zero server operations; backups are file copies; the\nsingle-writer ceiling is accepted. Informed by the WAL-mode reading notes\n(sqlite-wal-notes).\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The Ledgerline service uses **SQLite in WAL mode** as its sole datastore.\n\n**Evidence:**\n\nFrom `decisions/d-001.md`:\n- \"Decision: use SQLite in WAL mode as the sole datastore for Ledgerline v1; Postgres stays out of scope until a second-writer need appears.\"\n- \"Options considered: Postgres (operational weight, a server to babysit) versus SQLite (single file, WAL mode, embedded).\"\n- \"Consequences: zero server operations; backups are file copies; the single-writer ceiling is accepted.\"",
+  "started_at": "2026-10-27T08:54:23.146Z",
+  "finished_at": "2026-10-27T08:54:38.321Z"
+}

@@ -1,0 +1,759 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-02",
+  "category": "absence",
+  "question_text": "Did the studio or any client ever deploy or evaluate delivery drones?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Did the studio or any client ever deploy or evaluate delivery drones?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Did the studio or any client ever deploy or evaluate delivery drones?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "delivery drones"
+      },
+      "result_text": "{\n  \"query\": \"delivery drones\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "drone"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "studio"
+      },
+      "result_text": "{\n  \"query\": \"studio\",\n  \"genre\": null,\n  \"found\": 5,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/copperleaf-studio.md\",\n      \"title\": \"Copperleaf Studio\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"orgs/meridian-studio.md\",\n      \"title\": \"Meridian Studio\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"title\": \"Studio all-hands, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-111.md\",\n      \"title\": \"Studio tooling review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-146.md\",\n      \"title\": \"Studio runbook refresh\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "client"
+      },
+      "result_text": "{\n  \"query\": \"client\",\n  \"genre\": null,\n  \"found\": 3,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"title\": \"Ledgerline bills flat monthly per client\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/curlew-crm.md\",\n      \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "delivery"
+      },
+      "result_text": "{\n  \"query\": \"delivery\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "orgs/copperleaf-studio.md"
+      },
+      "result_text": "{\n  \"path\": \"orgs/copperleaf-studio.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/wharfworks-collective.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/ines-marchetti.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/rill.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "orgs/meridian-studio.md"
+      },
+      "result_text": "{\n  \"path\": \"orgs/meridian-studio.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/mara-voss.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/ledgerline.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "perchboard"
+      },
+      "result_text": "{\n  \"query\": \"perchboard\",\n  \"genre\": null,\n  \"found\": 22,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-102.md\",\n      \"title\": \"Perchboard displays speak MQTT 5.0\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-103.md\",\n      \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"title\": \"Perchboard moves to an edge relay per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-110.md\",\n      \"title\": \"Perchboard syncs fleet clocks with chrony\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-112.md\",\n      \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-117.md\",\n      \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-101.md\",\n      \"title\": \"Perchboard kickoff with Bayline Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-107.md\",\n      \"title\": \"Perchboard architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-103.md\",\n      \"title\": \"Perchboard firmware first boot\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-112.md\",\n      \"title\": \"Perchboard chrony fleet rollout\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-116.md\",\n      \"title\": \"Perchboard palette legibility testing\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-121.md\",\n      \"title\": \"Perchboard depot QA sweep, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-124.md\",\n      \"title\": \"Perchboard provisioning, Granite Pier\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-127.md\",\n      \"title\": \"Perchboard provisioning, Tram Junction\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-131.md\",\n      \"title\": \"Perchboard provisioning, Lighthouse Point\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-134.md\",\n      \"title\": \"Perchboard depot QA sweep, May\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-138.md\",\n      \"title\": \"Perchboard ship prep and QA sweep\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-143.md\",\n      \"title\": \"Perchboard depot QA sweep, June\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "rill"
+      },
+      "result_text": "{\n  \"query\": \"rill\",\n  \"genre\": null,\n  \"found\": 17,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/rill.md\",\n      \"title\": \"Rill — internal timesheet and invoicing service\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-101.md\",\n      \"title\": \"Rill stores its data in PostgreSQL\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-105.md\",\n      \"title\": \"Rill bills hourly with per-project rates\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-115.md\",\n      \"title\": \"Rill adopts per-period rate cards\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-102.md\",\n      \"title\": \"Rill planning sync\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-104.md\",\n      \"title\": \"Rill billing model discussion\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-101.md\",\n      \"title\": \"Rill schema bootstrap\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-102.md\",\n      \"title\": \"Rill backup rotation setup\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-105.md\",\n      \"title\": \"Rill invoice CSV export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-110.md\",\n      \"title\": \"Rill billing run, February\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-119.md\",\n      \"title\": \"Rill billing run, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-132.md\",\n      \"title\": \"Rill billing run, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-133.md\",\n      \"title\": \"Rill schema migration session\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-135.md\",\n      \"title\": \"Rill access audit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-141.md\",\n      \"title\": \"Rill billing run, May\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-145.md\",\n      \"title\": \"Rill restore rehearsal, June\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-148.md\",\n      \"title\": \"Rill billing run, June\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ledgerline"
+      },
+      "result_text": "{\n  \"query\": \"ledgerline\",\n  \"genre\": null,\n  \"found\": 7,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/ledgerline.md\",\n      \"title\": \"Ledgerline — internal timesheet and invoicing service\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"title\": \"Ledgerline stores its data in SQLite\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"title\": \"Ledgerline bills flat monthly per client\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-002.md\",\n      \"title\": \"Ledgerline planning sync\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-003.md\",\n      \"title\": \"Ledgerline pricing discussion\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-001.md\",\n      \"title\": \"Ledgerline schema bootstrap\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-005.md\",\n      \"title\": \"Ledgerline invoice PDF export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 11,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "wayfare"
+      },
+      "result_text": "{\n  \"query\": \"wayfare\",\n  \"genre\": null,\n  \"found\": 11,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 12,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "aerial"
+      },
+      "result_text": "{\n  \"query\": \"aerial\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "UAV"
+      },
+      "result_text": "{\n  \"query\": \"UAV\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "unmanned"
+      },
+      "result_text": "{\n  \"query\": \"unmanned\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "orgs",
+        "genre": "orgs"
+      },
+      "result_text": "{\n  \"query\": \"orgs\",\n  \"genre\": \"orgs\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "orgs",
+        "query": "collective"
+      },
+      "result_text": "{\n  \"query\": \"collective\",\n  \"genre\": \"orgs\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/wharfworks-collective.md\",\n      \"title\": \"Wharfworks Collective\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "orgs",
+        "query": "transit"
+      },
+      "result_text": "{\n  \"query\": \"transit\",\n  \"genre\": \"orgs\",\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/bayline-transit.md\",\n      \"title\": \"Bayline Transit\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"orgs/halcyon-transit.md\",\n      \"title\": \"Halcyon Transit\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "orgs/wharfworks-collective.md"
+      },
+      "result_text": "{\n  \"path\": \"orgs/wharfworks-collective.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/copperleaf-studio.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "orgs/bayline-transit.md"
+      },
+      "result_text": "{\n  \"path\": \"orgs/bayline-transit.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-101.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-117.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/dara-whitlock.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/driftline.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/perchboard.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/dara-whitlock.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "orgs/halcyon-transit.md"
+      },
+      "result_text": "{\n  \"path\": \"orgs/halcyon-transit.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-001.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/petra-lindqvist.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/petra-lindqvist.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "driftline"
+      },
+      "result_text": "{\n  \"query\": \"driftline\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/driftline.md\",\n      \"title\": \"Driftline — ferry-schedule print service for Bayline Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-139.md\",\n      \"title\": \"Driftline print service wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-140.md\",\n      \"title\": \"Driftline ship checklist\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "projects",
+        "query": "project"
+      },
+      "result_text": "{\n  \"query\": \"project\",\n  \"genre\": \"projects\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "crm",
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"query\": \"crm\",\n  \"genre\": \"projects\",\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/curlew-crm.md\",\n      \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "drone"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": \"decisions\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "meetings",
+        "query": "drone"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": \"meetings\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "drone",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": \"sessions\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "drone",
+        "genre": "references"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "delivery"
+      },
+      "result_text": "{\n  \"query\": \"delivery\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people",
+        "genre": "people"
+      },
+      "result_text": "{\n  \"query\": \"people\",\n  \"genre\": \"people\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "people",
+        "query": "marchetti"
+      },
+      "result_text": "{\n  \"query\": \"marchetti\",\n  \"genre\": \"people\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/ines-marchetti.md\",\n      \"title\": \"Ines Marchetti\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 31,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "voss",
+        "genre": "people"
+      },
+      "result_text": "{\n  \"query\": \"voss\",\n  \"genre\": \"people\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/mara-voss.md\",\n      \"title\": \"Mara Voss\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 32,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "kanda",
+        "genre": "people"
+      },
+      "result_text": "{\n  \"query\": \"kanda\",\n  \"genre\": \"people\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/theo-kanda.md\",\n      \"title\": \"Theo Kanda\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 33,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "people/ines-marchetti.md"
+      },
+      "result_text": "{\n  \"path\": \"people/ines-marchetti.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/copperleaf-studio.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "people/mara-voss.md"
+      },
+      "result_text": "{\n  \"path\": \"people/mara-voss.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-001.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/meridian-studio.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "people/theo-kanda.md"
+      },
+      "result_text": "{\n  \"path\": \"people/theo-kanda.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/meridian-studio.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/beacon-grid.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "beacon-grid"
+      },
+      "result_text": "{\n  \"query\": \"beacon-grid\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/beacon-grid.md\",\n      \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "people",
+        "query": "whitlock"
+      },
+      "result_text": "{\n  \"query\": \"whitlock\",\n  \"genre\": \"people\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/dara-whitlock.md\",\n      \"title\": \"Dara Whitlock\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 38,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "people",
+        "query": "lindqvist"
+      },
+      "result_text": "{\n  \"query\": \"lindqvist\",\n  \"genre\": \"people\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/petra-lindqvist.md\",\n      \"title\": \"Petra Lindqvist\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 39,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "people/dara-whitlock.md"
+      },
+      "result_text": "{\n  \"path\": \"people/dara-whitlock.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/bayline-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/bayline-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/perchboard.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "people/petra-lindqvist.md"
+      },
+      "result_text": "{\n  \"path\": \"people/petra-lindqvist.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"orgs/halcyon-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"orgs/halcyon-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "d-"
+      },
+      "result_text": "{\n  \"query\": \"d-\",\n  \"genre\": \"decisions\",\n  \"found\": 29,\n  \"capped\": true,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-001.md\",\n      \"title\": \"Ledgerline stores its data in SQLite\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"title\": \"Ledgerline bills flat monthly per client\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-007.md\",\n      \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-101.md\",\n      \"title\": \"Rill stores its data in PostgreSQL\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-102.md\",\n      \"title\": \"Perchboard displays speak MQTT 5.0\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-103.md\",\n      \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-105.md\",\n      \"title\": \"Rill bills hourly with per-project rates\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-106.md\",\n      \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-107.md\",\n      \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-108.md\",\n      \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"title\": \"Perchboard moves to an edge relay per station\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-110.md\",\n      \"title\": \"Perchboard syncs fleet clocks with chrony\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-111.md\",\n      \"title\": \"Cancel the Curlew CRM experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-112.md\",\n      \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "larkspur"
+      },
+      "result_text": "{\n  \"query\": \"larkspur\",\n  \"genre\": null,\n  \"found\": 7,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/larkspur-archive.md\",\n      \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"title\": \"Larkspur Archive routes OCR through a remote API\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "foxglove"
+      },
+      "result_text": "{\n  \"query\": \"foxglove\",\n  \"genre\": null,\n  \"found\": 14,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/foxglove-archive.md\",\n      \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-114.md\",\n      \"title\": \"Foxglove names scans by box and leaf, not by title\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-118.md\",\n      \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-103.md\",\n      \"title\": \"Foxglove kickoff with Harrowgate Press\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-112.md\",\n      \"title\": \"Foxglove mid-project review with Harrowgate\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-114.md\",\n      \"title\": \"Foxglove annex planning with Harrowgate\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-136.md\",\n      \"title\": \"Foxglove OCR batch, May\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "cometline"
+      },
+      "result_text": "{\n  \"query\": \"cometline\",\n  \"genre\": null,\n  \"found\": 5,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/cometline.md\",\n      \"title\": \"Cometline — exhibit kiosk for Millhaven Observatory\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-106.md\",\n      \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-115.md\",\n      \"title\": \"Cometline opening review with Millhaven Observatory\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-120.md\",\n      \"title\": \"Cometline attract loop tuning\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-129.md\",\n      \"title\": \"Cometline kiosk hardening\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 45,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "cinderboard"
+      },
+      "result_text": "{\n  \"query\": \"cinderboard\",\n  \"genre\": null,\n  \"found\": 10,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/cinderboard.md\",\n      \"title\": \"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-107.md\",\n      \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-108.md\",\n      \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-106.md\",\n      \"title\": \"Cinderboard engagement kickoff with Ridgeway Power\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-110.md\",\n      \"title\": \"Cinderboard wallboard walkthrough\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-119.md\",\n      \"title\": \"Cinderboard restart planning with Ridgeway\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-111.md\",\n      \"title\": \"Cinderboard ClickHouse ingestion spike\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-118.md\",\n      \"title\": \"Cinderboard ingest ops check, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-126.md\",\n      \"title\": \"Cinderboard ingest ops check, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-128.md\",\n      \"title\": \"Cinderboard pause handoff notes\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 46,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "d-114"
+      },
+      "result_text": "{\n  \"query\": \"d-114\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-114.md\",\n      \"title\": \"Foxglove names scans by box and leaf, not by title\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-115",
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"query\": \"d-115\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-115.md\",\n      \"title\": \"Rill adopts per-period rate cards\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "d-116"
+      },
+      "result_text": "{\n  \"query\": \"d-116\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 49,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "d-117"
+      },
+      "result_text": "{\n  \"query\": \"d-117\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-117.md\",\n      \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 50,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "d-118"
+      },
+      "result_text": "{\n  \"query\": \"d-118\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-118.md\",\n      \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 51,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "ref",
+        "genre": "references"
+      },
+      "result_text": "{\n  \"query\": \"ref\",\n  \"genre\": \"references\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "references",
+        "query": "a"
+      },
+      "result_text": "{\n  \"query\": \"a\",\n  \"genre\": \"references\",\n  \"found\": 32,\n  \"capped\": true,\n  \"matches\": [\n    {\n      \"path\": \"references/archival-handling-notes.md\",\n      \"title\": \"Handling a century of print — ops note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/backup-rotation-notes.md\",\n      \"title\": \"Backup rotation — ops note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"title\": \"Single-board computers for signage — field research summary\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/enclosure-install-notes.md\",\n      \"title\": \"Enclosure installs on piers — ops note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ferry-timetable-notes.md\",\n      \"title\": \"Timetable feeds — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/filestore-naming-notes.md\",\n      \"title\": \"Filestore naming conventions — ops note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/latency-budget-notes.md\",\n      \"title\": \"Display latency budget — engineering note\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/ocr-comparison.md\",\n      \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/postgres-operations-notes.md\",\n      \"title\": \"PostgreSQL operations — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/rate-card-notes.md\",\n      \"title\": \"Rate-card design — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/scan-resolution-notes.md\",\n      \"title\": \"Scan resolution for archives — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/schema-migration-notes.md\",\n      \"title\": \"Database migrations — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/signage-legibility-notes.md\",\n      \"title\": \"Outdoor legibility for signage — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/signage-panel-notes.md\",\n      \"title\": \"Signage panels for platform displays — field research summary\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/sqlite-wal-notes.md\",\n      \"title\": \"SQLite WAL mode — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/static-site-gallery-notes.md\",\n      \"title\": \"Static galleries for collections — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"title\": \"Thermal printers for counter schedules — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/wcag-contrast-notes.md\",\n      \"title\": \"Outdoor readability and contrast — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"references/chrony-notes.md\",\n      \"title\": \"chrony for field-device clocks — reading notes\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"references/clickhouse-notes.md\",\n      \"title\": \"ClickHouse for embedded analytics — reading notes\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"references/double-entry-notes.md\",\n      \"title\": \"Double-entry bookkeeping — reading notes\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"references/duckdb-notes.md\",\n      \"title\": \"DuckDB for embedded analytics — reading notes\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"references/hocr-notes.md\",\n      \"title\": \"hOCR for OCR output — reading notes\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "fly"
+      },
+      "result_text": "{\n  \"query\": \"fly\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "air"
+      },
+      "result_text": "{\n  \"query\": \"air\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 55,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "quad"
+      },
+      "result_text": "{\n  \"query\": \"quad\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 56,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "copter"
+      },
+      "result_text": "{\n  \"query\": \"copter\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 57,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "drone"
+      },
+      "result_text": "{\n  \"query\": \"drone\",\n  \"genre\": \"sessions\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 58,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-",
+        "genre": "meetings"
+      },
+      "result_text": "{\n  \"query\": \"m-\",\n  \"genre\": \"meetings\",\n  \"found\": 28,\n  \"capped\": true,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-002.md\",\n      \"title\": \"Ledgerline planning sync\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-003.md\",\n      \"title\": \"Ledgerline pricing discussion\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"title\": \"Studio all-hands, March\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-101.md\",\n      \"title\": \"Perchboard kickoff with Bayline Transit\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-102.md\",\n      \"title\": \"Rill planning sync\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-103.md\",\n      \"title\": \"Foxglove kickoff with Harrowgate Press\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-104.md\",\n      \"title\": \"Rill billing model discussion\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-105.md\",\n      \"title\": \"Copperleaf all-hands, February\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-106.md\",\n      \"title\": \"Cinderboard engagement kickoff with Ridgeway Power\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-107.md\",\n      \"title\": \"Perchboard architecture review\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-108.md\",\n      \"title\": \"Copperleaf all-hands, March\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-109.md\",\n      \"title\": \"Curlew go/no-go\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-110.md\",\n      \"title\": \"Cinderboard wallboard walkthrough\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-111.md\",\n      \"title\": \"Studio tooling review\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-112.md\",\n      \"title\": \"Foxglove mid-project review with Harrowgate\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-113.md\",\n      \"title\": \"Security and access review\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-114.md\",\n      \"title\": \"Foxglove annex planning with Harrowgate\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-115.md\",\n      \"title\": \"Cometline opening review with Millhaven Observatory\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 59,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "meetings",
+        "query": "m-117"
+      },
+      "result_text": "{\n  \"query\": \"m-117\",\n  \"genre\": \"meetings\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-117.md\",\n      \"title\": \"Perchboard maintenance window review with Bayline\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 60,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "meetings",
+        "query": "m-118"
+      },
+      "result_text": "{\n  \"query\": \"m-118\",\n  \"genre\": \"meetings\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-118.md\",\n      \"title\": \"Copperleaf all-hands, June\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 61,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "meetings",
+        "query": "m-119"
+      },
+      "result_text": "{\n  \"query\": \"m-119\",\n  \"genre\": \"meetings\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-119.md\",\n      \"title\": \"Cinderboard restart planning with Ridgeway\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 62,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "s-"
+      },
+      "result_text": "{\n  \"query\": \"s-\",\n  \"genre\": \"sessions\",\n  \"found\": 58,\n  \"capped\": true,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-001.md\",\n      \"title\": \"Ledgerline schema bootstrap\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-005.md\",\n      \"title\": \"Ledgerline invoice PDF export\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-006.md\",\n      \"title\": \"Larkspur OCR latency benchmark\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-007.md\",\n      \"title\": \"Beacon Grid DuckDB ingestion spike\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-101.md\",\n      \"title\": \"Rill schema bootstrap\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-102.md\",\n      \"title\": \"Rill backup rotation setup\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-103.md\",\n      \"title\": \"Perchboard firmware first boot\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-105.md\",\n      \"title\": \"Rill invoice CSV export\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-106.md\",\n      \"title\": \"Weekly review, early February\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-107.md\",\n      \"title\": \"Foxglove OCR batch, February\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-108.md\",\n      \"title\": \"Weekly review, mid-February\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-110.md\",\n      \"title\": \"Rill billing run, February\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-111.md\",\n      \"title\": \"Cinderboard ClickHouse ingestion spike\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-112.md\",\n      \"title\": \"Perchboard chrony fleet rollout\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-113.md\",\n      \"title\": \"Foxglove OCR throughput benchmark\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"sessions/s-114.md\",\n      \"title\": \"Weekly review, mid-March\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-28T18:17:46.905Z",
+  "finished_at": "2026-10-28T18:21:46.474Z"
+}

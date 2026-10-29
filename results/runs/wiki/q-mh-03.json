@@ -1,0 +1,80 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-03",
+  "category": "multi-hop",
+  "question_text": "What evidence contradicted the Larkspur OCR decision, and what did it find?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What evidence contradicted the Larkspur OCR decision, and what did it find?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What evidence contradicted the Larkspur OCR decision, and what did it find?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-004.md"
+      },
+      "result_text": "---\nid: d-004\ngenre: decisions\ntitle: \"Larkspur Archive routes OCR through a remote API\"\ncreated: 2026-03-12\nprovenance: hand-authored\ntags: [larkspur, ocr]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/ocr-comparison.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather's archive scans number in the tens of thousands of\npages; OCR throughput sets the digitization schedule.\n\nOptions considered: local OCR on the studio's machines; a remote OCR API.\n\nDecision: route Larkspur OCR through a remote API — roughly four times local\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\nbenchmark notes.\n\nConsequences: the digitization schedule holds; throughput is assumed to scale\nlinearly with scan volume. Later contradicted by the latency benchmark in\ns-006, which found archival page scans far below the assumed rate.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-006.md"
+      },
+      "result_text": "---\nid: s-006\ngenre: sessions\ntitle: \"Larkspur OCR latency benchmark\"\ncreated: 2026-04-18\nprovenance: hand-authored\ntags: [larkspur, ocr, benchmark]\nrelated:\n  - type: contradicts\n    to: decisions/d-004.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: references/ocr-comparison.md\n---\n\nSilas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed.\nThe linearity assumption behind d-004 does not hold for archival material;\nbatching and preprocessing now set the schedule, not API capacity.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "The Larkspur OCR decision (d-004) was contradicted by the latency benchmark in session s-006.\n\n**Contradicting evidence:** Session s-006 \"Larkspur OCR latency benchmark\"\n\n**What it found:** On real archival page scans — foxed paper, old typefaces — throughput ran at **roughly forty percent of the assumed rate** once image preprocessing was included. The linearity assumption behind d-004 (that throughput scales linearly with scan volume) does not hold for archival material; instead, batching and preprocessing now set the schedule, not API capacity.\n\n**Sources:**\n- decisions/d-004.md: \"Later contradicted by the latency benchmark in s-006, which found archival page scans far below the assumed rate.\"\n- sessions/s-006.md: \"Silas benchmarked the OCR pipeline against the ocr-comparison assumption: on real archival page scans — foxed paper, old typefaces — throughput ran at roughly forty percent of the assumed rate once image preprocessing landed. The linearity assumption behind d-004 does not hold for archival material; batching and preprocessing now set the schedule, not API capacity.\"",
+  "started_at": "2026-10-27T21:55:46.627Z",
+  "finished_at": "2026-10-27T21:56:23.843Z"
+}

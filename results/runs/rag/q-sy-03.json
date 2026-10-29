@@ -1,0 +1,343 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-sy-03",
+  "category": "synthesis",
+  "question_text": "Compare the outcomes of the studio's two internal tools, Ledgerline and Kestrel.",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Compare the outcomes of the studio's two internal tools, Ledgerline and Kestrel."
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Compare the outcomes of the studio's two internal tools, Ledgerline and Kestrel.",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Compare the outcomes of the studio's two internal tools, Ledgerline and Kestrel"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Ledgerline Kestrel internal tools studio outcomes"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-001.md"
+      },
+      "result_text": "---\nid: d-001\ngenre: decisions\ntitle: \"Ledgerline stores its data in SQLite\"\ncreated: 2026-02-18\nprovenance: hand-authored\ntags: [ledgerline, storage]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/sqlite-wal-notes.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: Ledgerline needs a datastore for timesheets, invoices, and client\nrecords. Studio write volume is small — one billing run a month plus daily\ntimesheets.\n\nOptions considered: Postgres (operational weight, a server to babysit)\nversus SQLite (single file, WAL mode, embedded).\n\nDecision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;\nPostgres stays out of scope until a second-writer need appears.\n\nConsequences: zero server operations; backups are file copies; the\nsingle-writer ceiling is accepted. Informed by the WAL-mode reading notes\n(sqlite-wal-notes).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/ledgerline.md"
+      },
+      "result_text": "---\nid: ledgerline\ngenre: projects\ntitle: \"Ledgerline — internal timesheet and invoicing service\"\ncreated: 2026-02-14\nupdated: 2026-06-10\nstatus: active\nprovenance: hand-authored\ntags: [internal, billing]\nrelated:\n  - type: mentions\n    to: decisions/d-001.md\n  - type: mentions\n    to: decisions/d-005.md\n  - type: mentions\n    to: sessions/s-001.md\n  - type: mentions\n    to: sessions/s-005.md\n  - type: mentions\n    to: meetings/m-002.md\n  - type: mentions\n    to: meetings/m-003.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nLedgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it. SQLite-backed (decision d-001), with\nflat monthly billing per client adopted in March (decision d-005) after the\npricing discussion in m-003. Invoice PDF export landed in the March sprint\n(s-005).\n\nTeam: Dev Okonkwo (backend), Noor Haddad (interface), Lorna Vey (ops).\nBilling runs monthly; Lorna reconciles the runs against bank deposits.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/kestrel.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: projects/kestrel.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Kestrel internal tool studio"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "references/kestrel.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: references/kestrel.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-005.md"
+      },
+      "result_text": "---\nid: d-005\ngenre: decisions\ntitle: \"Ledgerline bills flat monthly per client\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [ledgerline, billing]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-003.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: the studio had been assembling hourly invoices from raw timesheets;\nreconciliation cost Lorna a day per month.\n\nOptions considered: hourly billing from raw timesheets; flat monthly billing\nper client.\n\nDecision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.\n\nConsequences: invoicing is a one-step monthly run; scope creep now surfaces\nin planning, not on the invoice.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/index.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: projects/index.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-002.md"
+      },
+      "result_text": "---\nid: m-002\ngenre: meetings\ntitle: \"Ledgerline planning sync\"\ncreated: 2026-02-24\nprovenance: hand-authored\ntags: [ledgerline, planning]\nattendees: [mara-voss, dev-okonkwo, lorna-vey, silas-brandt]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-001.md\n  - type: mentions\n    to: meetings/m-003.md\n---\n\nLedgerline planning: schema first per d-001, invoicing flows after timesheets\nstabilize. Lorna brought the ops requirements — deposit reconciliation and\nclient notes. The billing model was deliberately deferred to a dedicated\npricing discussion (m-003).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-003.md"
+      },
+      "result_text": "---\nid: m-003\ngenre: meetings\ntitle: \"Ledgerline pricing discussion\"\ncreated: 2026-03-17\nprovenance: hand-authored\ntags: [ledgerline, billing]\nattendees: [mara-voss, lorna-vey, dev-okonkwo]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-005.md\n---\n\nThe pricing discussion weighed hourly billing assembled from raw timesheets\nagainst flat monthly billing per client: hourly recovers every scrap of\neffort but costs Lorna a reconciliation day each month and reads\nunpredictably to clients; flat monthly is one predictable number per client\nwith timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "sessions/s-001.md"
+      },
+      "result_text": "---\nid: s-001\ngenre: sessions\ntitle: \"Ledgerline schema bootstrap\"\ncreated: 2026-02-19\nprovenance: hand-authored\ntags: [ledgerline, data-model]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-001.md\n---\n\nDev and Noor bootstrapped the Ledgerline schema per d-001: timesheets,\nclients, invoices, and a billing-runs table. SQLite WAL mode went in from the\nfirst migration; Lorna's ops fields — deposit reconciliation, client notes —\nmade the cut for v1.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "sessions/s-005.md"
+      },
+      "result_text": "---\nid: s-005\ngenre: sessions\ntitle: \"Ledgerline invoice PDF export\"\ncreated: 2026-03-24\nprovenance: hand-authored\ntags: [ledgerline, invoicing]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-005.md\n---\n\nInvoice PDF export landed: flat monthly amounts per d-005 render onto the\nhouse invoice template, with per-client notes from Lorna's ops fields. One\nbilling run now takes minutes instead of a day of reconciliation.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/kestrel-internal.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: projects/kestrel-internal.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-004.md"
+      },
+      "result_text": "---\nid: d-004\ngenre: decisions\ntitle: \"Larkspur Archive routes OCR through a remote API\"\ncreated: 2026-03-12\nprovenance: hand-authored\ntags: [larkspur, ocr]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/ocr-comparison.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather's archive scans number in the tens of thousands of\npages; OCR throughput sets the digitization schedule.\n\nOptions considered: local OCR on the studio's machines; a remote OCR API.\n\nDecision: route Larkspur OCR through a remote API — roughly four times local\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\nbenchmark notes.\n\nConsequences: the digitization schedule holds; throughput is assumed to scale\nlinearly with scan volume. Later contradicted by the latency benchmark in\ns-006, which found archival page scans far below the assumed rate.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-006.md"
+      },
+      "result_text": "---\nid: d-006\ngenre: decisions\ntitle: \"Beacon Grid queries DuckDB, not a time-series server\"\ncreated: 2026-03-27\nprovenance: hand-authored\ntags: [beacon-grid, analytics]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/duckdb-notes.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nContext: Greenline's wallboard needs ad-hoc joins across sensor feeds and\nNorthpost load forecasts.\n\nOptions considered: a time-series server for raw telemetry; DuckDB embedded\nover Parquet and CSV.\n\nDecision: Beacon Grid lands sensor data in DuckDB and queries it with plain\nSQL — the wallboard needs joins more than a retention engine, informed by\nduckdb-notes.\n\nConsequences: no database server to operate; ingestion is batch-oriented.\nGreenline later flagged access-approval processes, and the project paused\n(2026-05-26).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-007.md"
+      },
+      "result_text": "---\nid: d-007\ngenre: decisions\ntitle: \"Beacon Grid ingests over MQTT rather than REST polling\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [beacon-grid, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: relates_to\n    to: decisions/d-002.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nContext: Greenline sensor arrays publish at short intervals; REST polling on a\ntimer would hammer their gateways.\n\nOptions considered: REST polling on a timer; MQTT subscriptions to sensor\ntopics.\n\nDecision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002).\n\nConsequences: one consumption pattern across two projects; sensor gateways\nstay quiet.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-009.md"
+      },
+      "result_text": "---\nid: d-009\ngenre: decisions\ntitle: \"Wayfare adopts a green-and-amber palette for outdoor readability\"\ncreated: 2026-04-15\nprovenance: hand-authored\ntags: [wayfare, design]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: sessions/s-008.md\n  - type: influenced_by\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: Ashport Central's platform is sunlit most of the day; the first\npalette washed out in daylight.\n\nOptions considered: the original blue-on-dark palette; green-and-amber after\nOdessa's contrast testing at the platform (s-008) and the WCAG contrast\nnotes.\n\nDecision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.\n\nConsequences: renderer theming is a config swap; June owns the design tokens.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "---\nid: kestrel-crm\ngenre: projects\ntitle: \"Kestrel CRM — cancelled internal client-tracker experiment\"\ncreated: 2026-03-31\nupdated: 2026-04-24\nstatus: cancelled\nprovenance: hand-authored\ntags: [internal, experiment]\nrelated:\n  - type: mentions\n    to: meetings/m-004.md\n  - type: mentions\n    to: meetings/m-006.md\n  - type: mentions\n    to: decisions/d-010.md\n  - type: mentions\n    to: sessions/s-009.md\n  - type: mentions\n    to: people/theo-kanda.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nKestrel was Theo Kanda's proposal for an internal CRM experiment — a\nlightweight tracker for studio client relationships — announced at the March\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\n\nCancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "---\nid: m-004\ngenre: meetings\ntitle: \"Studio all-hands, March\"\ncreated: 2026-03-30\nprovenance: hand-authored\ntags: [all-hands, planning]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nMarch all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\nlightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-006.md"
+      },
+      "result_text": "---\nid: m-006\ngenre: meetings\ntitle: \"Kestrel CRM go/no-go\"\ncreated: 2026-04-20\nprovenance: hand-authored\ntags: [kestrel, decision]\nattendees: [mara-voss, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nGo/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —\nthe studio's client count does not justify the maintenance surface. No-go;\nd-010 cancelled the experiment the next day, with data export and teardown\nin s-009.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "---\nid: s-009\ngenre: sessions\ntitle: \"Kestrel teardown and data export\"\ncreated: 2026-04-24\nprovenance: hand-authored\ntags: [kestrel, teardown]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nTheo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\ndown the prototype: contact pages, the ops trial entries, and the import\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "references/sqlite-wal-notes.md"
+      },
+      "result_text": "---\nid: sqlite-wal-notes\ngenre: references\ntitle: \"SQLite WAL mode — reading notes\"\ncreated: 2026-02-16\nprovenance: hand-authored\ntags: [storage, reading-notes]\nsource: \"reading notes, SQLite WAL documentation\"\n---\n\nWAL mode gives readers concurrent access while a single writer appends; crash\nrecovery is simple and the whole datastore is one file. Trade-off: a\nsingle-writer ceiling, so it fits services with modest write volume — exactly\nthe profile of a studio billing tool.\n\nInformed the Ledgerline datastore decision (d-001).\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the knowledge base, here's the comparison of the two internal tools:\n\n## Ledgerline — Internal Timesheet & Invoicing Service\n**Status: Active (as of 2026-06-10)**\n\n- **Purpose**: Studio bills clients through it; handles timesheets, invoices, and client records\n- **Architecture**: SQLite-backed in WAL mode (decision d-001) — zero server operations, single-file datastore\n- **Billing model**: Flat monthly billing per client adopted March 2026 (decision d-005) after pricing discussion (m-003)\n- **Key milestone**: Invoice PDF export landed in March sprint (s-005) — \"one billing run now takes minutes instead of a day of reconciliation\"\n- **Team**: Dev Okonkwo (backend), Noor Haddad (interface), Lorna Vey (ops)\n- **Outcome**: Operational success — invoicing reduced to a one-step monthly run; scope creep now surfaces in planning, not on invoices (d-005); Lorna reconciles runs against bank deposits\n\n*Sources: projects/ledgerline.md, decisions/d-001.md, decisions/d-005.md, sessions/s-005.md*\n\n## Kestrel — Internal CRM Experiment\n**Status: Cancelled (2026-04-21)**\n\n- **Purpose**: Lightweight tracker for studio client relationships, proposed by Theo Kanda at March all-hands (m-004)\n- **Trial**: Two-week ops trial starting 2026-03-31; Theo prototyped contact pages, Lorna ran the trial\n- **Cancellation rationale** (d-010, m-006): \"Theo's prototype works, but the ops load fell on Lorna alone and no one can own the tool going forward — the studio's client count does not justify the maintenance surface\"\n- **Teardown** (s-009): Exported 61 contacts into Ledgerline notes, tore down prototype — \"Two weeks of trial, sixty-one contacts, no regrets\"\n- **Aftermath**: Theo returned fully to Wayfare and Beacon Grid\n\n*Sources: projects/kestrel-crm.md, decisions/d-010.md, meetings/m-004.md, meetings/m-006.md, sessions/s-009.md*\n\n## Summary Comparison\n\n| Dimension | Ledgerline | Kestrel |\n|-----------|------------|---------|\n| **Outcome** | **Sustained adoption** — active, production service | **Cancelled experiment** — abandoned after 2-week trial |\n| **Ownership** | Clear team (3 people) with dedicated roles | No owner — ops burden fell on one person (Lorna) |\n| **Justification** | Core studio function (billing/revenue) | \"Client count does not justify maintenance surface\" |\n| **Technical result** | Simplified ops (SQLite, flat billing, PDF export) | Prototype worked but not maintainable |\n| **Data fate** | Continues as system of record | Trial data merged into Ledgerline notes |",
+  "started_at": "2026-10-27T21:43:01.166Z",
+  "finished_at": "2026-10-27T21:44:26.225Z"
+}

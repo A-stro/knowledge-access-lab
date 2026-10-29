@@ -1,0 +1,69 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-07",
+  "category": "point-lookup",
+  "question_text": "What source is recorded for the IIIF overview reading notes?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "references"
+      },
+      "result_text": "{\"taxonomy\":{\"references\":\"reading notes and ops notes that informed decisions\"},\"genres\":[{\"genre\":\"references\",\"count\":34,\"records\":[{\"id\":\"archival-handling-notes\",\"title\":\"Handling a century of print — ops note\",\"path\":\"references/archival-handling-notes.md\"},{\"id\":\"archive-metadata-notes\",\"title\":\"Dublin Core for archive metadata — reading notes\",\"path\":\"references/archive-metadata-notes.md\"},{\"id\":\"backup-rotation-notes\",\"title\":\"Backup rotation — ops note\",\"path\":\"references/backup-rotation-notes.md\"},{\"id\":\"chrony-notes\",\"title\":\"chrony for field-device clocks — reading notes\",\"path\":\"references/chrony-notes.md\"},{\"id\":\"clickhouse-notes\",\"title\":\"ClickHouse for embedded analytics — reading notes\",\"path\":\"references/clickhouse-notes.md\"},{\"id\":\"double-entry-notes\",\"title\":\"Double-entry bookkeeping — reading notes\",\"path\":\"references/double-entry-notes.md\"},{\"id\":\"duckdb-notes\",\"title\":\"DuckDB for embedded analytics — reading notes\",\"path\":\"references/duckdb-notes.md\"},{\"id\":\"embedded-single-board-notes\",\"title\":\"Single-board computers for signage — field research summary\",\"path\":\"references/embedded-single-board-notes.md\"},{\"id\":\"enclosure-install-notes\",\"title\":\"Enclosure installs on piers — ops note\",\"path\":\"references/enclosure-install-notes.md\"},{\"id\":\"ferry-timetable-notes\",\"title\":\"Timetable feeds — reading notes\",\"path\":\"references/ferry-timetable-notes.md\"},{\"id\":\"filestore-naming-notes\",\"title\":\"Filestore naming conventions — ops note\",\"path\":\"references/filestore-naming-notes.md\"},{\"id\":\"fleet-provisioning-notes\",\"title\":\"Provisioning device fleets — ops note\",\"path\":\"references/fleet-provisioning-notes.md\"},{\"id\":\"gpu-cluster-notes\",\"title\":\"The two-GPU bench — bench note\",\"path\":\"references/gpu-cluster-notes.md\"},{\"id\":\"hocr-notes\",\"title\":\"hOCR for OCR output — reading notes\",\"path\":\"references/hocr-notes.md\"},{\"id\":\"iiif-overview\",\"title\":\"IIIF for archival viewers — reading notes\",\"path\":\"references/iiif-overview.md\"},{\"id\":\"kiosk-browser-notes\",\"title\":\"Kiosk-mode browsers — reading notes\",\"path\":\"references/kiosk-browser-notes.md\"},{\"id\":\"latency-budget-notes\",\"title\":\"Display latency budget — engineering note\",\"path\":\"references/latency-budget-notes.md\"},{\"id\":\"mqtt-311-notes\",\"title\":\"MQTT 3.1.1 — reading notes\",\"path\":\"references/mqtt-311-notes.md\"},{\"id\":\"mqtt-5-notes\",\"title\":\"MQTT 5.0 — reading notes\",\"path\":\"references/mqtt-5-notes.md\"},{\"id\":\"mqtt-broker-ops-notes\",\"title\":\"Broker operations — ops note\",\"path\":\"references/mqtt-broker-ops-notes.md\"},{\"id\":\"ocr-comparison\",\"title\":\"Local OCR vs remote OCR API — benchmark notes\",\"path\":\"references/ocr-comparison.md\"},{\"id\":\"ocr-job-queue-notes\",\"title\":\"Job queues for OCR batches — reading notes\",\"path\":\"references/ocr-job-queue-notes.md\"},{\"id\":\"postgres-operations-notes\",\"title\":\"PostgreSQL operations — reading notes\",\"path\":\"references/postgres-operations-notes.md\"},{\"id\":\"rate-card-notes\",\"title\":\"Rate-card design — reading notes\",\"path\":\"references/rate-card-notes.md\"},{\"id\":\"runbook-notes\",\"title\":\"Runbooks that survive — ops note\",\"path\":\"references/runbook-notes.md\"},{\"id\":\"scan-resolution-notes\",\"title\":\"Scan resolution for archives — reading notes\",\"path\":\"references/scan-resolution-notes.md\"},{\"id\":\"schema-migration-notes\",\"title\":\"Database migrations — reading notes\",\"path\":\"references/schema-migration-notes.md\"},{\"id\":\"signage-legibility-notes\",\"title\":\"Outdoor legibility for signage — reading notes\",\"path\":\"references/signage-legibility-notes.md\"},{\"id\":\"signage-panel-notes\",\"title\":\"Signage panels for platform displays — field research summary\",\"path\":\"references/signage-panel-notes.md\"},{\"id\":\"sqlite-wal-notes\",\"title\":\"SQLite WAL mode — reading notes\",\"path\":\"references/sqlite-wal-notes.md\"},{\"id\":\"static-site-gallery-notes\",\"title\":\"Static galleries for collections — reading notes\",\"path\":\"references/static-site-gallery-notes.md\"},{\"id\":\"thermal-printer-notes\",\"title\":\"Thermal printers for counter schedules — reading notes\",\"path\":\"references/thermal-printer-notes.md\"},{\"id\":\"visitor-dwell-notes\",\"title\":\"Kiosk dwell observations — field note\",\"path\":\"references/visitor-dwell-notes.md\"},{\"id\":\"wcag-contrast-notes\",\"title\":\"Outdoor readability and contrast — reading notes\",\"path\":\"references/wcag-contrast-notes.md\"}]}]}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/iiif-overview.md"
+      },
+      "result_text": "---\nid: iiif-overview\ngenre: references\ntitle: \"IIIF for archival viewers — reading notes\"\ncreated: 2026-05-04\nprovenance: hand-authored\ntags: [iiif, reading-notes]\nsource: \"reading notes, IIIF Image and Presentation APIs\"\nrelated:\n  - type: relates_to\n    to: references/archive-metadata-notes.md\n---\n\nIIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.\n\nInformed d-011.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "The source recorded for the IIIF overview reading notes is:\n\n**Source:** \"reading notes, IIIF Image and Presentation APIs\"\n\nThis comes from the record `references/iiif-overview.md`, which contains the frontmatter field:\n```\nsource: \"reading notes, IIIF Image and Presentation APIs\"\n```",
+  "started_at": "2026-10-27T22:46:00.067Z",
+  "finished_at": "2026-10-27T22:46:07.457Z"
+}

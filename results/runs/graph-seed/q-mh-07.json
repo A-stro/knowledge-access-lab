@@ -1,0 +1,337 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-07",
+  "category": "multi-hop",
+  "question_text": "How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "fleet-provisioning ops note"
+      },
+      "result_text": "{\n  \"query\": \"fleet-provisioning ops note\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "fleet-provisioning"
+      },
+      "result_text": "{\n  \"query\": \"fleet-provisioning\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"title\": \"Provisioning device fleets — ops note\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Wayfare"
+      },
+      "result_text": "{\n  \"query\": \"Wayfare\",\n  \"genre\": null,\n  \"found\": 11,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"id\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"title\": \"Wayfare displays speak MQTT\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-009.md\",\n      \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"title\": \"Wayfare kickoff with Halcyon Transit\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-002.md\",\n      \"title\": \"Wayfare display firmware first light\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-008.md\",\n      \"title\": \"Wayfare palette contrast testing\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "edge-gateway"
+      },
+      "result_text": "{\n  \"query\": \"edge-gateway\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "path": "references/fleet-provisioning-notes.md"
+      },
+      "result_text": "Validation failed for tool \"mcp__graph_seed_lane__lookup\":\n  - query: must have required properties query\n\nReceived arguments:\n{\n  \"path\": \"references/fleet-provisioning-notes.md\"\n}",
+      "is_error": true,
+      "duration_ms": 0
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "Validation failed for tool \"mcp__graph_seed_lane__lookup\":\n  - query: must have required properties query\n\nReceived arguments:\n{\n  \"path\": \"decisions/d-008.md\"\n}",
+      "is_error": true,
+      "duration_ms": 0
+    },
+    {
+      "seq": 7,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "Validation failed for tool \"mcp__graph_seed_lane__lookup\":\n  - query: must have required properties query\n\nReceived arguments:\n{\n  \"path\": \"sessions/s-004.md\"\n}",
+      "is_error": true,
+      "duration_ms": 0
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/fleet-provisioning-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/fleet-provisioning-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"title\": \"Provisioning device fleets — ops note\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-008.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 11,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/fleet-provisioning-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/fleet-provisioning-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/bram-oyelaran.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"incoming\",\n      \"path\": \"references/embedded-single-board-notes.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/embedded-single-board-notes.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-008.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    },\n    {\n      \"type\": \"supersedes\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-003.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-004.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"contradicts\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 14,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_seed_lane__paths",
+      "arguments": {
+        "from": "references/fleet-provisioning-notes.md",
+        "max_depth": 6,
+        "to": "decisions/d-008.md"
+      },
+      "result_text": "{\n  \"from\": \"references/fleet-provisioning-notes.md\",\n  \"to\": \"decisions/d-008.md\",\n  \"max_depth\": 6,\n  \"result_cap\": 8,\n  \"found\": 8,\n  \"paths\": [\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"relates_to\",\n        \"path\": \"references/embedded-single-board-notes.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"supersedes\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"relates_to\",\n        \"path\": \"references/embedded-single-board-notes.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"supersedes\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"supersedes\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"supersedes\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"meetings/m-005.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"meetings/m-005.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-008.md\"\n      }\n    ]\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 5
+    },
+    {
+      "seq": 15,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "embedded-single-board-notes"
+      },
+      "result_text": "{\n  \"query\": \"embedded-single-board-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"title\": \"Single-board computers for signage — field research summary\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-003"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-003\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Wayfare runs one single-board computer per display"
+      },
+      "result_text": "{\n  \"query\": \"Wayfare runs one single-board computer per display\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_seed_lane__paths",
+      "arguments": {
+        "from": "references/fleet-provisioning-notes.md",
+        "max_depth": 6,
+        "to": "sessions/s-004.md"
+      },
+      "result_text": "{\n  \"from\": \"references/fleet-provisioning-notes.md\",\n  \"to\": \"sessions/s-004.md\",\n  \"max_depth\": 6,\n  \"result_cap\": 8,\n  \"found\": 8,\n  \"paths\": [\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"relates_to\",\n        \"path\": \"references/embedded-single-board-notes.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"contradicts\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"relates_to\",\n        \"path\": \"references/embedded-single-board-notes.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"contradicts\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"contradicts\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-003.md\"\n      },\n      {\n        \"type\": \"contradicts\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-008.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-008.md\"\n      },\n      {\n        \"type\": \"influenced_by\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"people/bram-oyelaran.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/wayfare.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"meetings/m-005.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-004.md\"\n      }\n    ]\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 19,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "people/bram-oyelaran.md"
+      },
+      "result_text": "{\n  \"query\": \"people/bram-oyelaran.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/bram-oyelaran.md\",\n      \"title\": \"Bram Oyelaran\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/wayfare.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/wayfare.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-005.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-005.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"title\": \"Wayfare architecture review\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "fleet provisioning ops note Wayfare field pain"
+      },
+      "result_text": "{\n  \"query\": \"fleet provisioning ops note Wayfare field pain\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "field maintenance pain"
+      },
+      "result_text": "{\n  \"query\": \"field maintenance pain\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"title\": \"Wayfare field maintenance pain\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-109.md\",\n      \"title\": \"Perchboard field maintenance pain\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "provisioning device fleets ops note"
+      },
+      "result_text": "{\n  \"query\": \"provisioning device fleets ops note\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "edge-gateway hub per station"
+      },
+      "result_text": "{\n  \"query\": \"edge-gateway hub per station\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/embedded-single-board-notes.md"
+      },
+      "result_text": "{\n  \"path\": \"references/embedded-single-board-notes.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-003.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"incoming\",\n      \"path\": \"references/fleet-provisioning-notes.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/fleet-provisioning-notes.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the graph structure, the **fleet-provisioning ops note** (`references/fleet-provisioning-notes.md`) connects the **Wayfare field pain** (`sessions/s-004.md` \"Wayfare field maintenance pain\") to the **edge-gateway decision** (`decisions/d-008.md` \"Wayfare moves to an edge-gateway hub per station\") through two parallel chains:\n\n**Chain 1 — Technical research lineage:**\n- `fleet-provisioning-notes` **relates_to** `embedded-single-board-notes` (field research summary on single-board computers for signage)\n- `embedded-single-board-notes` **influenced_by** `d-003` (\"Wayfare runs one single-board computer per display, no central server\")\n- `d-003` **supersedes** `d-008` (the edge-gateway decision replaces the per-display SBC architecture)\n- `d-003` **contradicts** `s-004` (the field maintenance pain session contradicts the single-SBC-per-display approach)\n- `s-004` **influenced_by** `d-008` (the field pain directly influenced the edge-gateway decision)\n\n**Chain 2 — People/project lineage:**\n- `fleet-provisioning-notes` **mentions** `bram-oyelaran` (Bram Oyelaran)\n- `bram-oyelaran` **mentions** `wayfare` project\n- `wayfare` **mentions** `d-008` (edge-gateway decision)\n- `d-008` **influenced_by** `s-004` (field pain directly influenced the decision)\n\n**In summary:** The ops note bridges the embedded single-board research that originally justified the per-display SBC architecture (d-003). That architecture was contradicted by field maintenance pain (s-004), which then directly drove the superseding edge-gateway hub decision (d-008).\n\n**Evidence records and edge relationships:**\n- `references/fleet-provisioning-notes.md` —relates_to→ `references/embedded-single-board-notes.md` —influenced_by→ `decisions/d-003.md` —supersedes→ `decisions/d-008.md`\n- `references/fleet-provisioning-notes.md` —relates_to→ `references/embedded-single-board-notes.md` —influenced_by→ `decisions/d-003.md` —contradicts→ `sessions/s-004.md` —influenced_by→ `decisions/d-008.md`\n- `references/fleet-provisioning-notes.md` —mentions→ `people/bram-oyelaran.md` —mentions→ `projects/wayfare.md` —mentions→ `decisions/d-008.md` —influenced_by→ `sessions/s-004.md`\n\n*Note: The graph tools return record paths, titles, and typed edges only — not full record text — so exact passage quotations are not available from the current toolset.*",
+  "started_at": "2026-10-28T17:03:47.466Z",
+  "finished_at": "2026-10-28T17:08:09.397Z"
+}

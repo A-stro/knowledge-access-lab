@@ -1,0 +1,102 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-04",
+  "category": "multi-hop",
+  "question_text": "Which meeting reviewed the field findings behind the Wayfare edge-gateway decision?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which meeting reviewed the field findings behind the Wayfare edge-gateway decision?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which meeting reviewed the field findings behind the Wayfare edge-gateway decision?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "meetings"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"meetings\": \"meeting notes with attendees and cross-references\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"meetings\",\n      \"count\": 28,\n      \"records\": [\n        {\n          \"id\": \"m-001\",\n          \"title\": \"Wayfare kickoff with Halcyon Transit\",\n          \"path\": \"meetings/m-001.md\"\n        },\n        {\n          \"id\": \"m-002\",\n          \"title\": \"Ledgerline planning sync\",\n          \"path\": \"meetings/m-002.md\"\n        },\n        {\n          \"id\": \"m-003\",\n          \"title\": \"Ledgerline pricing discussion\",\n          \"path\": \"meetings/m-003.md\"\n        },\n        {\n          \"id\": \"m-004\",\n          \"title\": \"Studio all-hands, March\",\n          \"path\": \"meetings/m-004.md\"\n        },\n        {\n          \"id\": \"m-005\",\n          \"title\": \"Wayfare architecture review\",\n          \"path\": \"meetings/m-005.md\"\n        },\n        {\n          \"id\": \"m-006\",\n          \"title\": \"Kestrel CRM go/no-go\",\n          \"path\": \"meetings/m-006.md\"\n        },\n        {\n          \"id\": \"m-007\",\n          \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n          \"path\": \"meetings/m-007.md\"\n        },\n        {\n          \"id\": \"m-008\",\n          \"title\": \"Wayfare ship retro\",\n          \"path\": \"meetings/m-008.md\"\n        },\n        {\n          \"id\": \"m-101\",\n          \"title\": \"Perchboard kickoff with Bayline Transit\",\n          \"path\": \"meetings/m-101.md\"\n        },\n        {\n          \"id\": \"m-102\",\n          \"title\": \"Rill planning sync\",\n          \"path\": \"meetings/m-102.md\"\n        },\n        {\n          \"id\": \"m-103\",\n          \"title\": \"Foxglove kickoff with Harrowgate Press\",\n          \"path\": \"meetings/m-103.md\"\n        },\n        {\n          \"id\": \"m-104\",\n          \"title\": \"Rill billing model discussion\",\n          \"path\": \"meetings/m-104.md\"\n        },\n        {\n          \"id\": \"m-105\",\n          \"title\": \"Copperleaf all-hands, February\",\n          \"path\": \"meetings/m-105.md\"\n        },\n        {\n          \"id\": \"m-106\",\n          \"title\": \"Cinderboard engagement kickoff with Ridgeway Power\",\n          \"path\": \"meetings/m-106.md\"\n        },\n        {\n          \"id\": \"m-107\",\n          \"title\": \"Perchboard architecture review\",\n          \"path\": \"meetings/m-107.md\"\n        },\n        {\n          \"id\": \"m-108\",\n          \"title\": \"Copperleaf all-hands, March\",\n          \"path\": \"meetings/m-108.md\"\n        },\n        {\n          \"id\": \"m-109\",\n          \"title\": \"Curlew go/no-go\",\n          \"path\": \"meetings/m-109.md\"\n        },\n        {\n          \"id\": \"m-110\",\n          \"title\": \"Cinderboard wallboard walkthrough\",\n          \"path\": \"meetings/m-110.md\"\n        },\n        {\n          \"id\": \"m-111\",\n          \"title\": \"Studio tooling review\",\n          \"path\": \"meetings/m-111.md\"\n        },\n        {\n          \"id\": \"m-112\",\n          \"title\": \"Foxglove mid-project review with Harrowgate\",\n          \"path\": \"meetings/m-112.md\"\n        },\n        {\n          \"id\": \"m-113\",\n          \"title\": \"Security and access review\",\n          \"path\": \"meetings/m-113.md\"\n        },\n        {\n          \"id\": \"m-114\",\n          \"title\": \"Foxglove annex planning with Harrowgate\",\n          \"path\": \"meetings/m-114.md\"\n        },\n        {\n          \"id\": \"m-115\",\n          \"title\": \"Cometline opening review with Millhaven Observatory\",\n          \"path\": \"meetings/m-115.md\"\n        },\n        {\n          \"id\": \"m-116\",\n          \"title\": \"Perchboard ship retro\",\n          \"path\": \"meetings/m-116.md\"\n        },\n        {\n          \"id\": \"m-117\",\n          \"title\": \"Perchboard maintenance window review with Bayline\",\n          \"path\": \"meetings/m-117.md\"\n        },\n        {\n          \"id\": \"m-118\",\n          \"title\": \"Copperleaf all-hands, June\",\n          \"path\": \"meetings/m-118.md\"\n        },\n        {\n          \"id\": \"m-119\",\n          \"title\": \"Cinderboard restart planning with Ridgeway\",\n          \"path\": \"meetings/m-119.md\"\n        },\n        {\n          \"id\": \"m-120\",\n          \"title\": \"Summer planning, half-day\",\n          \"path\": \"meetings/m-120.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-005.md"
+      },
+      "result_text": "---\nid: m-005\ngenre: meetings\ntitle: \"Wayfare architecture review\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nattendees: [dev-okonkwo, theo-kanda, june-park, silas-brandt, mara-voss, bram-oyelaran]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-004.md\n  - type: mentions\n    to: decisions/d-008.md\n---\n\nArchitecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display. Theo proposed the\nedge-gateway hub — flash once per station, displays pull from the gateway —\nover keeping per-display autonomy with a better flashing ritual. The room\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "---\nid: s-004\ngenre: sessions\ntitle: \"Wayfare field maintenance pain\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [wayfare, fieldwork]\nrelated:\n  - type: contradicts\n    to: decisions/d-003.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nTheo and Dev spent the day in the field at Ashport Central and Ferry Quay:\nafter the last firmware update, the three pilot stations drifted to three\nfirmware versions, and a board that lost power would not recover its clock.\nReflashing takes roughly ninety minutes per display carried to the platform.\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:** The **Wayfare architecture review (meeting m-005)** reviewed the field findings behind the Wayfare edge-gateway decision.\n\n**Evidence:**\n\n1. **Decision d-008** (\"Wayfare moves to an edge-gateway hub per station\") explicitly lists `meetings/m-005.md` as an `influenced_by` relation, noting the context was \"documented in s-004, reviewed in m-005\"【decisions/d-008.md†L1-L14】.\n\n2. **Meeting m-005** (\"Wayfare architecture review\") records: \"Architecture review on the field findings (s-004): three firmware versions across three stations, ninety-minute reflashes per display... The room agreed, and d-008 landed the same day\"【meetings/m-005.md†L1-L10】.\n\n3. **Session s-004** (\"Wayfare field maintenance pain\") documents the actual field findings: \"after the last firmware update, the three pilot stations drifted to three firmware versions... Reflashing takes roughly ninety minutes per display... Per-display autonomy (d-003) is failing on maintenance, not on rendering\"【sessions/s-004.md†L1-L8】.",
+  "started_at": "2026-10-27T21:55:37.219Z",
+  "finished_at": "2026-10-27T21:56:06.969Z"
+}

@@ -1,0 +1,307 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-05",
+  "category": "temporal",
+  "question_text": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel experiment"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel experiment\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/kestrel-crm.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-010.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-010.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-006.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-006.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/kestrel-crm.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-009.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-004.md"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-004.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"title\": \"Studio all-hands, March\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "{\n  \"path\": \"meetings/m-004.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/beacon-grid.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/larkspur-archive.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/ledgerline.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/wayfare.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/kestrel-crm.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 11,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-010.md",
+        "direction": "both"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-010.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "meetings/m-006.md",
+        "direction": "both"
+      },
+      "result_text": "{\n  \"path\": \"meetings/m-006.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "direction": "both"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel teardown"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel announcement"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel announcement\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_seed_lane__paths",
+      "arguments": {
+        "from": "meetings/m-004.md",
+        "to": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"from\": \"meetings/m-004.md\",\n  \"to\": \"sessions/s-009.md\",\n  \"max_depth\": 4,\n  \"result_cap\": 8,\n  \"found\": 8,\n  \"paths\": [\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-010.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-010.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-010.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ],\n    [\n      {\n        \"type\": \"mentions\",\n        \"path\": \"projects/kestrel-crm.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"decisions/d-010.md\"\n      },\n      {\n        \"type\": \"mentions\",\n        \"path\": \"sessions/s-009.md\"\n      }\n    ]\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 17,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "March"
+      },
+      "result_text": "{\n  \"query\": \"March\",\n  \"genre\": null,\n  \"found\": 7,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"people/ines-marchetti.md\",\n      \"title\": \"Ines Marchetti\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"title\": \"Studio all-hands, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-108.md\",\n      \"title\": \"Copperleaf all-hands, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-114.md\",\n      \"title\": \"Weekly review, mid-March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-117.md\",\n      \"title\": \"Weekly review, late March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-118.md\",\n      \"title\": \"Cinderboard ingest ops check, March\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-119.md\",\n      \"title\": \"Rill billing run, March\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "April"
+      },
+      "result_text": "{\n  \"query\": \"April\",\n  \"genre\": null,\n  \"found\": 6,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-121.md\",\n      \"title\": \"Perchboard depot QA sweep, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-123.md\",\n      \"title\": \"Weekly review, mid-April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-125.md\",\n      \"title\": \"Foxglove OCR batch, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-126.md\",\n      \"title\": \"Cinderboard ingest ops check, April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-130.md\",\n      \"title\": \"Weekly review, late April\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-132.md\",\n      \"title\": \"Rill billing run, April\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "projects",
+        "query": "Kestrel CRM"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel CRM\",\n  \"genre\": \"projects\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "2024"
+      },
+      "result_text": "{\n  \"query\": \"2024\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "2023"
+      },
+      "result_text": "{\n  \"query\": \"2023\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "cancel"
+      },
+      "result_text": "{\n  \"query\": \"cancel\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-111.md\",\n      \"title\": \"Cancel the Curlew CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/curlew-crm.md\",\n      \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "go/no-go"
+      },
+      "result_text": "{\n  \"query\": \"go/no-go\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-109.md\",\n      \"title\": \"Curlew go/no-go\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-28T18:14:41.693Z",
+  "finished_at": "2026-10-28T18:17:42.931Z"
+}

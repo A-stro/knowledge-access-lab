@@ -1,0 +1,79 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-05",
+  "category": "temporal",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-te-05.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-004.md",
+        "passage": "created: 2026-03-30",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Kestrel started 2026-03-31, the day after the all-hands;",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "sessions/s-009.md",
+        "passage": "created: 2026-04-24",
+        "passage_exact": true,
+        "passage_in_steps": [
+          5
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          5
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0.75,
+    "records_found_ratio": 0.75
+  },
+  "retrieval": {
+    "steps": 6,
+    "error_steps": 1,
+    "result_bytes": 5992
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:47:32.817Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer gives all four reference dates correctly: announcement on 2026-03-30 at the March all-hands (m-004), start on 2026-03-31, cancellation on 2026-04-21 (d-010), and data export/teardown on 2026-04-24 (s-009). The added context about the 2026-04-20 go/no-go meeting does not contradict the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:47:57.484Z"
+  }
+}

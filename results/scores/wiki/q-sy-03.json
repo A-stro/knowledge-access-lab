@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-03",
+  "category": "synthesis",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-sy-03.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/ledgerline.md",
+        "passage": "Ledgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2
+        ]
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 7,
+    "error_steps": 0,
+    "result_bytes": 24972
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T22:48:24.622Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer states all reference facts: Ledgerline remains the active SQLite-backed timesheet/invoicing service with flat monthly client billing, while Kestrel was cancelled on 2026-04-21 because the ops burden fell on Lorna alone and no owner could be assigned, leaving client tracking in Ledgerline notes. The additional details are consistent with and supported by the cited project, decision, and session records.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:48:49.309Z"
+  }
+}

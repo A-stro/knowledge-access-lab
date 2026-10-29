@@ -1,0 +1,134 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-sy-08",
+  "category": "synthesis",
+  "question_text": "What do the records say about June Park's contributions across the studio's projects?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What do the records say about June Park's contributions across the studio's projects?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What do the records say about June Park's contributions across the studio's projects?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "June Park contributions studio projects"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "What do the records say about June Park's contributions across the studio's projects?"
+      },
+      "result_text": "{\n  \"question\": \"q-sy-08\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"people/june-park.md\",\n      \"para\": 0,\n      \"score\": 0.628055,\n      \"passage\": \"June Park is Meridian Studio's product designer. She designed the Wayfare\\ndisplay interface and owns its design tokens, and she designed the Larkspur\\nArchive's reading experience. She ran the platform contrast testing with\\nOdessa and prototyped the IIIF viewer with Dev.\"\n    },\n    {\n      \"path\": \"meetings/m-118.md\",\n      \"para\": 0,\n      \"score\": 0.553301,\n      \"passage\": \"June all-hands. Status: Perchboard shipped and steady, Driftline shipped in\\nthe May gap, Foxglove's modern collection is scanned with the page-level\\nanchors in the gallery build, and the Ridgeway agreement cleared with\\nrestart planning tomorrow (m-119). Planning: summer maintenance window,\\nAmara's checklist is now the studio default, and the fall queue holds the\\nobservatory's second loop and the Ridgeway wallboard.\"\n    },\n    {\n      \"path\": \"decisions/d-104.md\",\n      \"para\": 3,\n      \"score\": 0.492378,\n      \"passage\": \"Consequences: the studio owns the hardware and the queue; throughput is\\nassumed to hold on modern stock. Confirmed by the March benchmark (s-113).\"\n    },\n    {\n      \"path\": \"sessions/s-145.md\",\n      \"para\": 0,\n      \"score\": 0.489792,\n      \"passage\": \"Sofia's monthly restore rehearsal on staging: June's nightly dump restored\\nin twenty minutes, one index rebuild noted for the ops runbook. The backup\\nrotation stays honest.\"\n    },\n    {\n      \"path\": \"sessions/s-143.md\",\n      \"para\": 0,\n      \"score\": 0.489152,\n      \"passage\": \"Amara's June sweep: firmware 1.4.0 uniform across the fleet, two dead pixels\\nat Lighthouse Point within tolerance, and a loose gland nut re-torqued at\\nTram Junction during the maintenance window.\"\n    },\n    {\n      \"path\": \"decisions/d-105.md\",\n      \"para\": 0,\n      \"score\": 0.483729,\n      \"passage\": \"Context: the studio had assembled flat quotes by hand; scope creep landed in\\nNils's lap at invoice time.\"\n    },\n    {\n      \"path\": \"projects/foxglove-archive.md\",\n      \"para\": 2,\n      \"score\": 0.479905,\n      \"passage\": \"As of late June the project is active: the modern collection is scanned, the\\nannex queue is staged for summer, and the gallery is in integration.\"\n    },\n    {\n      \"path\": \"orgs/wharfworks-collective.md\",\n      \"para\": 0,\n      \"score\": 0.479716,\n      \"passage\": \"Wharfworks Collective is the co-working space that houses Copperleaf Studio\\n— a converted cannery on the Vantage Bay waterfront with shared meeting\\nrooms and a loading dock. Copperleaf is its longest-tenured studio tenant.\"\n    },\n    {\n      \"path\": \"decisions/d-006.md\",\n      \"para\": 3,\n      \"score\": 0.478651,\n      \"passage\": \"Consequences: no database server to operate; ingestion is batch-oriented.\\nGreenline later flagged access-approval processes, and the project paused\\n(2026-05-26).\"\n    },\n    {\n      \"path\": \"people/odessa-klein.md\",\n      \"para\": 0,\n      \"score\": 0.470938,\n      \"passage\": \"Odessa Klein is Meridian Studio's user researcher. She ran rider research at\\nAshport Central for Wayfare — watching how passengers actually read departure\\nboards — and drove the palette contrast testing with June Park that settled\\nthe green-and-amber palette. She also runs archive-user interviews for the\\nLarkspur project.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "people/june-park.md"
+      },
+      "result_text": "---\nid: june-park\ngenre: people\ntitle: \"June Park\"\ncreated: 2026-02-10\nupdated: 2026-06-16\nprovenance: hand-authored\ntags: [design]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\nrole: \"product designer\"\n---\n\nJune Park is Meridian Studio's product designer. She designed the Wayfare\ndisplay interface and owns its design tokens, and she designed the Larkspur\nArchive's reading experience. She ran the platform contrast testing with\nOdessa and prototyped the IIIF viewer with Dev.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/larkspur-archive.md"
+      },
+      "result_text": "---\nid: larkspur-archive\ngenre: projects\ntitle: \"Larkspur Archive — digitized collections platform for Bellweather Books\"\ncreated: 2026-03-02\nupdated: 2026-06-15\nstatus: active\nclient: bellweather-books\nprovenance: hand-authored\ntags: [archive, ocr, iiif]\nrelated:\n  - type: mentions\n    to: orgs/bellweather-books.md\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: sessions/s-003.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: meetings/m-007.md\n---\n\nThe Larkspur Archive is a digitized-collection platform for Bellweather\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\npage scans running far below the assumed throughput, which sent Dev and\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\nprototyped in s-010.\n\nTeam: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\nis m-007.\n\nAs of mid-June the project is active: OCR continues at the corrected rate and\nthe IIIF viewer is in integration.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-118.md"
+      },
+      "result_text": "---\nid: m-118\ngenre: meetings\ntitle: \"Copperleaf all-hands, June\"\ncreated: 2026-06-08\nprovenance: generated\ntags: [all-hands, planning]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/driftline.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nJune all-hands. Status: Perchboard shipped and steady, Driftline shipped in\nthe May gap, Foxglove's modern collection is scanned with the page-level\nanchors in the gallery build, and the Ridgeway agreement cleared with\nrestart planning tomorrow (m-119). Planning: summer maintenance window,\nAmara's checklist is now the studio default, and the fall queue holds the\nobservatory's second loop and the Ridgeway wallboard.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/foxglove-archive.md"
+      },
+      "result_text": "---\nid: foxglove-archive\ngenre: projects\ntitle: \"Foxglove Archive — digitized collections platform for Harrowgate Press\"\ncreated: 2026-01-12\nupdated: 2026-06-02\nstatus: active\nclient: harrowgate-press\nprovenance: generated\ntags: [archive, ocr, gallery]\nrelated:\n  - type: mentions\n    to: orgs/harrowgate-press.md\n  - type: mentions\n    to: orgs/saltmarsh-creative.md\n  - type: mentions\n    to: decisions/d-104.md\n  - type: mentions\n    to: decisions/d-113.md\n  - type: mentions\n    to: decisions/d-118.md\n  - type: mentions\n    to: sessions/s-113.md\n  - type: mentions\n    to: meetings/m-103.md\n  - type: mentions\n    to: meetings/m-112.md\n---\n\nThe Foxglove Archive is a digitized-collection platform for Harrowgate\nPress: scanning, OCR, searchable metadata, and an online gallery. The OCR\npipeline runs on a local GPU cluster rather than a remote API (decision\nd-104); the throughput benchmark (s-113) showed modern scans running above\nthe assumed rate, which kept the digitization schedule. The viewer is a\nstatic-file gallery (decision d-113), prototyped in s-122, with page-level\nanchor URLs added in June (d-118).\n\nTeam: Marta Quintana (data), Gwen Torvald (interface), Yusuf Adeyemi (OCR\npipeline), Elif Yilmaz (user research). Aurelio Finch is the client sponsor;\nSaltmarsh Creative advised the metadata descriptions. Mid-project review\nwith Harrowgate is m-112.\n\nAs of late June the project is active: the modern collection is scanned, the\nannex queue is staged for summer, and the gallery is in integration.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "people/odessa-klein.md"
+      },
+      "result_text": "---\nid: odessa-klein\ngenre: people\ntitle: \"Odessa Klein\"\ncreated: 2026-02-10\nupdated: 2026-06-16\nprovenance: hand-authored\ntags: [research]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-008.md\nrole: \"user researcher\"\n---\n\nOdessa Klein is Meridian Studio's user researcher. She ran rider research at\nAshport Central for Wayfare — watching how passengers actually read departure\nboards — and drove the palette contrast testing with June Park that settled\nthe green-and-amber palette. She also runs archive-user interviews for the\nLarkspur project.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the records, June Park is Meridian Studio's product designer with contributions across two major projects:\n\n**Wayfare (realtime departure displays for Halcyon Transit)**\n- Designed the Wayfare display interface and owns its design tokens\n- Ran platform contrast testing with Odessa Klein that settled the green-and-amber palette for outdoor readability\n- Project shipped on 2026-06-12\n\n**Larkspur Archive (digitized collections platform for Bellweather Books)**\n- Designed the Larkspur Archive's reading experience\n- Prototyped the IIIF viewer with Dev\n- Project is active as of mid-June with the IIIF viewer in integration\n\n**Evidence:**\n- `people/june-park.md`: \"June Park is Meridian Studio's product designer. She designed the Wayfare display interface and owns its design tokens, and she designed the Larkspur Archive's reading experience. She ran the platform contrast testing with Odessa and prototyped the IIIF viewer with Dev.\"\n- `projects/wayfare.md`: Lists June Park as design on the team; \"The palette is green-and-amber for outdoor readability (d-009).\" Shipped 2026-06-12.\n- `projects/larkspur-archive.md`: Lists June Park as interface on the team; \"The viewer is IIIF-based (decision d-011), prototyped in s-010.\"\n- `people/odessa-klein.md`: \"drove the palette contrast testing with June Park that settled the green-and-amber palette.\"",
+  "started_at": "2026-10-27T21:45:04.151Z",
+  "finished_at": "2026-10-27T21:46:15.404Z"
+}

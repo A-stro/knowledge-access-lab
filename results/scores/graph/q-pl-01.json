@@ -1,0 +1,39 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-pl-01",
+  "category": "point-lookup",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-pl-01.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-001.md",
+        "passage": "Decision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 19,
+    "error_steps": 19,
+    "result_bytes": 1106
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T22:20:26.428Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The agent claims no evidence was found, but the reference identifies SQLite in WAL mode as Ledgerline's sole datastore for v1 and says Postgres is out of scope.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:20:31.704Z"
+  }
+}

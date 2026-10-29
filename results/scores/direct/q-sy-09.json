@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-09",
+  "category": "synthesis",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-sy-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "sessions/s-007.md",
+        "passage": "MQTT sensor topics\nlanding into Parquet batches, DuckDB joining two weeks of sensor rows with\nNorthpost forecast CSVs in under a second on a laptop.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      },
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          6
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          6
+        ]
+      },
+      {
+        "record": "decisions/d-006.md",
+        "passage": "Greenline later flagged access-approval processes, and the project paused\n(2026-05-26).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          8
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          8
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 10,
+    "error_steps": 3,
+    "result_bytes": 4910
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:24:10.648Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent states the early-April MQTT/Parquet/DuckDB spike and Noor's planned dashboard work, Greenline's access-approval blocker, the May 26 pause, and Noor's move to Wayfare. Although it does not explicitly say Beacon Grid remained paused through June, its summary conveys the same overall outcome without contradicting the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:24:24.509Z"
+  }
+}

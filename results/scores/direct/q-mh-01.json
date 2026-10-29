@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-01",
+  "category": "multi-hop",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-mh-01.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-008.md",
+        "passage": "  - type: supersedes\n    to: decisions/d-003.md",
+        "passage_exact": true,
+        "passage_in_steps": [
+          9
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          9
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "This supersedes d-003.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          9
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          9
+        ]
+      },
+      {
+        "record": "sessions/s-004.md",
+        "passage": "Reflashing takes roughly ninety minutes per display carried to the platform.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          10
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          10
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 11,
+    "error_steps": 3,
+    "result_bytes": 5546
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:17:01.122Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer correctly identifies d-008’s per-station edge-gateway hub as superseding d-003 and cites all three supporting findings from s-004: firmware drift across three stations, failure to recover the clock after power loss, and roughly ninety minutes to reflash each display.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:17:19.615Z"
+  }
+}

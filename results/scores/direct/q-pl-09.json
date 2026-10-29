@@ -1,0 +1,43 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-pl-09",
+  "category": "point-lookup",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-pl-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "orgs/quill-and-marrow.md",
+        "passage": "It advised the\nmetadata descriptions for the Larkspur Archive's digitized items, drafting the\nhouse style on top of Dublin Core fields.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          8
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          8
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 8,
+    "error_steps": 3,
+    "result_bytes": 2730
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:17:05.266Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent accurately states that Quill & Marrow advised the Larkspur Archive's digitized-item metadata descriptions and drafted the house style on top of Dublin Core fields, matching the reference answer without contradictions or unsupported claims.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:17:08.240Z"
+  }
+}

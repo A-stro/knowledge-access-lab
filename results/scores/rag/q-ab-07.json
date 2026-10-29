@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-07",
+  "category": "absence",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-ab-07.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 34,
+    "error_steps": 4,
+    "result_bytes": 65884
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-27T21:52:12.725Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent explicitly states that no evidence was found for machine learning or neural-network proposals, matching the reference answer and adding no contradictory claims.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:52:32.720Z"
+  }
+}

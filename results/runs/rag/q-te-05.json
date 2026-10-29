@@ -1,0 +1,112 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-05",
+  "category": "temporal",
+  "question_text": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Kestrel experiment announcement start cancellation teardown dates"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?"
+      },
+      "result_text": "{\n  \"question\": \"q-te-05\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 1,\n      \"score\": 0.756426,\n      \"passage\": \"Options considered: keep it as a side project; adopt it with an owner; cancel.\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 0,\n      \"score\": 0.756065,\n      \"passage\": \"Context: Kestrel has run as a two-week ops trial on top of Lorna's existing\\nload; Theo's prototype works, but no one can own the tool going forward.\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 2,\n      \"score\": 0.750911,\n      \"passage\": \"Decision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\\n— the studio's client count does not justify the maintenance surface. Export\\nthe trial data and tear down (s-009).\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 3,\n      \"score\": 0.737345,\n      \"passage\": \"Consequences: client tracking stays in Ledgerline notes; Theo returns fully\\nto Wayfare and Beacon Grid.\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"para\": 0,\n      \"score\": 0.724892,\n      \"passage\": \"Kestrel was Theo Kanda's proposal for an internal CRM experiment — a\\nlightweight tracker for studio client relationships — announced at the March\\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"para\": 0,\n      \"score\": 0.707372,\n      \"passage\": \"Theo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\\ndown the prototype: contact pages, the ops trial entries, and the import\\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"para\": 1,\n      \"score\": 0.700058,\n      \"passage\": \"Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\\nLorna alone, no one could own it. Data export and teardown happened in s-009.\"\n    },\n    {\n      \"path\": \"decisions/d-111.md\",\n      \"para\": 1,\n      \"score\": 0.696179,\n      \"passage\": \"Options considered: keep it as a side project; adopt it with an owner;\\ncancel.\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"para\": 0,\n      \"score\": 0.681257,\n      \"passage\": \"Go/no-go on Kestrel after the two-week trial: Theo's prototype works, but\\nthe ops load fell on Lorna alone and no one can own the tool going forward —\\nthe studio's client count does not justify the maintenance surface. No-go;\\nd-010 cancelled the experiment the next day, with data export and teardown\\nin s-009.\"\n    },\n    {\n      \"path\": \"decisions/d-111.md\",\n      \"para\": 2,\n      \"score\": 0.675869,\n      \"passage\": \"Decision: cancel the Curlew CRM experiment, agreed at the go/no-go (m-109) —\\nthe studio's client count does not justify the maintenance surface. Export\\nthe trial data and tear down (s-115).\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "---\nid: kestrel-crm\ngenre: projects\ntitle: \"Kestrel CRM — cancelled internal client-tracker experiment\"\ncreated: 2026-03-31\nupdated: 2026-04-24\nstatus: cancelled\nprovenance: hand-authored\ntags: [internal, experiment]\nrelated:\n  - type: mentions\n    to: meetings/m-004.md\n  - type: mentions\n    to: meetings/m-006.md\n  - type: mentions\n    to: decisions/d-010.md\n  - type: mentions\n    to: sessions/s-009.md\n  - type: mentions\n    to: people/theo-kanda.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nKestrel was Theo Kanda's proposal for an internal CRM experiment — a\nlightweight tracker for studio client relationships — announced at the March\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\n\nCancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "---\nid: s-009\ngenre: sessions\ntitle: \"Kestrel teardown and data export\"\ncreated: 2026-04-24\nprovenance: hand-authored\ntags: [kestrel, teardown]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nTheo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\ndown the prototype: contact pages, the ops trial entries, and the import\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 6,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-006.md"
+      },
+      "result_text": "---\nid: m-006\ngenre: meetings\ntitle: \"Kestrel CRM go/no-go\"\ncreated: 2026-04-20\nprovenance: hand-authored\ntags: [kestrel, decision]\nattendees: [mara-voss, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nGo/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —\nthe studio's client count does not justify the maintenance surface. No-go;\nd-010 cancelled the experiment the next day, with data export and teardown\nin s-009.\n",
+      "is_error": false,
+      "duration_ms": 3
+    }
+  ],
+  "final_answer": "Based on the knowledge base, the Kestrel experiment dates are:\n\n| Phase | Date | Evidence |\n|-------|------|----------|\n| **Announcement** | 2026-03-30 (March all-hands, m-004) | \"announced at the March all-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands\" — `projects/kestrel-crm.md` |\n| **Start** | 2026-03-31 | \"Kestrel started 2026-03-31, the day after the all-hands\" — `projects/kestrel-crm.md` |\n| **Cancellation** | 2026-04-21 | \"Cancelled 2026-04-21 (decision d-010)\" — `projects/kestrel-crm.md`; \"Decision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\" — `decisions/d-010.md` (created 2026-04-21) |\n| **Teardown** | 2026-04-24 | \"Theo exported the Kestrel trial data into Ledgerline notes per d-010 and tore down the prototype\" — `sessions/s-009.md` (created 2026-04-24) |\n\nThe go/no-go meeting (m-006) occurred on 2026-04-20, with the cancellation decision (d-010) formalized the next day (2026-04-21), followed by teardown and data export on 2026-04-24.",
+  "started_at": "2026-10-27T21:47:05.594Z",
+  "finished_at": "2026-10-27T21:47:32.813Z"
+}

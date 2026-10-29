@@ -1,0 +1,62 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-07",
+  "category": "synthesis",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-sy-07.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Silas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built\nthe ingestion spike (s-007).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          17
+        ]
+      },
+      {
+        "record": "people/silas-brandt.md",
+        "passage": "He owns the Larkspur OCR\ndata work — including the latency benchmark that overturned its throughput\nassumption — and Beacon Grid's ingestion, where he spiked the DuckDB\npipeline.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4
+        ]
+      },
+      {
+        "record": "people/theo-kanda.md",
+        "passage": "He proposed the edge-gateway hub that reversed Wayfare's display\narchitecture, works Beacon Grid's ingest, and championed the Kestrel CRM\nexperiment until its cancellation.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          5
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 17,
+    "error_steps": 0,
+    "result_bytes": 9851
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:37:32.471Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly identifies the three studio members connected to Beacon Grid—Silas Brandt, Theo Kanda, and Noor Haddad—but omits the key role facts from the reference: Silas (data/DuckDB ingestion pipeline), Theo (systems/ingest), and Noor (dashboard). It adds unsupported graph-edge and other-project details and incorrectly concludes the role information is unavailable rather than reporting it.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:38:09.933Z"
+  }
+}

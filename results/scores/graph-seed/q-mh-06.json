@@ -1,0 +1,58 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-06",
+  "category": "multi-hop",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-mh-06.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-010.md",
+        "passage": "Decision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          5,
+          11,
+          23,
+          55
+        ]
+      },
+      {
+        "record": "meetings/m-006.md",
+        "passage": "Go/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          6,
+          11,
+          56
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 61,
+    "error_steps": 0,
+    "result_bytes": 18058
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T18:55:55.923Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly identifies that decision d-010 was influenced by the go/no-go meeting m-006 and that s-009 involved teardown/export, but omits the substantive reasons: the successful prototype, the operational burden falling on Lorna alone, lack of future ownership, and the client count not justifying maintenance. Its blanket “no evidence found” is also inconsistent with the reference and the structural evidence it reports.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T18:56:13.141Z"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-04",
+  "category": "multi-hop",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-mh-04.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-005.md",
+        "passage": "Architecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          7,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          11
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 11,
+    "error_steps": 0,
+    "result_bytes": 6479
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T16:37:11.521Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent correctly identifies meeting m-005, the “Wayfare architecture review,” as the meeting that reviewed the field findings from s-004 behind decision d-008.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T16:37:50.209Z"
+  }
+}

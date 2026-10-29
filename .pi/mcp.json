@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "rag-lane": {
+      "command": "bun",
+      "args": ["lanes/rag/server.ts"],
+      "cwd": ".",
+      "exposure": "direct",
+      "description": "RAG lane: semantic_search (ranked passages + record paths over the committed embedding index) and get (full record) — reads committed JSON, never embeds at runtime"
+    },
+    "wiki-lane": {
+      "command": "bun",
+      "args": ["lanes/wiki/server.ts"],
+      "cwd": ".",
+      "exposure": "direct",
+      "description": "Wiki lane: list (tree + seven-genre taxonomy), open (full record), links (outgoing edges AND incoming backlinks — the surface most wiki tools lack)"
+    },
+    "graph-lane": {
+      "command": "bun",
+      "args": ["lanes/graph/server.ts"],
+      "cwd": ".",
+      "exposure": "direct",
+      "description": "Graph lane: neighbors (typed adjacent records, both directions, filterable) and paths (multi-hop typed-edge chains) over the five authored edge types"
+    },
+    "graph-seed-lane": {
+      "command": "bun",
+      "args": ["lanes/graph-seed/server.ts"],
+      "cwd": ".",
+      "exposure": "direct",
+      "description": "Graph lane, seeded (F6): lookup (name/title/path → record paths + titles only, never record text) plus the frozen graph surface (neighbors, paths) — tests typed-edge traversal with an entry point"
+    }
+  }
+}

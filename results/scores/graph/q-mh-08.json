@@ -1,0 +1,47 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-08",
+  "category": "multi-hop",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-mh-08.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-003.md",
+        "passage": "with timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "decisions/d-005.md",
+        "passage": "Decision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 20,
+    "error_steps": 20,
+    "result_bytes": 1152
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:01:27.638Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference answer identifies meeting m-003's comparison of hourly timesheet billing versus flat monthly per-client billing and states that flat monthly won, with decision d-005 issued three days later. The agent's \"no evidence found\" response omits all of these facts.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:01:34.286Z"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-07",
+  "category": "temporal",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-te-07.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "sessions/s-002.md",
+        "passage": "created: 2026-03-05",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "First firmware boot on the bench: one single-board computer rendering the\ndeparture board, pulling MQTT retained messages per d-002.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "rendering works — power-cycle the board and it paints the last-known board in\nunder two seconds.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 18,
+    "error_steps": 18,
+    "result_bytes": 1105
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:08:09.229Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference identifies session s-002 dated 2026-03-05 and describes its first firmware boot, departure-board rendering, MQTT retained-message support, and under-two-second fallback repaint. The agent incorrectly states that no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:08:12.385Z"
+  }
+}

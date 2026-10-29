@@ -1,0 +1,80 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-06",
+  "category": "temporal",
+  "question_text": "On what date did the Ledgerline billing decision land, relative to its pricing discussion?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: On what date did the Ledgerline billing decision land, relative to its pricing discussion?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: On what date did the Ledgerline billing decision land, relative to its pricing discussion?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\"taxonomy\":{\"decisions\":\"decision records with status: accepted, rejected, or superseded\"},\"genres\":[{\"genre\":\"decisions\",\"count\":29,\"records\":[{\"id\":\"d-001\",\"title\":\"Ledgerline stores its data in SQLite\",\"path\":\"decisions/d-001.md\"},{\"id\":\"d-002\",\"title\":\"Wayfare displays speak MQTT\",\"path\":\"decisions/d-002.md\"},{\"id\":\"d-003\",\"title\":\"Wayfare runs one single-board computer per display, no central server\",\"path\":\"decisions/d-003.md\"},{\"id\":\"d-004\",\"title\":\"Larkspur Archive routes OCR through a remote API\",\"path\":\"decisions/d-004.md\"},{\"id\":\"d-005\",\"title\":\"Ledgerline bills flat monthly per client\",\"path\":\"decisions/d-005.md\"},{\"id\":\"d-006\",\"title\":\"Beacon Grid queries DuckDB, not a time-series server\",\"path\":\"decisions/d-006.md\"},{\"id\":\"d-007\",\"title\":\"Beacon Grid ingests over MQTT rather than REST polling\",\"path\":\"decisions/d-007.md\"},{\"id\":\"d-008\",\"title\":\"Wayfare moves to an edge-gateway hub per station\",\"path\":\"decisions/d-008.md\"},{\"id\":\"d-009\",\"title\":\"Wayfare adopts a green-and-amber palette for outdoor readability\",\"path\":\"decisions/d-009.md\"},{\"id\":\"d-010\",\"title\":\"Cancel the Kestrel CRM experiment\",\"path\":\"decisions/d-010.md\"},{\"id\":\"d-011\",\"title\":\"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\"path\":\"decisions/d-011.md\"},{\"id\":\"d-101\",\"title\":\"Rill stores its data in PostgreSQL\",\"path\":\"decisions/d-101.md\"},{\"id\":\"d-102\",\"title\":\"Perchboard displays speak MQTT 5.0\",\"path\":\"decisions/d-102.md\"},{\"id\":\"d-103\",\"title\":\"Perchboard runs one single-board computer per display, no central server\",\"path\":\"decisions/d-103.md\"},{\"id\":\"d-104\",\"title\":\"Foxglove routes OCR through a local GPU cluster\",\"path\":\"decisions/d-104.md\"},{\"id\":\"d-105\",\"title\":\"Rill bills hourly with per-project rates\",\"path\":\"decisions/d-105.md\"},{\"id\":\"d-106\",\"title\":\"Cometline runs a kiosk browser with an offline cache\",\"path\":\"decisions/d-106.md\"},{\"id\":\"d-107\",\"title\":\"Cinderboard queries ClickHouse, not a time-series server\",\"path\":\"decisions/d-107.md\"},{\"id\":\"d-108\",\"title\":\"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\"path\":\"decisions/d-108.md\"},{\"id\":\"d-109\",\"title\":\"Perchboard moves to an edge relay per station\",\"path\":\"decisions/d-109.md\"},{\"id\":\"d-110\",\"title\":\"Perchboard syncs fleet clocks with chrony\",\"path\":\"decisions/d-110.md\"},{\"id\":\"d-111\",\"title\":\"Cancel the Curlew CRM experiment\",\"path\":\"decisions/d-111.md\"},{\"id\":\"d-112\",\"title\":\"Perchboard adopts a high-contrast white-on-black palette\",\"path\":\"decisions/d-112.md\"},{\"id\":\"d-113\",\"title\":\"Foxglove ships a static-file gallery, not a deep-zoom server\",\"path\":\"decisions/d-113.md\"},{\"id\":\"d-114\",\"title\":\"Foxglove names scans by box and leaf, not by title\",\"path\":\"decisions/d-114.md\"},{\"id\":\"d-115\",\"title\":\"Rill adopts per-period rate cards\",\"path\":\"decisions/d-115.md\"},{\"id\":\"d-116\",\"title\":\"Driftline prints from Bayline's timetable feed, not a local copy\",\"path\":\"decisions/d-116.md\"},{\"id\":\"d-117\",\"title\":\"Perchboard adopts marine-rated enclosures for pier boards\",\"path\":\"decisions/d-117.md\"},{\"id\":\"d-118\",\"title\":\"Foxglove adds page-level anchor URLs to the gallery\",\"path\":\"decisions/d-118.md\"}]}]}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-005.md"
+      },
+      "result_text": "---\nid: d-005\ngenre: decisions\ntitle: \"Ledgerline bills flat monthly per client\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [ledgerline, billing]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-003.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: the studio had been assembling hourly invoices from raw timesheets;\nreconciliation cost Lorna a day per month.\n\nOptions considered: hourly billing from raw timesheets; flat monthly billing\nper client.\n\nDecision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.\n\nConsequences: invoicing is a one-step monthly run; scope creep now surfaces\nin planning, not on the invoice.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-003.md"
+      },
+      "result_text": "---\nid: m-003\ngenre: meetings\ntitle: \"Ledgerline pricing discussion\"\ncreated: 2026-03-17\nprovenance: hand-authored\ntags: [ledgerline, billing]\nattendees: [mara-voss, lorna-vey, dev-okonkwo]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-005.md\n---\n\nThe pricing discussion weighed hourly billing assembled from raw timesheets\nagainst flat monthly billing per client: hourly recovers every scrap of\neffort but costs Lorna a reconciliation day each month and reads\nunpredictably to clients; flat monthly is one predictable number per client\nwith timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "The Ledgerline billing decision (d-005) landed **3 days after** its pricing discussion.\n\n**Evidence:**\n\n- **Pricing discussion (m-003):** Created 2026-03-17 — \"Flat monthly won, and d-005 landed three days later.\" [meetings/m-003.md]\n- **Decision (d-005):** Created 2026-03-20 — \"agreed in the pricing discussion (m-003)\" [decisions/d-005.md]",
+  "started_at": "2026-10-27T22:48:57.466Z",
+  "finished_at": "2026-10-27T22:49:07.608Z"
+}

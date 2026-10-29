@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-06",
+  "category": "absence",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-ab-06.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 74,
+    "error_steps": 8,
+    "result_bytes": 74319
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-27T21:54:24.926Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent explicitly concludes that no evidence of a lawsuit or legal dispute was found, matching the reference. Its noted data-access and data-sharing processes are expressly distinguished from disputes and do not contradict the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:54:34.804Z"
+  }
+}

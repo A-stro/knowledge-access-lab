@@ -1,0 +1,57 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-02",
+  "category": "multi-hop",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-mh-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/mqtt-311-notes.md",
+        "passage": "Informed Wayfare's transport decision (d-002) and Beacon Grid's ingest\ndecision (d-007).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          10
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          10
+        ]
+      },
+      {
+        "record": "decisions/d-007.md",
+        "passage": "Decision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7,
+          9
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7,
+          9
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 10,
+    "error_steps": 3,
+    "result_bytes": 12311
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:41:23.711Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent identifies the same reference note (mqtt-311-notes) and the same two decisions: d-002 for Wayfare's MQTT transport and d-007 for Beacon Grid's MQTT ingestion instead of REST polling, with no contradictions or unsupported claims.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:41:26.218Z"
+  }
+}

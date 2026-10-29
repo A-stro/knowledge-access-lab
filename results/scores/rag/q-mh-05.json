@@ -1,0 +1,73 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-05",
+  "category": "multi-hop",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-mh-05.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-009.md",
+        "passage": "Decision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "sessions/s-008.md",
+        "passage": "Odessa ran contrast testing at Ashport Central's sunlit platform with June:",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          4
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          4
+        ]
+      },
+      {
+        "record": "references/wcag-contrast-notes.md",
+        "passage": "Informed the Wayfare palette decision (d-009).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2,
+          5
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          5
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 6,
+    "error_steps": 1,
+    "result_bytes": 6745
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:41:41.670Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer identifies both influences in the reference—session s-008's field contrast testing at Ashport Central showing blue-on-dark washing out by mid-morning while green- and amber-on-dark remained readable, plus the WCAG contrast notes confirming daylight performance—and correctly connects them to decision d-009, with no contradictory claims.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:42:44.334Z"
+  }
+}

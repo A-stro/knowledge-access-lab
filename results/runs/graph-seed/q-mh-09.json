@@ -1,0 +1,641 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "question_text": "The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "IIIF viewer decision"
+      },
+      "result_text": "{\n  \"query\": \"IIIF viewer decision\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "IIIF"
+      },
+      "result_text": "{\n  \"query\": \"IIIF\",\n  \"genre\": null,\n  \"found\": 3,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-011.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-007.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/larkspur-archive.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-010.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/iiif-overview.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/larkspur-archive.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"path\": \"references/iiif-overview.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-011.md\"\n    },\n    {\n      \"type\": \"relates_to\",\n      \"direction\": \"outgoing\",\n      \"path\": \"references/archive-metadata-notes.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "archive-metadata-notes"
+      },
+      "result_text": "{\n  \"query\": \"archive-metadata-notes\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 7,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Larkspur Archive ships an IIIF viewer"
+      },
+      "result_text": "{\n  \"query\": \"Larkspur Archive ships an IIIF viewer\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 31,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 32,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 33,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 38,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 39,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 45,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 46,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 49,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 50,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 51,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/archive-metadata-notes.md"
+      },
+      "result_text": "{\n  \"query\": \"references/archive-metadata-notes.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/archive-metadata-notes.md\",\n      \"title\": \"Dublin Core for archive metadata — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "references/iiif-overview.md"
+      },
+      "result_text": "{\n  \"query\": \"references/iiif-overview.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"references/iiif-overview.md\",\n      \"title\": \"IIIF for archival viewers — reading notes\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "decisions/d-011.md"
+      },
+      "result_text": "{\n  \"query\": \"decisions/d-011.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the knowledge graph structure, I can trace the connections, but the available tools only return record paths and titles—not the actual file contents needed for direct quotes.\n\n**Graph evidence:**\n\n1. **The IIIF viewer decision** (`decisions/d-011.md`: \"Larkspur Archive ships an IIIF viewer, not a custom gallery\") has an **`influenced_by`** edge pointing to **`references/iiif-overview.md`** (\"IIIF for archival viewers — reading notes\").\n\n2. That reference note (`references/iiif-overview.md`) has a **`relates_to`** edge pointing to **`references/archive-metadata-notes.md`** (\"Dublin Core for archive metadata — reading notes\").\n\n**Answer from graph structure:**\n- The decision drew on the reference note **\"IIIF for archival viewers — reading notes\"** (`references/iiif-overview.md`).\n- That note connects to the earlier metadata work via a **`relates_to`** edge to **\"Dublin Core for archive metadata — reading notes\"** (`references/archive-metadata-notes.md`), indicating the IIIF reading notes build on or reference the prior Dublin Core metadata investigation.\n\n**Limitation:** The graph tools return only paths and titles, never record text. To provide the exact supporting passages you requested, I would need to read the file contents directly—but no file-reading tool is available in the current toolset.",
+  "started_at": "2026-10-28T17:08:24.554Z",
+  "finished_at": "2026-10-28T17:16:33.359Z"
+}

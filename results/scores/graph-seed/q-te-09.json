@@ -1,0 +1,62 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-09",
+  "category": "temporal",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-te-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-001.md",
+        "passage": "created: 2026-02-20",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          8
+        ]
+      },
+      {
+        "record": "orgs/bellweather-books.md",
+        "passage": "created: 2026-03-02",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "projects/larkspur-archive.md",
+        "passage": "created: 2026-03-02",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          9,
+          16
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0.667
+  },
+  "retrieval": {
+    "steps": 29,
+    "error_steps": 0,
+    "result_bytes": 17837
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T18:17:34.588Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference provides clear evidence: Wayfare's kickoff was recorded on 2026-02-20, and the Larkspur engagement followed on 2026-03-02. The agent incorrectly states that no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T18:17:43.027Z"
+  }
+}

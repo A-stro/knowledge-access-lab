@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-03",
+  "category": "absence",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-ab-03.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 92,
+    "error_steps": 0,
+    "result_bytes": 77175
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-27T22:52:40.395Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "It states the core no-evidence finding, but adds unsupported specifics about search coverage, record counts, and studio staffing, and its claim of an exhaustive search conflicts with its admission that only a representative sample of sessions was checked.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:52:52.479Z"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-pl-06",
+  "category": "point-lookup",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-pl-06.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "people/katrin-ilic.md",
+        "passage": "client portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff",
+        "passage_exact": true,
+        "passage_in_steps": [
+          14
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          14
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 14,
+    "error_steps": 0,
+    "result_bytes": 22060
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:55:24.761Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent identifies Katrin Ilic as Meridian Studio's QA lead and gives the same sign-off date, 2026-06-12, with supporting evidence consistent with the reference answer.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:55:27.943Z"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-09",
+  "category": "point-lookup",
+  "question_text": "What is Quill & Marrow's role on the Larkspur Archive?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What is Quill & Marrow's role on the Larkspur Archive?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What is Quill & Marrow's role on the Larkspur Archive?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "What is Quill & Marrow's role on the Larkspur Archive?"
+      },
+      "result_text": "{\n  \"question\": \"q-pl-09\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"orgs/quill-and-marrow.md\",\n      \"para\": 0,\n      \"score\": 0.853124,\n      \"passage\": \"Quill & Marrow is a content-strategy partner of the studio. It advised the\\nmetadata descriptions for the Larkspur Archive's digitized items, drafting the\\nhouse style on top of Dublin Core fields.\"\n    },\n    {\n      \"path\": \"projects/larkspur-archive.md\",\n      \"para\": 1,\n      \"score\": 0.665716,\n      \"passage\": \"Team: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\\nis m-007.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 1,\n      \"score\": 0.613854,\n      \"passage\": \"Options considered: local OCR on the studio's machines; a remote OCR API.\"\n    },\n    {\n      \"path\": \"people/rowan-ellery.md\",\n      \"para\": 0,\n      \"score\": 0.604283,\n      \"passage\": \"Rowan Ellery is Bellweather Books' head archivist and the client-side sponsor\\nof the Larkspur Archive platform. She walked the mid-project review through\\nher team's concerns and welcomed the IIIF viewer direction.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 0,\n      \"score\": 0.601745,\n      \"passage\": \"Context: Bellweather's archive scans number in the tens of thousands of\\npages; OCR throughput sets the digitization schedule.\"\n    },\n    {\n      \"path\": \"projects/foxglove-archive.md\",\n      \"para\": 1,\n      \"score\": 0.59118,\n      \"passage\": \"Team: Marta Quintana (data), Gwen Torvald (interface), Yusuf Adeyemi (OCR\\npipeline), Elif Yilmaz (user research). Aurelio Finch is the client sponsor;\\nSaltmarsh Creative advised the metadata descriptions. Mid-project review\\nwith Harrowgate is m-112.\"\n    },\n    {\n      \"path\": \"projects/larkspur-archive.md\",\n      \"para\": 0,\n      \"score\": 0.589501,\n      \"passage\": \"The Larkspur Archive is a digitized-collection platform for Bellweather\\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\\npage scans running far below the assumed throughput, which sent Dev and\\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\\nprototyped in s-010.\"\n    },\n    {\n      \"path\": \"people/aurelio-finch.md\",\n      \"para\": 0,\n      \"score\": 0.579526,\n      \"passage\": \"Aurelio Finch is Harrowgate Press's head archivist and the client-side\\nsponsor of the Foxglove Archive platform. He walked the mid-project review\\nthrough his team's scanning concerns and welcomed the static-gallery\\ndirection.\"\n    },\n    {\n      \"path\": \"meetings/m-007.md\",\n      \"para\": 0,\n      \"score\": 0.575353,\n      \"passage\": \"Mid-project review at Bellweather with Rowan's team: the OCR latency findings\\n(s-006) were walked through — archival scans run at roughly forty percent of\\nthe assumed rate, so the digitization schedule stretches — and the IIIF\\nviewer direction (d-011, prototyped in s-010) was welcomed. Rowan asked for a\\nwallboard-style collection status page; June takes it.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 2,\n      \"score\": 0.573731,\n      \"passage\": \"Decision: route Larkspur OCR through a remote API — roughly four times local\\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\\nbenchmark notes.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "orgs/quill-and-marrow.md"
+      },
+      "result_text": "---\nid: quill-and-marrow\ngenre: orgs\ntitle: \"Quill & Marrow\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [partner, content]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\nkind: partner\n---\n\nQuill & Marrow is a content-strategy partner of the studio. It advised the\nmetadata descriptions for the Larkspur Archive's digitized items, drafting the\nhouse style on top of Dublin Core fields.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/larkspur-archive.md"
+      },
+      "result_text": "---\nid: larkspur-archive\ngenre: projects\ntitle: \"Larkspur Archive — digitized collections platform for Bellweather Books\"\ncreated: 2026-03-02\nupdated: 2026-06-15\nstatus: active\nclient: bellweather-books\nprovenance: hand-authored\ntags: [archive, ocr, iiif]\nrelated:\n  - type: mentions\n    to: orgs/bellweather-books.md\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: sessions/s-003.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: meetings/m-007.md\n---\n\nThe Larkspur Archive is a digitized-collection platform for Bellweather\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\npage scans running far below the assumed throughput, which sent Dev and\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\nprototyped in s-010.\n\nTeam: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\nis m-007.\n\nAs of mid-June the project is active: OCR continues at the corrected rate and\nthe IIIF viewer is in integration.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Quill & Marrow is a content-strategy partner of the studio that **advised the metadata descriptions for the Larkspur Archive's digitized items, drafting the house style on top of Dublin Core fields**.\n\n**Evidence:**\n\n- From `orgs/quill-and-marrow.md`: \"Quill & Marrow is a content-strategy partner of the studio. It advised the metadata descriptions for the Larkspur Archive's digitized items, drafting the house style on top of Dublin Core fields.\"\n- From `projects/larkspur-archive.md`: \"Rowan Ellery is the client sponsor; Quill & Marrow advised the metadata descriptions.\"",
+  "started_at": "2026-10-27T21:40:06.162Z",
+  "finished_at": "2026-10-27T21:40:32.308Z"
+}

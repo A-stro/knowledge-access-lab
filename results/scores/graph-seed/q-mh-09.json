@@ -1,0 +1,109 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-mh-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "IIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          5,
+          8,
+          11,
+          14,
+          17,
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41,
+          44,
+          47,
+          50,
+          53
+        ]
+      },
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "  - type: relates_to\n    to: references/archive-metadata-notes.md",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          5,
+          8,
+          11,
+          14,
+          17,
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41,
+          44,
+          47,
+          50,
+          53
+        ]
+      },
+      {
+        "record": "references/archive-metadata-notes.md",
+        "passage": "Fifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          9,
+          13,
+          16,
+          19,
+          22,
+          25,
+          28,
+          31,
+          34,
+          37,
+          40,
+          43,
+          46,
+          49,
+          52
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 54,
+    "error_steps": 0,
+    "result_bytes": 14667
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:16:33.366Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly identifies the iiif-overview reading note and its relation to the archive-metadata notes, but omits the key supporting facts: IIIF’s portability across viewer implementations and the house style built on fifteen Dublin Core elements drafted by Quill & Marrow.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:16:48.504Z"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-07",
+  "category": "temporal",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-te-07.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "sessions/s-002.md",
+        "passage": "created: 2026-03-05",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "First firmware boot on the bench: one single-board computer rendering the\ndeparture board, pulling MQTT retained messages per d-002.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "rendering works — power-cycle the board and it paints the last-known board in\nunder two seconds.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 17,
+    "error_steps": 3,
+    "result_bytes": 8366
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:26:19.647Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent identifies s-002 (2026-03-05, \"Wayfare display firmware first light\") as the earliest Wayfare-related session and accurately states all achievements from the reference: first bench firmware boot, one single-board computer rendering the departure board, pulling MQTT retained messages, and local fallback repainting the last-known board in under two seconds after a power cycle.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:26:33.419Z"
+  }
+}

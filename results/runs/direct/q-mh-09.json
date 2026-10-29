@@ -1,0 +1,247 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-09",
+  "category": "multi-hop",
+  "question_text": "The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus"
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 2,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions"
+      },
+      "result_text": ".gitkeep\nd-001.md\nd-002.md\nd-003.md\nd-004.md\nd-005.md\nd-006.md\nd-007.md\nd-008.md\nd-009.md\nd-010.md\nd-011.md\nd-101.md\nd-102.md\nd-103.md\nd-104.md\nd-105.md\nd-106.md\nd-107.md\nd-108.md\nd-109.md\nd-110.md\nd-111.md\nd-112.md\nd-113.md\nd-114.md\nd-115.md\nd-116.md\nd-117.md\nd-118.md",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 3,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "IIIF",
+        "path": "/tmp/kal-corpus-mKzfuC/corpus"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 6
+    },
+    {
+      "seq": 4,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions",
+        "pattern": "IIIF"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 4
+    },
+    {
+      "seq": 5,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-001.md"
+      },
+      "result_text": "---\nid: d-001\ngenre: decisions\ntitle: \"Ledgerline stores its data in SQLite\"\ncreated: 2026-02-18\nprovenance: hand-authored\ntags: [ledgerline, storage]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/sqlite-wal-notes.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: Ledgerline needs a datastore for timesheets, invoices, and client\nrecords. Studio write volume is small — one billing run a month plus daily\ntimesheets.\n\nOptions considered: Postgres (operational weight, a server to babysit)\nversus SQLite (single file, WAL mode, embedded).\n\nDecision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;\nPostgres stays out of scope until a second-writer need appears.\n\nConsequences: zero server operations; backups are file copies; the\nsingle-writer ceiling is accepted. Informed by the WAL-mode reading notes\n(sqlite-wal-notes).\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 7,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 8,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-004.md"
+      },
+      "result_text": "---\nid: d-004\ngenre: decisions\ntitle: \"Larkspur Archive routes OCR through a remote API\"\ncreated: 2026-03-12\nprovenance: hand-authored\ntags: [larkspur, ocr]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/ocr-comparison.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather's archive scans number in the tens of thousands of\npages; OCR throughput sets the digitization schedule.\n\nOptions considered: local OCR on the studio's machines; a remote OCR API.\n\nDecision: route Larkspur OCR through a remote API — roughly four times local\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\nbenchmark notes.\n\nConsequences: the digitization schedule holds; throughput is assumed to scale\nlinearly with scan volume. Later contradicted by the latency benchmark in\ns-006, which found archival page scans far below the assumed rate.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-005.md"
+      },
+      "result_text": "---\nid: d-005\ngenre: decisions\ntitle: \"Ledgerline bills flat monthly per client\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [ledgerline, billing]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-003.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: the studio had been assembling hourly invoices from raw timesheets;\nreconciliation cost Lorna a day per month.\n\nOptions considered: hourly billing from raw timesheets; flat monthly billing\nper client.\n\nDecision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.\n\nConsequences: invoicing is a one-step monthly run; scope creep now surfaces\nin planning, not on the invoice.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-006.md"
+      },
+      "result_text": "---\nid: d-006\ngenre: decisions\ntitle: \"Beacon Grid queries DuckDB, not a time-series server\"\ncreated: 2026-03-27\nprovenance: hand-authored\ntags: [beacon-grid, analytics]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/duckdb-notes.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nContext: Greenline's wallboard needs ad-hoc joins across sensor feeds and\nNorthpost load forecasts.\n\nOptions considered: a time-series server for raw telemetry; DuckDB embedded\nover Parquet and CSV.\n\nDecision: Beacon Grid lands sensor data in DuckDB and queries it with plain\nSQL — the wallboard needs joins more than a retention engine, informed by\nduckdb-notes.\n\nConsequences: no database server to operate; ingestion is batch-oriented.\nGreenline later flagged access-approval processes, and the project paused\n(2026-05-26).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 11,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-007.md"
+      },
+      "result_text": "---\nid: d-007\ngenre: decisions\ntitle: \"Beacon Grid ingests over MQTT rather than REST polling\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [beacon-grid, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: relates_to\n    to: decisions/d-002.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nContext: Greenline sensor arrays publish at short intervals; REST polling on a\ntimer would hammer their gateways.\n\nOptions considered: REST polling on a timer; MQTT subscriptions to sensor\ntopics.\n\nDecision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002).\n\nConsequences: one consumption pattern across two projects; sensor gateways\nstay quiet.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 12,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 13,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-009.md"
+      },
+      "result_text": "---\nid: d-009\ngenre: decisions\ntitle: \"Wayfare adopts a green-and-amber palette for outdoor readability\"\ncreated: 2026-04-15\nprovenance: hand-authored\ntags: [wayfare, design]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: sessions/s-008.md\n  - type: influenced_by\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: Ashport Central's platform is sunlit most of the day; the first\npalette washed out in daylight.\n\nOptions considered: the original blue-on-dark palette; green-and-amber after\nOdessa's contrast testing at the platform (s-008) and the WCAG contrast\nnotes.\n\nDecision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.\n\nConsequences: renderer theming is a config swap; June owns the design tokens.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 14,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 15,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/decisions/d-011.md"
+      },
+      "result_text": "---\nid: d-011\ngenre: decisions\ntitle: \"Larkspur Archive ships an IIIF viewer, not a custom gallery\"\ncreated: 2026-05-07\nprovenance: hand-authored\ntags: [larkspur, viewer]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/iiif-overview.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather wants its digitized collections viewable and portable; a\ncustom gallery would lock scans to one interface.\n\nOptions considered: a custom-built gallery; an IIIF-based viewer over\nstandardized image and manifest APIs.\n\nDecision: Larkspur ships an IIIF-based viewer — deep zoom, page order, and\nmetadata from standardized manifests — so the scans stay portable across\nviewer implementations, informed by iiif-overview.\n\nConsequences: viewer work is integration rather than invention; prototyped\nin s-010 and shown at the Bellweather review (m-007).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 16,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/references/iiif-overview.md"
+      },
+      "result_text": "---\nid: iiif-overview\ngenre: references\ntitle: \"IIIF for archival viewers — reading notes\"\ncreated: 2026-05-04\nprovenance: hand-authored\ntags: [iiif, reading-notes]\nsource: \"reading notes, IIIF Image and Presentation APIs\"\nrelated:\n  - type: relates_to\n    to: references/archive-metadata-notes.md\n---\n\nIIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.\n\nInformed d-011.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 17,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/references/archive-metadata-notes.md"
+      },
+      "result_text": "---\nid: archive-metadata-notes\ngenre: references\ntitle: \"Dublin Core for archive metadata — reading notes\"\ncreated: 2026-03-18\nprovenance: hand-authored\ntags: [metadata, reading-notes]\nsource: \"reading notes, Dublin Core usage guide\"\nrelated:\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n---\n\nFifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 18,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "/tmp/kal-corpus-mKzfuC/corpus/projects/larkspur-archive.md"
+      },
+      "result_text": "---\nid: larkspur-archive\ngenre: projects\ntitle: \"Larkspur Archive — digitized collections platform for Bellweather Books\"\ncreated: 2026-03-02\nupdated: 2026-06-15\nstatus: active\nclient: bellweather-books\nprovenance: hand-authored\ntags: [archive, ocr, iiif]\nrelated:\n  - type: mentions\n    to: orgs/bellweather-books.md\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: sessions/s-003.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: meetings/m-007.md\n---\n\nThe Larkspur Archive is a digitized-collection platform for Bellweather\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\npage scans running far below the assumed throughput, which sent Dev and\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\nprototyped in s-010.\n\nTeam: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\nis m-007.\n\nAs of mid-June the project is active: OCR continues at the corrected rate and\nthe IIIF viewer is in integration.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The IIIF viewer decision is **d-011** (\"Larkspur Archive ships an IIIF viewer, not a custom gallery\"). It drew on the reference note **`references/iiif-overview.md`** (\"IIIF for archival viewers — reading notes\").\n\nThat reference note connects to the earlier metadata work through its `related` field, which points to **`references/archive-metadata-notes.md`** (\"Dublin Core for archive metadata — reading notes\"). This earlier note documents the Dublin Core metadata work: \"Fifteen Dublin Core elements cover the descriptive fields the archive needs — title, creator, date, subject, rights — without a bespoke schema; Quill & Marrow drafted the house style on top of them for the Larkspur metadata.\"\n\n**Evidence:**\n\n- **d-011.md** — Decision: \"Larkspur ships an IIIF-based viewer… informed by iiif-overview\" [read from decisions/d-011.md]\n- **iiif-overview.md** — Reference note: \"Informed d-011\" and `related: … relates_to: references/archive-metadata-notes.md` [read from references/iiif-overview.md]\n- **archive-metadata-notes.md** — Earlier metadata work: \"Fifteen Dublin Core elements cover the descriptive fields the archive needs… Quill & Marrow drafted the house style on top of them for the Larkspur metadata\" [read from references/archive-metadata-notes.md]",
+  "started_at": "2026-10-27T23:19:58.086Z",
+  "finished_at": "2026-10-27T23:20:50.214Z"
+}

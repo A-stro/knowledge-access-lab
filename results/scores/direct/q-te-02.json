@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-02",
+  "category": "temporal",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-te-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "created: 2026-03-04",
+        "passage_exact": true,
+        "passage_in_steps": [
+          8
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          8
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "created: 2026-04-08",
+        "passage_exact": true,
+        "passage_in_steps": [
+          9
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          9
+        ]
+      },
+      {
+        "record": "decisions/d-009.md",
+        "passage": "created: 2026-04-15",
+        "passage_exact": true,
+        "passage_in_steps": [
+          14
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          14
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 16,
+    "error_steps": 3,
+    "result_bytes": 10075
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:24:45.767Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The agent correctly identifies d-003 followed by d-008, but incorrectly substitutes d-002 for the required third decision, d-009 (the green-and-amber palette dated 2026-04-15).",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:24:55.067Z"
+  }
+}

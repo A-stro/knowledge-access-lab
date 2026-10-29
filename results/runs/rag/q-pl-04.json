@@ -1,0 +1,57 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-04",
+  "category": "point-lookup",
+  "question_text": "Which three pilot stations did the Wayfare program cover?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which three pilot stations did the Wayfare program cover?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which three pilot stations did the Wayfare program cover?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Which three pilot stations did the Wayfare program cover?"
+      },
+      "result_text": "{\n  \"question\": \"q-pl-04\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"para\": 0,\n      \"score\": 0.734006,\n      \"passage\": \"Kickoff for the Wayfare departure-display program at Halcyon's operations\\noffice. Scope agreed: platform displays for three pilot stations — Ashport\\nCentral, Ferry Quay, Millbrook Bridge — live vehicle positions, sub-second\\nperceived freshness, and outdoor readability. Petra sponsors; the ship target\\nis June. Transport and architecture decisions followed within days (d-002,\\nd-003).\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 0,\n      \"score\": 0.701505,\n      \"passage\": \"Wayfare is Meridian Studio's realtime departure-display program for Halcyon\\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\\nQuay, Millbrook Bridge — fed by live vehicle-position data.\"\n    },\n    {\n      \"path\": \"sessions/s-131.md\",\n      \"para\": 0,\n      \"score\": 0.650312,\n      \"passage\": \"The last pilot station: two boards at the ferry slip, one relay in the lamp\\nroom — the oldest wiring of the three, so the crew pulled a fresh conduit\\nrun. All three stations now flash from one place per station.\"\n    },\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"para\": 0,\n      \"score\": 0.640108,\n      \"passage\": \"March all-hands. Status: Ledgerline invoicing live with flat monthly runs,\\nWayfare in the field across the pilot stations, Larkspur Archive scanning\\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\\nlightweight internal client tracker — and got a two-week trial window; the\\nBeacon Grid engagement with Greenline Utilities starts next week on the\\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 2,\n      \"score\": 0.633224,\n      \"passage\": \"Decision: each pilot station gets an edge gateway hub — firmware flashes once\\nper station, displays pull from the gateway, telemetry funnels through it.\\nThis supersedes d-003.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 3,\n      \"score\": 0.623761,\n      \"passage\": \"Consequences: one more box per station, collapsed maintenance surface; Bram\\nowns gateway provisioning.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 1,\n      \"score\": 0.608891,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge gateway per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"para\": 0,\n      \"score\": 0.600441,\n      \"passage\": \"Theo and Dev spent the day in the field at Ashport Central and Ferry Quay:\\nafter the last firmware update, the three pilot stations drifted to three\\nfirmware versions, and a board that lost power would not recover its clock.\\nReflashing takes roughly ninety minutes per display carried to the platform.\\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 1,\n      \"score\": 0.595881,\n      \"passage\": \"Options considered: per-display autonomy with single-board computers; a\\nstation hub coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 0,\n      \"score\": 0.593374,\n      \"passage\": \"Context: each platform display needs local rendering; per-display autonomy\\navoids putting a central server in stations.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    }
+  ],
+  "final_answer": "The Wayfare program covered three pilot stations: **Ashport Central, Ferry Quay, and Millbrook Bridge**.\n\n**Evidence:**\n\n1. **meetings/m-001.md** (para 0):\n> \"Scope agreed: platform displays for three pilot stations — **Ashport Central, Ferry Quay, Millbrook Bridge** — live vehicle positions, sub-second perceived freshness, and outdoor readability.\"\n\n2. **projects/wayfare.md** (para 0):\n> \"Wayfare is Meridian Studio's realtime departure-display program for Halcyon Transit: platform displays for three pilot stations — **Ashport Central, Ferry Quay, Millbrook Bridge** — fed by live vehicle-position data.\"",
+  "started_at": "2026-10-27T21:39:16.677Z",
+  "finished_at": "2026-10-27T21:39:56.963Z"
+}

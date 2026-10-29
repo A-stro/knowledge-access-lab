@@ -1,0 +1,91 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-02",
+  "category": "temporal",
+  "question_text": "Order the three Wayfare architecture-related decisions chronologically.",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Order the three Wayfare architecture-related decisions chronologically."
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Order the three Wayfare architecture-related decisions chronologically.",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 3
+    }
+  ],
+  "final_answer": "The three Wayfare architecture-related decisions, ordered chronologically:\n\n1. **d-002: Wayfare displays speak MQTT** — created 2026-02-25  \n   *Source: decisions/d-002.md* — \"created: 2026-02-25\"\n\n2. **d-003: Wayfare runs one single-board computer per display, no central server** — created 2026-03-04  \n   *Source: decisions/d-003.md* — \"created: 2026-03-04\"\n\n3. **d-008: Wayfare moves to an edge-gateway hub per station** — created 2026-04-08  \n   *Source: decisions/d-008.md* — \"created: 2026-04-08\"",
+  "started_at": "2026-10-27T22:02:48.616Z",
+  "finished_at": "2026-10-27T22:03:09.728Z"
+}

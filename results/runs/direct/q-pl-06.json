@@ -1,0 +1,214 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-06",
+  "category": "point-lookup",
+  "question_text": "Who signed off Wayfare's ship, and on what date?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Wayfare"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 10
+    },
+    {
+      "seq": 3,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 4,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "path": ".",
+        "pattern": "Wayfare"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 5
+    },
+    {
+      "seq": 5,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "projects"
+      },
+      "result_text": ".gitkeep\nbeacon-grid.md\ncinderboard.md\ncometline.md\ncurlew-crm.md\ndriftline.md\nfoxglove-archive.md\nkestrel-crm.md\nlarkspur-archive.md\nledgerline.md\nperchboard.md\nrill.md\nwayfare.md",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 7,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-008.md"
+      },
+      "result_text": "---\nid: m-008\ngenre: meetings\ntitle: \"Wayfare ship retro\"\ncreated: 2026-06-16\nprovenance: hand-authored\ntags: [wayfare, retro]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: sessions/s-008.md\n---\n\nRetro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\ntesting made the green-and-amber palette readable in full sun; MQTT retained\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\nduplicate renders during reconnects — next time, dedupe on the display, not\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\nclient ships.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 8,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "sessions/s-008.md"
+      },
+      "result_text": "---\nid: s-008\ngenre: sessions\ntitle: \"Wayfare palette contrast testing\"\ncreated: 2026-04-14\nprovenance: hand-authored\ntags: [wayfare, design, research]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: people/odessa-klein.md\n  - type: mentions\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: decisions/d-009.md\n---\n\nOdessa ran contrast testing at Ashport Central's sunlit platform with June:\nthe original blue-on-dark palette washed out by mid-morning, while\ngreen-on-dark and amber-on-dark stayed readable at distance. Readings went\ninto the WCAG contrast notes and straight into d-009's palette decision.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-009.md"
+      },
+      "result_text": "---\nid: d-009\ngenre: decisions\ntitle: \"Wayfare adopts a green-and-amber palette for outdoor readability\"\ncreated: 2026-04-15\nprovenance: hand-authored\ntags: [wayfare, design]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: sessions/s-008.md\n  - type: influenced_by\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: Ashport Central's platform is sunlit most of the day; the first\npalette washed out in daylight.\n\nOptions considered: the original blue-on-dark palette; green-and-amber after\nOdessa's contrast testing at the platform (s-008) and the WCAG contrast\nnotes.\n\nDecision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.\n\nConsequences: renderer theming is a config swap; June owns the design tokens.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 11,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "signoff",
+        "path": "."
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 5
+    },
+    {
+      "seq": 12,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "decisions"
+      },
+      "result_text": ".gitkeep\nd-001.md\nd-002.md\nd-003.md\nd-004.md\nd-005.md\nd-006.md\nd-007.md\nd-008.md\nd-009.md\nd-010.md\nd-011.md\nd-101.md\nd-102.md\nd-103.md\nd-104.md\nd-105.md\nd-106.md\nd-107.md\nd-108.md\nd-109.md\nd-110.md\nd-111.md\nd-112.md\nd-113.md\nd-114.md\nd-115.md\nd-116.md\nd-117.md\nd-118.md",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 13,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 14,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-011.md"
+      },
+      "result_text": "---\nid: d-011\ngenre: decisions\ntitle: \"Larkspur Archive ships an IIIF viewer, not a custom gallery\"\ncreated: 2026-05-07\nprovenance: hand-authored\ntags: [larkspur, viewer]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/iiif-overview.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather wants its digitized collections viewable and portable; a\ncustom gallery would lock scans to one interface.\n\nOptions considered: a custom-built gallery; an IIIF-based viewer over\nstandardized image and manifest APIs.\n\nDecision: Larkspur ships an IIIF-based viewer — deep zoom, page order, and\nmetadata from standardized manifests — so the scans stay portable across\nviewer implementations, informed by iiif-overview.\n\nConsequences: viewer work is integration rather than invention; prototyped\nin s-010 and shown at the Bellweather review (m-007).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 15,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "people/katrin-ilic.md"
+      },
+      "result_text": "---\nid: katrin-ilic\ngenre: people\ntitle: \"Katrin Ilic\"\ncreated: 2026-02-10\nupdated: 2026-06-16\nprovenance: hand-authored\ntags: [qa]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: meetings/m-008.md\nrole: \"QA lead\"\n---\n\nKatrin Ilic is Meridian Studio's QA lead — she owns release QA across the\nclient portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff\nchecklist from the Wayfare retro is now the studio default for client ships.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The answer is in the people file for Katrin Ilic.\n\n**Answer:** Katrin Ilic signed off Wayfare's ship on 2026-06-12.\n\n**Evidence:**\n- From `people/katrin-ilic.md`: \"Katrin Ilic is Meridian Studio's QA lead — she owns release QA across the client portfolio and **signed off Wayfare's ship on 2026-06-12**.\"\n- From `projects/wayfare.md`: \"Shipped 2026-06-12; ship retro in m-008.\" (confirms the ship date)",
+  "started_at": "2026-10-27T23:15:33.899Z",
+  "finished_at": "2026-10-27T23:16:09.166Z"
+}

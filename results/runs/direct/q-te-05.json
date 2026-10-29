@@ -1,0 +1,147 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-05",
+  "category": "temporal",
+  "question_text": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Kestrel"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 5
+    },
+    {
+      "seq": 2,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*Kestrel*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 7
+    },
+    {
+      "seq": 3,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 5
+    },
+    {
+      "seq": 4,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "path": ".",
+        "pattern": "Kestrel"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 4
+    },
+    {
+      "seq": 5,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "projects"
+      },
+      "result_text": ".gitkeep\nbeacon-grid.md\ncinderboard.md\ncometline.md\ncurlew-crm.md\ndriftline.md\nfoxglove-archive.md\nkestrel-crm.md\nlarkspur-archive.md\nledgerline.md\nperchboard.md\nrill.md\nwayfare.md",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "---\nid: kestrel-crm\ngenre: projects\ntitle: \"Kestrel CRM — cancelled internal client-tracker experiment\"\ncreated: 2026-03-31\nupdated: 2026-04-24\nstatus: cancelled\nprovenance: hand-authored\ntags: [internal, experiment]\nrelated:\n  - type: mentions\n    to: meetings/m-004.md\n  - type: mentions\n    to: meetings/m-006.md\n  - type: mentions\n    to: decisions/d-010.md\n  - type: mentions\n    to: sessions/s-009.md\n  - type: mentions\n    to: people/theo-kanda.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nKestrel was Theo Kanda's proposal for an internal CRM experiment — a\nlightweight tracker for studio client relationships — announced at the March\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\n\nCancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 7,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "---\nid: m-004\ngenre: meetings\ntitle: \"Studio all-hands, March\"\ncreated: 2026-03-30\nprovenance: hand-authored\ntags: [all-hands, planning]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nMarch all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\nlightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 8,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "---\nid: d-010\ngenre: decisions\ntitle: \"Cancel the Kestrel CRM experiment\"\ncreated: 2026-04-21\nprovenance: hand-authored\ntags: [kestrel, internal]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-006.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n---\n\nContext: Kestrel has run as a two-week ops trial on top of Lorna's existing\nload; Theo's prototype works, but no one can own the tool going forward.\n\nOptions considered: keep it as a side project; adopt it with an owner; cancel.\n\nDecision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009).\n\nConsequences: client tracking stays in Ledgerline notes; Theo returns fully\nto Wayfare and Beacon Grid.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "---\nid: s-009\ngenre: sessions\ntitle: \"Kestrel teardown and data export\"\ncreated: 2026-04-24\nprovenance: hand-authored\ntags: [kestrel, teardown]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nTheo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\ndown the prototype: contact pages, the ops trial entries, and the import\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "Based on the project record and related meeting, decision, and session notes, the Kestrel CRM experiment was bracketed by these dates:\n\n| Event | Date | Evidence |\n|-------|------|----------|\n| **Announcement** | 2026-03-30 | Announced at the March all-hands (m-004): \"Theo proposed the Kestrel CRM experiment\" [meetings/m-004.md] |\n| **Start** | 2026-03-31 | \"Kestrel started 2026-03-31, the day after the all-hands\" [projects/kestrel-crm.md] |\n| **Cancellation** | 2026-04-21 | Decision d-010: \"Cancel the Kestrel CRM experiment\" created 2026-04-21, agreed at the go/no-go (m-006) [decisions/d-010.md] |\n| **Teardown** | 2026-04-24 | Session s-009: \"Kestrel teardown and data export\" created 2026-04-24, \"Theo exported the Kestrel trial data… and tore down the prototype\" [sessions/s-009.md] |",
+  "started_at": "2026-10-27T23:24:55.079Z",
+  "finished_at": "2026-10-27T23:25:54.077Z"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "knowledge-access-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Comparative knowledge architectures: the same questions answered through RAG, wiki/MCP, knowledge-graph, and direct retrieval, scored on evidence quality.",
+  "scripts": {
+    "lab": "bun runner/lab.ts",
+    "build:index": "python3 build/build_index.py",
+    "build:expand": "bun run build/expand-corpus.ts",
+    "lint:corpus": "bun test probes/corpus-lint.test.ts",
+    "lint:gold": "bun test probes/gold-lint.test.ts",
+    "render:gold": "bun run build/render-gold.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4"
+  }
+}

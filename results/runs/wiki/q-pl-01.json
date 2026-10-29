@@ -1,0 +1,80 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-01",
+  "category": "point-lookup",
+  "question_text": "What datastore does the Ledgerline service use?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What datastore does the Ledgerline service use?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What datastore does the Ledgerline service use?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "projects"
+      },
+      "result_text": "{\"taxonomy\":{\"projects\":\"project records with status and an optional client org\"},\"genres\":[{\"genre\":\"projects\",\"count\":12,\"records\":[{\"id\":\"beacon-grid\",\"title\":\"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\"path\":\"projects/beacon-grid.md\"},{\"id\":\"cinderboard\",\"title\":\"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\"path\":\"projects/cinderboard.md\"},{\"id\":\"cometline\",\"title\":\"Cometline — exhibit kiosk for Millhaven Observatory\",\"path\":\"projects/cometline.md\"},{\"id\":\"curlew-crm\",\"title\":\"Curlew CRM — cancelled internal client-tracker experiment\",\"path\":\"projects/curlew-crm.md\"},{\"id\":\"driftline\",\"title\":\"Driftline — ferry-schedule print service for Bayline Transit\",\"path\":\"projects/driftline.md\"},{\"id\":\"foxglove-archive\",\"title\":\"Foxglove Archive — digitized collections platform for Harrowgate Press\",\"path\":\"projects/foxglove-archive.md\"},{\"id\":\"kestrel-crm\",\"title\":\"Kestrel CRM — cancelled internal client-tracker experiment\",\"path\":\"projects/kestrel-crm.md\"},{\"id\":\"larkspur-archive\",\"title\":\"Larkspur Archive — digitized collections platform for Bellweather Books\",\"path\":\"projects/larkspur-archive.md\"},{\"id\":\"ledgerline\",\"title\":\"Ledgerline — internal timesheet and invoicing service\",\"path\":\"projects/ledgerline.md\"},{\"id\":\"perchboard\",\"title\":\"Perchboard — realtime departure displays for Bayline Transit\",\"path\":\"projects/perchboard.md\"},{\"id\":\"rill\",\"title\":\"Rill — internal timesheet and invoicing service\",\"path\":\"projects/rill.md\"},{\"id\":\"wayfare\",\"title\":\"Wayfare — realtime departure displays for Halcyon Transit\",\"path\":\"projects/wayfare.md\"}]}]}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/ledgerline.md"
+      },
+      "result_text": "---\nid: ledgerline\ngenre: projects\ntitle: \"Ledgerline — internal timesheet and invoicing service\"\ncreated: 2026-02-14\nupdated: 2026-06-10\nstatus: active\nprovenance: hand-authored\ntags: [internal, billing]\nrelated:\n  - type: mentions\n    to: decisions/d-001.md\n  - type: mentions\n    to: decisions/d-005.md\n  - type: mentions\n    to: sessions/s-001.md\n  - type: mentions\n    to: sessions/s-005.md\n  - type: mentions\n    to: meetings/m-002.md\n  - type: mentions\n    to: meetings/m-003.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nLedgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it. SQLite-backed (decision d-001), with\nflat monthly billing per client adopted in March (decision d-005) after the\npricing discussion in m-003. Invoice PDF export landed in the March sprint\n(s-005).\n\nTeam: Dev Okonkwo (backend), Noor Haddad (interface), Lorna Vey (ops).\nBilling runs monthly; Lorna reconciles the runs against bank deposits.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-001.md"
+      },
+      "result_text": "---\nid: d-001\ngenre: decisions\ntitle: \"Ledgerline stores its data in SQLite\"\ncreated: 2026-02-18\nprovenance: hand-authored\ntags: [ledgerline, storage]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/sqlite-wal-notes.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: Ledgerline needs a datastore for timesheets, invoices, and client\nrecords. Studio write volume is small — one billing run a month plus daily\ntimesheets.\n\nOptions considered: Postgres (operational weight, a server to babysit)\nversus SQLite (single file, WAL mode, embedded).\n\nDecision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;\nPostgres stays out of scope until a second-writer need appears.\n\nConsequences: zero server operations; backups are file copies; the\nsingle-writer ceiling is accepted. Informed by the WAL-mode reading notes\n(sqlite-wal-notes).\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Ledgerline uses **SQLite** as its datastore.\n\n**Evidence:**\n\n1. **projects/ledgerline.md** — states: \"SQLite-backed (decision d-001)\"\n\n2. **decisions/d-001.md** — titled \"Ledgerline stores its data in SQLite\"; the decision explicitly says: \"use SQLite in WAL mode as the sole datastore for Ledgerline v1; Postgres stays out of scope until a second-writer need appears.\"",
+  "started_at": "2026-10-27T22:28:39.623Z",
+  "finished_at": "2026-10-27T22:28:45.837Z"
+}

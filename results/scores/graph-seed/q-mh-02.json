@@ -1,0 +1,50 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-02",
+  "category": "multi-hop",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-mh-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/mqtt-311-notes.md",
+        "passage": "Informed Wayfare's transport decision (d-002) and Beacon Grid's ingest\ndecision (d-007).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "decisions/d-007.md",
+        "passage": "Decision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          5,
+          18
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0.5
+  },
+  "retrieval": {
+    "steps": 22,
+    "error_steps": 0,
+    "result_bytes": 6620
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T16:31:32.381Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer identifies the same MQTT 3.1.1 reading notes and correctly names both influenced decisions: d-002 for Wayfare speaking MQTT and d-007 for Beacon Grid ingesting over MQTT instead of REST polling.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T16:31:41.102Z"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "knowledge-access-lab/model-pin@1",
+  "purpose": "the agent-under-test is the constant across all lanes — architecture is the variable, model is the constant (README: The demonstration)",
+  "primary": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "auth": "pi auth.json 'nvidia' credential (build.nvidia.com API key)",
+    "rationale": "public hosted id on the NVIDIA NIM catalog — anyone with an NVIDIA API key (free credits on signup) can reproduce the runs; no local stack required"
+  },
+  "judge": {
+    "provider": "nvidia",
+    "model": "minimaxai/minimax-m3.1-flash",
+    "endpoint": "https://integrate.api.nvidia.com/v1",
+    "auth": "pi auth.json 'nvidia' credential (build.nvidia.com API key)",
+    "rationale": "the blind judge for answer agreement (F4, ISC-19): a different model family from the nemotron agent-under-test, so no run is graded by its own family; flash tier keeps a full 180-run suite cheap; the same NVIDIA key reproduces it. Switched from deepseek-ai/deepseek-v4.1-flash mid-F4 (2026-10-27): that NIM endpoint stalled server-side — trivial one-token prompts hung for minutes while other models answered — so the judge moved to another same-tier catalog model; every score artifact names the model that actually judged it."
+  },
+  "local_alternative": {
+    "provider": "vmlx-local",
+    "model": "JANG/Ornith1.5-9B-3M",
+    "endpoint": "http://127.0.0.1:8000/v1",
+    "quantization": "JANG_3M (3.84 bits)",
+    "status_at_pin": "vMLX serve stopped — start it to use this pin locally",
+    "rationale": "fully local reproduction anchor: same Mac, zero cost, no network"
+  },
+  "note": "the runner pins the agent-under-test and the blind judge explicitly on every invocation; switching models is an explicit, recorded change to this file"
+}

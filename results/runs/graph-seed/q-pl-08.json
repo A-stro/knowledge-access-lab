@@ -1,0 +1,1071 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-08",
+  "category": "point-lookup",
+  "question_text": "How many contacts were exported when the Kestrel prototype was torn down?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How many contacts were exported when the Kestrel prototype was torn down?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How many contacts were exported when the Kestrel prototype was torn down?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel prototype"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel prototype\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-009"
+      },
+      "result_text": "{\n  \"query\": \"s-009\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel teardown"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "direction": "outgoing"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "/code/knowledge-access-lab/sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"/code/knowledge-access-lab/sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "contacts exported"
+      },
+      "result_text": "{\n  \"query\": \"contacts exported\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "data export"
+      },
+      "result_text": "{\n  \"query\": \"data export\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown"
+      },
+      "result_text": "{\n  \"query\": \"teardown\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel CRM"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel CRM\",\n  \"genre\": null,\n  \"found\": 3,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "/code/knowledge-access-lab/sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"/code/knowledge-access-lab/sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/kestrel-crm.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-009.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "contacts"
+      },
+      "result_text": "{\n  \"query\": \"contacts\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "exported"
+      },
+      "result_text": "{\n  \"query\": \"exported\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel teardown and data export"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown and data export\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "teardown"
+      },
+      "result_text": "{\n  \"query\": \"teardown\",\n  \"genre\": \"sessions\",\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "direction": "incoming"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"projects\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "meetings"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"meetings\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Curlew teardown"
+      },
+      "result_text": "{\n  \"query\": \"Curlew teardown\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "sessions/s-115.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-115.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/curlew-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-111.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/curlew-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown and data export"
+      },
+      "result_text": "{\n  \"query\": \"teardown and data export\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "Kestrel teardown"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "d-010"
+      },
+      "result_text": "{\n  \"query\": \"d-010\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 31,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "m-006"
+      },
+      "result_text": "{\n  \"query\": \"m-006\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 32,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"query\": \"projects/kestrel-crm.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 33,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "/code/knowledge-access-lab/sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"/code/knowledge-access-lab/sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-009",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"s-009\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "decisions/d-010.md"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-010.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "contacts",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"contacts\",\n  \"genre\": \"sessions\",\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 38,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "export",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"export\",\n  \"genre\": \"sessions\",\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-005.md\",\n      \"title\": \"Ledgerline invoice PDF export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-105.md\",\n      \"title\": \"Rill invoice CSV export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 39,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel prototype torn down"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel prototype torn down\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "torn down"
+      },
+      "result_text": "{\n  \"query\": \"torn down\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown",
+        "genre": "all"
+      },
+      "result_text": "Tool error (lookup): Error: invalid genre: \"all\" — expected one of decisions, meetings, orgs, people, projects, references, sessions",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009.md\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "outgoing",
+        "edge_types": [
+          "mentions"
+        ],
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 45,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-009"
+      },
+      "result_text": "{\n  \"query\": \"s-009\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 46,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "edge_types": [
+          "mentions"
+        ],
+        "direction": "incoming",
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "data"
+      },
+      "result_text": "{\n  \"query\": \"data\",\n  \"genre\": \"sessions\",\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "contacts exported Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"contacts exported Kestrel\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 49,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "edge_types": [
+          "mentions"
+        ],
+        "direction": "both"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 50,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "prototype"
+      },
+      "result_text": "{\n  \"query\": \"prototype\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 51,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown"
+      },
+      "result_text": "{\n  \"query\": \"teardown\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel teardown and data export"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown and data export\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 55,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel CRM cancelled internal client-tracker experiment"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel CRM cancelled internal client-tracker experiment\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 56,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "cancelled internal client-tracker experiment"
+      },
+      "result_text": "{\n  \"query\": \"cancelled internal client-tracker experiment\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/curlew-crm.md\",\n      \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 57,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "projects/kestrel-crm"
+      },
+      "result_text": "{\n  \"query\": \"projects/kestrel-crm\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 58,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "projects/kestrel-crm.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/kestrel-crm.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-009.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 59,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "meetings/m-006"
+      },
+      "result_text": "{\n  \"query\": \"meetings/m-006\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 60,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel CRM go/no-go"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel CRM go/no-go\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 61,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Cancel the Kestrel CRM experiment"
+      },
+      "result_text": "{\n  \"query\": \"Cancel the Kestrel CRM experiment\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 62,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "decisions/d-010.md",
+        "direction": "both"
+      },
+      "result_text": "{\n  \"path\": \"decisions/d-010.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"sessions/s-009.md\"\n    },\n    {\n      \"type\": \"influenced_by\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 63,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009.md\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"path\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 64,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "Kestrel teardown"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 65,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Curlew teardown and data export"
+      },
+      "result_text": "{\n  \"query\": \"Curlew teardown and data export\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 66,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "sessions/s-115.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-115.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/curlew-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-111.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/curlew-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 67,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "contacts"
+      },
+      "result_text": "{\n  \"query\": \"contacts\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 68,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "export"
+      },
+      "result_text": "{\n  \"query\": \"export\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-005.md\",\n      \"title\": \"Ledgerline invoice PDF export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-105.md\",\n      \"title\": \"Rill invoice CSV export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 69,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": null,\n  \"found\": 4,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 70,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "direction": "outgoing"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 71,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown data export"
+      },
+      "result_text": "{\n  \"query\": \"teardown data export\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 72,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "s-009",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"s-009\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"id\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 73,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel CRM"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel CRM\",\n  \"genre\": null,\n  \"found\": 3,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 74,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 75,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "sessions"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 76,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md",
+        "direction": "incoming"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 77,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "teardown"
+      },
+      "result_text": "{\n  \"query\": \"teardown\",\n  \"genre\": \"sessions\",\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 78,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel prototype torn"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel prototype torn\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 79,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "prototype"
+      },
+      "result_text": "{\n  \"query\": \"prototype\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-010.md\",\n      \"title\": \"Larkspur IIIF viewer prototype\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-122.md\",\n      \"title\": \"Foxglove static gallery prototype\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 80,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "teardown"
+      },
+      "result_text": "{\n  \"query\": \"teardown\",\n  \"genre\": null,\n  \"found\": 2,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 81,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "data export Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"data export Kestrel\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 82,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "sessions/s-009.md"
+      },
+      "result_text": "{\n  \"path\": \"sessions/s-009.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"incoming\",\n      \"path\": \"projects/kestrel-crm.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"projects/kestrel-crm.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 83,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "sessions/s-009"
+      },
+      "result_text": "{\n  \"query\": \"sessions/s-009\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 84,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel",
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"projects\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n      \"match\": \"id-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 85,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "decisions",
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"decisions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"title\": \"Cancel the Kestrel CRM experiment\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 86,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "meetings",
+        "query": "Kestrel"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel\",\n  \"genre\": \"meetings\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"title\": \"Kestrel CRM go/no-go\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 87,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "Kestrel teardown and data export"
+      },
+      "result_text": "{\n  \"query\": \"Kestrel teardown and data export\",\n  \"genre\": null,\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"title\": \"Kestrel teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 88,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "genre": "sessions",
+        "query": "Curlew"
+      },
+      "result_text": "{\n  \"query\": \"Curlew\",\n  \"genre\": \"sessions\",\n  \"found\": 1,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"title\": \"Curlew teardown and data export\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 89,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_seed_lane__neighbors",
+      "arguments": {
+        "path": "projects/kestrel-crm.md",
+        "direction": "outgoing"
+      },
+      "result_text": "{\n  \"path\": \"projects/kestrel-crm.md\",\n  \"neighbors\": [\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"decisions/d-010.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"meetings/m-006.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/lorna-vey.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"people/theo-kanda.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"direction\": \"outgoing\",\n      \"path\": \"sessions/s-009.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-28T16:25:54.785Z",
+  "finished_at": "2026-10-28T16:35:33.722Z"
+}

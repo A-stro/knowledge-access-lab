@@ -1,0 +1,147 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-sy-06",
+  "category": "synthesis",
+  "question_text": "Synthesize the Larkspur OCR story: original assumption, benchmark finding, and schedule consequence.",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Synthesize the Larkspur OCR story: original assumption, benchmark finding, and schedule consequence."
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Synthesize the Larkspur OCR story: original assumption, benchmark finding, and schedule consequence.",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Larkspur"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*Larkspur*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 8
+    },
+    {
+      "seq": 3,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 7
+    },
+    {
+      "seq": 4,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Larkspur",
+        "path": "."
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 5
+    },
+    {
+      "seq": 5,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "projects"
+      },
+      "result_text": ".gitkeep\nbeacon-grid.md\ncinderboard.md\ncometline.md\ncurlew-crm.md\ndriftline.md\nfoxglove-archive.md\nkestrel-crm.md\nlarkspur-archive.md\nledgerline.md\nperchboard.md\nrill.md\nwayfare.md",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "projects/larkspur-archive.md"
+      },
+      "result_text": "---\nid: larkspur-archive\ngenre: projects\ntitle: \"Larkspur Archive — digitized collections platform for Bellweather Books\"\ncreated: 2026-03-02\nupdated: 2026-06-15\nstatus: active\nclient: bellweather-books\nprovenance: hand-authored\ntags: [archive, ocr, iiif]\nrelated:\n  - type: mentions\n    to: orgs/bellweather-books.md\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: sessions/s-003.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: meetings/m-007.md\n---\n\nThe Larkspur Archive is a digitized-collection platform for Bellweather\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\npage scans running far below the assumed throughput, which sent Dev and\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\nprototyped in s-010.\n\nTeam: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\nis m-007.\n\nAs of mid-June the project is active: OCR continues at the corrected rate and\nthe IIIF viewer is in integration.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 7,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-004.md"
+      },
+      "result_text": "---\nid: d-004\ngenre: decisions\ntitle: \"Larkspur Archive routes OCR through a remote API\"\ncreated: 2026-03-12\nprovenance: hand-authored\ntags: [larkspur, ocr]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/ocr-comparison.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n---\n\nContext: Bellweather's archive scans number in the tens of thousands of\npages; OCR throughput sets the digitization schedule.\n\nOptions considered: local OCR on the studio's machines; a remote OCR API.\n\nDecision: route Larkspur OCR through a remote API — roughly four times local\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\nbenchmark notes.\n\nConsequences: the digitization schedule holds; throughput is assumed to scale\nlinearly with scan volume. Later contradicted by the latency benchmark in\ns-006, which found archival page scans far below the assumed rate.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 8,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "sessions/s-006.md"
+      },
+      "result_text": "---\nid: s-006\ngenre: sessions\ntitle: \"Larkspur OCR latency benchmark\"\ncreated: 2026-04-18\nprovenance: hand-authored\ntags: [larkspur, ocr, benchmark]\nrelated:\n  - type: contradicts\n    to: decisions/d-004.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: references/ocr-comparison.md\n---\n\nSilas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed.\nThe linearity assumption behind d-004 does not hold for archival material;\nbatching and preprocessing now set the schedule, not API capacity.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-007.md"
+      },
+      "result_text": "---\nid: m-007\ngenre: meetings\ntitle: \"Larkspur Archive mid-project review with Bellweather\"\ncreated: 2026-05-12\nprovenance: hand-authored\ntags: [larkspur, review]\nattendees: [mara-voss, june-park, silas-brandt, rowan-ellery]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: decisions/d-011.md\n---\n\nMid-project review at Bellweather with Rowan's team: the OCR latency findings\n(s-006) were walked through — archival scans run at roughly forty percent of\nthe assumed rate, so the digitization schedule stretches — and the IIIF\nviewer direction (d-011, prototyped in s-010) was welcomed. Rowan asked for a\nwallboard-style collection status page; June takes it.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "**Larkspur OCR Story Synthesis**\n\n**Original Assumption** (Decision d-004): The team chose a remote OCR API over local OCR, assuming it would deliver \"roughly four times local throughput at an absorbable per-page cost\" and that \"throughput is assumed to scale linearly with scan volume\" — this assumption underpinned the digitization schedule.\n\n**Benchmark Finding** (Session s-006): Silas benchmarked the pipeline on real archival scans (foxed paper, old typefaces) and found throughput ran at \"roughly forty percent of the assumed rate once image preprocessing landed.\" The linearity assumption failed for archival material: \"batching and preprocessing now set the schedule, not API capacity.\"\n\n**Schedule Consequence** (Meeting m-007): At the mid-project review with Bellweather, the team \"walked through\" the latency findings — \"archival scans run at roughly forty percent of the assumed rate, so the digitization schedule stretches.\"\n\n---\n\n**Evidence**\n\n- *projects/larkspur-archive.md*: \"The OCR pipeline uses a remote OCR API over local OCR (decision d-004, informed by the ocr-comparison notes); a later latency benchmark (s-006) showed archival page scans running far below the assumed throughput, which sent Dev and Silas back to preprocessing.\"\n- *decisions/d-004.md*: \"Decision: route Larkspur OCR through a remote API — roughly four times local throughput at an absorbable per-page cost... throughput is assumed to scale linearly with scan volume. Later contradicted by the latency benchmark in s-006...\"\n- *sessions/s-006.md*: \"Silas benchmarked the OCR pipeline against the ocr-comparison assumption: on real archival page scans — foxed paper, old typefaces — throughput ran at roughly forty percent of the assumed rate once image preprocessing landed. The linearity assumption behind d-004 does not hold for archival material; batching and preprocessing now set the schedule, not API capacity.\"\n- *meetings/m-007.md*: \"the OCR latency findings (s-006) were walked through — archival scans run at roughly forty percent of the assumed rate, so the digitization schedule stretches...\"",
+  "started_at": "2026-10-27T23:22:19.118Z",
+  "finished_at": "2026-10-27T23:22:54.243Z"
+}

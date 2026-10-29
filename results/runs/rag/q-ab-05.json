@@ -1,0 +1,123 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-05",
+  "category": "absence",
+  "question_text": "Does any record mention an insurance policy covering the display fleet or the studio?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does any record mention an insurance policy covering the display fleet or the studio?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does any record mention an insurance policy covering the display fleet or the studio?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "insurance policy covering the display fleet or the studio"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Does any record mention an insurance policy covering the display fleet or the studio?"
+      },
+      "result_text": "{\n  \"question\": \"q-ab-05\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 1,\n      \"score\": 0.528456,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge gateway per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"para\": 1,\n      \"score\": 0.523295,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge relay per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 0,\n      \"score\": 0.521387,\n      \"passage\": \"Context: platform displays need live vehicle positions with sub-second\\nperceived freshness; HTTP polling burns battery and lags.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 2,\n      \"score\": 0.521271,\n      \"passage\": \"Decision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\\nbroker; retained messages let a display recover its last-known state after\\nreconnect. Informed by mqtt-311-notes.\"\n    },\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"para\": 1,\n      \"score\": 0.520418,\n      \"passage\": \"Scope agreed at the kickoff (2025-09-29) with Dara Whitlock: sub-second\\nperceived freshness, outdoor readability, and a May ship date. The displays\\nspeak MQTT 5.0 (decision d-102) and went from per-display autonomy (d-103)\\nto an edge relay per station (d-109) after field maintenance pain. The\\npalette is high-contrast white-on-black (d-112), with fleet clocks kept\\nhonest by chrony (d-110).\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"para\": 0,\n      \"score\": 0.510263,\n      \"passage\": \"Theo and Dev spent the day in the field at Ashport Central and Ferry Quay:\\nafter the last firmware update, the three pilot stations drifted to three\\nfirmware versions, and a board that lost power would not recover its clock.\\nReflashing takes roughly ninety minutes per display carried to the platform.\\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 1,\n      \"score\": 0.508388,\n      \"passage\": \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\\nperceived freshness, outdoor readability, and a June ship date. The displays\\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\\nedge-gateway hub (d-008) after field maintenance pain. The palette is\\ngreen-and-amber for outdoor readability (d-009).\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"para\": 0,\n      \"score\": 0.507425,\n      \"passage\": \"Architecture review on the field findings (s-004): three firmware versions\\nacross three stations, ninety-minute reflashes per display. Theo proposed the\\nedge-gateway hub — flash once per station, displays pull from the gateway —\\nover keeping per-display autonomy with a better flashing ritual. The room\\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.502399,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"para\": 0,\n      \"score\": 0.502387,\n      \"passage\": \"Provisioning a fleet of small boards two ways: point-wise flashing scales\\nlinearly with board count and fails quietly; a gateway-hub topology flashes\\nonce per site and funnels telemetry home. The hub costs one more box per\\nstation but collapses the maintenance surface.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "insurance policy display fleet studio coverage"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "question_id": "q-ab-05"
+      },
+      "result_text": "{\n  \"question\": \"q-ab-05\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 1,\n      \"score\": 0.528456,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge gateway per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"para\": 1,\n      \"score\": 0.523295,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge relay per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 0,\n      \"score\": 0.521387,\n      \"passage\": \"Context: platform displays need live vehicle positions with sub-second\\nperceived freshness; HTTP polling burns battery and lags.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 2,\n      \"score\": 0.521271,\n      \"passage\": \"Decision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\\nbroker; retained messages let a display recover its last-known state after\\nreconnect. Informed by mqtt-311-notes.\"\n    },\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"para\": 1,\n      \"score\": 0.520418,\n      \"passage\": \"Scope agreed at the kickoff (2025-09-29) with Dara Whitlock: sub-second\\nperceived freshness, outdoor readability, and a May ship date. The displays\\nspeak MQTT 5.0 (decision d-102) and went from per-display autonomy (d-103)\\nto an edge relay per station (d-109) after field maintenance pain. The\\npalette is high-contrast white-on-black (d-112), with fleet clocks kept\\nhonest by chrony (d-110).\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"para\": 0,\n      \"score\": 0.510263,\n      \"passage\": \"Theo and Dev spent the day in the field at Ashport Central and Ferry Quay:\\nafter the last firmware update, the three pilot stations drifted to three\\nfirmware versions, and a board that lost power would not recover its clock.\\nReflashing takes roughly ninety minutes per display carried to the platform.\\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 1,\n      \"score\": 0.508388,\n      \"passage\": \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\\nperceived freshness, outdoor readability, and a June ship date. The displays\\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\\nedge-gateway hub (d-008) after field maintenance pain. The palette is\\ngreen-and-amber for outdoor readability (d-009).\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"para\": 0,\n      \"score\": 0.507425,\n      \"passage\": \"Architecture review on the field findings (s-004): three firmware versions\\nacross three stations, ninety-minute reflashes per display. Theo proposed the\\nedge-gateway hub — flash once per station, displays pull from the gateway —\\nover keeping per-display autonomy with a better flashing ritual. The room\\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.502399,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"para\": 0,\n      \"score\": 0.502387,\n      \"passage\": \"Provisioning a fleet of small boards two ways: point-wise flashing scales\\nlinearly with board count and fails quietly; a gateway-hub topology flashes\\nonce per site and funnels telemetry home. The hub costs one more box per\\nstation but collapses the maintenance surface.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 5,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "insurance"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Does any record mention insurance"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Does any record mention an insurance policy covering the display fleet or the studio?"
+      },
+      "result_text": "{\n  \"question\": \"q-ab-05\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 1,\n      \"score\": 0.528456,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge gateway per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-109.md\",\n      \"para\": 1,\n      \"score\": 0.523295,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge relay per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 0,\n      \"score\": 0.521387,\n      \"passage\": \"Context: platform displays need live vehicle positions with sub-second\\nperceived freshness; HTTP polling burns battery and lags.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 2,\n      \"score\": 0.521271,\n      \"passage\": \"Decision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\\nbroker; retained messages let a display recover its last-known state after\\nreconnect. Informed by mqtt-311-notes.\"\n    },\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"para\": 1,\n      \"score\": 0.520418,\n      \"passage\": \"Scope agreed at the kickoff (2025-09-29) with Dara Whitlock: sub-second\\nperceived freshness, outdoor readability, and a May ship date. The displays\\nspeak MQTT 5.0 (decision d-102) and went from per-display autonomy (d-103)\\nto an edge relay per station (d-109) after field maintenance pain. The\\npalette is high-contrast white-on-black (d-112), with fleet clocks kept\\nhonest by chrony (d-110).\"\n    },\n    {\n      \"path\": \"sessions/s-004.md\",\n      \"para\": 0,\n      \"score\": 0.510263,\n      \"passage\": \"Theo and Dev spent the day in the field at Ashport Central and Ferry Quay:\\nafter the last firmware update, the three pilot stations drifted to three\\nfirmware versions, and a board that lost power would not recover its clock.\\nReflashing takes roughly ninety minutes per display carried to the platform.\\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 1,\n      \"score\": 0.508388,\n      \"passage\": \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\\nperceived freshness, outdoor readability, and a June ship date. The displays\\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\\nedge-gateway hub (d-008) after field maintenance pain. The palette is\\ngreen-and-amber for outdoor readability (d-009).\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"para\": 0,\n      \"score\": 0.507425,\n      \"passage\": \"Architecture review on the field findings (s-004): three firmware versions\\nacross three stations, ninety-minute reflashes per display. Theo proposed the\\nedge-gateway hub — flash once per station, displays pull from the gateway —\\nover keeping per-display autonomy with a better flashing ritual. The room\\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.502399,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"para\": 0,\n      \"score\": 0.502387,\n      \"passage\": \"Provisioning a fleet of small boards two ways: point-wise flashing scales\\nlinearly with board count and fails quietly; a gateway-hub topology flashes\\nonce per site and funnels telemetry home. The hub costs one more box per\\nstation but collapses the maintenance surface.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T21:49:47.287Z",
+  "finished_at": "2026-10-27T21:50:10.115Z"
+}

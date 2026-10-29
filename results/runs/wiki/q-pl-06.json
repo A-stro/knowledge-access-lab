@@ -1,0 +1,201 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-06",
+  "category": "point-lookup",
+  "question_text": "Who signed off Wayfare's ship, and on what date?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 5,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-009.md"
+      },
+      "result_text": "---\nid: d-009\ngenre: decisions\ntitle: \"Wayfare adopts a green-and-amber palette for outdoor readability\"\ncreated: 2026-04-15\nprovenance: hand-authored\ntags: [wayfare, design]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: sessions/s-008.md\n  - type: influenced_by\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: Ashport Central's platform is sunlit most of the day; the first\npalette washed out in daylight.\n\nOptions considered: the original blue-on-dark palette; green-and-amber after\nOdessa's contrast testing at the platform (s-008) and the WCAG contrast\nnotes.\n\nDecision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.\n\nConsequences: renderer theming is a config swap; June owns the design tokens.\n",
+      "is_error": false,
+      "duration_ms": 4
+    },
+    {
+      "seq": 6,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"projects\": \"project records with status and an optional client org\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"projects\",\n      \"count\": 12,\n      \"records\": [\n        {\n          \"id\": \"beacon-grid\",\n          \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n          \"path\": \"projects/beacon-grid.md\"\n        },\n        {\n          \"id\": \"cinderboard\",\n          \"title\": \"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\n          \"path\": \"projects/cinderboard.md\"\n        },\n        {\n          \"id\": \"cometline\",\n          \"title\": \"Cometline — exhibit kiosk for Millhaven Observatory\",\n          \"path\": \"projects/cometline.md\"\n        },\n        {\n          \"id\": \"curlew-crm\",\n          \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/curlew-crm.md\"\n        },\n        {\n          \"id\": \"driftline\",\n          \"title\": \"Driftline — ferry-schedule print service for Bayline Transit\",\n          \"path\": \"projects/driftline.md\"\n        },\n        {\n          \"id\": \"foxglove-archive\",\n          \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n          \"path\": \"projects/foxglove-archive.md\"\n        },\n        {\n          \"id\": \"kestrel-crm\",\n          \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/kestrel-crm.md\"\n        },\n        {\n          \"id\": \"larkspur-archive\",\n          \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n          \"path\": \"projects/larkspur-archive.md\"\n        },\n        {\n          \"id\": \"ledgerline\",\n          \"title\": \"Ledgerline — internal timesheet and invoicing service\",\n          \"path\": \"projects/ledgerline.md\"\n        },\n        {\n          \"id\": \"perchboard\",\n          \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n          \"path\": \"projects/perchboard.md\"\n        },\n        {\n          \"id\": \"rill\",\n          \"title\": \"Rill — internal timesheet and invoicing service\",\n          \"path\": \"projects/rill.md\"\n        },\n        {\n          \"id\": \"wayfare\",\n          \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n          \"path\": \"projects/wayfare.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-008.md"
+      },
+      "result_text": "---\nid: m-008\ngenre: meetings\ntitle: \"Wayfare ship retro\"\ncreated: 2026-06-16\nprovenance: hand-authored\ntags: [wayfare, retro]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: sessions/s-008.md\n---\n\nRetro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\ntesting made the green-and-amber palette readable in full sun; MQTT retained\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\nduplicate renders during reconnects — next time, dedupe on the display, not\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\nclient ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-008.md"
+      },
+      "result_text": "---\nid: s-008\ngenre: sessions\ntitle: \"Wayfare palette contrast testing\"\ncreated: 2026-04-14\nprovenance: hand-authored\ntags: [wayfare, design, research]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: people/odessa-klein.md\n  - type: mentions\n    to: references/wcag-contrast-notes.md\n  - type: mentions\n    to: decisions/d-009.md\n---\n\nOdessa ran contrast testing at Ashport Central's sunlit platform with June:\nthe original blue-on-dark palette washed out by mid-morning, while\ngreen-on-dark and amber-on-dark stayed readable at distance. Readings went\ninto the WCAG contrast notes and straight into d-009's palette decision.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "meetings"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"meetings\": \"meeting notes with attendees and cross-references\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"meetings\",\n      \"count\": 28,\n      \"records\": [\n        {\n          \"id\": \"m-001\",\n          \"title\": \"Wayfare kickoff with Halcyon Transit\",\n          \"path\": \"meetings/m-001.md\"\n        },\n        {\n          \"id\": \"m-002\",\n          \"title\": \"Ledgerline planning sync\",\n          \"path\": \"meetings/m-002.md\"\n        },\n        {\n          \"id\": \"m-003\",\n          \"title\": \"Ledgerline pricing discussion\",\n          \"path\": \"meetings/m-003.md\"\n        },\n        {\n          \"id\": \"m-004\",\n          \"title\": \"Studio all-hands, March\",\n          \"path\": \"meetings/m-004.md\"\n        },\n        {\n          \"id\": \"m-005\",\n          \"title\": \"Wayfare architecture review\",\n          \"path\": \"meetings/m-005.md\"\n        },\n        {\n          \"id\": \"m-006\",\n          \"title\": \"Kestrel CRM go/no-go\",\n          \"path\": \"meetings/m-006.md\"\n        },\n        {\n          \"id\": \"m-007\",\n          \"title\": \"Larkspur Archive mid-project review with Bellweather\",\n          \"path\": \"meetings/m-007.md\"\n        },\n        {\n          \"id\": \"m-008\",\n          \"title\": \"Wayfare ship retro\",\n          \"path\": \"meetings/m-008.md\"\n        },\n        {\n          \"id\": \"m-101\",\n          \"title\": \"Perchboard kickoff with Bayline Transit\",\n          \"path\": \"meetings/m-101.md\"\n        },\n        {\n          \"id\": \"m-102\",\n          \"title\": \"Rill planning sync\",\n          \"path\": \"meetings/m-102.md\"\n        },\n        {\n          \"id\": \"m-103\",\n          \"title\": \"Foxglove kickoff with Harrowgate Press\",\n          \"path\": \"meetings/m-103.md\"\n        },\n        {\n          \"id\": \"m-104\",\n          \"title\": \"Rill billing model discussion\",\n          \"path\": \"meetings/m-104.md\"\n        },\n        {\n          \"id\": \"m-105\",\n          \"title\": \"Copperleaf all-hands, February\",\n          \"path\": \"meetings/m-105.md\"\n        },\n        {\n          \"id\": \"m-106\",\n          \"title\": \"Cinderboard engagement kickoff with Ridgeway Power\",\n          \"path\": \"meetings/m-106.md\"\n        },\n        {\n          \"id\": \"m-107\",\n          \"title\": \"Perchboard architecture review\",\n          \"path\": \"meetings/m-107.md\"\n        },\n        {\n          \"id\": \"m-108\",\n          \"title\": \"Copperleaf all-hands, March\",\n          \"path\": \"meetings/m-108.md\"\n        },\n        {\n          \"id\": \"m-109\",\n          \"title\": \"Curlew go/no-go\",\n          \"path\": \"meetings/m-109.md\"\n        },\n        {\n          \"id\": \"m-110\",\n          \"title\": \"Cinderboard wallboard walkthrough\",\n          \"path\": \"meetings/m-110.md\"\n        },\n        {\n          \"id\": \"m-111\",\n          \"title\": \"Studio tooling review\",\n          \"path\": \"meetings/m-111.md\"\n        },\n        {\n          \"id\": \"m-112\",\n          \"title\": \"Foxglove mid-project review with Harrowgate\",\n          \"path\": \"meetings/m-112.md\"\n        },\n        {\n          \"id\": \"m-113\",\n          \"title\": \"Security and access review\",\n          \"path\": \"meetings/m-113.md\"\n        },\n        {\n          \"id\": \"m-114\",\n          \"title\": \"Foxglove annex planning with Harrowgate\",\n          \"path\": \"meetings/m-114.md\"\n        },\n        {\n          \"id\": \"m-115\",\n          \"title\": \"Cometline opening review with Millhaven Observatory\",\n          \"path\": \"meetings/m-115.md\"\n        },\n        {\n          \"id\": \"m-116\",\n          \"title\": \"Perchboard ship retro\",\n          \"path\": \"meetings/m-116.md\"\n        },\n        {\n          \"id\": \"m-117\",\n          \"title\": \"Perchboard maintenance window review with Bayline\",\n          \"path\": \"meetings/m-117.md\"\n        },\n        {\n          \"id\": \"m-118\",\n          \"title\": \"Copperleaf all-hands, June\",\n          \"path\": \"meetings/m-118.md\"\n        },\n        {\n          \"id\": \"m-119\",\n          \"title\": \"Cinderboard restart planning with Ridgeway\",\n          \"path\": \"meetings/m-119.md\"\n        },\n        {\n          \"id\": \"m-120\",\n          \"title\": \"Summer planning, half-day\",\n          \"path\": \"meetings/m-120.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-001.md"
+      },
+      "result_text": "---\nid: m-001\ngenre: meetings\ntitle: \"Wayfare kickoff with Halcyon Transit\"\ncreated: 2026-02-20\nprovenance: hand-authored\ntags: [wayfare, kickoff]\nattendees: [mara-voss, dev-okonkwo, june-park, petra-lindqvist]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n---\n\nKickoff for the Wayfare departure-display program at Halcyon's operations\noffice. Scope agreed: platform displays for three pilot stations — Ashport\nCentral, Ferry Quay, Millbrook Bridge — live vehicle positions, sub-second\nperceived freshness, and outdoor readability. Petra sponsors; the ship target\nis June. Transport and architecture decisions followed within days (d-002,\nd-003).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-005.md"
+      },
+      "result_text": "---\nid: m-005\ngenre: meetings\ntitle: \"Wayfare architecture review\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nattendees: [dev-okonkwo, theo-kanda, june-park, silas-brandt, mara-voss, bram-oyelaran]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-004.md\n  - type: mentions\n    to: decisions/d-008.md\n---\n\nArchitecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display. Theo proposed the\nedge-gateway hub — flash once per station, displays pull from the gateway —\nover keeping per-display autonomy with a better flashing ritual. The room\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "links",
+      "harness_tool": "mcp__wiki_lane__links",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "{\n  \"path\": \"projects/wayfare.md\",\n  \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n  \"outgoing\": [\n    {\n      \"type\": \"mentions\",\n      \"to\": \"orgs/halcyon-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"meetings/m-001.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"decisions/d-002.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"decisions/d-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"decisions/d-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"decisions/d-009.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"to\": \"meetings/m-008.md\"\n    }\n  ],\n  \"incoming\": [\n    {\n      \"type\": \"mentions\",\n      \"from\": \"decisions/d-002.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"decisions/d-003.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"decisions/d-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"decisions/d-009.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"meetings/m-001.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"meetings/m-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"meetings/m-005.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"meetings/m-008.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"orgs/halcyon-transit.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"orgs/meridian-studio.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/bram-oyelaran.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/dev-okonkwo.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/june-park.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/katrin-ilic.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/noor-haddad.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/odessa-klein.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"people/petra-lindqvist.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"sessions/s-002.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"sessions/s-004.md\"\n    },\n    {\n      \"type\": \"mentions\",\n      \"from\": \"sessions/s-008.md\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "people/katrin-ilic.md"
+      },
+      "result_text": "---\nid: katrin-ilic\ngenre: people\ntitle: \"Katrin Ilic\"\ncreated: 2026-02-10\nupdated: 2026-06-16\nprovenance: hand-authored\ntags: [qa]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: meetings/m-008.md\nrole: \"QA lead\"\n---\n\nKatrin Ilic is Meridian Studio's QA lead — she owns release QA across the\nclient portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff\nchecklist from the Wayfare retro is now the studio default for client ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:** Katrin Ilic (QA lead) signed off Wayfare's ship on **2026-06-12**.\n\n**Evidence:**\n- From `people/katrin-ilic.md`: \"Katrin Ilic is Meridian Studio's QA lead — she owns release QA across the client portfolio and **signed off Wayfare's ship on 2026-06-12**.\"\n- From `projects/wayfare.md`: \"**Shipped 2026-06-12**; ship retro in m-008.\"\n- From `meetings/m-008.md` (the ship retro): \"**Katrin's QA signoff checklist is adopted as the studio default for client ships.**\"",
+  "started_at": "2026-10-27T21:54:01.600Z",
+  "finished_at": "2026-10-27T21:55:24.756Z"
+}

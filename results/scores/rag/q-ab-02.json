@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-02",
+  "category": "absence",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-ab-02.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 3,
+    "error_steps": 1,
+    "result_bytes": 6159
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-27T21:49:09.413Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent explicitly states that no evidence was found and adds no claims about drone deployments or evaluations.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:49:11.167Z"
+  }
+}

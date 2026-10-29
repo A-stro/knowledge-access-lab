@@ -1,0 +1,124 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-04",
+  "category": "absence",
+  "question_text": "Is any patent filing mentioned anywhere in the corpus?",
+  "lane": "graph-seed",
+  "lane_tools": [
+    "lookup",
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_seed_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Is any patent filing mentioned anywhere in the corpus?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Is any patent filing mentioned anywhere in the corpus?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "patent"
+      },
+      "result_text": "{\n  \"query\": \"patent\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "patent filing"
+      },
+      "result_text": "{\n  \"query\": \"patent filing\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 3,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "filing"
+      },
+      "result_text": "{\n  \"query\": \"filing\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "intellectual property"
+      },
+      "result_text": "{\n  \"query\": \"intellectual property\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "IP"
+      },
+      "result_text": "{\n  \"query\": \"IP\",\n  \"genre\": null,\n  \"found\": 10,\n  \"capped\": false,\n  \"matches\": [\n    {\n      \"path\": \"orgs/juniper-field-services.md\",\n      \"title\": \"Juniper Field Services\",\n      \"match\": \"id-partial\"\n    },\n    {\n      \"path\": \"decisions/d-011.md\",\n      \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-108.md\",\n      \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"decisions/d-113.md\",\n      \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"title\": \"Wayfare ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"meetings/m-116.md\",\n      \"title\": \"Perchboard ship retro\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-003.md\",\n      \"title\": \"Larkspur OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-104.md\",\n      \"title\": \"Foxglove OCR pipeline wiring\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-138.md\",\n      \"title\": \"Perchboard ship prep and QA sweep\",\n      \"match\": \"title-partial\"\n    },\n    {\n      \"path\": \"sessions/s-140.md\",\n      \"title\": \"Driftline ship checklist\",\n      \"match\": \"title-partial\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "trademark"
+      },
+      "result_text": "{\n  \"query\": \"trademark\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 7,
+      "tool": "lookup",
+      "harness_tool": "mcp__graph_seed_lane__lookup",
+      "arguments": {
+        "query": "copyright"
+      },
+      "result_text": "{\n  \"query\": \"copyright\",\n  \"genre\": null,\n  \"found\": 0,\n  \"capped\": false,\n  \"matches\": []\n}",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-28T18:21:48.279Z",
+  "finished_at": "2026-10-28T18:22:14.270Z"
+}

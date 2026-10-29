@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-01",
+  "category": "multi-hop",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-mh-01.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-008.md",
+        "passage": "  - type: supersedes\n    to: decisions/d-003.md",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "This supersedes d-003.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3
+        ]
+      },
+      {
+        "record": "sessions/s-004.md",
+        "passage": "Reflashing takes roughly ninety minutes per display carried to the platform.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          4
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          4
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 5,
+    "error_steps": 0,
+    "result_bytes": 8121
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:55:29.856Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent identifies d-008 as superseding d-003 and accurately cites all three s-004 findings: three firmware versions across three stations, failure to recover the clock after power loss, and roughly ninety minutes per display to carry and reflash to the platform.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:55:37.075Z"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-07",
+  "category": "point-lookup",
+  "question_text": "What source is recorded for the IIIF overview reading notes?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "IIIF.*overview.*reading|reading.*notes.*IIIF"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "IIIF"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 4
+    },
+    {
+      "seq": 3,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*IIIF*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 8
+    },
+    {
+      "seq": 4,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 5,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "references"
+      },
+      "result_text": ".gitkeep\narchival-handling-notes.md\narchive-metadata-notes.md\nbackup-rotation-notes.md\nchrony-notes.md\nclickhouse-notes.md\ndouble-entry-notes.md\nduckdb-notes.md\nembedded-single-board-notes.md\nenclosure-install-notes.md\nferry-timetable-notes.md\nfilestore-naming-notes.md\nfleet-provisioning-notes.md\ngpu-cluster-notes.md\nhocr-notes.md\niiif-overview.md\nkiosk-browser-notes.md\nlatency-budget-notes.md\nmqtt-311-notes.md\nmqtt-5-notes.md\nmqtt-broker-ops-notes.md\nocr-comparison.md\nocr-job-queue-notes.md\npostgres-operations-notes.md\nrate-card-notes.md\nrunbook-notes.md\nscan-resolution-notes.md\nschema-migration-notes.md\nsignage-legibility-notes.md\nsignage-panel-notes.md\nsqlite-wal-notes.md\nstatic-site-gallery-notes.md\nthermal-printer-notes.md\nvisitor-dwell-notes.md\nwcag-contrast-notes.md",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "references/iiif-overview.md"
+      },
+      "result_text": "---\nid: iiif-overview\ngenre: references\ntitle: \"IIIF for archival viewers — reading notes\"\ncreated: 2026-05-04\nprovenance: hand-authored\ntags: [iiif, reading-notes]\nsource: \"reading notes, IIIF Image and Presentation APIs\"\nrelated:\n  - type: relates_to\n    to: references/archive-metadata-notes.md\n---\n\nIIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery.\n\nInformed d-011.\n",
+      "is_error": false,
+      "duration_ms": 3
+    }
+  ],
+  "final_answer": "The source recorded for the IIIF overview reading notes is **\"reading notes, IIIF Image and Presentation APIs\"**.\n\n**Evidence:**\n- From `references/iiif-overview.md`, the frontmatter contains:\n  ```\n  source: \"reading notes, IIIF Image and Presentation APIs\"\n  ```",
+  "started_at": "2026-10-27T23:16:03.941Z",
+  "finished_at": "2026-10-27T23:16:14.883Z"
+}

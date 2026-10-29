@@ -1,0 +1,47 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-03",
+  "category": "synthesis",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-sy-03.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/ledgerline.md",
+        "passage": "Ledgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 16,
+    "error_steps": 16,
+    "result_bytes": 912
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:02:46.180Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference answer provides evidence about both tools—Ledgerline remains active and handles timesheets, invoicing, and monthly billing, while Kestrel was cancelled on 2026-04-21—but the agent incorrectly claims no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:02:49.497Z"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-02",
+  "category": "absence",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-ab-02.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 62,
+    "error_steps": 0,
+    "result_bytes": 39420
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-28T18:21:46.483Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent states that no evidence was found, matching the reference answer without adding unsupported claims.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T18:21:48.138Z"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-03",
+  "category": "temporal",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-te-03.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Context: after six weeks in the field, per-display autonomy shows its cost —",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          5,
+          7,
+          18
+        ]
+      },
+      {
+        "record": "decisions/d-003.md",
+        "passage": "created: 2026-03-04",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          4,
+          6,
+          18
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "created: 2026-04-08",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          5,
+          7,
+          18
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 22,
+    "error_steps": 0,
+    "result_bytes": 14151
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:52:19.477Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference explicitly states that d-008 notes six weeks in the field before the edge-gateway reversal, supported by the dates of d-003 and d-008. The agent incorrectly concludes that no evidence was found despite the available record titles and relationships identifying the relevant decisions.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:52:27.977Z"
+  }
+}

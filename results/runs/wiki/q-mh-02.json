@@ -1,0 +1,102 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-02",
+  "category": "multi-hop",
+  "question_text": "Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "references"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"references\": \"reading notes and ops notes that informed decisions\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"references\",\n      \"count\": 34,\n      \"records\": [\n        {\n          \"id\": \"archival-handling-notes\",\n          \"title\": \"Handling a century of print — ops note\",\n          \"path\": \"references/archival-handling-notes.md\"\n        },\n        {\n          \"id\": \"archive-metadata-notes\",\n          \"title\": \"Dublin Core for archive metadata — reading notes\",\n          \"path\": \"references/archive-metadata-notes.md\"\n        },\n        {\n          \"id\": \"backup-rotation-notes\",\n          \"title\": \"Backup rotation — ops note\",\n          \"path\": \"references/backup-rotation-notes.md\"\n        },\n        {\n          \"id\": \"chrony-notes\",\n          \"title\": \"chrony for field-device clocks — reading notes\",\n          \"path\": \"references/chrony-notes.md\"\n        },\n        {\n          \"id\": \"clickhouse-notes\",\n          \"title\": \"ClickHouse for embedded analytics — reading notes\",\n          \"path\": \"references/clickhouse-notes.md\"\n        },\n        {\n          \"id\": \"double-entry-notes\",\n          \"title\": \"Double-entry bookkeeping — reading notes\",\n          \"path\": \"references/double-entry-notes.md\"\n        },\n        {\n          \"id\": \"duckdb-notes\",\n          \"title\": \"DuckDB for embedded analytics — reading notes\",\n          \"path\": \"references/duckdb-notes.md\"\n        },\n        {\n          \"id\": \"embedded-single-board-notes\",\n          \"title\": \"Single-board computers for signage — field research summary\",\n          \"path\": \"references/embedded-single-board-notes.md\"\n        },\n        {\n          \"id\": \"enclosure-install-notes\",\n          \"title\": \"Enclosure installs on piers — ops note\",\n          \"path\": \"references/enclosure-install-notes.md\"\n        },\n        {\n          \"id\": \"ferry-timetable-notes\",\n          \"title\": \"Timetable feeds — reading notes\",\n          \"path\": \"references/ferry-timetable-notes.md\"\n        },\n        {\n          \"id\": \"filestore-naming-notes\",\n          \"title\": \"Filestore naming conventions — ops note\",\n          \"path\": \"references/filestore-naming-notes.md\"\n        },\n        {\n          \"id\": \"fleet-provisioning-notes\",\n          \"title\": \"Provisioning device fleets — ops note\",\n          \"path\": \"references/fleet-provisioning-notes.md\"\n        },\n        {\n          \"id\": \"gpu-cluster-notes\",\n          \"title\": \"The two-GPU bench — bench note\",\n          \"path\": \"references/gpu-cluster-notes.md\"\n        },\n        {\n          \"id\": \"hocr-notes\",\n          \"title\": \"hOCR for OCR output — reading notes\",\n          \"path\": \"references/hocr-notes.md\"\n        },\n        {\n          \"id\": \"iiif-overview\",\n          \"title\": \"IIIF for archival viewers — reading notes\",\n          \"path\": \"references/iiif-overview.md\"\n        },\n        {\n          \"id\": \"kiosk-browser-notes\",\n          \"title\": \"Kiosk-mode browsers — reading notes\",\n          \"path\": \"references/kiosk-browser-notes.md\"\n        },\n        {\n          \"id\": \"latency-budget-notes\",\n          \"title\": \"Display latency budget — engineering note\",\n          \"path\": \"references/latency-budget-notes.md\"\n        },\n        {\n          \"id\": \"mqtt-311-notes\",\n          \"title\": \"MQTT 3.1.1 — reading notes\",\n          \"path\": \"references/mqtt-311-notes.md\"\n        },\n        {\n          \"id\": \"mqtt-5-notes\",\n          \"title\": \"MQTT 5.0 — reading notes\",\n          \"path\": \"references/mqtt-5-notes.md\"\n        },\n        {\n          \"id\": \"mqtt-broker-ops-notes\",\n          \"title\": \"Broker operations — ops note\",\n          \"path\": \"references/mqtt-broker-ops-notes.md\"\n        },\n        {\n          \"id\": \"ocr-comparison\",\n          \"title\": \"Local OCR vs remote OCR API — benchmark notes\",\n          \"path\": \"references/ocr-comparison.md\"\n        },\n        {\n          \"id\": \"ocr-job-queue-notes\",\n          \"title\": \"Job queues for OCR batches — reading notes\",\n          \"path\": \"references/ocr-job-queue-notes.md\"\n        },\n        {\n          \"id\": \"postgres-operations-notes\",\n          \"title\": \"PostgreSQL operations — reading notes\",\n          \"path\": \"references/postgres-operations-notes.md\"\n        },\n        {\n          \"id\": \"rate-card-notes\",\n          \"title\": \"Rate-card design — reading notes\",\n          \"path\": \"references/rate-card-notes.md\"\n        },\n        {\n          \"id\": \"runbook-notes\",\n          \"title\": \"Runbooks that survive — ops note\",\n          \"path\": \"references/runbook-notes.md\"\n        },\n        {\n          \"id\": \"scan-resolution-notes\",\n          \"title\": \"Scan resolution for archives — reading notes\",\n          \"path\": \"references/scan-resolution-notes.md\"\n        },\n        {\n          \"id\": \"schema-migration-notes\",\n          \"title\": \"Database migrations — reading notes\",\n          \"path\": \"references/schema-migration-notes.md\"\n        },\n        {\n          \"id\": \"signage-legibility-notes\",\n          \"title\": \"Outdoor legibility for signage — reading notes\",\n          \"path\": \"references/signage-legibility-notes.md\"\n        },\n        {\n          \"id\": \"signage-panel-notes\",\n          \"title\": \"Signage panels for platform displays — field research summary\",\n          \"path\": \"references/signage-panel-notes.md\"\n        },\n        {\n          \"id\": \"sqlite-wal-notes\",\n          \"title\": \"SQLite WAL mode — reading notes\",\n          \"path\": \"references/sqlite-wal-notes.md\"\n        },\n        {\n          \"id\": \"static-site-gallery-notes\",\n          \"title\": \"Static galleries for collections — reading notes\",\n          \"path\": \"references/static-site-gallery-notes.md\"\n        },\n        {\n          \"id\": \"thermal-printer-notes\",\n          \"title\": \"Thermal printers for counter schedules — reading notes\",\n          \"path\": \"references/thermal-printer-notes.md\"\n        },\n        {\n          \"id\": \"visitor-dwell-notes\",\n          \"title\": \"Kiosk dwell observations — field note\",\n          \"path\": \"references/visitor-dwell-notes.md\"\n        },\n        {\n          \"id\": \"wcag-contrast-notes\",\n          \"title\": \"Outdoor readability and contrast — reading notes\",\n          \"path\": \"references/wcag-contrast-notes.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "decisions"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"decisions\": \"decision records with status: accepted, rejected, or superseded\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"decisions\",\n      \"count\": 29,\n      \"records\": [\n        {\n          \"id\": \"d-001\",\n          \"title\": \"Ledgerline stores its data in SQLite\",\n          \"path\": \"decisions/d-001.md\"\n        },\n        {\n          \"id\": \"d-002\",\n          \"title\": \"Wayfare displays speak MQTT\",\n          \"path\": \"decisions/d-002.md\"\n        },\n        {\n          \"id\": \"d-003\",\n          \"title\": \"Wayfare runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-003.md\"\n        },\n        {\n          \"id\": \"d-004\",\n          \"title\": \"Larkspur Archive routes OCR through a remote API\",\n          \"path\": \"decisions/d-004.md\"\n        },\n        {\n          \"id\": \"d-005\",\n          \"title\": \"Ledgerline bills flat monthly per client\",\n          \"path\": \"decisions/d-005.md\"\n        },\n        {\n          \"id\": \"d-006\",\n          \"title\": \"Beacon Grid queries DuckDB, not a time-series server\",\n          \"path\": \"decisions/d-006.md\"\n        },\n        {\n          \"id\": \"d-007\",\n          \"title\": \"Beacon Grid ingests over MQTT rather than REST polling\",\n          \"path\": \"decisions/d-007.md\"\n        },\n        {\n          \"id\": \"d-008\",\n          \"title\": \"Wayfare moves to an edge-gateway hub per station\",\n          \"path\": \"decisions/d-008.md\"\n        },\n        {\n          \"id\": \"d-009\",\n          \"title\": \"Wayfare adopts a green-and-amber palette for outdoor readability\",\n          \"path\": \"decisions/d-009.md\"\n        },\n        {\n          \"id\": \"d-010\",\n          \"title\": \"Cancel the Kestrel CRM experiment\",\n          \"path\": \"decisions/d-010.md\"\n        },\n        {\n          \"id\": \"d-011\",\n          \"title\": \"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\n          \"path\": \"decisions/d-011.md\"\n        },\n        {\n          \"id\": \"d-101\",\n          \"title\": \"Rill stores its data in PostgreSQL\",\n          \"path\": \"decisions/d-101.md\"\n        },\n        {\n          \"id\": \"d-102\",\n          \"title\": \"Perchboard displays speak MQTT 5.0\",\n          \"path\": \"decisions/d-102.md\"\n        },\n        {\n          \"id\": \"d-103\",\n          \"title\": \"Perchboard runs one single-board computer per display, no central server\",\n          \"path\": \"decisions/d-103.md\"\n        },\n        {\n          \"id\": \"d-104\",\n          \"title\": \"Foxglove routes OCR through a local GPU cluster\",\n          \"path\": \"decisions/d-104.md\"\n        },\n        {\n          \"id\": \"d-105\",\n          \"title\": \"Rill bills hourly with per-project rates\",\n          \"path\": \"decisions/d-105.md\"\n        },\n        {\n          \"id\": \"d-106\",\n          \"title\": \"Cometline runs a kiosk browser with an offline cache\",\n          \"path\": \"decisions/d-106.md\"\n        },\n        {\n          \"id\": \"d-107\",\n          \"title\": \"Cinderboard queries ClickHouse, not a time-series server\",\n          \"path\": \"decisions/d-107.md\"\n        },\n        {\n          \"id\": \"d-108\",\n          \"title\": \"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\n          \"path\": \"decisions/d-108.md\"\n        },\n        {\n          \"id\": \"d-109\",\n          \"title\": \"Perchboard moves to an edge relay per station\",\n          \"path\": \"decisions/d-109.md\"\n        },\n        {\n          \"id\": \"d-110\",\n          \"title\": \"Perchboard syncs fleet clocks with chrony\",\n          \"path\": \"decisions/d-110.md\"\n        },\n        {\n          \"id\": \"d-111\",\n          \"title\": \"Cancel the Curlew CRM experiment\",\n          \"path\": \"decisions/d-111.md\"\n        },\n        {\n          \"id\": \"d-112\",\n          \"title\": \"Perchboard adopts a high-contrast white-on-black palette\",\n          \"path\": \"decisions/d-112.md\"\n        },\n        {\n          \"id\": \"d-113\",\n          \"title\": \"Foxglove ships a static-file gallery, not a deep-zoom server\",\n          \"path\": \"decisions/d-113.md\"\n        },\n        {\n          \"id\": \"d-114\",\n          \"title\": \"Foxglove names scans by box and leaf, not by title\",\n          \"path\": \"decisions/d-114.md\"\n        },\n        {\n          \"id\": \"d-115\",\n          \"title\": \"Rill adopts per-period rate cards\",\n          \"path\": \"decisions/d-115.md\"\n        },\n        {\n          \"id\": \"d-116\",\n          \"title\": \"Driftline prints from Bayline's timetable feed, not a local copy\",\n          \"path\": \"decisions/d-116.md\"\n        },\n        {\n          \"id\": \"d-117\",\n          \"title\": \"Perchboard adopts marine-rated enclosures for pier boards\",\n          \"path\": \"decisions/d-117.md\"\n        },\n        {\n          \"id\": \"d-118\",\n          \"title\": \"Foxglove adds page-level anchor URLs to the gallery\",\n          \"path\": \"decisions/d-118.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-007.md"
+      },
+      "result_text": "---\nid: d-007\ngenre: decisions\ntitle: \"Beacon Grid ingests over MQTT rather than REST polling\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [beacon-grid, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: relates_to\n    to: decisions/d-002.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nContext: Greenline sensor arrays publish at short intervals; REST polling on a\ntimer would hammer their gateways.\n\nOptions considered: REST polling on a timer; MQTT subscriptions to sensor\ntopics.\n\nDecision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002).\n\nConsequences: one consumption pattern across two projects; sensor gateways\nstay quiet.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-002.md"
+      },
+      "result_text": "---\nid: d-002\ngenre: decisions\ntitle: \"Wayfare displays speak MQTT\"\ncreated: 2026-02-25\nprovenance: hand-authored\ntags: [wayfare, messaging]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/mqtt-311-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: platform displays need live vehicle positions with sub-second\nperceived freshness; HTTP polling burns battery and lags.\n\nOptions considered: HTTP polling against a feed API; MQTT with retained\nmessages and QoS 1.\n\nDecision: the Wayfare display fleet speaks MQTT 3.1.1 to a transit-side\nbroker; retained messages let a display recover its last-known state after\nreconnect. Informed by mqtt-311-notes.\n\nConsequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\nrenders, accepted for freshness.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "The reference note is **`references/mqtt-311-notes.md`** (MQTT 3.1.1 — reading notes).\n\nIt influenced two decisions:\n\n1. **Wayfare transport decision**: **d-002** \"Wayfare displays speak MQTT\" — explicitly lists `influenced_by: references/mqtt-311-notes.md` in its frontmatter, and states in its body: \"Informed by mqtt-311-notes.\" [decisions/d-002.md]\n\n2. **Beacon Grid ingest decision**: **d-007** \"Beacon Grid ingests over MQTT rather than REST polling\" — explicitly lists `influenced_by: references/mqtt-311-notes.md` in its frontmatter, and states in its body: \"reusing the same protocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind d-002).\" [decisions/d-007.md]",
+  "started_at": "2026-10-27T21:55:27.041Z",
+  "finished_at": "2026-10-27T21:55:49.067Z"
+}

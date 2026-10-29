@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-09",
+  "category": "absence",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-ab-09.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 4,
+    "error_steps": 2,
+    "result_bytes": 5094
+  },
+  "absence_stated": false,
+  "scored_at": "2026-10-27T21:53:01.277Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent reaches the same conclusion as the reference: no corpus record mentions 3D printing. Its supporting distinction that the corpus only discusses thermal printing is consistent and does not contradict the no-evidence finding.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:53:14.788Z"
+  }
+}

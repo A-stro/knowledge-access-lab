@@ -1,0 +1,81 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-04",
+  "category": "temporal",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-te-04.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7
+        ]
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "created: 2026-03-30",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "Beacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "orgs/greenline-utilities.md",
+        "passage": "created: 2026-04-01",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "created: 2026-04-02",
+        "passage_exact": true,
+        "passage_in_steps": [
+          7,
+          9
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          7,
+          9
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0.4,
+    "records_found_ratio": 0.4
+  },
+  "retrieval": {
+    "steps": 10,
+    "error_steps": 4,
+    "result_bytes": 3635
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:24:48.726Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The pause date and the Beacon Grid project record date are correct, but the answer omits that engagement began the week after the March all-hands and that the Greenline org record is dated 2026-04-01.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:24:59.280Z"
+  }
+}

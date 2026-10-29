@@ -1,0 +1,142 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-06",
+  "category": "multi-hop",
+  "question_text": "What influenced the cancellation of the Kestrel CRM experiment?",
+  "lane": "graph",
+  "lane_tools": [
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What influenced the cancellation of the Kestrel CRM experiment?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What influenced the cancellation of the Kestrel CRM experiment?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "Kestrel CRM experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel CRM experiment",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "Kestrel CRM",
+        "direction": "both"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel CRM",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "Kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_lane__paths",
+      "arguments": {
+        "to": "cancellation",
+        "from": "experiment"
+      },
+      "result_text": "Tool error (paths): Error: record not found: experiment",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "Kestrel CRM Experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel CRM Experiment",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "CRM experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: CRM experiment",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "cancellation",
+        "direction": "both"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: cancellation",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "direction": "both",
+        "path": "experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: experiment",
+      "is_error": true,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T22:59:03.324Z",
+  "finished_at": "2026-10-27T22:59:45.828Z"
+}

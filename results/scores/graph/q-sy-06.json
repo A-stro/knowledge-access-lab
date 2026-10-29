@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-06",
+  "category": "synthesis",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-sy-06.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/ocr-comparison.md",
+        "passage": "Assumption on record: throughput scales linearly with scan volume.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "sessions/s-006.md",
+        "passage": "Silas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "archival scans run at roughly forty percent of\nthe assumed rate, so the digitization schedule stretches",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 18,
+    "error_steps": 18,
+    "result_bytes": 1056
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:04:19.326Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference answer identifies the original linear-scaling assumption, the archival-scan benchmark finding of roughly 40% of the assumed rate, and the resulting schedule stretch, whereas the agent incorrectly states that no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:04:22.277Z"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-08",
+  "category": "point-lookup",
+  "question_text": "How many contacts were exported when the Kestrel prototype was torn down?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How many contacts were exported when the Kestrel prototype was torn down?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How many contacts were exported when the Kestrel prototype was torn down?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Kestrel prototype torn down contacts exported"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "How many contacts were exported when the Kestrel prototype was torn down?"
+      },
+      "result_text": "{\n  \"question\": \"q-pl-08\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"sessions/s-009.md\",\n      \"para\": 0,\n      \"score\": 0.821115,\n      \"passage\": \"Theo exported the Kestrel trial data into Ledgerline notes per d-010 and tore\\ndown the prototype: contact pages, the ops trial entries, and the import\\nscripts. Two weeks of trial, sixty-one contacts, no regrets.\"\n    },\n    {\n      \"path\": \"sessions/s-115.md\",\n      \"para\": 0,\n      \"score\": 0.732677,\n      \"passage\": \"Yusuf exported the Curlew trial data into Rill notes per d-111 and tore down\\nthe prototype: contact pages, the ops-trial entries, and the import scripts.\\nFour weeks of trial, thirty-four contacts, no regrets.\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 0,\n      \"score\": 0.691372,\n      \"passage\": \"Context: Kestrel has run as a two-week ops trial on top of Lorna's existing\\nload; Theo's prototype works, but no one can own the tool going forward.\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"para\": 1,\n      \"score\": 0.690432,\n      \"passage\": \"Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\\nLorna alone, no one could own it. Data export and teardown happened in s-009.\"\n    },\n    {\n      \"path\": \"meetings/m-006.md\",\n      \"para\": 0,\n      \"score\": 0.663597,\n      \"passage\": \"Go/no-go on Kestrel after the two-week trial: Theo's prototype works, but\\nthe ops load fell on Lorna alone and no one can own the tool going forward —\\nthe studio's client count does not justify the maintenance surface. No-go;\\nd-010 cancelled the experiment the next day, with data export and teardown\\nin s-009.\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 3,\n      \"score\": 0.66241,\n      \"passage\": \"Consequences: client tracking stays in Ledgerline notes; Theo returns fully\\nto Wayfare and Beacon Grid.\"\n    },\n    {\n      \"path\": \"projects/kestrel-crm.md\",\n      \"para\": 0,\n      \"score\": 0.662367,\n      \"passage\": \"Kestrel was Theo Kanda's proposal for an internal CRM experiment — a\\nlightweight tracker for studio client relationships — announced at the March\\nall-hands (m-004). Kestrel started 2026-03-31, the day after the all-hands;\\nTheo prototyped contact pages and Lorna Vey ran a two-week ops trial.\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 2,\n      \"score\": 0.655654,\n      \"passage\": \"Decision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\\n— the studio's client count does not justify the maintenance surface. Export\\nthe trial data and tear down (s-009).\"\n    },\n    {\n      \"path\": \"decisions/d-010.md\",\n      \"para\": 1,\n      \"score\": 0.648616,\n      \"passage\": \"Options considered: keep it as a side project; adopt it with an owner; cancel.\"\n    },\n    {\n      \"path\": \"projects/curlew-crm.md\",\n      \"para\": 1,\n      \"score\": 0.631579,\n      \"passage\": \"Cancelled 2026-03-17 (decision d-111): with the ops trial load falling on\\nNils alone, no one could own it. Data export and teardown happened in s-115.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    }
+  ],
+  "final_answer": "**Answer: 61 contacts were exported when the Kestrel prototype was torn down.**\n\n**Evidence:**\n- **sessions/s-009.md** (para 0): \"Theo exported the Kestrel trial data into Ledgerline notes per d-010 and tore down the prototype: contact pages, the ops trial entries, and the import scripts. Two weeks of trial, **sixty-one contacts**, no regrets.\"",
+  "started_at": "2026-10-27T21:39:59.105Z",
+  "finished_at": "2026-10-27T21:40:38.140Z"
+}

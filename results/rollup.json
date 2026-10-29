@@ -1,0 +1,4286 @@
+{
+  "schema": "knowledge-access-lab/rollup@2",
+  "framing": "Framing (accepted for F5, 2026-10-27; extended for F6, 2026-10-28): the graph lanes (graph, graph-seed) return traversal-shaped evidence — paths, typed edges, and name→path metadata, never record text — so they score zero on passage fidelity by architecture. That zero is the measured difference this lab exists to report, not a bug. The rollup carries both axes — evidence fidelity and judged answers — so the graph lanes' answer quality stands on its own.",
+  "gold_set": {
+    "questions": 45,
+    "categories": [
+      "point-lookup",
+      "multi-hop",
+      "synthesis",
+      "temporal",
+      "absence"
+    ]
+  },
+  "lanes": [
+    "rag",
+    "wiki",
+    "graph",
+    "graph-seed",
+    "direct"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "judge_model": {
+    "provider": "nvidia",
+    "model": "minimaxai/minimax-m3.1-flash"
+  },
+  "harness": {
+    "name": "pi",
+    "versions": [
+      "1.4.0"
+    ]
+  },
+  "cells": [
+    {
+      "lane": "rag",
+      "category": "point-lookup",
+      "n": 9,
+      "passages_exact_ratio_mean": 1,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 1,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "rag",
+      "category": "multi-hop",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.889,
+      "records_found_ratio_mean": 0.889,
+      "judge_correct": 7,
+      "judge_partial": 2,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "rag",
+      "category": "synthesis",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.87,
+      "records_found_ratio_mean": 0.87,
+      "judge_correct": 5,
+      "judge_partial": 4,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.556,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "rag",
+      "category": "temporal",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.795,
+      "records_found_ratio_mean": 0.795,
+      "judge_correct": 6,
+      "judge_partial": 2,
+      "judge_incorrect": 1,
+      "judged_correct_ratio": 0.667,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "rag",
+      "category": "absence",
+      "n": 9,
+      "passages_exact_ratio_mean": null,
+      "records_found_ratio_mean": null,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 1,
+      "absence_stated_count": 7,
+      "absence_stated_ratio": 0.778
+    },
+    {
+      "lane": "wiki",
+      "category": "point-lookup",
+      "n": 9,
+      "passages_exact_ratio_mean": 1,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 1,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "wiki",
+      "category": "multi-hop",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.944,
+      "records_found_ratio_mean": 0.944,
+      "judge_correct": 8,
+      "judge_partial": 1,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.889,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "wiki",
+      "category": "synthesis",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.87,
+      "records_found_ratio_mean": 0.87,
+      "judge_correct": 4,
+      "judge_partial": 5,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.444,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "wiki",
+      "category": "temporal",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.859,
+      "records_found_ratio_mean": 0.859,
+      "judge_correct": 7,
+      "judge_partial": 2,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "wiki",
+      "category": "absence",
+      "n": 9,
+      "passages_exact_ratio_mean": null,
+      "records_found_ratio_mean": null,
+      "judge_correct": 6,
+      "judge_partial": 3,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.667,
+      "absence_stated_count": 7,
+      "absence_stated_ratio": 0.778
+    },
+    {
+      "lane": "graph",
+      "category": "point-lookup",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0,
+      "judge_correct": 0,
+      "judge_partial": 0,
+      "judge_incorrect": 9,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph",
+      "category": "multi-hop",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0,
+      "judge_correct": 0,
+      "judge_partial": 0,
+      "judge_incorrect": 9,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph",
+      "category": "synthesis",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0,
+      "judge_correct": 0,
+      "judge_partial": 0,
+      "judge_incorrect": 9,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph",
+      "category": "temporal",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0,
+      "judge_correct": 0,
+      "judge_partial": 0,
+      "judge_incorrect": 9,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph",
+      "category": "absence",
+      "n": 9,
+      "passages_exact_ratio_mean": null,
+      "records_found_ratio_mean": null,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 1,
+      "absence_stated_count": 9,
+      "absence_stated_ratio": 1
+    },
+    {
+      "lane": "graph-seed",
+      "category": "point-lookup",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 0,
+      "judge_partial": 1,
+      "judge_incorrect": 8,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph-seed",
+      "category": "multi-hop",
+      "n": 8,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0.938,
+      "judge_correct": 2,
+      "judge_partial": 5,
+      "judge_incorrect": 1,
+      "judged_correct_ratio": 0.25,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph-seed",
+      "category": "synthesis",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 0,
+      "judge_partial": 4,
+      "judge_incorrect": 5,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph-seed",
+      "category": "temporal",
+      "n": 9,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0.926,
+      "judge_correct": 0,
+      "judge_partial": 3,
+      "judge_incorrect": 6,
+      "judged_correct_ratio": 0,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph-seed",
+      "category": "absence",
+      "n": 9,
+      "passages_exact_ratio_mean": null,
+      "records_found_ratio_mean": null,
+      "judge_correct": 7,
+      "judge_partial": 2,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": 7,
+      "absence_stated_ratio": 0.778
+    },
+    {
+      "lane": "direct",
+      "category": "point-lookup",
+      "n": 9,
+      "passages_exact_ratio_mean": 1,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 1,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "direct",
+      "category": "multi-hop",
+      "n": 9,
+      "passages_exact_ratio_mean": 1,
+      "records_found_ratio_mean": 1,
+      "judge_correct": 7,
+      "judge_partial": 2,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "direct",
+      "category": "synthesis",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.963,
+      "records_found_ratio_mean": 0.963,
+      "judge_correct": 7,
+      "judge_partial": 1,
+      "judge_incorrect": 1,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "direct",
+      "category": "temporal",
+      "n": 9,
+      "passages_exact_ratio_mean": 0.896,
+      "records_found_ratio_mean": 0.896,
+      "judge_correct": 7,
+      "judge_partial": 1,
+      "judge_incorrect": 1,
+      "judged_correct_ratio": 0.778,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "direct",
+      "category": "absence",
+      "n": 9,
+      "passages_exact_ratio_mean": null,
+      "records_found_ratio_mean": null,
+      "judge_correct": 4,
+      "judge_partial": 5,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.444,
+      "absence_stated_count": 7,
+      "absence_stated_ratio": 0.778
+    }
+  ],
+  "lane_totals": [
+    {
+      "lane": "rag",
+      "category": "all",
+      "n": 45,
+      "passages_exact_ratio_mean": 0.888,
+      "records_found_ratio_mean": 0.888,
+      "judge_correct": 36,
+      "judge_partial": 8,
+      "judge_incorrect": 1,
+      "judged_correct_ratio": 0.8,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "wiki",
+      "category": "all",
+      "n": 45,
+      "passages_exact_ratio_mean": 0.919,
+      "records_found_ratio_mean": 0.919,
+      "judge_correct": 34,
+      "judge_partial": 11,
+      "judge_incorrect": 0,
+      "judged_correct_ratio": 0.756,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph",
+      "category": "all",
+      "n": 45,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0,
+      "judge_correct": 9,
+      "judge_partial": 0,
+      "judge_incorrect": 36,
+      "judged_correct_ratio": 0.2,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "graph-seed",
+      "category": "all",
+      "n": 44,
+      "passages_exact_ratio_mean": 0,
+      "records_found_ratio_mean": 0.967,
+      "judge_correct": 9,
+      "judge_partial": 15,
+      "judge_incorrect": 20,
+      "judged_correct_ratio": 0.205,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    },
+    {
+      "lane": "direct",
+      "category": "all",
+      "n": 45,
+      "passages_exact_ratio_mean": 0.965,
+      "records_found_ratio_mean": 0.965,
+      "judge_correct": 34,
+      "judge_partial": 9,
+      "judge_incorrect": 2,
+      "judged_correct_ratio": 0.756,
+      "absence_stated_count": null,
+      "absence_stated_ratio": null
+    }
+  ],
+  "lane_retrieval": [
+    {
+      "lane": "rag",
+      "steps_mean": 9.356,
+      "error_steps_total": 95,
+      "result_bytes_mean": 11933.511
+    },
+    {
+      "lane": "wiki",
+      "steps_mean": 13.622,
+      "error_steps_total": 0,
+      "result_bytes_mean": 19737.578
+    },
+    {
+      "lane": "graph",
+      "steps_mean": 20.111,
+      "error_steps_total": 905,
+      "result_bytes_mean": 1168.311
+    },
+    {
+      "lane": "graph-seed",
+      "steps_mean": 34.795,
+      "error_steps_total": 4,
+      "result_bytes_mean": 15397.455
+    },
+    {
+      "lane": "direct",
+      "steps_mean": 27.489,
+      "error_steps_total": 139,
+      "result_bytes_mean": 17202.511
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "q-pl-01",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-01.json",
+      "score_ref": "results/scores/rag/q-pl-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 3987
+      }
+    },
+    {
+      "question_id": "q-pl-02",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-02.json",
+      "score_ref": "results/scores/rag/q-pl-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 3635
+      }
+    },
+    {
+      "question_id": "q-pl-03",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-03.json",
+      "score_ref": "results/scores/rag/q-pl-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 4528
+      }
+    },
+    {
+      "question_id": "q-pl-04",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-04.json",
+      "score_ref": "results/scores/rag/q-pl-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 1,
+        "error_steps": 0,
+        "result_bytes": 3460
+      }
+    },
+    {
+      "question_id": "q-pl-05",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-05.json",
+      "score_ref": "results/scores/rag/q-pl-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 3483
+      }
+    },
+    {
+      "question_id": "q-pl-06",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-06.json",
+      "score_ref": "results/scores/rag/q-pl-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 4294
+      }
+    },
+    {
+      "question_id": "q-pl-07",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-07.json",
+      "score_ref": "results/scores/rag/q-pl-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 2548
+      }
+    },
+    {
+      "question_id": "q-pl-08",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-08.json",
+      "score_ref": "results/scores/rag/q-pl-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 1,
+        "result_bytes": 3250
+      }
+    },
+    {
+      "question_id": "q-pl-09",
+      "category": "point-lookup",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-pl-09.json",
+      "score_ref": "results/scores/rag/q-pl-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 5431
+      }
+    },
+    {
+      "question_id": "q-mh-01",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-01.json",
+      "score_ref": "results/scores/rag/q-mh-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 2,
+        "result_bytes": 9763
+      }
+    },
+    {
+      "question_id": "q-mh-02",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-02.json",
+      "score_ref": "results/scores/rag/q-mh-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 3,
+        "result_bytes": 12311
+      }
+    },
+    {
+      "question_id": "q-mh-03",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-03.json",
+      "score_ref": "results/scores/rag/q-mh-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 1,
+        "result_bytes": 5400
+      }
+    },
+    {
+      "question_id": "q-mh-04",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-04.json",
+      "score_ref": "results/scores/rag/q-mh-04.json",
+      "passages_exact_ratio": 0.5,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 3985
+      }
+    },
+    {
+      "question_id": "q-mh-05",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-05.json",
+      "score_ref": "results/scores/rag/q-mh-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 1,
+        "result_bytes": 6745
+      }
+    },
+    {
+      "question_id": "q-mh-06",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-06.json",
+      "score_ref": "results/scores/rag/q-mh-06.json",
+      "passages_exact_ratio": 0.5,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 1,
+        "result_bytes": 4651
+      }
+    },
+    {
+      "question_id": "q-mh-07",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-07.json",
+      "score_ref": "results/scores/rag/q-mh-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 1,
+        "result_bytes": 6005
+      }
+    },
+    {
+      "question_id": "q-mh-08",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-08.json",
+      "score_ref": "results/scores/rag/q-mh-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 4613
+      }
+    },
+    {
+      "question_id": "q-mh-09",
+      "category": "multi-hop",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-mh-09.json",
+      "score_ref": "results/scores/rag/q-mh-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 1,
+        "result_bytes": 4763
+      }
+    },
+    {
+      "question_id": "q-sy-01",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-01.json",
+      "score_ref": "results/scores/rag/q-sy-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 12,
+        "error_steps": 7,
+        "result_bytes": 5933
+      }
+    },
+    {
+      "question_id": "q-sy-02",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-02.json",
+      "score_ref": "results/scores/rag/q-sy-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 1,
+        "result_bytes": 7877
+      }
+    },
+    {
+      "question_id": "q-sy-03",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-03.json",
+      "score_ref": "results/scores/rag/q-sy-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 27,
+        "error_steps": 7,
+        "result_bytes": 16379
+      }
+    },
+    {
+      "question_id": "q-sy-04",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-04.json",
+      "score_ref": "results/scores/rag/q-sy-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 4865
+      }
+    },
+    {
+      "question_id": "q-sy-05",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-05.json",
+      "score_ref": "results/scores/rag/q-sy-05.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 1,
+        "result_bytes": 8708
+      }
+    },
+    {
+      "question_id": "q-sy-06",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-06.json",
+      "score_ref": "results/scores/rag/q-sy-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 12,
+        "error_steps": 2,
+        "result_bytes": 18005
+      }
+    },
+    {
+      "question_id": "q-sy-07",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-07.json",
+      "score_ref": "results/scores/rag/q-sy-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 6119
+      }
+    },
+    {
+      "question_id": "q-sy-08",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-08.json",
+      "score_ref": "results/scores/rag/q-sy-08.json",
+      "passages_exact_ratio": 0.5,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 1,
+        "result_bytes": 9975
+      }
+    },
+    {
+      "question_id": "q-sy-09",
+      "category": "synthesis",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-sy-09.json",
+      "score_ref": "results/scores/rag/q-sy-09.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 3,
+        "result_bytes": 5595
+      }
+    },
+    {
+      "question_id": "q-te-01",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-01.json",
+      "score_ref": "results/scores/rag/q-te-01.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 1,
+        "result_bytes": 4418
+      }
+    },
+    {
+      "question_id": "q-te-02",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-02.json",
+      "score_ref": "results/scores/rag/q-te-02.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 1,
+        "result_bytes": 8967
+      }
+    },
+    {
+      "question_id": "q-te-03",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-03.json",
+      "score_ref": "results/scores/rag/q-te-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 2,
+        "result_bytes": 9694
+      }
+    },
+    {
+      "question_id": "q-te-04",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-04.json",
+      "score_ref": "results/scores/rag/q-te-04.json",
+      "passages_exact_ratio": 0.4,
+      "records_found_ratio": 0.4,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 3834
+      }
+    },
+    {
+      "question_id": "q-te-05",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-05.json",
+      "score_ref": "results/scores/rag/q-te-05.json",
+      "passages_exact_ratio": 0.75,
+      "records_found_ratio": 0.75,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 1,
+        "result_bytes": 5992
+      }
+    },
+    {
+      "question_id": "q-te-06",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-06.json",
+      "score_ref": "results/scores/rag/q-te-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 1,
+        "result_bytes": 4838
+      }
+    },
+    {
+      "question_id": "q-te-07",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-07.json",
+      "score_ref": "results/scores/rag/q-te-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 28,
+        "error_steps": 5,
+        "result_bytes": 37256
+      }
+    },
+    {
+      "question_id": "q-te-08",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-08.json",
+      "score_ref": "results/scores/rag/q-te-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 2,
+        "result_bytes": 7039
+      }
+    },
+    {
+      "question_id": "q-te-09",
+      "category": "temporal",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-te-09.json",
+      "score_ref": "results/scores/rag/q-te-09.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 3,
+        "result_bytes": 8139
+      }
+    },
+    {
+      "question_id": "q-ab-01",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-01.json",
+      "score_ref": "results/scores/rag/q-ab-01.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 5,
+        "result_bytes": 14755
+      }
+    },
+    {
+      "question_id": "q-ab-02",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-02.json",
+      "score_ref": "results/scores/rag/q-ab-02.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 1,
+        "result_bytes": 6159
+      }
+    },
+    {
+      "question_id": "q-ab-03",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-03.json",
+      "score_ref": "results/scores/rag/q-ab-03.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 6,
+        "result_bytes": 9357
+      }
+    },
+    {
+      "question_id": "q-ab-04",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-04.json",
+      "score_ref": "results/scores/rag/q-ab-04.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 3,
+        "result_bytes": 7629
+      }
+    },
+    {
+      "question_id": "q-ab-05",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-05.json",
+      "score_ref": "results/scores/rag/q-ab-05.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 4,
+        "result_bytes": 11798
+      }
+    },
+    {
+      "question_id": "q-ab-06",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-06.json",
+      "score_ref": "results/scores/rag/q-ab-06.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 74,
+        "error_steps": 8,
+        "result_bytes": 74319
+      }
+    },
+    {
+      "question_id": "q-ab-07",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-07.json",
+      "score_ref": "results/scores/rag/q-ab-07.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 34,
+        "error_steps": 4,
+        "result_bytes": 65884
+      }
+    },
+    {
+      "question_id": "q-ab-08",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-08.json",
+      "score_ref": "results/scores/rag/q-ab-08.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 43,
+        "error_steps": 8,
+        "result_bytes": 75528
+      }
+    },
+    {
+      "question_id": "q-ab-09",
+      "category": "absence",
+      "lane": "rag",
+      "trace_ref": "results/runs/rag/q-ab-09.json",
+      "score_ref": "results/scores/rag/q-ab-09.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 2,
+        "result_bytes": 5094
+      }
+    },
+    {
+      "question_id": "q-pl-01",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-01.json",
+      "score_ref": "results/scores/wiki/q-pl-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 3509
+      }
+    },
+    {
+      "question_id": "q-pl-02",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-02.json",
+      "score_ref": "results/scores/wiki/q-pl-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 0,
+        "result_bytes": 27588
+      }
+    },
+    {
+      "question_id": "q-pl-03",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-03.json",
+      "score_ref": "results/scores/wiki/q-pl-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 3295
+      }
+    },
+    {
+      "question_id": "q-pl-04",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-04.json",
+      "score_ref": "results/scores/wiki/q-pl-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 3662
+      }
+    },
+    {
+      "question_id": "q-pl-05",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-05.json",
+      "score_ref": "results/scores/wiki/q-pl-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 20437
+      }
+    },
+    {
+      "question_id": "q-pl-06",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-06.json",
+      "score_ref": "results/scores/wiki/q-pl-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 14,
+        "error_steps": 0,
+        "result_bytes": 22060
+      }
+    },
+    {
+      "question_id": "q-pl-07",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-07.json",
+      "score_ref": "results/scores/wiki/q-pl-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 4918
+      }
+    },
+    {
+      "question_id": "q-pl-08",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-08.json",
+      "score_ref": "results/scores/wiki/q-pl-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 3765
+      }
+    },
+    {
+      "question_id": "q-pl-09",
+      "category": "point-lookup",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-pl-09.json",
+      "score_ref": "results/scores/wiki/q-pl-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 21941
+      }
+    },
+    {
+      "question_id": "q-mh-01",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-01.json",
+      "score_ref": "results/scores/wiki/q-mh-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 8121
+      }
+    },
+    {
+      "question_id": "q-mh-02",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-02.json",
+      "score_ref": "results/scores/wiki/q-mh-02.json",
+      "passages_exact_ratio": 0.5,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 13645
+      }
+    },
+    {
+      "question_id": "q-mh-03",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-03.json",
+      "score_ref": "results/scores/wiki/q-mh-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 6343
+      }
+    },
+    {
+      "question_id": "q-mh-04",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-04.json",
+      "score_ref": "results/scores/wiki/q-mh-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 11245
+      }
+    },
+    {
+      "question_id": "q-mh-05",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-05.json",
+      "score_ref": "results/scores/wiki/q-mh-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 0,
+        "result_bytes": 6834
+      }
+    },
+    {
+      "question_id": "q-mh-06",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-06.json",
+      "score_ref": "results/scores/wiki/q-mh-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 22896
+      }
+    },
+    {
+      "question_id": "q-mh-07",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-07.json",
+      "score_ref": "results/scores/wiki/q-mh-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 0,
+        "result_bytes": 22383
+      }
+    },
+    {
+      "question_id": "q-mh-08",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-08.json",
+      "score_ref": "results/scores/wiki/q-mh-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 6244
+      }
+    },
+    {
+      "question_id": "q-mh-09",
+      "category": "multi-hop",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-mh-09.json",
+      "score_ref": "results/scores/wiki/q-mh-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 0,
+        "result_bytes": 7504
+      }
+    },
+    {
+      "question_id": "q-sy-01",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-01.json",
+      "score_ref": "results/scores/wiki/q-sy-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 2952
+      }
+    },
+    {
+      "question_id": "q-sy-02",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-02.json",
+      "score_ref": "results/scores/wiki/q-sy-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 0,
+        "result_bytes": 25765
+      }
+    },
+    {
+      "question_id": "q-sy-03",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-03.json",
+      "score_ref": "results/scores/wiki/q-sy-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 0,
+        "result_bytes": 24972
+      }
+    },
+    {
+      "question_id": "q-sy-04",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-04.json",
+      "score_ref": "results/scores/wiki/q-sy-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 5052
+      }
+    },
+    {
+      "question_id": "q-sy-05",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-05.json",
+      "score_ref": "results/scores/wiki/q-sy-05.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 0,
+        "result_bytes": 7033
+      }
+    },
+    {
+      "question_id": "q-sy-06",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-06.json",
+      "score_ref": "results/scores/wiki/q-sy-06.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 22807
+      }
+    },
+    {
+      "question_id": "q-sy-07",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-07.json",
+      "score_ref": "results/scores/wiki/q-sy-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 0,
+        "result_bytes": 9448
+      }
+    },
+    {
+      "question_id": "q-sy-08",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-08.json",
+      "score_ref": "results/scores/wiki/q-sy-08.json",
+      "passages_exact_ratio": 0.5,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 0,
+        "result_bytes": 9597
+      }
+    },
+    {
+      "question_id": "q-sy-09",
+      "category": "synthesis",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-sy-09.json",
+      "score_ref": "results/scores/wiki/q-sy-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 0,
+        "result_bytes": 8184
+      }
+    },
+    {
+      "question_id": "q-te-01",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-01.json",
+      "score_ref": "results/scores/wiki/q-te-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 22423
+      }
+    },
+    {
+      "question_id": "q-te-02",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-02.json",
+      "score_ref": "results/scores/wiki/q-te-02.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 0,
+        "result_bytes": 7528
+      }
+    },
+    {
+      "question_id": "q-te-03",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-03.json",
+      "score_ref": "results/scores/wiki/q-te-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 0,
+        "result_bytes": 7033
+      }
+    },
+    {
+      "question_id": "q-te-04",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-04.json",
+      "score_ref": "results/scores/wiki/q-te-04.json",
+      "passages_exact_ratio": 0.4,
+      "records_found_ratio": 0.4,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 3877
+      }
+    },
+    {
+      "question_id": "q-te-05",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-05.json",
+      "score_ref": "results/scores/wiki/q-te-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 5552
+      }
+    },
+    {
+      "question_id": "q-te-06",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-06.json",
+      "score_ref": "results/scores/wiki/q-te-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 4616
+      }
+    },
+    {
+      "question_id": "q-te-07",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-07.json",
+      "score_ref": "results/scores/wiki/q-te-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 0,
+        "result_bytes": 9865
+      }
+    },
+    {
+      "question_id": "q-te-08",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-08.json",
+      "score_ref": "results/scores/wiki/q-te-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 0,
+        "result_bytes": 9979
+      }
+    },
+    {
+      "question_id": "q-te-09",
+      "category": "temporal",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-te-09.json",
+      "score_ref": "results/scores/wiki/q-te-09.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 5128
+      }
+    },
+    {
+      "question_id": "q-ab-01",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-01.json",
+      "score_ref": "results/scores/wiki/q-ab-01.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 30,
+        "error_steps": 0,
+        "result_bytes": 42000
+      }
+    },
+    {
+      "question_id": "q-ab-02",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-02.json",
+      "score_ref": "results/scores/wiki/q-ab-02.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 51,
+        "error_steps": 0,
+        "result_bytes": 57119
+      }
+    },
+    {
+      "question_id": "q-ab-03",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-03.json",
+      "score_ref": "results/scores/wiki/q-ab-03.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 92,
+        "error_steps": 0,
+        "result_bytes": 77175
+      }
+    },
+    {
+      "question_id": "q-ab-04",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-04.json",
+      "score_ref": "results/scores/wiki/q-ab-04.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 64,
+        "error_steps": 0,
+        "result_bytes": 60933
+      }
+    },
+    {
+      "question_id": "q-ab-05",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-05.json",
+      "score_ref": "results/scores/wiki/q-ab-05.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 69,
+        "error_steps": 0,
+        "result_bytes": 66927
+      }
+    },
+    {
+      "question_id": "q-ab-06",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-06.json",
+      "score_ref": "results/scores/wiki/q-ab-06.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 43,
+        "error_steps": 0,
+        "result_bytes": 53810
+      }
+    },
+    {
+      "question_id": "q-ab-07",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-07.json",
+      "score_ref": "results/scores/wiki/q-ab-07.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 26,
+        "error_steps": 0,
+        "result_bytes": 36760
+      }
+    },
+    {
+      "question_id": "q-ab-08",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-08.json",
+      "score_ref": "results/scores/wiki/q-ab-08.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 28,
+        "error_steps": 0,
+        "result_bytes": 42022
+      }
+    },
+    {
+      "question_id": "q-ab-09",
+      "category": "absence",
+      "lane": "wiki",
+      "trace_ref": "results/runs/wiki/q-ab-09.json",
+      "score_ref": "results/scores/wiki/q-ab-09.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 39,
+        "error_steps": 0,
+        "result_bytes": 43244
+      }
+    },
+    {
+      "question_id": "q-pl-01",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-01.json",
+      "score_ref": "results/scores/graph/q-pl-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 19,
+        "error_steps": 19,
+        "result_bytes": 1106
+      }
+    },
+    {
+      "question_id": "q-pl-02",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-02.json",
+      "score_ref": "results/scores/graph/q-pl-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 30,
+        "error_steps": 30,
+        "result_bytes": 1805
+      }
+    },
+    {
+      "question_id": "q-pl-03",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-03.json",
+      "score_ref": "results/scores/graph/q-pl-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 10,
+        "result_bytes": 640
+      }
+    },
+    {
+      "question_id": "q-pl-04",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-04.json",
+      "score_ref": "results/scores/graph/q-pl-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 17,
+        "result_bytes": 950
+      }
+    },
+    {
+      "question_id": "q-pl-05",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-05.json",
+      "score_ref": "results/scores/graph/q-pl-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 24,
+        "error_steps": 24,
+        "result_bytes": 1432
+      }
+    },
+    {
+      "question_id": "q-pl-06",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-06.json",
+      "score_ref": "results/scores/graph/q-pl-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 11,
+        "result_bytes": 611
+      }
+    },
+    {
+      "question_id": "q-pl-07",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-07.json",
+      "score_ref": "results/scores/graph/q-pl-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 11,
+        "result_bytes": 673
+      }
+    },
+    {
+      "question_id": "q-pl-08",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-08.json",
+      "score_ref": "results/scores/graph/q-pl-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 14,
+        "error_steps": 14,
+        "result_bytes": 794
+      }
+    },
+    {
+      "question_id": "q-pl-09",
+      "category": "point-lookup",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-pl-09.json",
+      "score_ref": "results/scores/graph/q-pl-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 5,
+        "result_bytes": 294
+      }
+    },
+    {
+      "question_id": "q-mh-01",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-01.json",
+      "score_ref": "results/scores/graph/q-mh-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 25,
+        "error_steps": 25,
+        "result_bytes": 1505
+      }
+    },
+    {
+      "question_id": "q-mh-02",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-02.json",
+      "score_ref": "results/scores/graph/q-mh-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 63,
+        "error_steps": 63,
+        "result_bytes": 3831
+      }
+    },
+    {
+      "question_id": "q-mh-03",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-03.json",
+      "score_ref": "results/scores/graph/q-mh-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 15,
+        "error_steps": 15,
+        "result_bytes": 893
+      }
+    },
+    {
+      "question_id": "q-mh-04",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-04.json",
+      "score_ref": "results/scores/graph/q-mh-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 24,
+        "error_steps": 24,
+        "result_bytes": 1436
+      }
+    },
+    {
+      "question_id": "q-mh-05",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-05.json",
+      "score_ref": "results/scores/graph/q-mh-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 17,
+        "result_bytes": 981
+      }
+    },
+    {
+      "question_id": "q-mh-06",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-06.json",
+      "score_ref": "results/scores/graph/q-mh-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 8,
+        "result_bytes": 496
+      }
+    },
+    {
+      "question_id": "q-mh-07",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-07.json",
+      "score_ref": "results/scores/graph/q-mh-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 19,
+        "error_steps": 19,
+        "result_bytes": 1091
+      }
+    },
+    {
+      "question_id": "q-mh-08",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-08.json",
+      "score_ref": "results/scores/graph/q-mh-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 20,
+        "error_steps": 20,
+        "result_bytes": 1152
+      }
+    },
+    {
+      "question_id": "q-mh-09",
+      "category": "multi-hop",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-mh-09.json",
+      "score_ref": "results/scores/graph/q-mh-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 38,
+        "error_steps": 38,
+        "result_bytes": 2167
+      }
+    },
+    {
+      "question_id": "q-sy-01",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-01.json",
+      "score_ref": "results/scores/graph/q-sy-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 12,
+        "error_steps": 12,
+        "result_bytes": 675
+      }
+    },
+    {
+      "question_id": "q-sy-02",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-02.json",
+      "score_ref": "results/scores/graph/q-sy-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 14,
+        "error_steps": 14,
+        "result_bytes": 866
+      }
+    },
+    {
+      "question_id": "q-sy-03",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-03.json",
+      "score_ref": "results/scores/graph/q-sy-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 16,
+        "result_bytes": 912
+      }
+    },
+    {
+      "question_id": "q-sy-04",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-04.json",
+      "score_ref": "results/scores/graph/q-sy-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 15,
+        "error_steps": 15,
+        "result_bytes": 900
+      }
+    },
+    {
+      "question_id": "q-sy-05",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-05.json",
+      "score_ref": "results/scores/graph/q-sy-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 15,
+        "error_steps": 15,
+        "result_bytes": 893
+      }
+    },
+    {
+      "question_id": "q-sy-06",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-06.json",
+      "score_ref": "results/scores/graph/q-sy-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 18,
+        "result_bytes": 1056
+      }
+    },
+    {
+      "question_id": "q-sy-07",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-07.json",
+      "score_ref": "results/scores/graph/q-sy-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 20,
+        "error_steps": 20,
+        "result_bytes": 1191
+      }
+    },
+    {
+      "question_id": "q-sy-08",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-08.json",
+      "score_ref": "results/scores/graph/q-sy-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 13,
+        "result_bytes": 717
+      }
+    },
+    {
+      "question_id": "q-sy-09",
+      "category": "synthesis",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-sy-09.json",
+      "score_ref": "results/scores/graph/q-sy-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 11,
+        "result_bytes": 603
+      }
+    },
+    {
+      "question_id": "q-te-01",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-01.json",
+      "score_ref": "results/scores/graph/q-te-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 19,
+        "error_steps": 19,
+        "result_bytes": 1073
+      }
+    },
+    {
+      "question_id": "q-te-02",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-02.json",
+      "score_ref": "results/scores/graph/q-te-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 32,
+        "error_steps": 32,
+        "result_bytes": 1824
+      }
+    },
+    {
+      "question_id": "q-te-03",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-03.json",
+      "score_ref": "results/scores/graph/q-te-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 15,
+        "error_steps": 15,
+        "result_bytes": 863
+      }
+    },
+    {
+      "question_id": "q-te-04",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-04.json",
+      "score_ref": "results/scores/graph/q-te-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 22,
+        "error_steps": 22,
+        "result_bytes": 1275
+      }
+    },
+    {
+      "question_id": "q-te-05",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-05.json",
+      "score_ref": "results/scores/graph/q-te-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 29,
+        "error_steps": 29,
+        "result_bytes": 1641
+      }
+    },
+    {
+      "question_id": "q-te-06",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-06.json",
+      "score_ref": "results/scores/graph/q-te-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 16,
+        "result_bytes": 906
+      }
+    },
+    {
+      "question_id": "q-te-07",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-07.json",
+      "score_ref": "results/scores/graph/q-te-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 18,
+        "result_bytes": 1105
+      }
+    },
+    {
+      "question_id": "q-te-08",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-08.json",
+      "score_ref": "results/scores/graph/q-te-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 30,
+        "error_steps": 30,
+        "result_bytes": 1741
+      }
+    },
+    {
+      "question_id": "q-te-09",
+      "category": "temporal",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-te-09.json",
+      "score_ref": "results/scores/graph/q-te-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 10,
+        "result_bytes": 561
+      }
+    },
+    {
+      "question_id": "q-ab-01",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-01.json",
+      "score_ref": "results/scores/graph/q-ab-01.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 33,
+        "error_steps": 33,
+        "result_bytes": 1847
+      }
+    },
+    {
+      "question_id": "q-ab-02",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-02.json",
+      "score_ref": "results/scores/graph/q-ab-02.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 18,
+        "result_bytes": 1021
+      }
+    },
+    {
+      "question_id": "q-ab-03",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-03.json",
+      "score_ref": "results/scores/graph/q-ab-03.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 43,
+        "error_steps": 43,
+        "result_bytes": 2442
+      }
+    },
+    {
+      "question_id": "q-ab-04",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-04.json",
+      "score_ref": "results/scores/graph/q-ab-04.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 10,
+        "result_bytes": 575
+      }
+    },
+    {
+      "question_id": "q-ab-05",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-05.json",
+      "score_ref": "results/scores/graph/q-ab-05.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 11,
+        "result_bytes": 616
+      }
+    },
+    {
+      "question_id": "q-ab-06",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-06.json",
+      "score_ref": "results/scores/graph/q-ab-06.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 17,
+        "result_bytes": 938
+      }
+    },
+    {
+      "question_id": "q-ab-07",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-07.json",
+      "score_ref": "results/scores/graph/q-ab-07.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 33,
+        "error_steps": 33,
+        "result_bytes": 1891
+      }
+    },
+    {
+      "question_id": "q-ab-08",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-08.json",
+      "score_ref": "results/scores/graph/q-ab-08.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 32,
+        "error_steps": 32,
+        "result_bytes": 1826
+      }
+    },
+    {
+      "question_id": "q-ab-09",
+      "category": "absence",
+      "lane": "graph",
+      "trace_ref": "results/runs/graph/q-ab-09.json",
+      "score_ref": "results/scores/graph/q-ab-09.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 13,
+        "result_bytes": 759
+      }
+    },
+    {
+      "question_id": "q-pl-01",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-01.json",
+      "score_ref": "results/scores/graph-seed/q-pl-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 4181
+      }
+    },
+    {
+      "question_id": "q-pl-02",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-02.json",
+      "score_ref": "results/scores/graph-seed/q-pl-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 33,
+        "error_steps": 0,
+        "result_bytes": 19921
+      }
+    },
+    {
+      "question_id": "q-pl-03",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-03.json",
+      "score_ref": "results/scores/graph-seed/q-pl-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 0,
+        "result_bytes": 3929
+      }
+    },
+    {
+      "question_id": "q-pl-04",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-04.json",
+      "score_ref": "results/scores/graph-seed/q-pl-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 40,
+        "error_steps": 0,
+        "result_bytes": 18073
+      }
+    },
+    {
+      "question_id": "q-pl-05",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-05.json",
+      "score_ref": "results/scores/graph-seed/q-pl-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 35,
+        "error_steps": 0,
+        "result_bytes": 17289
+      }
+    },
+    {
+      "question_id": "q-pl-06",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-06.json",
+      "score_ref": "results/scores/graph-seed/q-pl-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 14,
+        "error_steps": 0,
+        "result_bytes": 10452
+      }
+    },
+    {
+      "question_id": "q-pl-07",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-07.json",
+      "score_ref": "results/scores/graph-seed/q-pl-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 5,
+        "error_steps": 0,
+        "result_bytes": 1801
+      }
+    },
+    {
+      "question_id": "q-pl-08",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-08.json",
+      "score_ref": "results/scores/graph-seed/q-pl-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 89,
+        "error_steps": 1,
+        "result_bytes": 25849
+      }
+    },
+    {
+      "question_id": "q-pl-09",
+      "category": "point-lookup",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-pl-09.json",
+      "score_ref": "results/scores/graph-seed/q-pl-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 42,
+        "error_steps": 0,
+        "result_bytes": 17290
+      }
+    },
+    {
+      "question_id": "q-mh-01",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-01.json",
+      "score_ref": "results/scores/graph-seed/q-mh-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 0,
+        "result_bytes": 9583
+      }
+    },
+    {
+      "question_id": "q-mh-02",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-02.json",
+      "score_ref": "results/scores/graph-seed/q-mh-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0.5,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 22,
+        "error_steps": 0,
+        "result_bytes": 6620
+      }
+    },
+    {
+      "question_id": "q-mh-03",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-03.json",
+      "score_ref": "results/scores/graph-seed/q-mh-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 36,
+        "error_steps": 0,
+        "result_bytes": 10938
+      }
+    },
+    {
+      "question_id": "q-mh-04",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-04.json",
+      "score_ref": "results/scores/graph-seed/q-mh-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 0,
+        "result_bytes": 6479
+      }
+    },
+    {
+      "question_id": "q-mh-05",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-05.json",
+      "score_ref": "results/scores/graph-seed/q-mh-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 32,
+        "error_steps": 0,
+        "result_bytes": 13795
+      }
+    },
+    {
+      "question_id": "q-mh-06",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-06.json",
+      "score_ref": "results/scores/graph-seed/q-mh-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 61,
+        "error_steps": 0,
+        "result_bytes": 18058
+      }
+    },
+    {
+      "question_id": "q-mh-07",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-07.json",
+      "score_ref": "results/scores/graph-seed/q-mh-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 26,
+        "error_steps": 3,
+        "result_bytes": 13277
+      }
+    },
+    {
+      "question_id": "q-mh-09",
+      "category": "multi-hop",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-mh-09.json",
+      "score_ref": "results/scores/graph-seed/q-mh-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 54,
+        "error_steps": 0,
+        "result_bytes": 14667
+      }
+    },
+    {
+      "question_id": "q-sy-01",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-01.json",
+      "score_ref": "results/scores/graph-seed/q-sy-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 0,
+        "result_bytes": 13041
+      }
+    },
+    {
+      "question_id": "q-sy-02",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-02.json",
+      "score_ref": "results/scores/graph-seed/q-sy-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 45,
+        "error_steps": 0,
+        "result_bytes": 21645
+      }
+    },
+    {
+      "question_id": "q-sy-03",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-03.json",
+      "score_ref": "results/scores/graph-seed/q-sy-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 0,
+        "result_bytes": 7383
+      }
+    },
+    {
+      "question_id": "q-sy-04",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-04.json",
+      "score_ref": "results/scores/graph-seed/q-sy-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 55,
+        "error_steps": 0,
+        "result_bytes": 30969
+      }
+    },
+    {
+      "question_id": "q-sy-05",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-05.json",
+      "score_ref": "results/scores/graph-seed/q-sy-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 24,
+        "error_steps": 0,
+        "result_bytes": 17404
+      }
+    },
+    {
+      "question_id": "q-sy-06",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-06.json",
+      "score_ref": "results/scores/graph-seed/q-sy-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 53,
+        "error_steps": 0,
+        "result_bytes": 20640
+      }
+    },
+    {
+      "question_id": "q-sy-07",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-07.json",
+      "score_ref": "results/scores/graph-seed/q-sy-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 0,
+        "result_bytes": 9851
+      }
+    },
+    {
+      "question_id": "q-sy-08",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-08.json",
+      "score_ref": "results/scores/graph-seed/q-sy-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 90,
+        "error_steps": 0,
+        "result_bytes": 26445
+      }
+    },
+    {
+      "question_id": "q-sy-09",
+      "category": "synthesis",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-sy-09.json",
+      "score_ref": "results/scores/graph-seed/q-sy-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 47,
+        "error_steps": 0,
+        "result_bytes": 31253
+      }
+    },
+    {
+      "question_id": "q-te-01",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-01.json",
+      "score_ref": "results/scores/graph-seed/q-te-01.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 0,
+        "result_bytes": 10599
+      }
+    },
+    {
+      "question_id": "q-te-02",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-02.json",
+      "score_ref": "results/scores/graph-seed/q-te-02.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 56,
+        "error_steps": 0,
+        "result_bytes": 21502
+      }
+    },
+    {
+      "question_id": "q-te-03",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-03.json",
+      "score_ref": "results/scores/graph-seed/q-te-03.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 22,
+        "error_steps": 0,
+        "result_bytes": 14151
+      }
+    },
+    {
+      "question_id": "q-te-04",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-04.json",
+      "score_ref": "results/scores/graph-seed/q-te-04.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 20,
+        "error_steps": 0,
+        "result_bytes": 9904
+      }
+    },
+    {
+      "question_id": "q-te-05",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-05.json",
+      "score_ref": "results/scores/graph-seed/q-te-05.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 23,
+        "error_steps": 0,
+        "result_bytes": 11114
+      }
+    },
+    {
+      "question_id": "q-te-06",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-06.json",
+      "score_ref": "results/scores/graph-seed/q-te-06.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 0,
+        "result_bytes": 6393
+      }
+    },
+    {
+      "question_id": "q-te-07",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-07.json",
+      "score_ref": "results/scores/graph-seed/q-te-07.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 32,
+        "error_steps": 0,
+        "result_bytes": 13173
+      }
+    },
+    {
+      "question_id": "q-te-08",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-08.json",
+      "score_ref": "results/scores/graph-seed/q-te-08.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 0,
+        "result_bytes": 11824
+      }
+    },
+    {
+      "question_id": "q-te-09",
+      "category": "temporal",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-te-09.json",
+      "score_ref": "results/scores/graph-seed/q-te-09.json",
+      "passages_exact_ratio": 0,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 29,
+        "error_steps": 0,
+        "result_bytes": 17837
+      }
+    },
+    {
+      "question_id": "q-ab-01",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-01.json",
+      "score_ref": "results/scores/graph-seed/q-ab-01.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 28,
+        "error_steps": 0,
+        "result_bytes": 26937
+      }
+    },
+    {
+      "question_id": "q-ab-02",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-02.json",
+      "score_ref": "results/scores/graph-seed/q-ab-02.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 62,
+        "error_steps": 0,
+        "result_bytes": 39420
+      }
+    },
+    {
+      "question_id": "q-ab-03",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-03.json",
+      "score_ref": "results/scores/graph-seed/q-ab-03.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 48,
+        "error_steps": 0,
+        "result_bytes": 27596
+      }
+    },
+    {
+      "question_id": "q-ab-04",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-04.json",
+      "score_ref": "results/scores/graph-seed/q-ab-04.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 0,
+        "result_bytes": 1997
+      }
+    },
+    {
+      "question_id": "q-ab-05",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-05.json",
+      "score_ref": "results/scores/graph-seed/q-ab-05.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 20,
+        "error_steps": 0,
+        "result_bytes": 5702
+      }
+    },
+    {
+      "question_id": "q-ab-06",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-06.json",
+      "score_ref": "results/scores/graph-seed/q-ab-06.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 38,
+        "error_steps": 0,
+        "result_bytes": 4106
+      }
+    },
+    {
+      "question_id": "q-ab-07",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-07.json",
+      "score_ref": "results/scores/graph-seed/q-ab-07.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 177,
+        "error_steps": 0,
+        "result_bytes": 56998
+      }
+    },
+    {
+      "question_id": "q-ab-08",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-08.json",
+      "score_ref": "results/scores/graph-seed/q-ab-08.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 30,
+        "error_steps": 0,
+        "result_bytes": 7012
+      }
+    },
+    {
+      "question_id": "q-ab-09",
+      "category": "absence",
+      "lane": "graph-seed",
+      "trace_ref": "results/runs/graph-seed/q-ab-09.json",
+      "score_ref": "results/scores/graph-seed/q-ab-09.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 4,
+        "error_steps": 0,
+        "result_bytes": 390
+      }
+    },
+    {
+      "question_id": "q-pl-01",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-01.json",
+      "score_ref": "results/scores/direct/q-pl-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 2,
+        "error_steps": 0,
+        "result_bytes": 2724
+      }
+    },
+    {
+      "question_id": "q-pl-02",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-02.json",
+      "score_ref": "results/scores/direct/q-pl-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 2,
+        "result_bytes": 10853
+      }
+    },
+    {
+      "question_id": "q-pl-03",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-03.json",
+      "score_ref": "results/scores/direct/q-pl-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 3,
+        "error_steps": 0,
+        "result_bytes": 1201
+      }
+    },
+    {
+      "question_id": "q-pl-04",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-04.json",
+      "score_ref": "results/scores/direct/q-pl-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 3,
+        "result_bytes": 1729
+      }
+    },
+    {
+      "question_id": "q-pl-05",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-05.json",
+      "score_ref": "results/scores/direct/q-pl-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 3,
+        "result_bytes": 1894
+      }
+    },
+    {
+      "question_id": "q-pl-06",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-06.json",
+      "score_ref": "results/scores/direct/q-pl-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 15,
+        "error_steps": 4,
+        "result_bytes": 7851
+      }
+    },
+    {
+      "question_id": "q-pl-07",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-07.json",
+      "score_ref": "results/scores/direct/q-pl-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 3,
+        "result_bytes": 1566
+      }
+    },
+    {
+      "question_id": "q-pl-08",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-08.json",
+      "score_ref": "results/scores/direct/q-pl-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 3,
+        "result_bytes": 1832
+      }
+    },
+    {
+      "question_id": "q-pl-09",
+      "category": "point-lookup",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-pl-09.json",
+      "score_ref": "results/scores/direct/q-pl-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 3,
+        "result_bytes": 2730
+      }
+    },
+    {
+      "question_id": "q-mh-01",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-01.json",
+      "score_ref": "results/scores/direct/q-mh-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 3,
+        "result_bytes": 5546
+      }
+    },
+    {
+      "question_id": "q-mh-02",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-02.json",
+      "score_ref": "results/scores/direct/q-mh-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 2,
+        "result_bytes": 7815
+      }
+    },
+    {
+      "question_id": "q-mh-03",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-03.json",
+      "score_ref": "results/scores/direct/q-mh-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 3,
+        "result_bytes": 5245
+      }
+    },
+    {
+      "question_id": "q-mh-04",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-04.json",
+      "score_ref": "results/scores/direct/q-mh-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 3,
+        "result_bytes": 6764
+      }
+    },
+    {
+      "question_id": "q-mh-05",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-05.json",
+      "score_ref": "results/scores/direct/q-mh-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 3,
+        "result_bytes": 10876
+      }
+    },
+    {
+      "question_id": "q-mh-06",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-06.json",
+      "score_ref": "results/scores/direct/q-mh-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 4,
+        "result_bytes": 6885
+      }
+    },
+    {
+      "question_id": "q-mh-07",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-07.json",
+      "score_ref": "results/scores/direct/q-mh-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 24,
+        "error_steps": 8,
+        "result_bytes": 9736
+      }
+    },
+    {
+      "question_id": "q-mh-08",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-08.json",
+      "score_ref": "results/scores/direct/q-mh-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 13,
+        "error_steps": 5,
+        "result_bytes": 5617
+      }
+    },
+    {
+      "question_id": "q-mh-09",
+      "category": "multi-hop",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-mh-09.json",
+      "score_ref": "results/scores/direct/q-mh-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 2,
+        "result_bytes": 12581
+      }
+    },
+    {
+      "question_id": "q-sy-01",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-01.json",
+      "score_ref": "results/scores/direct/q-sy-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 6,
+        "error_steps": 3,
+        "result_bytes": 1729
+      }
+    },
+    {
+      "question_id": "q-sy-02",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-02.json",
+      "score_ref": "results/scores/direct/q-sy-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 18,
+        "error_steps": 5,
+        "result_bytes": 9976
+      }
+    },
+    {
+      "question_id": "q-sy-03",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-03.json",
+      "score_ref": "results/scores/direct/q-sy-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 9,
+        "error_steps": 3,
+        "result_bytes": 3415
+      }
+    },
+    {
+      "question_id": "q-sy-04",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-04.json",
+      "score_ref": "results/scores/direct/q-sy-04.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 28,
+        "error_steps": 3,
+        "result_bytes": 22008
+      }
+    },
+    {
+      "question_id": "q-sy-05",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-05.json",
+      "score_ref": "results/scores/direct/q-sy-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 3,
+        "result_bytes": 9658
+      }
+    },
+    {
+      "question_id": "q-sy-06",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-06.json",
+      "score_ref": "results/scores/direct/q-sy-06.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 9,
+        "error_steps": 3,
+        "result_bytes": 4261
+      }
+    },
+    {
+      "question_id": "q-sy-07",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-07.json",
+      "score_ref": "results/scores/direct/q-sy-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 2,
+        "result_bytes": 4068
+      }
+    },
+    {
+      "question_id": "q-sy-08",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-08.json",
+      "score_ref": "results/scores/direct/q-sy-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 4,
+        "result_bytes": 10099
+      }
+    },
+    {
+      "question_id": "q-sy-09",
+      "category": "synthesis",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-sy-09.json",
+      "score_ref": "results/scores/direct/q-sy-09.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 3,
+        "result_bytes": 4910
+      }
+    },
+    {
+      "question_id": "q-te-01",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-01.json",
+      "score_ref": "results/scores/direct/q-te-01.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 7,
+        "error_steps": 3,
+        "result_bytes": 2767
+      }
+    },
+    {
+      "question_id": "q-te-02",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-02.json",
+      "score_ref": "results/scores/direct/q-te-02.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "incorrect",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 16,
+        "error_steps": 3,
+        "result_bytes": 10075
+      }
+    },
+    {
+      "question_id": "q-te-03",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-03.json",
+      "score_ref": "results/scores/direct/q-te-03.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 3,
+        "result_bytes": 5100
+      }
+    },
+    {
+      "question_id": "q-te-04",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-04.json",
+      "score_ref": "results/scores/direct/q-te-04.json",
+      "passages_exact_ratio": 0.4,
+      "records_found_ratio": 0.4,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 4,
+        "result_bytes": 3635
+      }
+    },
+    {
+      "question_id": "q-te-05",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-05.json",
+      "score_ref": "results/scores/direct/q-te-05.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 9,
+        "error_steps": 3,
+        "result_bytes": 3619
+      }
+    },
+    {
+      "question_id": "q-te-06",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-06.json",
+      "score_ref": "results/scores/direct/q-te-06.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 11,
+        "error_steps": 3,
+        "result_bytes": 5513
+      }
+    },
+    {
+      "question_id": "q-te-07",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-07.json",
+      "score_ref": "results/scores/direct/q-te-07.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 17,
+        "error_steps": 3,
+        "result_bytes": 8366
+      }
+    },
+    {
+      "question_id": "q-te-08",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-08.json",
+      "score_ref": "results/scores/direct/q-te-08.json",
+      "passages_exact_ratio": 1,
+      "records_found_ratio": 1,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 8,
+        "error_steps": 2,
+        "result_bytes": 3768
+      }
+    },
+    {
+      "question_id": "q-te-09",
+      "category": "temporal",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-te-09.json",
+      "score_ref": "results/scores/direct/q-te-09.json",
+      "passages_exact_ratio": 0.667,
+      "records_found_ratio": 0.667,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": null,
+      "retrieval": {
+        "steps": 10,
+        "error_steps": 4,
+        "result_bytes": 4032
+      }
+    },
+    {
+      "question_id": "q-ab-01",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-01.json",
+      "score_ref": "results/scores/direct/q-ab-01.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 74,
+        "error_steps": 2,
+        "result_bytes": 49982
+      }
+    },
+    {
+      "question_id": "q-ab-02",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-02.json",
+      "score_ref": "results/scores/direct/q-ab-02.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 89,
+        "error_steps": 2,
+        "result_bytes": 67733
+      }
+    },
+    {
+      "question_id": "q-ab-03",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-03.json",
+      "score_ref": "results/scores/direct/q-ab-03.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 124,
+        "error_steps": 3,
+        "result_bytes": 84075
+      }
+    },
+    {
+      "question_id": "q-ab-04",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-04.json",
+      "score_ref": "results/scores/direct/q-ab-04.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 127,
+        "error_steps": 2,
+        "result_bytes": 86704
+      }
+    },
+    {
+      "question_id": "q-ab-05",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-05.json",
+      "score_ref": "results/scores/direct/q-ab-05.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 138,
+        "error_steps": 4,
+        "result_bytes": 89263
+      }
+    },
+    {
+      "question_id": "q-ab-06",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-06.json",
+      "score_ref": "results/scores/direct/q-ab-06.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "correct",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 85,
+        "error_steps": 2,
+        "result_bytes": 59657
+      }
+    },
+    {
+      "question_id": "q-ab-07",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-07.json",
+      "score_ref": "results/scores/direct/q-ab-07.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 99,
+        "error_steps": 6,
+        "result_bytes": 69787
+      }
+    },
+    {
+      "question_id": "q-ab-08",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-08.json",
+      "score_ref": "results/scores/direct/q-ab-08.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": false,
+      "retrieval": {
+        "steps": 33,
+        "error_steps": 3,
+        "result_bytes": 22382
+      }
+    },
+    {
+      "question_id": "q-ab-09",
+      "category": "absence",
+      "lane": "direct",
+      "trace_ref": "results/runs/direct/q-ab-09.json",
+      "score_ref": "results/scores/direct/q-ab-09.json",
+      "passages_exact_ratio": null,
+      "records_found_ratio": null,
+      "judge_verdict": "partial",
+      "judge_model": "nvidia/minimaxai/minimax-m3.1-flash",
+      "absence_stated": true,
+      "retrieval": {
+        "steps": 37,
+        "error_steps": 4,
+        "result_bytes": 24086
+      }
+    }
+  ],
+  "unsettled": [
+    {
+      "lane": "graph-seed",
+      "question_id": "q-mh-08",
+      "attempts": 5,
+      "attempt_seconds": [
+        1200,
+        1200,
+        2700,
+        4500,
+        10800
+      ],
+      "why": "Unbounded exploration under the seeded surface, diagnosed live (event-stream capture, ~4 min / 20 calls): the model resolves the cited records by name, then hunts for a way to read their TEXT — which no seeded tool returns (lookup gives paths + titles; neighbors/paths give edges). Calls repeat within 20 turns (m-003 ×2, d-005 ×2, projects/ledgerline.md ×2) and each turn slows as context grows, so longer leashes do not converge. Measured cost above: 5 attempts, ~5.7 h of agent time. This is the seeded lane's hard failure mode — it fails SLOW on questions whose answer needs record text, where the bare lane failed fast (cold-start lockout → honest refusal in 20 steps). The other 44 seeded cells settled, most inside the suite's 20-minute bound."
+    }
+  ]
+}

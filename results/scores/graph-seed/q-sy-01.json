@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-01",
+  "category": "synthesis",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-sy-01.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Wayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3,
+          18
+        ]
+      },
+      {
+        "record": "projects/wayfare.md",
+        "passage": "edge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3,
+          18
+        ]
+      },
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Shipped 2026-06-12; ship retro in m-008.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3,
+          18
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 18,
+    "error_steps": 0,
+    "result_bytes": 13041
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:18:46.923Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The answer correctly identifies Halcyon Transit, the realtime departure-display scope, MQTT, the shift from per-display autonomy to per-station edge gateways, and the green-and-amber palette. However, it omits key details—Meridian Studio, the three pilot stations, live vehicle-position data, sub-second freshness, the June target—and fails to provide the actual ship date of 2026-06-12.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:19:01.197Z"
+  }
+}

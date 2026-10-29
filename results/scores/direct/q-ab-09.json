@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-09",
+  "category": "absence",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-ab-09.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 37,
+    "error_steps": 4,
+    "result_bytes": 24086
+  },
+  "absence_stated": true,
+  "scored_at": "2026-10-27T23:40:56.224Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly states that no evidence of 3D printing was found, but it adds numerous unsupported claims about studios, projects, technologies, and corpus scope that are not present in the reference answer.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:41:05.741Z"
+  }
+}

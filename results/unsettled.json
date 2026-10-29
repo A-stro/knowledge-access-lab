@@ -1,0 +1,14 @@
+{
+  "schema": "knowledge-access-lab/unsettled@1",
+  "recorded": "2026-10-28",
+  "note": "F6's recorded non-settlement — the only legal reason a suite cell may be missing from the rollup. Read and validated by `lab suite` on every invocation: an entry naming a cell that HAS a committed trace + score fails loudly (remove the stale record), and any missing cell NOT named here still refuses the rollup. The record is human-committed precisely because it documents operational attempts the suite itself cannot derive (longer-leash one-offs after the suite's own retries were exhausted).",
+  "cells": [
+    {
+      "lane": "graph-seed",
+      "question_id": "q-mh-08",
+      "attempts": 5,
+      "attempt_seconds": [1200, 1200, 2700, 4500, 10800],
+      "why": "Unbounded exploration under the seeded surface, diagnosed live (event-stream capture, ~4 min / 20 calls): the model resolves the cited records by name, then hunts for a way to read their TEXT — which no seeded tool returns (lookup gives paths + titles; neighbors/paths give edges). Calls repeat within 20 turns (m-003 ×2, d-005 ×2, projects/ledgerline.md ×2) and each turn slows as context grows, so longer leashes do not converge. Measured cost above: 5 attempts, ~5.7 h of agent time. This is the seeded lane's hard failure mode — it fails SLOW on questions whose answer needs record text, where the bare lane failed fast (cold-start lockout → honest refusal in 20 steps). The other 44 seeded cells settled, most inside the suite's 20-minute bound."
+    }
+  ]
+}

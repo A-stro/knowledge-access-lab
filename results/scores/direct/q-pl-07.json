@@ -1,0 +1,43 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-pl-07",
+  "category": "point-lookup",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-pl-07.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "source: \"reading notes, IIIF Image and Presentation APIs\"",
+        "passage_exact": true,
+        "passage_in_steps": [
+          6
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          6
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 6,
+    "error_steps": 3,
+    "result_bytes": 1566
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:16:14.889Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent gives the exact recorded source, “reading notes, IIIF Image and Presentation APIs,” matching the reference answer.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:16:18.002Z"
+  }
+}

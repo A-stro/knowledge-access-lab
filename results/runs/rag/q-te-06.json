@@ -1,0 +1,90 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-06",
+  "category": "temporal",
+  "question_text": "On what date did the Ledgerline billing decision land, relative to its pricing discussion?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: On what date did the Ledgerline billing decision land, relative to its pricing discussion?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: On what date did the Ledgerline billing decision land, relative to its pricing discussion?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Ledgerline billing decision pricing discussion date"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "On what date did the Ledgerline billing decision land, relative to its pricing discussion?"
+      },
+      "result_text": "{\n  \"question\": \"q-te-06\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"para\": 2,\n      \"score\": 0.723381,\n      \"passage\": \"Decision: Ledgerline moves to flat monthly billing per client, agreed in the\\npricing discussion (m-003) — clients see one predictable number; timesheets\\nstay internal for capacity planning.\"\n    },\n    {\n      \"path\": \"meetings/m-003.md\",\n      \"para\": 0,\n      \"score\": 0.680208,\n      \"passage\": \"The pricing discussion weighed hourly billing assembled from raw timesheets\\nagainst flat monthly billing per client: hourly recovers every scrap of\\neffort but costs Lorna a reconciliation day each month and reads\\nunpredictably to clients; flat monthly is one predictable number per client\\nwith timesheets kept internal for capacity planning. Flat monthly won, and\\nd-005 landed three days later.\"\n    },\n    {\n      \"path\": \"meetings/m-002.md\",\n      \"para\": 0,\n      \"score\": 0.675529,\n      \"passage\": \"Ledgerline planning: schema first per d-001, invoicing flows after timesheets\\nstabilize. Lorna brought the ops requirements — deposit reconciliation and\\nclient notes. The billing model was deliberately deferred to a dedicated\\npricing discussion (m-003).\"\n    },\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"para\": 1,\n      \"score\": 0.659439,\n      \"passage\": \"Options considered: hourly billing from raw timesheets; flat monthly billing\\nper client.\"\n    },\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"para\": 3,\n      \"score\": 0.649221,\n      \"passage\": \"Consequences: invoicing is a one-step monthly run; scope creep now surfaces\\nin planning, not on the invoice.\"\n    },\n    {\n      \"path\": \"projects/ledgerline.md\",\n      \"para\": 0,\n      \"score\": 0.647942,\n      \"passage\": \"Ledgerline is Meridian Studio's internal timesheet and invoicing service —\\nthe studio bills its clients through it. SQLite-backed (decision d-001), with\\nflat monthly billing per client adopted in March (decision d-005) after the\\npricing discussion in m-003. Invoice PDF export landed in the March sprint\\n(s-005).\"\n    },\n    {\n      \"path\": \"decisions/d-005.md\",\n      \"para\": 0,\n      \"score\": 0.639431,\n      \"passage\": \"Context: the studio had been assembling hourly invoices from raw timesheets;\\nreconciliation cost Lorna a day per month.\"\n    },\n    {\n      \"path\": \"projects/ledgerline.md\",\n      \"para\": 1,\n      \"score\": 0.625504,\n      \"passage\": \"Team: Dev Okonkwo (backend), Noor Haddad (interface), Lorna Vey (ops).\\nBilling runs monthly; Lorna reconciles the runs against bank deposits.\"\n    },\n    {\n      \"path\": \"sessions/s-001.md\",\n      \"para\": 0,\n      \"score\": 0.61246,\n      \"passage\": \"Dev and Noor bootstrapped the Ledgerline schema per d-001: timesheets,\\nclients, invoices, and a billing-runs table. SQLite WAL mode went in from the\\nfirst migration; Lorna's ops fields — deposit reconciliation, client notes —\\nmade the cut for v1.\"\n    },\n    {\n      \"path\": \"decisions/d-115.md\",\n      \"para\": 1,\n      \"score\": 0.594739,\n      \"passage\": \"Options considered: edit invoices retroactively; rate cards with effective\\nperiods.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-003.md"
+      },
+      "result_text": "---\nid: m-003\ngenre: meetings\ntitle: \"Ledgerline pricing discussion\"\ncreated: 2026-03-17\nprovenance: hand-authored\ntags: [ledgerline, billing]\nattendees: [mara-voss, lorna-vey, dev-okonkwo]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-005.md\n---\n\nThe pricing discussion weighed hourly billing assembled from raw timesheets\nagainst flat monthly billing per client: hourly recovers every scrap of\neffort but costs Lorna a reconciliation day each month and reads\nunpredictably to clients; flat monthly is one predictable number per client\nwith timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-005.md"
+      },
+      "result_text": "---\nid: d-005\ngenre: decisions\ntitle: \"Ledgerline bills flat monthly per client\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [ledgerline, billing]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: meetings/m-003.md\n  - type: mentions\n    to: projects/ledgerline.md\n---\n\nContext: the studio had been assembling hourly invoices from raw timesheets;\nreconciliation cost Lorna a day per month.\n\nOptions considered: hourly billing from raw timesheets; flat monthly billing\nper client.\n\nDecision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.\n\nConsequences: invoicing is a one-step monthly run; scope creep now surfaces\nin planning, not on the invoice.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "The Ledgerline billing decision (d-005) landed on **2026-03-20**, which was **three days after** the pricing discussion (m-003) on **2026-03-17**.\n\n**Evidence:**\n\n- **meetings/m-003.md** — The pricing discussion record shows `created: 2026-03-17` and states: \"Flat monthly won, and d-005 landed three days later.\"\n- **decisions/d-005.md** — The decision record shows `created: 2026-03-20` and is tagged as `influenced_by: meetings/m-003.md`.",
+  "started_at": "2026-10-27T21:47:27.547Z",
+  "finished_at": "2026-10-27T21:47:40.052Z"
+}

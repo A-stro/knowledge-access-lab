@@ -1,0 +1,367 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-05",
+  "category": "temporal",
+  "question_text": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "lane": "graph",
+  "lane_tools": [
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "Kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "Kestrel experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel experiment",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "index"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: index",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "home"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: home",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "root"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: root",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "README.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: README.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "docs"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: docs",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_lane__paths",
+      "arguments": {
+        "from": "Kestrel",
+        "to": "experiment"
+      },
+      "result_text": "Tool error (paths): Error: record not found: Kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "main"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: main",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "project/Kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: project/Kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "experiments/Kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: experiments/Kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "knowledge"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: knowledge",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "kestrel-experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: kestrel-experiment",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: .",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "about"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: about",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "kestrel"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "KestrelExperiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: KestrelExperiment",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "2024"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: 2024",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "AI"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: AI",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "openai"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: openai",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "google"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: google",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "meta"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: meta",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: notes",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_lane__paths",
+      "arguments": {
+        "from": "Kestrel",
+        "to": "start"
+      },
+      "result_text": "Tool error (paths): Error: record not found: Kestrel",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "readme"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: readme",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "start"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: start",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "entry"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: entry",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "Kestrel_experiment"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: Kestrel_experiment",
+      "is_error": true,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T23:06:19.736Z",
+  "finished_at": "2026-10-27T23:08:45.773Z"
+}

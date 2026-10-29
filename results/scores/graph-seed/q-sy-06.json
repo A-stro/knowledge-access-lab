@@ -1,0 +1,78 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-06",
+  "category": "synthesis",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-sy-06.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/ocr-comparison.md",
+        "passage": "Assumption on record: throughput scales linearly with scan volume.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          12,
+          14,
+          31,
+          33,
+          42,
+          48
+        ]
+      },
+      {
+        "record": "sessions/s-006.md",
+        "passage": "Silas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          5,
+          7,
+          24,
+          34,
+          37,
+          44,
+          50,
+          52
+        ]
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "archival scans run at roughly forty percent of\nthe assumed rate, so the digitization schedule stretches",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          13,
+          16,
+          40,
+          41,
+          47
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 53,
+    "error_steps": 0,
+    "result_bytes": 20640
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T18:56:13.691Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The agent correctly identifies d-004’s remote-API assumption, s-006 as the contradicting benchmark, and m-007 as the Bellweather review, but it omits the benchmark’s quantitative findings (fourfold throughput, linear-scaling assumption, and archival scans at roughly 40% of the assumed rate) and incorrectly substitutes an invented IIIF-viewer scope reduction for the reference’s stretched digitization schedule.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T18:56:40.378Z"
+  }
+}

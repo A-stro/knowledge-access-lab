@@ -1,0 +1,167 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-07",
+  "category": "point-lookup",
+  "question_text": "What source is recorded for the IIIF overview reading notes?",
+  "lane": "graph",
+  "lane_tools": [
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: What source is recorded for the IIIF overview reading notes?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "IIIF overview reading notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: IIIF overview reading notes",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "iiif-overview-reading-notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: iiif-overview-reading-notes",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "IIIF"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: IIIF",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "iiiF"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: iiiF",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "notes/IIIF"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: notes/IIIF",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "reading-notes/IIIF"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: reading-notes/IIIF",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "IIIF-overview"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: IIIF-overview",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "iiif"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: iiif",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "overview"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: overview",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "reading-notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: reading-notes",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "README"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: README",
+      "is_error": true,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T22:56:31.911Z",
+  "finished_at": "2026-10-27T22:57:14.506Z"
+}

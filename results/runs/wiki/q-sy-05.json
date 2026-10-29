@@ -1,0 +1,113 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-sy-05",
+  "category": "synthesis",
+  "question_text": "How did the studio's approach to Wayfare display maintenance change between March and June, and what drove it?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How did the studio's approach to Wayfare display maintenance change between March and June, and what drove it?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How did the studio's approach to Wayfare display maintenance change between March and June, and what drove it?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"projects\": \"project records with status and an optional client org\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"projects\",\n      \"count\": 12,\n      \"records\": [\n        {\n          \"id\": \"beacon-grid\",\n          \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n          \"path\": \"projects/beacon-grid.md\"\n        },\n        {\n          \"id\": \"cinderboard\",\n          \"title\": \"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\n          \"path\": \"projects/cinderboard.md\"\n        },\n        {\n          \"id\": \"cometline\",\n          \"title\": \"Cometline — exhibit kiosk for Millhaven Observatory\",\n          \"path\": \"projects/cometline.md\"\n        },\n        {\n          \"id\": \"curlew-crm\",\n          \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/curlew-crm.md\"\n        },\n        {\n          \"id\": \"driftline\",\n          \"title\": \"Driftline — ferry-schedule print service for Bayline Transit\",\n          \"path\": \"projects/driftline.md\"\n        },\n        {\n          \"id\": \"foxglove-archive\",\n          \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n          \"path\": \"projects/foxglove-archive.md\"\n        },\n        {\n          \"id\": \"kestrel-crm\",\n          \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/kestrel-crm.md\"\n        },\n        {\n          \"id\": \"larkspur-archive\",\n          \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n          \"path\": \"projects/larkspur-archive.md\"\n        },\n        {\n          \"id\": \"ledgerline\",\n          \"title\": \"Ledgerline — internal timesheet and invoicing service\",\n          \"path\": \"projects/ledgerline.md\"\n        },\n        {\n          \"id\": \"perchboard\",\n          \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n          \"path\": \"projects/perchboard.md\"\n        },\n        {\n          \"id\": \"rill\",\n          \"title\": \"Rill — internal timesheet and invoicing service\",\n          \"path\": \"projects/rill.md\"\n        },\n        {\n          \"id\": \"wayfare\",\n          \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n          \"path\": \"projects/wayfare.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "---\nid: s-004\ngenre: sessions\ntitle: \"Wayfare field maintenance pain\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [wayfare, fieldwork]\nrelated:\n  - type: contradicts\n    to: decisions/d-003.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nTheo and Dev spent the day in the field at Ashport Central and Ferry Quay:\nafter the last firmware update, the three pilot stations drifted to three\nfirmware versions, and a board that lost power would not recover its clock.\nReflashing takes roughly ninety minutes per display carried to the platform.\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-005.md"
+      },
+      "result_text": "---\nid: m-005\ngenre: meetings\ntitle: \"Wayfare architecture review\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nattendees: [dev-okonkwo, theo-kanda, june-park, silas-brandt, mara-voss, bram-oyelaran]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-004.md\n  - type: mentions\n    to: decisions/d-008.md\n---\n\nArchitecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display. Theo proposed the\nedge-gateway hub — flash once per station, displays pull from the gateway —\nover keeping per-display autonomy with a better flashing ritual. The room\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Answer:**\n\nThe studio shifted from **per-display autonomy** (each display running its own single-board computer with local firmware, no central server) to an **edge-gateway hub per station** (one gateway per station that coordinates displays, flashes firmware once per station, and funnels telemetry).\n\n**What changed (March → April → June):**\n- **March 4 (d-003):** Decided on per-display autonomy — each Wayfare display ran its own single-board computer with local fallback rendering, no central station server. Firmware updates required flashing board-by-board.\n- **April 8 (d-008):** Superseded d-003. Moved to an edge-gateway hub per station — firmware flashes once per station, displays pull from the gateway, telemetry funnels through it.\n- **June 12:** Project shipped with the gateway architecture (retro in m-008).\n\n**What drove it:**\nAfter ~6 weeks in the field at the three pilot stations (Ashport Central, Ferry Quay, Millbrook Bridge), the per-display autonomy model caused severe maintenance pain:\n- Firmware drifted to **three different versions** across the three stations.\n- A board that lost power **would not recover its clock**.\n- **Reflashing took ~90 minutes per display**, carried manually to the platform.\n- The pain was documented in a field session (s-004) and reviewed in an architecture review meeting (m-005), which led to the gateway decision the same day (d-008).\n\n**Evidence:**\n- **d-003 (2026-03-04):** \"each Wayfare display runs its own single-board computer with local fallback rendering and no central station server — autonomy per display... firmware updates must be flashed board by board. Superseded by d-008 after field maintenance pain (s-004, m-005).\"\n- **d-008 (2026-04-08):** \"after six weeks in the field, per-display autonomy shows its cost — firmware drift across boards and roughly ninety minutes of manual reflash per display when updates land (documented in s-004, reviewed in m-005). Decision: each pilot station gets an edge gateway hub — firmware flashes once per station, displays pull from the gateway, telemetry funnels through it.\"\n- **s-004 (2026-04-02):** \"after the last firmware update, the three pilot stations drifted to three firmware versions, and a board that lost power would not recover its clock. Reflashing takes roughly ninety minutes per display carried to the platform. Per-display autonomy (d-003) is failing on maintenance, not on rendering.\"\n- **m-005 (2026-04-08):** \"Architecture review on the field findings (s-004): three firmware versions across three stations, ninety-minute reflashes per display. Theo proposed the edge-gateway hub — flash once per station, displays pull from the gateway — over keeping per-display autonomy with a better flashing ritual. The room agreed, and d-008 landed the same day.\"",
+  "started_at": "2026-10-27T22:00:32.007Z",
+  "finished_at": "2026-10-27T22:01:33.945Z"
+}

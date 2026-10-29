@@ -1,0 +1,68 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-05",
+  "category": "multi-hop",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-mh-05.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "decisions/d-009.md",
+        "passage": "Decision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          5
+        ]
+      },
+      {
+        "record": "sessions/s-008.md",
+        "passage": "Odessa ran contrast testing at Ashport Central's sunlit platform with June:",
+        "passage_exact": true,
+        "passage_in_steps": [
+          3
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          3
+        ]
+      },
+      {
+        "record": "references/wcag-contrast-notes.md",
+        "passage": "Informed the Wayfare palette decision (d-009).",
+        "passage_exact": true,
+        "passage_in_steps": [
+          4
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          4
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 6,
+    "error_steps": 0,
+    "result_bytes": 6834
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T22:47:07.823Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer accurately traces d-009 to session s-008—where Odessa and June observed that blue-on-dark washed out while green-on-dark and amber-on-dark remained readable—and to the WCAG notes confirming daylight contrast. The additional post-ship meeting is clearly identified as confirmation rather than an influence, and no reference facts are contradicted.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:47:53.039Z"
+  }
+}

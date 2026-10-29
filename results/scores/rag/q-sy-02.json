@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-02",
+  "category": "synthesis",
+  "lane": "rag",
+  "trace_ref": "results/runs/rag/q-sy-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "people/dev-okonkwo.md",
+        "passage": "He owns the Ledgerline\nservice, the Wayfare display firmware, and the Larkspur OCR pipeline.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          4
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          4
+        ]
+      },
+      {
+        "record": "people/noor-haddad.md",
+        "passage": "She built the Ledgerline\ninterface, the Wayfare display renderer, and started the Beacon Grid\ndashboard.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          5
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          5
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 7,
+    "error_steps": 1,
+    "result_bytes": 7877
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T21:43:05.128Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "It correctly identifies Dev Okonkwo as the firmware owner and Noor Haddad as the renderer builder, but omits Dev’s April field-day work and Noor’s frontend role, Ledgerline interface, and Beacon Grid dashboard work, while adding technical claims not present in the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T21:43:28.530Z"
+  }
+}

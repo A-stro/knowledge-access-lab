@@ -1,0 +1,101 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-07",
+  "category": "multi-hop",
+  "question_text": "How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "fleet-provisioning ops note Wayfare field pain edge-gateway decision"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?"
+      },
+      "result_text": "{\n  \"question\": \"q-mh-07\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"para\": 1,\n      \"score\": 0.803091,\n      \"passage\": \"Written after the Wayfare field pain (s-004); the hub topology is the\\ndirection d-008 adopted.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 3,\n      \"score\": 0.72141,\n      \"passage\": \"Consequences: one more box per station, collapsed maintenance surface; Bram\\nowns gateway provisioning.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 1,\n      \"score\": 0.719486,\n      \"passage\": \"Options considered: keep per-display autonomy with a better flashing ritual;\\none edge gateway per station coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 2,\n      \"score\": 0.715339,\n      \"passage\": \"Decision: each pilot station gets an edge gateway hub — firmware flashes once\\nper station, displays pull from the gateway, telemetry funnels through it.\\nThis supersedes d-003.\"\n    },\n    {\n      \"path\": \"references/fleet-provisioning-notes.md\",\n      \"para\": 0,\n      \"score\": 0.679661,\n      \"passage\": \"Provisioning a fleet of small boards two ways: point-wise flashing scales\\nlinearly with board count and fails quietly; a gateway-hub topology flashes\\nonce per site and funnels telemetry home. The hub costs one more box per\\nstation but collapses the maintenance surface.\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"para\": 0,\n      \"score\": 0.65511,\n      \"passage\": \"Retro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\\nreversal (d-008) collapsed the maintenance surface — flashing is now a\\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\\ntesting made the green-and-amber palette readable in full sun; MQTT retained\\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\\nduplicate renders during reconnects — next time, dedupe on the display, not\\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\\nclient ships.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.638622,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"decisions/d-008.md\",\n      \"para\": 0,\n      \"score\": 0.63477,\n      \"passage\": \"Context: after six weeks in the field, per-display autonomy shows its cost —\\nfirmware drift across boards and roughly ninety minutes of manual reflash per\\ndisplay when updates land (documented in s-004, reviewed in m-005).\"\n    },\n    {\n      \"path\": \"references/mqtt-311-notes.md\",\n      \"para\": 1,\n      \"score\": 0.627063,\n      \"passage\": \"Informed Wayfare's transport decision (d-002) and Beacon Grid's ingest\\ndecision (d-007).\"\n    },\n    {\n      \"path\": \"meetings/m-005.md\",\n      \"para\": 0,\n      \"score\": 0.627004,\n      \"passage\": \"Architecture review on the field findings (s-004): three firmware versions\\nacross three stations, ninety-minute reflashes per display. Theo proposed the\\nedge-gateway hub — flash once per station, displays pull from the gateway —\\nover keeping per-display autonomy with a better flashing ritual. The room\\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "references/fleet-provisioning-notes.md"
+      },
+      "result_text": "---\nid: fleet-provisioning-notes\ngenre: references\ntitle: \"Provisioning device fleets — ops note\"\ncreated: 2026-04-06\nprovenance: hand-authored\ntags: [infrastructure, ops-note]\nsource: \"internal ops note\"\nrelated:\n  - type: relates_to\n    to: references/embedded-single-board-notes.md\n---\n\nProvisioning a fleet of small boards two ways: point-wise flashing scales\nlinearly with board count and fails quietly; a gateway-hub topology flashes\nonce per site and funnels telemetry home. The hub costs one more box per\nstation but collapses the maintenance surface.\n\nWritten after the Wayfare field pain (s-004); the hub topology is the\ndirection d-008 adopted.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-005.md"
+      },
+      "result_text": "---\nid: m-005\ngenre: meetings\ntitle: \"Wayfare architecture review\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nattendees: [dev-okonkwo, theo-kanda, june-park, silas-brandt, mara-voss, bram-oyelaran]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-004.md\n  - type: mentions\n    to: decisions/d-008.md\n---\n\nArchitecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display. Theo proposed the\nedge-gateway hub — flash once per station, displays pull from the gateway —\nover keeping per-display autonomy with a better flashing ritual. The room\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The fleet-provisioning ops note explicitly states it was **\"Written after the Wayfare field pain (s-004); the hub topology is the direction d-008 adopted\"** (references/fleet-provisioning-notes.md). \n\nThe edge-gateway decision (d-008) confirms this chain: its **Context** cites the field pain directly — *\"after six weeks in the field, per-display autonomy shows its cost — firmware drift across boards and roughly ninety minutes of manual reflash per display when updates land (documented in s-004, reviewed in m-005)\"* (decisions/d-008.md, para 0).\n\nThe architecture review meeting (m-005) bridges them: it was an **\"Architecture review on the field findings (s-004): three firmware versions across three stations, ninety-minute reflashes per display. Theo proposed the edge-gateway hub — flash once per station, displays pull from the gateway — over keeping per-display autonomy with a better flashing ritual. The room agreed, and d-008 landed the same day\"** (meetings/m-005.md, para 0).\n\n**In short:** The ops note documents the provisioning trade-off (point-wise flashing vs. gateway hub) *after* the Wayfare field pain (s-004) exposed the cost of per-display autonomy; that same field pain is the stated Context for d-008, which adopts the hub topology the ops note advocates.",
+  "started_at": "2026-10-27T21:41:26.382Z",
+  "finished_at": "2026-10-27T21:41:58.665Z"
+}

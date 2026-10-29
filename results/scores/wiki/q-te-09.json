@@ -1,0 +1,63 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-09",
+  "category": "temporal",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-te-09.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-001.md",
+        "passage": "created: 2026-02-20",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "orgs/bellweather-books.md",
+        "passage": "created: 2026-03-02",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2
+        ]
+      },
+      {
+        "record": "projects/larkspur-archive.md",
+        "passage": "created: 2026-03-02",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0.667,
+    "records_found_ratio": 0.667
+  },
+  "retrieval": {
+    "steps": 3,
+    "error_steps": 0,
+    "result_bytes": 5128
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T22:05:25.318Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The agent gives Wayfare's kickoff as 2026-02-20 and the Larkspur engagement start as 2026-03-02, correctly computing a 10-day interval, which matches the reference answer; the added attribution detail does not contradict the reference facts.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:06:07.813Z"
+  }
+}

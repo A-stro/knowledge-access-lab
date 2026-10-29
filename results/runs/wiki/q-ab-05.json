@@ -1,0 +1,804 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-05",
+  "category": "absence",
+  "question_text": "Does any record mention an insurance policy covering the display fleet or the studio?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does any record mention an insurance policy covering the display fleet or the studio?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does any record mention an insurance policy covering the display fleet or the studio?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {},
+      "result_text": "{\"taxonomy\":{\"decisions\":\"decision records with status: accepted, rejected, or superseded\",\"meetings\":\"meeting notes with attendees and cross-references\",\"orgs\":\"organizations: clients, partners, vendors, and the studio itself\",\"people\":\"people records with roles across the studio and its clients\",\"projects\":\"project records with status and an optional client org\",\"references\":\"reading notes and ops notes that informed decisions\",\"sessions\":\"work-session records\"},\"genres\":[{\"genre\":\"decisions\",\"count\":29,\"records\":[{\"id\":\"d-001\",\"title\":\"Ledgerline stores its data in SQLite\",\"path\":\"decisions/d-001.md\"},{\"id\":\"d-002\",\"title\":\"Wayfare displays speak MQTT\",\"path\":\"decisions/d-002.md\"},{\"id\":\"d-003\",\"title\":\"Wayfare runs one single-board computer per display, no central server\",\"path\":\"decisions/d-003.md\"},{\"id\":\"d-004\",\"title\":\"Larkspur Archive routes OCR through a remote API\",\"path\":\"decisions/d-004.md\"},{\"id\":\"d-005\",\"title\":\"Ledgerline bills flat monthly per client\",\"path\":\"decisions/d-005.md\"},{\"id\":\"d-006\",\"title\":\"Beacon Grid queries DuckDB, not a time-series server\",\"path\":\"decisions/d-006.md\"},{\"id\":\"d-007\",\"title\":\"Beacon Grid ingests over MQTT rather than REST polling\",\"path\":\"decisions/d-007.md\"},{\"id\":\"d-008\",\"title\":\"Wayfare moves to an edge-gateway hub per station\",\"path\":\"decisions/d-008.md\"},{\"id\":\"d-009\",\"title\":\"Wayfare adopts a green-and-amber palette for outdoor readability\",\"path\":\"decisions/d-009.md\"},{\"id\":\"d-010\",\"title\":\"Cancel the Kestrel CRM experiment\",\"path\":\"decisions/d-010.md\"},{\"id\":\"d-011\",\"title\":\"Larkspur Archive ships an IIIF viewer, not a custom gallery\",\"path\":\"decisions/d-011.md\"},{\"id\":\"d-101\",\"title\":\"Rill stores its data in PostgreSQL\",\"path\":\"decisions/d-101.md\"},{\"id\":\"d-102\",\"title\":\"Perchboard displays speak MQTT 5.0\",\"path\":\"decisions/d-102.md\"},{\"id\":\"d-103\",\"title\":\"Perchboard runs one single-board computer per display, no central server\",\"path\":\"decisions/d-103.md\"},{\"id\":\"d-104\",\"title\":\"Foxglove routes OCR through a local GPU cluster\",\"path\":\"decisions/d-104.md\"},{\"id\":\"d-105\",\"title\":\"Rill bills hourly with per-project rates\",\"path\":\"decisions/d-105.md\"},{\"id\":\"d-106\",\"title\":\"Cometline runs a kiosk browser with an offline cache\",\"path\":\"decisions/d-106.md\"},{\"id\":\"d-107\",\"title\":\"Cinderboard queries ClickHouse, not a time-series server\",\"path\":\"decisions/d-107.md\"},{\"id\":\"d-108\",\"title\":\"Cinderboard ingests over MQTT 5.0 shared subscriptions\",\"path\":\"decisions/d-108.md\"},{\"id\":\"d-109\",\"title\":\"Perchboard moves to an edge relay per station\",\"path\":\"decisions/d-109.md\"},{\"id\":\"d-110\",\"title\":\"Perchboard syncs fleet clocks with chrony\",\"path\":\"decisions/d-110.md\"},{\"id\":\"d-111\",\"title\":\"Cancel the Curlew CRM experiment\",\"path\":\"decisions/d-111.md\"},{\"id\":\"d-112\",\"title\":\"Perchboard adopts a high-contrast white-on-black palette\",\"path\":\"decisions/d-112.md\"},{\"id\":\"d-113\",\"title\":\"Foxglove ships a static-file gallery, not a deep-zoom server\",\"path\":\"decisions/d-113.md\"},{\"id\":\"d-114\",\"title\":\"Foxglove names scans by box and leaf, not by title\",\"path\":\"decisions/d-114.md\"},{\"id\":\"d-115\",\"title\":\"Rill adopts per-period rate cards\",\"path\":\"decisions/d-115.md\"},{\"id\":\"d-116\",\"title\":\"Driftline prints from Bayline's timetable feed, not a local copy\",\"path\":\"decisions/d-116.md\"},{\"id\":\"d-117\",\"title\":\"Perchboard adopts marine-rated enclosures for pier boards\",\"path\":\"decisions/d-117.md\"},{\"id\":\"d-118\",\"title\":\"Foxglove adds page-level anchor URLs to the gallery\",\"path\":\"decisions/d-118.md\"}]},{\"genre\":\"meetings\",\"count\":28,\"records\":[{\"id\":\"m-001\",\"title\":\"Wayfare kickoff with Halcyon Transit\",\"path\":\"meetings/m-001.md\"},{\"id\":\"m-002\",\"title\":\"Ledgerline planning sync\",\"path\":\"meetings/m-002.md\"},{\"id\":\"m-003\",\"title\":\"Ledgerline pricing discussion\",\"path\":\"meetings/m-003.md\"},{\"id\":\"m-004\",\"title\":\"Studio all-hands, March\",\"path\":\"meetings/m-004.md\"},{\"id\":\"m-005\",\"title\":\"Wayfare architecture review\",\"path\":\"meetings/m-005.md\"},{\"id\":\"m-006\",\"title\":\"Kestrel CRM go/no-go\",\"path\":\"meetings/m-006.md\"},{\"id\":\"m-007\",\"title\":\"Larkspur Archive mid-project review with Bellweather\",\"path\":\"meetings/m-007.md\"},{\"id\":\"m-008\",\"title\":\"Wayfare ship retro\",\"path\":\"meetings/m-008.md\"},{\"id\":\"m-101\",\"title\":\"Perchboard kickoff with Bayline Transit\",\"path\":\"meetings/m-101.md\"},{\"id\":\"m-102\",\"title\":\"Rill planning sync\",\"path\":\"meetings/m-102.md\"},{\"id\":\"m-103\",\"title\":\"Foxglove kickoff with Harrowgate Press\",\"path\":\"meetings/m-103.md\"},{\"id\":\"m-104\",\"title\":\"Rill billing model discussion\",\"path\":\"meetings/m-104.md\"},{\"id\":\"m-105\",\"title\":\"Copperleaf all-hands, February\",\"path\":\"meetings/m-105.md\"},{\"id\":\"m-106\",\"title\":\"Cinderboard engagement kickoff with Ridgeway Power\",\"path\":\"meetings/m-106.md\"},{\"id\":\"m-107\",\"title\":\"Perchboard architecture review\",\"path\":\"meetings/m-107.md\"},{\"id\":\"m-108\",\"title\":\"Copperleaf all-hands, March\",\"path\":\"meetings/m-108.md\"},{\"id\":\"m-109\",\"title\":\"Curlew go/no-go\",\"path\":\"meetings/m-109.md\"},{\"id\":\"m-110\",\"title\":\"Cinderboard wallboard walkthrough\",\"path\":\"meetings/m-110.md\"},{\"id\":\"m-111\",\"title\":\"Studio tooling review\",\"path\":\"meetings/m-111.md\"},{\"id\":\"m-112\",\"title\":\"Foxglove mid-project review with Harrowgate\",\"path\":\"meetings/m-112.md\"},{\"id\":\"m-113\",\"title\":\"Security and access review\",\"path\":\"meetings/m-113.md\"},{\"id\":\"m-114\",\"title\":\"Foxglove annex planning with Harrowgate\",\"path\":\"meetings/m-114.md\"},{\"id\":\"m-115\",\"title\":\"Cometline opening review with Millhaven Observatory\",\"path\":\"meetings/m-115.md\"},{\"id\":\"m-116\",\"title\":\"Perchboard ship retro\",\"path\":\"meetings/m-116.md\"},{\"id\":\"m-117\",\"title\":\"Perchboard maintenance window review with Bayline\",\"path\":\"meetings/m-117.md\"},{\"id\":\"m-118\",\"title\":\"Copperleaf all-hands, June\",\"path\":\"meetings/m-118.md\"},{\"id\":\"m-119\",\"title\":\"Cinderboard restart planning with Ridgeway\",\"path\":\"meetings/m-119.md\"},{\"id\":\"m-120\",\"title\":\"Summer planning, half-day\",\"path\":\"meetings/m-120.md\"}]},{\"genre\":\"orgs\",\"count\":15,\"records\":[{\"id\":\"bayline-transit\",\"title\":\"Bayline Transit\",\"path\":\"orgs/bayline-transit.md\"},{\"id\":\"bellweather-books\",\"title\":\"Bellweather Books\",\"path\":\"orgs/bellweather-books.md\"},{\"id\":\"copperleaf-studio\",\"title\":\"Copperleaf Studio\",\"path\":\"orgs/copperleaf-studio.md\"},{\"id\":\"fathom-data-works\",\"title\":\"Fathom Data Works\",\"path\":\"orgs/fathom-data-works.md\"},{\"id\":\"greenline-utilities\",\"title\":\"Greenline Utilities\",\"path\":\"orgs/greenline-utilities.md\"},{\"id\":\"halcyon-transit\",\"title\":\"Halcyon Transit\",\"path\":\"orgs/halcyon-transit.md\"},{\"id\":\"harrowgate-press\",\"title\":\"Harrowgate Press\",\"path\":\"orgs/harrowgate-press.md\"},{\"id\":\"juniper-field-services\",\"title\":\"Juniper Field Services\",\"path\":\"orgs/juniper-field-services.md\"},{\"id\":\"meridian-studio\",\"title\":\"Meridian Studio\",\"path\":\"orgs/meridian-studio.md\"},{\"id\":\"millhaven-observatory\",\"title\":\"Millhaven Observatory\",\"path\":\"orgs/millhaven-observatory.md\"},{\"id\":\"northpost-analytics\",\"title\":\"Northpost Analytics\",\"path\":\"orgs/northpost-analytics.md\"},{\"id\":\"quill-and-marrow\",\"title\":\"Quill & Marrow\",\"path\":\"orgs/quill-and-marrow.md\"},{\"id\":\"ridgeway-power\",\"title\":\"Ridgeway Power\",\"path\":\"orgs/ridgeway-power.md\"},{\"id\":\"saltmarsh-creative\",\"title\":\"Saltmarsh Creative\",\"path\":\"orgs/saltmarsh-creative.md\"},{\"id\":\"wharfworks-collective\",\"title\":\"Wharfworks Collective\",\"path\":\"orgs/wharfworks-collective.md\"}]},{\"genre\":\"people\",\"count\":28,\"records\":[{\"id\":\"amara-diallo\",\"title\":\"Amara Diallo\",\"path\":\"people/amara-diallo.md\"},{\"id\":\"aurelio-finch\",\"title\":\"Aurelio Finch\",\"path\":\"people/aurelio-finch.md\"},{\"id\":\"bram-oyelaran\",\"title\":\"Bram Oyelaran\",\"path\":\"people/bram-oyelaran.md\"},{\"id\":\"dara-whitlock\",\"title\":\"Dara Whitlock\",\"path\":\"people/dara-whitlock.md\"},{\"id\":\"dev-okonkwo\",\"title\":\"Dev Okonkwo\",\"path\":\"people/dev-okonkwo.md\"},{\"id\":\"elif-yilmaz\",\"title\":\"Elif Yilmaz\",\"path\":\"people/elif-yilmaz.md\"},{\"id\":\"gwen-torvald\",\"title\":\"Gwen Torvald\",\"path\":\"people/gwen-torvald.md\"},{\"id\":\"ida-kovacs\",\"title\":\"Ida Kovacs\",\"path\":\"people/ida-kovacs.md\"},{\"id\":\"ines-marchetti\",\"title\":\"Ines Marchetti\",\"path\":\"people/ines-marchetti.md\"},{\"id\":\"june-park\",\"title\":\"June Park\",\"path\":\"people/june-park.md\"},{\"id\":\"katrin-ilic\",\"title\":\"Katrin Ilic\",\"path\":\"people/katrin-ilic.md\"},{\"id\":\"lorna-vey\",\"title\":\"Lorna Vey\",\"path\":\"people/lorna-vey.md\"},{\"id\":\"mara-voss\",\"title\":\"Mara Voss\",\"path\":\"people/mara-voss.md\"},{\"id\":\"marta-quintana\",\"title\":\"Marta Quintana\",\"path\":\"people/marta-quintana.md\"},{\"id\":\"nadia-moreau\",\"title\":\"Nadia Moreau\",\"path\":\"people/nadia-moreau.md\"},{\"id\":\"nils-aasen\",\"title\":\"Nils Aasen\",\"path\":\"people/nils-aasen.md\"},{\"id\":\"noor-haddad\",\"title\":\"Noor Haddad\",\"path\":\"people/noor-haddad.md\"},{\"id\":\"odessa-klein\",\"title\":\"Odessa Klein\",\"path\":\"people/odessa-klein.md\"},{\"id\":\"pavel-sorokin\",\"title\":\"Pavel Sorokin\",\"path\":\"people/pavel-sorokin.md\"},{\"id\":\"petra-lindqvist\",\"title\":\"Petra Lindqvist\",\"path\":\"people/petra-lindqvist.md\"},{\"id\":\"rashid-bello\",\"title\":\"Rashid Bello\",\"path\":\"people/rashid-bello.md\"},{\"id\":\"rowan-ellery\",\"title\":\"Rowan Ellery\",\"path\":\"people/rowan-ellery.md\"},{\"id\":\"silas-brandt\",\"title\":\"Silas Brandt\",\"path\":\"people/silas-brandt.md\"},{\"id\":\"sofia-reyes\",\"title\":\"Sofia Reyes\",\"path\":\"people/sofia-reyes.md\"},{\"id\":\"teodor-blum\",\"title\":\"Teodor Blum\",\"path\":\"people/teodor-blum.md\"},{\"id\":\"theo-kanda\",\"title\":\"Theo Kanda\",\"path\":\"people/theo-kanda.md\"},{\"id\":\"tomas-berg\",\"title\":\"Tomas Berg\",\"path\":\"people/tomas-berg.md\"},{\"id\":\"yusuf-adeyemi\",\"title\":\"Yusuf Adeyemi\",\"path\":\"people/yusuf-adeyemi.md\"}]},{\"genre\":\"projects\",\"count\":12,\"records\":[{\"id\":\"beacon-grid\",\"title\":\"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\"path\":\"projects/beacon-grid.md\"},{\"id\":\"cinderboard\",\"title\":\"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\"path\":\"projects/cinderboard.md\"},{\"id\":\"cometline\",\"title\":\"Cometline — exhibit kiosk for Millhaven Observatory\",\"path\":\"projects/cometline.md\"},{\"id\":\"curlew-crm\",\"title\":\"Curlew CRM — cancelled internal client-tracker experiment\",\"path\":\"projects/curlew-crm.md\"},{\"id\":\"driftline\",\"title\":\"Driftline — ferry-schedule print service for Bayline Transit\",\"path\":\"projects/driftline.md\"},{\"id\":\"foxglove-archive\",\"title\":\"Foxglove Archive — digitized collections platform for Harrowgate Press\",\"path\":\"projects/foxglove-archive.md\"},{\"id\":\"kestrel-crm\",\"title\":\"Kestrel CRM — cancelled internal client-tracker experiment\",\"path\":\"projects/kestrel-crm.md\"},{\"id\":\"larkspur-archive\",\"title\":\"Larkspur Archive — digitized collections platform for Bellweather Books\",\"path\":\"projects/larkspur-archive.md\"},{\"id\":\"ledgerline\",\"title\":\"Ledgerline — internal timesheet and invoicing service\",\"path\":\"projects/ledgerline.md\"},{\"id\":\"perchboard\",\"title\":\"Perchboard — realtime departure displays for Bayline Transit\",\"path\":\"projects/perchboard.md\"},{\"id\":\"rill\",\"title\":\"Rill — internal timesheet and invoicing service\",\"path\":\"projects/rill.md\"},{\"id\":\"wayfare\",\"title\":\"Wayfare — realtime departure displays for Halcyon Transit\",\"path\":\"projects/wayfare.md\"}]},{\"genre\":\"references\",\"count\":34,\"records\":[{\"id\":\"archival-handling-notes\",\"title\":\"Handling a century of print — ops note\",\"path\":\"references/archival-handling-notes.md\"},{\"id\":\"archive-metadata-notes\",\"title\":\"Dublin Core for archive metadata — reading notes\",\"path\":\"references/archive-metadata-notes.md\"},{\"id\":\"backup-rotation-notes\",\"title\":\"Backup rotation — ops note\",\"path\":\"references/backup-rotation-notes.md\"},{\"id\":\"chrony-notes\",\"title\":\"chrony for field-device clocks — reading notes\",\"path\":\"references/chrony-notes.md\"},{\"id\":\"clickhouse-notes\",\"title\":\"ClickHouse for embedded analytics — reading notes\",\"path\":\"references/clickhouse-notes.md\"},{\"id\":\"double-entry-notes\",\"title\":\"Double-entry bookkeeping — reading notes\",\"path\":\"references/double-entry-notes.md\"},{\"id\":\"duckdb-notes\",\"title\":\"DuckDB for embedded analytics — reading notes\",\"path\":\"references/duckdb-notes.md\"},{\"id\":\"embedded-single-board-notes\",\"title\":\"Single-board computers for signage — field research summary\",\"path\":\"references/embedded-single-board-notes.md\"},{\"id\":\"enclosure-install-notes\",\"title\":\"Enclosure installs on piers — ops note\",\"path\":\"references/enclosure-install-notes.md\"},{\"id\":\"ferry-timetable-notes\",\"title\":\"Timetable feeds — reading notes\",\"path\":\"references/ferry-timetable-notes.md\"},{\"id\":\"filestore-naming-notes\",\"title\":\"Filestore naming conventions — ops note\",\"path\":\"references/filestore-naming-notes.md\"},{\"id\":\"fleet-provisioning-notes\",\"title\":\"Provisioning device fleets — ops note\",\"path\":\"references/fleet-provisioning-notes.md\"},{\"id\":\"gpu-cluster-notes\",\"title\":\"The two-GPU bench — bench note\",\"path\":\"references/gpu-cluster-notes.md\"},{\"id\":\"hocr-notes\",\"title\":\"hOCR for OCR output — reading notes\",\"path\":\"references/hocr-notes.md\"},{\"id\":\"iiif-overview\",\"title\":\"IIIF for archival viewers — reading notes\",\"path\":\"references/iiif-overview.md\"},{\"id\":\"kiosk-browser-notes\",\"title\":\"Kiosk-mode browsers — reading notes\",\"path\":\"references/kiosk-browser-notes.md\"},{\"id\":\"latency-budget-notes\",\"title\":\"Display latency budget — engineering note\",\"path\":\"references/latency-budget-notes.md\"},{\"id\":\"mqtt-311-notes\",\"title\":\"MQTT 3.1.1 — reading notes\",\"path\":\"references/mqtt-311-notes.md\"},{\"id\":\"mqtt-5-notes\",\"title\":\"MQTT 5.0 — reading notes\",\"path\":\"references/mqtt-5-notes.md\"},{\"id\":\"mqtt-broker-ops-notes\",\"title\":\"Broker operations — ops note\",\"path\":\"references/mqtt-broker-ops-notes.md\"},{\"id\":\"ocr-comparison\",\"title\":\"Local OCR vs remote OCR API — benchmark notes\",\"path\":\"references/ocr-comparison.md\"},{\"id\":\"ocr-job-queue-notes\",\"title\":\"Job queues for OCR batches — reading notes\",\"path\":\"references/ocr-job-queue-notes.md\"},{\"id\":\"postgres-operations-notes\",\"title\":\"PostgreSQL operations — reading notes\",\"path\":\"references/postgres-operations-notes.md\"},{\"id\":\"rate-card-notes\",\"title\":\"Rate-card design — reading notes\",\"path\":\"references/rate-card-notes.md\"},{\"id\":\"runbook-notes\",\"title\":\"Runbooks that survive — ops note\",\"path\":\"references/runbook-notes.md\"},{\"id\":\"scan-resolution-notes\",\"title\":\"Scan resolution for archives — reading notes\",\"path\":\"references/scan-resolution-notes.md\"},{\"id\":\"schema-migration-notes\",\"title\":\"Database migrations — reading notes\",\"path\":\"references/schema-migration-notes.md\"},{\"id\":\"signage-legibility-notes\",\"title\":\"Outdoor legibility for signage — reading notes\",\"path\":\"references/signage-legibility-notes.md\"},{\"id\":\"signage-panel-notes\",\"title\":\"Signage panels for platform displays — field research summary\",\"path\":\"references/signage-panel-notes.md\"},{\"id\":\"sqlite-wal-notes\",\"title\":\"SQLite WAL mode — reading notes\",\"path\":\"references/sqlite-wal-notes.md\"},{\"id\":\"static-site-gallery-notes\",\"title\":\"Static galleries for collections — reading notes\",\"path\":\"references/static-site-gallery-notes.md\"},{\"id\":\"thermal-printer-notes\",\"title\":\"Thermal printers for counter schedules — reading notes\",\"path\":\"references/thermal-printer-notes.md\"},{\"id\":\"visitor-dwell-notes\",\"title\":\"Kiosk dwell observations — field note\",\"path\":\"references/visitor-dwell-notes.md\"},{\"id\":\"wcag-contrast-notes\",\"title\":\"Outdoor readability and contrast — reading notes\",\"path\":\"references/wcag-contrast-notes.md\"}]},{\"genre\":\"sessions\",\"count\":58,\"records\":[{\"id\":\"s-001\",\"title\":\"Ledgerline schema bootstrap\",\"path\":\"sessions/s-001.md\"},{\"id\":\"s-002\",\"title\":\"Wayfare display firmware first light\",\"path\":\"sessions/s-002.md\"},{\"id\":\"s-003\",\"title\":\"Larkspur OCR pipeline wiring\",\"path\":\"sessions/s-003.md\"},{\"id\":\"s-004\",\"title\":\"Wayfare field maintenance pain\",\"path\":\"sessions/s-004.md\"},{\"id\":\"s-005\",\"title\":\"Ledgerline invoice PDF export\",\"path\":\"sessions/s-005.md\"},{\"id\":\"s-006\",\"title\":\"Larkspur OCR latency benchmark\",\"path\":\"sessions/s-006.md\"},{\"id\":\"s-007\",\"title\":\"Beacon Grid DuckDB ingestion spike\",\"path\":\"sessions/s-007.md\"},{\"id\":\"s-008\",\"title\":\"Wayfare palette contrast testing\",\"path\":\"sessions/s-008.md\"},{\"id\":\"s-009\",\"title\":\"Kestrel teardown and data export\",\"path\":\"sessions/s-009.md\"},{\"id\":\"s-010\",\"title\":\"Larkspur IIIF viewer prototype\",\"path\":\"sessions/s-010.md\"},{\"id\":\"s-101\",\"title\":\"Rill schema bootstrap\",\"path\":\"sessions/s-101.md\"},{\"id\":\"s-102\",\"title\":\"Rill backup rotation setup\",\"path\":\"sessions/s-102.md\"},{\"id\":\"s-103\",\"title\":\"Perchboard firmware first boot\",\"path\":\"sessions/s-103.md\"},{\"id\":\"s-104\",\"title\":\"Foxglove OCR pipeline wiring\",\"path\":\"sessions/s-104.md\"},{\"id\":\"s-105\",\"title\":\"Rill invoice CSV export\",\"path\":\"sessions/s-105.md\"},{\"id\":\"s-106\",\"title\":\"Weekly review, early February\",\"path\":\"sessions/s-106.md\"},{\"id\":\"s-107\",\"title\":\"Foxglove OCR batch, February\",\"path\":\"sessions/s-107.md\"},{\"id\":\"s-108\",\"title\":\"Weekly review, mid-February\",\"path\":\"sessions/s-108.md\"},{\"id\":\"s-109\",\"title\":\"Perchboard field maintenance pain\",\"path\":\"sessions/s-109.md\"},{\"id\":\"s-110\",\"title\":\"Rill billing run, February\",\"path\":\"sessions/s-110.md\"},{\"id\":\"s-111\",\"title\":\"Cinderboard ClickHouse ingestion spike\",\"path\":\"sessions/s-111.md\"},{\"id\":\"s-112\",\"title\":\"Perchboard chrony fleet rollout\",\"path\":\"sessions/s-112.md\"},{\"id\":\"s-113\",\"title\":\"Foxglove OCR throughput benchmark\",\"path\":\"sessions/s-113.md\"},{\"id\":\"s-114\",\"title\":\"Weekly review, mid-March\",\"path\":\"sessions/s-114.md\"},{\"id\":\"s-115\",\"title\":\"Curlew teardown and data export\",\"path\":\"sessions/s-115.md\"},{\"id\":\"s-116\",\"title\":\"Perchboard palette legibility testing\",\"path\":\"sessions/s-116.md\"},{\"id\":\"s-117\",\"title\":\"Weekly review, late March\",\"path\":\"sessions/s-117.md\"},{\"id\":\"s-118\",\"title\":\"Cinderboard ingest ops check, March\",\"path\":\"sessions/s-118.md\"},{\"id\":\"s-119\",\"title\":\"Rill billing run, March\",\"path\":\"sessions/s-119.md\"},{\"id\":\"s-120\",\"title\":\"Cometline attract loop tuning\",\"path\":\"sessions/s-120.md\"},{\"id\":\"s-121\",\"title\":\"Perchboard depot QA sweep, April\",\"path\":\"sessions/s-121.md\"},{\"id\":\"s-122\",\"title\":\"Foxglove static gallery prototype\",\"path\":\"sessions/s-122.md\"},{\"id\":\"s-123\",\"title\":\"Weekly review, mid-April\",\"path\":\"sessions/s-123.md\"},{\"id\":\"s-124\",\"title\":\"Perchboard provisioning, Granite Pier\",\"path\":\"sessions/s-124.md\"},{\"id\":\"s-125\",\"title\":\"Foxglove OCR batch, April\",\"path\":\"sessions/s-125.md\"},{\"id\":\"s-126\",\"title\":\"Cinderboard ingest ops check, April\",\"path\":\"sessions/s-126.md\"},{\"id\":\"s-127\",\"title\":\"Perchboard provisioning, Tram Junction\",\"path\":\"sessions/s-127.md\"},{\"id\":\"s-128\",\"title\":\"Cinderboard pause handoff notes\",\"path\":\"sessions/s-128.md\"},{\"id\":\"s-129\",\"title\":\"Cometline kiosk hardening\",\"path\":\"sessions/s-129.md\"},{\"id\":\"s-130\",\"title\":\"Weekly review, late April\",\"path\":\"sessions/s-130.md\"},{\"id\":\"s-131\",\"title\":\"Perchboard provisioning, Lighthouse Point\",\"path\":\"sessions/s-131.md\"},{\"id\":\"s-132\",\"title\":\"Rill billing run, April\",\"path\":\"sessions/s-132.md\"},{\"id\":\"s-133\",\"title\":\"Rill schema migration session\",\"path\":\"sessions/s-133.md\"},{\"id\":\"s-134\",\"title\":\"Perchboard depot QA sweep, May\",\"path\":\"sessions/s-134.md\"},{\"id\":\"s-135\",\"title\":\"Rill access audit\",\"path\":\"sessions/s-135.md\"},{\"id\":\"s-136\",\"title\":\"Foxglove OCR batch, May\",\"path\":\"sessions/s-136.md\"},{\"id\":\"s-137\",\"title\":\"Weekly review, mid-May\",\"path\":\"sessions/s-137.md\"},{\"id\":\"s-138\",\"title\":\"Perchboard ship prep and QA sweep\",\"path\":\"sessions/s-138.md\"},{\"id\":\"s-139\",\"title\":\"Driftline print service wiring\",\"path\":\"sessions/s-139.md\"},{\"id\":\"s-140\",\"title\":\"Driftline ship checklist\",\"path\":\"sessions/s-140.md\"},{\"id\":\"s-141\",\"title\":\"Rill billing run, May\",\"path\":\"sessions/s-141.md\"},{\"id\":\"s-142\",\"title\":\"Weekly review, late May\",\"path\":\"sessions/s-142.md\"},{\"id\":\"s-143\",\"title\":\"Perchboard depot QA sweep, June\",\"path\":\"sessions/s-143.md\"},{\"id\":\"s-144\",\"title\":\"Weekly review, mid-June\",\"path\":\"sessions/s-144.md\"},{\"id\":\"s-145\",\"title\":\"Rill restore rehearsal, June\",\"path\":\"sessions/s-145.md\"},{\"id\":\"s-146\",\"title\":\"Studio runbook refresh\",\"path\":\"sessions/s-146.md\"},{\"id\":\"s-147\",\"title\":\"Weekly review, late June\",\"path\":\"sessions/s-147.md\"},{\"id\":\"s-148\",\"title\":\"Rill billing run, June\",\"path\":\"sessions/s-148.md\"}]}]}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/copperleaf-studio.md"
+      },
+      "result_text": "---\nid: copperleaf-studio\ngenre: orgs\ntitle: \"Copperleaf Studio\"\ncreated: 2025-09-22\nprovenance: generated\ntags: [studio, home]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/rill.md\nkind: studio\n---\n\nCopperleaf Studio is an eleven-person software design studio in Vantage Bay,\nfounded in 2019 by Ines Marchetti and Yusuf Adeyemi. It builds operational\nsoftware for civic and cultural clients — transit, museums, publishers,\nutilities — plus a small line of internal tools it runs for itself. The\nstudio works out of the Wharfworks Collective, a converted cannery on the\nwaterfront.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/meridian-studio.md"
+      },
+      "result_text": "---\nid: meridian-studio\ngenre: orgs\ntitle: \"Meridian Studio\"\ncreated: 2026-02-10\nprovenance: hand-authored\ntags: [studio, home]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/ledgerline.md\nkind: studio\n---\n\nMeridian Studio is a ten-person software design studio in Ashport, founded in\n2021 by Mara Voss and Theo Kanda. It builds operational software for civic and\nmunicipal clients — transit, utilities, publishers — plus a small line of\ninternal tools it runs for itself.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 4,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-113.md"
+      },
+      "result_text": "---\nid: m-113\ngenre: meetings\ntitle: \"Security and access review\"\ncreated: 2026-04-28\nprovenance: generated\ntags: [security, review]\nattendees: [yusuf-adeyemi, sofia-reyes, nils-aasen, amara-diallo]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: projects/cometline.md\n---\n\nQuarterly security and access review: Rill's access list audited — two\nformer contractor accounts disabled — rate-card visibility narrowed to\nstudio staff, the kiosk watchdog log ships to the filestore, and Cinderboard\nfeed credentials rotate before the pause. Next audit in July.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-105.md"
+      },
+      "result_text": "---\nid: m-105\ngenre: meetings\ntitle: \"Copperleaf all-hands, February\"\ncreated: 2026-02-02\nprovenance: generated\ntags: [all-hands, planning]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/curlew-crm.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nFebruary all-hands. Status: Rill invoicing live on hourly runs, Perchboard\nboards in the field across the pilot stations, Foxglove scanning and OCR\nunderway. New: Yusuf proposed the Curlew CRM experiment — a lightweight\ninternal client tracker — and got a four-week trial window; the Cinderboard\nengagement with Ridgeway Power starts later this month on the Fathom feeds.\nCapacity: everyone heads down until Perchboard ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-108.md"
+      },
+      "result_text": "---\nid: m-108\ngenre: meetings\ntitle: \"Copperleaf all-hands, March\"\ncreated: 2026-03-02\nprovenance: generated\ntags: [all-hands, planning]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: projects/curlew-crm.md\n  - type: mentions\n    to: people/tomas-berg.md\n---\n\nMarch all-hands. Status: Curlew's ops trial in its final week with the\ngo/no-go set for the 16th; Perchboard on the new relay architecture with\nprovisioning starting mid-April; Foxglove scanning underway and the\nthroughput benchmark scheduled; the Cinderboard ingestion spike runs this\nweek. Tomas's runbook refresh sprint is set for June. Capacity: Perchboard\nship prep begins in May.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-118.md"
+      },
+      "result_text": "---\nid: m-118\ngenre: meetings\ntitle: \"Copperleaf all-hands, June\"\ncreated: 2026-06-08\nprovenance: generated\ntags: [all-hands, planning]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/driftline.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nJune all-hands. Status: Perchboard shipped and steady, Driftline shipped in\nthe May gap, Foxglove's modern collection is scanned with the page-level\nanchors in the gallery build, and the Ridgeway agreement cleared with\nrestart planning tomorrow (m-119). Planning: summer maintenance window,\nAmara's checklist is now the studio default, and the fall queue holds the\nobservatory's second loop and the Ridgeway wallboard.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "---\nid: m-004\ngenre: meetings\ntitle: \"Studio all-hands, March\"\ncreated: 2026-03-30\nprovenance: hand-authored\ntags: [all-hands, planning]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nMarch all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\nlightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/perchboard.md"
+      },
+      "result_text": "---\nid: perchboard\ngenre: projects\ntitle: \"Perchboard — realtime departure displays for Bayline Transit\"\ncreated: 2025-10-03\nupdated: 2026-06-04\nstatus: shipped\nclient: bayline-transit\nprovenance: generated\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/bayline-transit.md\n  - type: mentions\n    to: decisions/d-102.md\n  - type: mentions\n    to: decisions/d-103.md\n  - type: mentions\n    to: decisions/d-109.md\n  - type: mentions\n    to: decisions/d-112.md\n  - type: mentions\n    to: meetings/m-101.md\n  - type: mentions\n    to: meetings/m-116.md\n---\n\nPerchboard is Copperleaf Studio's realtime departure-display program for\nBayline Transit: platform displays for three pilot stations — Granite Pier,\nTram Junction, Lighthouse Point — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2025-09-29) with Dara Whitlock: sub-second\nperceived freshness, outdoor readability, and a May ship date. The displays\nspeak MQTT 5.0 (decision d-102) and went from per-display autonomy (d-103)\nto an edge relay per station (d-109) after field maintenance pain. The\npalette is high-contrast white-on-black (d-112), with fleet clocks kept\nhonest by chrony (d-110).\n\nTeam: Rashid Bello (firmware), Pavel Sorokin (renderer), Gwen Torvald\n(design), Sofia Reyes (fleet), Amara Diallo (QA), Yusuf Adeyemi (systems).\nEnclosures installed with Juniper Field Services. Shipped 2026-05-22; ship\nretro in m-116.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-117.md"
+      },
+      "result_text": "---\nid: d-117\ngenre: decisions\ntitle: \"Perchboard adopts marine-rated enclosures for pier boards\"\ncreated: 2026-06-01\nprovenance: generated\ntags: [perchboard, hardware]\nstatus: accepted\nrelated:\n  - type: influenced_by\n    to: references/enclosure-install-notes.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nContext: the mid-pilot gasket swap at Granite Pier traced to salt air eating\nconsumer seals (s-134, retro m-116); two more piers are in the fall\nexpansion scope.\n\nOptions considered: keep replacing gaskets at maintenance windows; spec\nmarine-rated enclosures up front.\n\nDecision: Perchboard boards installed outdoors get marine-rated enclosures\nwith torqued gaskets, per enclosure-install-notes — applied to the fall\nexpansion first.\n\nConsequences: higher per-board cost at install; maintenance windows stop\nbeing seal hunts.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 12,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/enclosure-install-notes.md"
+      },
+      "result_text": "---\nid: enclosure-install-notes\ngenre: references\ntitle: \"Enclosure installs on piers — ops note\"\ncreated: 2026-03-16\nprovenance: generated\ntags: [infrastructure, ops-note]\nsource: \"internal ops note\"\n---\n\nMarine-rated gaskets, conduit runs dressed away from rails, torque values in\nthe runbook: pier salt air eats consumer seals, and maintenance windows are\nfor inspection, not seal hunts.\n\nInformed the Perchboard provisioning sessions (s-124, s-127, s-131) and\nd-117.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 13,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/fleet-provisioning-notes.md"
+      },
+      "result_text": "---\nid: fleet-provisioning-notes\ngenre: references\ntitle: \"Provisioning device fleets — ops note\"\ncreated: 2026-04-06\nprovenance: hand-authored\ntags: [infrastructure, ops-note]\nsource: \"internal ops note\"\nrelated:\n  - type: relates_to\n    to: references/embedded-single-board-notes.md\n---\n\nProvisioning a fleet of small boards two ways: point-wise flashing scales\nlinearly with board count and fails quietly; a gateway-hub topology flashes\nonce per site and funnels telemetry home. The hub costs one more box per\nstation but collapses the maintenance surface.\n\nWritten after the Wayfare field pain (s-004); the hub topology is the\ndirection d-008 adopted.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 14,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-146.md"
+      },
+      "result_text": "---\nid: s-146\ngenre: sessions\ntitle: \"Studio runbook refresh\"\ncreated: 2026-06-19\nprovenance: generated\ntags: [docs, runbooks]\nrelated:\n  - type: influenced_by\n    to: references/runbook-notes.md\n  - type: mentions\n    to: people/tomas-berg.md\n---\n\nTomas refreshed the client runbooks with the Perchboard provisioning guide,\nthe Rill billing checklist, and the Cinderboard restart checklist — printed\ncopies in the studio binder and fresh copies on the filestore, naming lint\napplied per the ops note.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/runbook-notes.md"
+      },
+      "result_text": "---\nid: runbook-notes\ngenre: references\ntitle: \"Runbooks that survive — ops note\"\ncreated: 2026-06-11\nprovenance: generated\ntags: [docs, ops-note]\nsource: \"internal ops note\"\n---\n\nRunbooks live next to the tool they describe, a printed copy survives a\nfilestore outage, and a naming lint keeps the copies findable.\n\nInformed the studio runbook refresh (s-146).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-117.md"
+      },
+      "result_text": "---\nid: m-117\ngenre: meetings\ntitle: \"Perchboard maintenance window review with Bayline\"\ncreated: 2026-06-04\nprovenance: generated\ntags: [perchboard, maintenance]\nattendees: [ines-marchetti, sofia-reyes, teodor-blum, dara-whitlock]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: orgs/bayline-transit.md\n  - type: mentions\n    to: decisions/d-117.md\n---\n\nMonthly maintenance review with Bayline: Granite Pier's relay gasket holding\nafter the swap, dead-pixel count at Lighthouse Point within tolerance, and\nfirmware 1.4.0 uniform across the fleet. Dara asked about the fall expansion\nto two more piers — the scoping note names marine-rated enclosures from the\nstart (d-117).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 17,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "---\nid: s-004\ngenre: sessions\ntitle: \"Wayfare field maintenance pain\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [wayfare, fieldwork]\nrelated:\n  - type: contradicts\n    to: decisions/d-003.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nTheo and Dev spent the day in the field at Ashport Central and Ferry Quay:\nafter the last firmware update, the three pilot stations drifted to three\nfirmware versions, and a board that lost power would not recover its clock.\nReflashing takes roughly ninety minutes per display carried to the platform.\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-109.md"
+      },
+      "result_text": "---\nid: s-109\ngenre: sessions\ntitle: \"Perchboard field maintenance pain\"\ncreated: 2026-02-17\nprovenance: generated\ntags: [perchboard, fieldwork]\nrelated:\n  - type: contradicts\n    to: decisions/d-103.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nRashid and Yusuf spent the day in the field at Granite Pier and Tram\nJunction: after the last firmware update, the three pilot stations drifted\nto two firmware versions, and a board that lost power would not recover its\nclock without a manual set. Reflashing takes roughly seventy minutes per\ndisplay carried up the pier stairs. Per-display autonomy (d-103) is failing\non maintenance, not on rendering.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 19,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-001.md"
+      },
+      "result_text": "---\nid: m-001\ngenre: meetings\ntitle: \"Wayfare kickoff with Halcyon Transit\"\ncreated: 2026-02-20\nprovenance: hand-authored\ntags: [wayfare, kickoff]\nattendees: [mara-voss, dev-okonkwo, june-park, petra-lindqvist]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n---\n\nKickoff for the Wayfare departure-display program at Halcyon's operations\noffice. Scope agreed: platform displays for three pilot stations — Ashport\nCentral, Ferry Quay, Millbrook Bridge — live vehicle positions, sub-second\nperceived freshness, and outdoor readability. Petra sponsors; the ship target\nis June. Transport and architecture decisions followed within days (d-002,\nd-003).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-101.md"
+      },
+      "result_text": "---\nid: m-101\ngenre: meetings\ntitle: \"Perchboard kickoff with Bayline Transit\"\ncreated: 2025-09-29\nprovenance: generated\ntags: [perchboard, kickoff]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, dara-whitlock]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: orgs/bayline-transit.md\n  - type: mentions\n    to: decisions/d-102.md\n  - type: mentions\n    to: decisions/d-103.md\n---\n\nKickoff for the Perchboard departure-display program at Bayline's operations\noffice. Scope agreed: platform displays for three pilot stations — Granite\nPier, Tram Junction, Lighthouse Point — live vehicle positions, sub-second\nperceived freshness, and outdoor readability. Dara sponsors; the ship target\nis May. Transport and architecture decisions followed within weeks (d-102,\nd-103).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/backup-rotation-notes.md"
+      },
+      "result_text": "---\nid: backup-rotation-notes\ngenre: references\ntitle: \"Backup rotation — ops note\"\ncreated: 2025-11-05\nprovenance: generated\ntags: [ops, ops-note]\nsource: \"internal ops note\"\n---\n\nNightly dumps, weekly offsite copies, monthly restore rehearsals — a backup\nuntested is a hope, not a backup. The rotation fits on one page and one\nchecklist.\n\nInformed Rill's backup setup (s-102).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-102.md"
+      },
+      "result_text": "---\nid: s-102\ngenre: sessions\ntitle: \"Rill backup rotation setup\"\ncreated: 2025-11-07\nprovenance: generated\ntags: [rill, ops]\nrelated:\n  - type: influenced_by\n    to: references/backup-rotation-notes.md\n  - type: mentions\n    to: projects/rill.md\n---\n\nSofia set Rill's backups per the rotation notes: nightly dumps to the studio\nfilestore, weekly copies to the offsite drive, and a monthly restore\nrehearsal on the staging database. The first rehearsal caught a permissions\nsnag before it mattered.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-008.md"
+      },
+      "result_text": "---\nid: m-008\ngenre: meetings\ntitle: \"Wayfare ship retro\"\ncreated: 2026-06-16\nprovenance: hand-authored\ntags: [wayfare, retro]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: sessions/s-008.md\n---\n\nRetro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\ntesting made the green-and-amber palette readable in full sun; MQTT retained\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\nduplicate renders during reconnects — next time, dedupe on the display, not\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\nclient ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-116.md"
+      },
+      "result_text": "---\nid: m-116\ngenre: meetings\ntitle: \"Perchboard ship retro\"\ncreated: 2026-05-26\nprovenance: generated\ntags: [perchboard, retro]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: decisions/d-102.md\n  - type: mentions\n    to: decisions/d-109.md\n  - type: mentions\n    to: decisions/d-110.md\n  - type: mentions\n    to: decisions/d-117.md\n---\n\nRetro after shipping Perchboard on 2026-05-22. What worked: the edge-relay\nreversal (d-109) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet dig; chrony (d-110) ended the manual clock sets;\nMQTT 5.0 retained messages recovered cleanly through network drops. What\nhurt: salt air ate the pier relay's consumer gasket mid-pilot; next time\nspec the marine enclosure up front (d-117). Amara's depot QA sweep checklist\nis adopted as the studio default for client ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-111.md"
+      },
+      "result_text": "---\nid: m-111\ngenre: meetings\ntitle: \"Studio tooling review\"\ncreated: 2026-03-30\nprovenance: generated\ntags: [tooling, review]\nattendees: [yusuf-adeyemi, sofia-reyes, pavel-sorokin, nils-aasen]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: references/filestore-naming-notes.md\n---\n\nQuarterly internal-tooling review: Rill's backup rehearsals stay quarterly,\nthe filestore's naming conventions have drifted (filestore-naming-notes),\nand Tomas drafts a lint pass for runbook copies. Decided to keep the\ninternal-tools line small — no new experiments this quarter.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/juniper-field-services.md"
+      },
+      "result_text": "---\nid: juniper-field-services\ngenre: orgs\ntitle: \"Juniper Field Services\"\ncreated: 2026-03-09\nprovenance: generated\ntags: [vendor, installation]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: people/teodor-blum.md\nkind: vendor\n---\n\nJuniper Field Services is the field-installation vendor for the Perchboard\nprogram — enclosure mounts, conduit runs, and pier maintenance windows.\nTeodor Blum runs its crew schedule.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/fathom-data-works.md"
+      },
+      "result_text": "---\nid: fathom-data-works\ngenre: orgs\ntitle: \"Fathom Data Works\"\ncreated: 2026-02-24\nprovenance: generated\ntags: [vendor, forecasting]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\nkind: vendor\n---\n\nFathom Data Works is a regional data vendor supplying weather-adjusted load\nforecasts. Cinderboard consumes its CSV exports alongside Ridgeway's raw\nfeeder sensor data.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-119.md"
+      },
+      "result_text": "---\nid: m-119\ngenre: meetings\ntitle: \"Cinderboard restart planning with Ridgeway\"\ncreated: 2026-06-09\nprovenance: generated\ntags: [cinderboard, planning]\nattendees: [ines-marchetti, yusuf-adeyemi, marta-quintana, nadia-moreau]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: orgs/ridgeway-power.md\n  - type: mentions\n    to: people/nadia-moreau.md\n---\n\nRestart planning with Ridgeway after the data-sharing agreement cleared:\nrevalidate the ingestion spike against two months of backfill, then the\nwallboard for Nadia's desk by end of July. Sofia re-provisions the pipeline\nin a sprint; the rain-shift view from m-110 is back in scope.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/cinderboard.md"
+      },
+      "result_text": "---\nid: cinderboard\ngenre: projects\ntitle: \"Cinderboard — load-monitoring wallboard for Ridgeway Power\"\ncreated: 2026-02-19\nupdated: 2026-06-09\nstatus: paused\nclient: ridgeway-power\nprovenance: generated\ntags: [utilities, monitoring, clickhouse]\nrelated:\n  - type: mentions\n    to: orgs/ridgeway-power.md\n  - type: mentions\n    to: orgs/fathom-data-works.md\n  - type: mentions\n    to: decisions/d-107.md\n  - type: mentions\n    to: decisions/d-108.md\n  - type: mentions\n    to: sessions/s-111.md\n  - type: mentions\n    to: meetings/m-119.md\n---\n\nCinderboard is a load-monitoring wallboard for Ridgeway Power: ingesting\nfeeder sensor feeds and Fathom Data Works weather-adjusted load forecasts\ninto ClickHouse (decision d-107) over MQTT 5.0 (decision d-108), queried for\nthe grid operations desk. Marta Quintana (data), Yusuf Adeyemi (systems),\nand Pavel Sorokin (wallboard) built the ingestion spike (s-111).\n\nPaused 2026-04-20 pending Ridgeway's data-sharing agreement; restart\nplanning with Nadia Moreau began in June (m-119).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 31,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-120.md"
+      },
+      "result_text": "---\nid: m-120\ngenre: meetings\ntitle: \"Summer planning, half-day\"\ncreated: 2026-06-18\nprovenance: generated\ntags: [planning, summer]\nattendees: [ines-marchetti, yusuf-adeyemi, gwen-torvald, rashid-bello, marta-quintana, pavel-sorokin, amara-diallo, elif-yilmaz, nils-aasen, sofia-reyes, tomas-berg]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: projects/cometline.md\n  - type: mentions\n    to: projects/rill.md\n---\n\nHalf-day summer planning: Perchboard's maintenance cadence holds at monthly\nreviews, Foxglove's fall collection push is scheduled, Cinderboard restarts\nin July, and Ida's second-loop quote goes out this week. Everyone takes two\nstaggered weeks off; Rill's fiscal-year close is next week and the checklist\nis staged.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 32,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/embedded-single-board-notes.md"
+      },
+      "result_text": "---\nid: embedded-single-board-notes\ngenre: references\ntitle: \"Single-board computers for signage — field research summary\"\ncreated: 2026-03-01\nprovenance: hand-authored\ntags: [embedded, field-research]\nsource: \"internal field research summary\"\nrelated:\n  - type: relates_to\n    to: references/fleet-provisioning-notes.md\n---\n\nSingle-board computers at one per display promise autonomy: no central\nserver, local fallback rendering, simple wiring. Field experience says\nflashing and clock drift are the real costs — expect manual reflash cycles\nwhen firmware updates land.\n\nInformed the original Wayfare per-display architecture (d-003).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 33,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/wharfworks-collective.md"
+      },
+      "result_text": "---\nid: wharfworks-collective\ngenre: orgs\ntitle: \"Wharfworks Collective\"\ncreated: 2025-10-02\nprovenance: generated\ntags: [partner, coworking]\nrelated:\n  - type: mentions\n    to: orgs/copperleaf-studio.md\nkind: partner\n---\n\nWharfworks Collective is the co-working space that houses Copperleaf Studio\n— a converted cannery on the Vantage Bay waterfront with shared meeting\nrooms and a loading dock. Copperleaf is its longest-tenured studio tenant.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/quill-and-marrow.md"
+      },
+      "result_text": "---\nid: quill-and-marrow\ngenre: orgs\ntitle: \"Quill & Marrow\"\ncreated: 2026-03-20\nprovenance: hand-authored\ntags: [partner, content]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\nkind: partner\n---\n\nQuill & Marrow is a content-strategy partner of the studio. It advised the\nmetadata descriptions for the Larkspur Archive's digitized items, drafting the\nhouse style on top of Dublin Core fields.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-106.md"
+      },
+      "result_text": "---\nid: m-106\ngenre: meetings\ntitle: \"Cinderboard engagement kickoff with Ridgeway Power\"\ncreated: 2026-02-19\nprovenance: generated\ntags: [cinderboard, kickoff]\nattendees: [ines-marchetti, yusuf-adeyemi, marta-quintana, nadia-moreau]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: orgs/ridgeway-power.md\n  - type: mentions\n    to: orgs/fathom-data-works.md\n---\n\nKickoff with Ridgeway Power for the Cinderboard wallboard: ingest feeder\nsensor feeds plus Fathom Data Works weather-adjusted load forecasts, and\nserve the grid operations desk. Six-week pilot to a go/no-go on full rollout\nat the end of April. Nadia sponsors.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-114.md"
+      },
+      "result_text": "---\nid: m-114\ngenre: meetings\ntitle: \"Foxglove annex planning with Harrowgate\"\ncreated: 2026-05-13\nprovenance: generated\ntags: [foxglove, planning]\nattendees: [ines-marchetti, marta-quintana, aurelio-finch, elif-yilmaz]\nrelated:\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: people/elif-yilmaz.md\n  - type: mentions\n    to: decisions/d-118.md\n---\n\nPlanning the Foxglove annex boxes: older stock, fragile bindings, slower\nscans. Aurelio's team preps flatbed passes; Marta schedules thinner batches.\nElif's archive-user interviews say researchers cite individual pages — the\ngallery gets stable page-level anchors, which later landed as d-118.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "references/archival-handling-notes.md"
+      },
+      "result_text": "---\nid: archival-handling-notes\ngenre: references\ntitle: \"Handling a century of print — ops note\"\ncreated: 2026-01-22\nprovenance: generated\ntags: [archive, ops-note]\nsource: \"internal ops note\"\nrelated:\n  - type: relates_to\n    to: references/scan-resolution-notes.md\n---\n\nHandling a century of print: gloves and flatbed passes for fragile bindings,\nmodern stock tolerates the sheet-fed scanner, and foxed pages preprocess\nclean at the bench. Box-and-leaf naming keeps scan order recoverable without\ntitles.\n\nInformed Foxglove's intake and d-114.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 38,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/ledgerline.md"
+      },
+      "result_text": "---\nid: ledgerline\ngenre: projects\ntitle: \"Ledgerline — internal timesheet and invoicing service\"\ncreated: 2026-02-14\nupdated: 2026-06-10\nstatus: active\nprovenance: hand-authored\ntags: [internal, billing]\nrelated:\n  - type: mentions\n    to: decisions/d-001.md\n  - type: mentions\n    to: decisions/d-005.md\n  - type: mentions\n    to: sessions/s-001.md\n  - type: mentions\n    to: sessions/s-005.md\n  - type: mentions\n    to: meetings/m-002.md\n  - type: mentions\n    to: meetings/m-003.md\n  - type: mentions\n    to: people/lorna-vey.md\n---\n\nLedgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it. SQLite-backed (decision d-001), with\nflat monthly billing per client adopted in March (decision d-005) after the\npricing discussion in m-003. Invoice PDF export landed in the March sprint\n(s-005).\n\nTeam: Dev Okonkwo (backend), Noor Haddad (interface), Lorna Vey (ops).\nBilling runs monthly; Lorna reconciles the runs against bank deposits.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 39,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/rill.md"
+      },
+      "result_text": "---\nid: rill\ngenre: projects\ntitle: \"Rill — internal timesheet and invoicing service\"\ncreated: 2025-10-06\nupdated: 2026-06-27\nstatus: active\nprovenance: generated\ntags: [internal, billing]\nrelated:\n  - type: mentions\n    to: decisions/d-101.md\n  - type: mentions\n    to: decisions/d-105.md\n  - type: mentions\n    to: sessions/s-101.md\n  - type: mentions\n    to: meetings/m-102.md\n  - type: mentions\n    to: meetings/m-104.md\n  - type: mentions\n    to: people/nils-aasen.md\n---\n\nRill is Copperleaf Studio's internal timesheet and invoicing service — the\nstudio bills its clients through it. PostgreSQL-backed (decision d-101),\nwith hourly billing and per-project rates (decision d-105) after the billing\ndiscussion in m-104; per-period rate cards followed in April (d-115), with\nthe schema migrated in s-133. Invoice CSV export landed in February (s-105).\n\nTeam: Yusuf Adeyemi (backend), Pavel Sorokin (interface), Nils Aasen (ops).\nBilling runs monthly; Nils reconciles the hourly runs against bank deposits,\nand Sofia keeps the backup rotation honest.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "decisions/d-109.md"
+      },
+      "result_text": "---\nid: d-109\ngenre: decisions\ntitle: \"Perchboard moves to an edge relay per station\"\ncreated: 2026-02-24\nprovenance: generated\ntags: [perchboard, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-103.md\n  - type: influenced_by\n    to: sessions/s-109.md\n  - type: influenced_by\n    to: meetings/m-107.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nContext: after weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly seventy minutes of manual reflash\nper display, plus boards that lose their clocks after power cuts (documented\nin s-109, reviewed in m-107).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge relay per station coordinating its displays.\n\nDecision: each pilot station gets an edge relay — firmware flashes once per\nstation, displays pull from the relay, telemetry funnels through it. This\nsupersedes d-103.\n\nConsequences: one more box per station, collapsed maintenance surface; Sofia\nowns relay provisioning.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/cometline.md"
+      },
+      "result_text": "---\nid: cometline\ngenre: projects\ntitle: \"Cometline — exhibit kiosk for Millhaven Observatory\"\ncreated: 2026-01-22\nupdated: 2026-05-18\nstatus: shipped\nclient: millhaven-observatory\nprovenance: generated\ntags: [museum, kiosk]\nrelated:\n  - type: mentions\n    to: orgs/millhaven-observatory.md\n  - type: mentions\n    to: decisions/d-106.md\n  - type: mentions\n    to: sessions/s-129.md\n  - type: mentions\n    to: meetings/m-115.md\n---\n\nCometline is an exhibit kiosk for Millhaven Observatory: an offline-capable\nkiosk browser (decision d-106) playing the Night Sky over Vantage Bay\nexhibit loop with captions, wall-mounted at the observatory entrance. It\nsurvived a 48-hour offline soak during hardening (s-129) and opened to\nvisitors 2026-05-02; the opening review with Ida Kovacs is m-115.\n\nTeam: Pavel Sorokin (kiosk), Gwen Torvald (exhibit design), Amara Diallo\n(QA).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/millhaven-observatory.md"
+      },
+      "result_text": "---\nid: millhaven-observatory\ngenre: orgs\ntitle: \"Millhaven Observatory\"\ncreated: 2026-01-20\nprovenance: generated\ntags: [client, museum]\nrelated:\n  - type: mentions\n    to: projects/cometline.md\n  - type: mentions\n    to: people/ida-kovacs.md\nkind: client\n---\n\nMillhaven Observatory is a small science museum and observatory on Vantage\nBay's north shore. Ida Kovacs curates its exhibits and sponsored\nCopperleaf's Cometline exhibit kiosk.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/foxglove-archive.md"
+      },
+      "result_text": "---\nid: foxglove-archive\ngenre: projects\ntitle: \"Foxglove Archive — digitized collections platform for Harrowgate Press\"\ncreated: 2026-01-12\nupdated: 2026-06-02\nstatus: active\nclient: harrowgate-press\nprovenance: generated\ntags: [archive, ocr, gallery]\nrelated:\n  - type: mentions\n    to: orgs/harrowgate-press.md\n  - type: mentions\n    to: orgs/saltmarsh-creative.md\n  - type: mentions\n    to: decisions/d-104.md\n  - type: mentions\n    to: decisions/d-113.md\n  - type: mentions\n    to: decisions/d-118.md\n  - type: mentions\n    to: sessions/s-113.md\n  - type: mentions\n    to: meetings/m-103.md\n  - type: mentions\n    to: meetings/m-112.md\n---\n\nThe Foxglove Archive is a digitized-collection platform for Harrowgate\nPress: scanning, OCR, searchable metadata, and an online gallery. The OCR\npipeline runs on a local GPU cluster rather than a remote API (decision\nd-104); the throughput benchmark (s-113) showed modern scans running above\nthe assumed rate, which kept the digitization schedule. The viewer is a\nstatic-file gallery (decision d-113), prototyped in s-122, with page-level\nanchor URLs added in June (d-118).\n\nTeam: Marta Quintana (data), Gwen Torvald (interface), Yusuf Adeyemi (OCR\npipeline), Elif Yilmaz (user research). Aurelio Finch is the client sponsor;\nSaltmarsh Creative advised the metadata descriptions. Mid-project review\nwith Harrowgate is m-112.\n\nAs of late June the project is active: the modern collection is scanned, the\nannex queue is staged for summer, and the gallery is in integration.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 45,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/harrowgate-press.md"
+      },
+      "result_text": "---\nid: harrowgate-press\ngenre: orgs\ntitle: \"Harrowgate Press\"\ncreated: 2026-01-12\nprovenance: generated\ntags: [client, publishing]\nrelated:\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: people/aurelio-finch.md\nkind: client\n---\n\nHarrowgate Press is a regional publisher holding an archive of print\nmaterial spanning a century. Aurelio Finch heads the archive and sponsors\nCopperleaf's Foxglove Archive digitization platform.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 46,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/bayline-transit.md"
+      },
+      "result_text": "---\nid: bayline-transit\ngenre: orgs\ntitle: \"Bayline Transit\"\ncreated: 2025-09-29\nprovenance: generated\ntags: [client, transit]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: people/dara-whitlock.md\nkind: client\n---\n\nBayline Transit operates trams and ferries across the Vantage Bay\nwaterfront. Its service-planning lead, Dara Whitlock, sponsors Copperleaf's\nPerchboard departure-display program.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/halcyon-transit.md"
+      },
+      "result_text": "---\nid: halcyon-transit\ngenre: orgs\ntitle: \"Halcyon Transit\"\ncreated: 2026-02-20\nprovenance: hand-authored\ntags: [client, transit]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: people/petra-lindqvist.md\nkind: client\n---\n\nHalcyon Transit operates buses and ferries across the Ashport metropolitan\narea. Its service-planning lead, Petra Lindqvist, sponsors Meridian's Wayfare\ndeparture-display program.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/ridgeway-power.md"
+      },
+      "result_text": "---\nid: ridgeway-power\ngenre: orgs\ntitle: \"Ridgeway Power\"\ncreated: 2026-02-18\nprovenance: generated\ntags: [client, utilities]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: people/nadia-moreau.md\nkind: client\n---\n\nRidgeway Power is Vantage Bay's municipal power utility. Nadia Moreau runs\nits grid operations desk; Copperleaf's Cinderboard project builds a\nload-monitoring wallboard over its feeder data, paused since April pending a\ndata-sharing agreement.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 49,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/greenline-utilities.md"
+      },
+      "result_text": "---\nid: greenline-utilities\ngenre: orgs\ntitle: \"Greenline Utilities\"\ncreated: 2026-04-01\nprovenance: hand-authored\ntags: [client, utilities]\nrelated:\n  - type: mentions\n    to: projects/beacon-grid.md\nkind: client\n---\n\nGreenline Utilities is Ashport's municipal power and water utility. Meridian's\nBeacon Grid project builds a load-monitoring dashboard over its operations\ndata, paused since May while Greenline works through a data-access\nclarification.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 50,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/bellweather-books.md"
+      },
+      "result_text": "---\nid: bellweather-books\ngenre: orgs\ntitle: \"Bellweather Books\"\ncreated: 2026-03-02\nprovenance: hand-authored\ntags: [client, publishing, archive]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: people/rowan-ellery.md\nkind: client\n---\n\nBellweather Books is a regional publisher holding an archive of print material\ndating back decades. Rowan Ellery heads the archive and sponsors Meridian's\nLarkspur Archive digitization platform.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 51,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "orgs/saltmarsh-creative.md"
+      },
+      "result_text": "---\nid: saltmarsh-creative\ngenre: orgs\ntitle: \"Saltmarsh Creative\"\ncreated: 2026-01-30\nprovenance: generated\ntags: [partner, content]\nrelated:\n  - type: mentions\n    to: projects/foxglove-archive.md\nkind: partner\n---\n\nSaltmarsh Creative is a content-strategy partner of the studio. It advised\nthe descriptive metadata for the Foxglove Archive's digitized items,\ndrafting the house style on top of the studio's field vocabulary.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-002.md"
+      },
+      "result_text": "---\nid: m-002\ngenre: meetings\ntitle: \"Ledgerline planning sync\"\ncreated: 2026-02-24\nprovenance: hand-authored\ntags: [ledgerline, planning]\nattendees: [mara-voss, dev-okonkwo, lorna-vey, silas-brandt]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-001.md\n  - type: mentions\n    to: meetings/m-003.md\n---\n\nLedgerline planning: schema first per d-001, invoicing flows after timesheets\nstabilize. Lorna brought the ops requirements — deposit reconciliation and\nclient notes. The billing model was deliberately deferred to a dedicated\npricing discussion (m-003).\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-003.md"
+      },
+      "result_text": "---\nid: m-003\ngenre: meetings\ntitle: \"Ledgerline pricing discussion\"\ncreated: 2026-03-17\nprovenance: hand-authored\ntags: [ledgerline, billing]\nattendees: [mara-voss, lorna-vey, dev-okonkwo]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: decisions/d-005.md\n---\n\nThe pricing discussion weighed hourly billing assembled from raw timesheets\nagainst flat monthly billing per client: hourly recovers every scrap of\neffort but costs Lorna a reconciliation day each month and reads\nunpredictably to clients; flat monthly is one predictable number per client\nwith timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-007.md"
+      },
+      "result_text": "---\nid: m-007\ngenre: meetings\ntitle: \"Larkspur Archive mid-project review with Bellweather\"\ncreated: 2026-05-12\nprovenance: hand-authored\ntags: [larkspur, review]\nattendees: [mara-voss, june-park, silas-brandt, rowan-ellery]\nrelated:\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: decisions/d-011.md\n---\n\nMid-project review at Bellweather with Rowan's team: the OCR latency findings\n(s-006) were walked through — archival scans run at roughly forty percent of\nthe assumed rate, so the digitization schedule stretches — and the IIIF\nviewer direction (d-011, prototyped in s-010) was welcomed. Rowan asked for a\nwallboard-style collection status page; June takes it.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 55,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-006.md"
+      },
+      "result_text": "---\nid: m-006\ngenre: meetings\ntitle: \"Kestrel CRM go/no-go\"\ncreated: 2026-04-20\nprovenance: hand-authored\ntags: [kestrel, decision]\nattendees: [mara-voss, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: decisions/d-010.md\n---\n\nGo/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —\nthe studio's client count does not justify the maintenance surface. No-go;\nd-010 cancelled the experiment the next day, with data export and teardown\nin s-009.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 56,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-109.md"
+      },
+      "result_text": "---\nid: m-109\ngenre: meetings\ntitle: \"Curlew go/no-go\"\ncreated: 2026-03-16\nprovenance: generated\ntags: [curlew, decision]\nattendees: [ines-marchetti, yusuf-adeyemi, nils-aasen]\nrelated:\n  - type: mentions\n    to: projects/curlew-crm.md\n  - type: mentions\n    to: decisions/d-111.md\n---\n\nGo/no-go on Curlew after the four-week trial: Yusuf's prototype works, but\nthe ops load fell on Nils alone and no one can own the tool going forward —\nthe studio's client count does not justify the maintenance surface. No-go;\nd-111 cancelled the experiment the next day, with data export and teardown\nin s-115.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 57,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-112.md"
+      },
+      "result_text": "---\nid: m-112\ngenre: meetings\ntitle: \"Foxglove mid-project review with Harrowgate\"\ncreated: 2026-04-08\nprovenance: generated\ntags: [foxglove, review]\nattendees: [ines-marchetti, gwen-torvald, marta-quintana, aurelio-finch]\nrelated:\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: sessions/s-113.md\n  - type: mentions\n    to: sessions/s-122.md\n  - type: mentions\n    to: decisions/d-113.md\n---\n\nMid-project review at Harrowgate with Aurelio's team: the OCR benchmark\nfindings (s-113) were walked through — modern scans run well above the\nassumed rate, so the digitization schedule holds — and the static-gallery\ndirection (d-113, prototyped in s-122) was welcomed. Aurelio asked for a\ncollection status page; Gwen takes it.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 58,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-115.md"
+      },
+      "result_text": "---\nid: m-115\ngenre: meetings\ntitle: \"Cometline opening review with Millhaven Observatory\"\ncreated: 2026-05-18\nprovenance: generated\ntags: [cometline, review]\nattendees: [ines-marchetti, gwen-torvald, pavel-sorokin, ida-kovacs]\nrelated:\n  - type: mentions\n    to: projects/cometline.md\n  - type: mentions\n    to: people/ida-kovacs.md\n  - type: mentions\n    to: orgs/millhaven-observatory.md\n---\n\nOpening review at Millhaven Observatory two weeks after the kiosk opened:\nvisitor dwell averaged four minutes (visitor-dwell-notes), captions read\nwell in the dim hallway, and the offline cache survived a router swap\nwithout anyone noticing. Ida asked for a second loop for the school-visit\nseason; Gwen scopes it.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 59,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "meetings/m-110.md"
+      },
+      "result_text": "---\nid: m-110\ngenre: meetings\ntitle: \"Cinderboard wallboard walkthrough\"\ncreated: 2026-03-27\nprovenance: generated\ntags: [cinderboard, review]\nattendees: [yusuf-adeyemi, marta-quintana, pavel-sorokin, nadia-moreau]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: people/nadia-moreau.md\n---\n\nWalkthrough of the Cinderboard wallboard queries: feeder load by district,\nFathom forecast overlay, and an outage board for the switch desk. Nadia\nasked for a rain-shift view comparing load against weather-adjusted\nforecasts; queued for after the pilot decision.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 60,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-135.md"
+      },
+      "result_text": "---\nid: s-135\ngenre: sessions\ntitle: \"Rill access audit\"\ncreated: 2026-05-11\nprovenance: generated\ntags: [rill, security]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: people/nils-aasen.md\n  - type: mentions\n    to: people/sofia-reyes.md\n---\n\nNils and Sofia audited Rill's access list ahead of the quarterly review\n(m-113): two former contractor accounts disabled, rate-card visibility\nlimited to studio staff, and the audit log query added to the ops runbook.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 61,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-145.md"
+      },
+      "result_text": "---\nid: s-145\ngenre: sessions\ntitle: \"Rill restore rehearsal, June\"\ncreated: 2026-06-16\nprovenance: generated\ntags: [rill, ops]\nrelated:\n  - type: influenced_by\n    to: references/backup-rotation-notes.md\n  - type: mentions\n    to: projects/rill.md\n---\n\nSofia's monthly restore rehearsal on staging: June's nightly dump restored\nin twenty minutes, one index rebuild noted for the ops runbook. The backup\nrotation stays honest.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 62,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-106.md"
+      },
+      "result_text": "---\nid: s-106\ngenre: sessions\ntitle: \"Weekly review, early February\"\ncreated: 2026-02-06\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n---\n\nInes's weekly review: Perchboard boards are up at all three stations with a\nfield day scheduled mid-month; Foxglove's intake wiring is done (s-104) and\nthe February batch is queued; Rill's first hourly cycle closed clean.\nNothing blocked.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 63,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-114.md"
+      },
+      "result_text": "---\nid: s-114\ngenre: sessions\ntitle: \"Weekly review, mid-March\"\ncreated: 2026-03-14\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/curlew-crm.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nWeekly review: Curlew's go/no-go is set for the 16th and Nils has the trial\nledger ready; the Foxglove benchmark (s-113) puts the summer schedule in\nreach; Perchboard's relay provisioning starts next month. One open question:\nenclosure seals for the pier boards.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 64,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-117.md"
+      },
+      "result_text": "---\nid: s-117\ngenre: sessions\ntitle: \"Weekly review, late March\"\ncreated: 2026-03-27\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/cinderboard.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nWeekly review: the Cinderboard wallboard walkthrough (m-110) is this\nafternoon; Foxglove's benchmark (s-113) holds the summer schedule;\nPerchboard provisioning kits are staged for April. The relay enclosures ship\nMonday.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 65,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-130.md"
+      },
+      "result_text": "---\nid: s-130\ngenre: sessions\ntitle: \"Weekly review, late April\"\ncreated: 2026-04-25\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/cometline.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nWeekly review: two of three stations provisioned (s-124, s-127) with\nLighthouse Point next; the kiosk soak is green; Cinderboard's pause handoff\nis filed. Watch item: pier relay gaskets on the salt-air side.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 66,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-137.md"
+      },
+      "result_text": "---\nid: s-137\ngenre: sessions\ntitle: \"Weekly review, mid-May\"\ncreated: 2026-05-16\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/driftline.md\n---\n\nWeekly review: ship prep (s-138) is scheduled for the 18th with the station\nsweeps; Driftline — the ferry-schedule print service for Bayline — has its\nprint wiring scheduled for next week; the gasket swap at Granite Pier is\ndone.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 67,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-142.md"
+      },
+      "result_text": "---\nid: s-142\ngenre: sessions\ntitle: \"Weekly review, late May\"\ncreated: 2026-05-30\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/perchboard.md\n  - type: mentions\n    to: projects/driftline.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nWeekly review: Perchboard shipped on the 22nd and the retro (m-116) landed\nthe marine-enclosure decision; Driftline shipped in the gap; word from\nRidgeway is the data-sharing agreement is close. Summer planning (m-120) is\non the calendar.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 68,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-144.md"
+      },
+      "result_text": "---\nid: s-144\ngenre: sessions\ntitle: \"Weekly review, mid-June\"\ncreated: 2026-06-12\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: projects/foxglove-archive.md\n  - type: mentions\n    to: projects/cinderboard.md\n---\n\nWeekly review: Rill's fiscal-year close prep is with Nils; Foxglove's\npage-level anchors (d-118) shipped into the gallery build; the Ridgeway\nagreement cleared and restart planning (m-119) is done, with the July spike\non the calendar. The observatory's second-loop quote is drafted.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 69,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-147.md"
+      },
+      "result_text": "---\nid: s-147\ngenre: sessions\ntitle: \"Weekly review, late June\"\ncreated: 2026-06-26\nprovenance: generated\ntags: [review]\nrelated:\n  - type: mentions\n    to: projects/rill.md\n  - type: mentions\n    to: projects/perchboard.md\n---\n\nWeekly review: the maintenance review with Bayline (m-117) closed with the\nfall expansion scoping note; the fiscal close is tomorrow and Nils has the\nchecklist staged; Foxglove's fall push and Cinderboard's July restart are\nthe next two spikes. Everyone's summer weeks are staggered on the wall\ncalendar.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T22:52:03.275Z",
+  "finished_at": "2026-10-27T22:53:57.224Z"
+}

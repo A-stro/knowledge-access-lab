@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-08",
+  "category": "multi-hop",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-mh-08.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-003.md",
+        "passage": "with timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          13
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          13
+        ]
+      },
+      {
+        "record": "decisions/d-005.md",
+        "passage": "Decision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          12
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          12
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 13,
+    "error_steps": 5,
+    "result_bytes": 5617
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:20:02.219Z",
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The answer accurately states that m-003 compared hourly timesheet-based billing with flat monthly per-client billing, that flat monthly won for predictability and internal capacity planning, and that d-005 recorded the switch three days later.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:20:13.091Z"
+  }
+}

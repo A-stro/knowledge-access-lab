@@ -1,0 +1,702 @@
+[
+  {
+    "id": "q-pl-01",
+    "category": "point-lookup",
+    "question": "What datastore does the Ledgerline service use?",
+    "gold_answer": "Ledgerline stores its data in SQLite, running in WAL mode as the sole datastore for v1; Postgres stays out of scope until a second-writer need appears.",
+    "citations": [
+      {
+        "record": "decisions/d-001.md",
+        "passage": "Decision: use SQLite in WAL mode as the sole datastore for Ledgerline v1;"
+      }
+    ]
+  },
+  {
+    "id": "q-pl-02",
+    "category": "point-lookup",
+    "question": "Who owns the Wayfare display fleet and the edge gateways?",
+    "gold_answer": "Bram Oyelaran, Meridian Studio's infrastructure engineer, owns the Wayfare display fleet and, since the April architecture review, the edge gateways — one per pilot station — that flash firmware once per site and funnel telemetry home.",
+    "citations": [
+      {
+        "record": "people/bram-oyelaran.md",
+        "passage": "He owns the\nWayfare display fleet and, since the April architecture review, the edge\ngateways — one per pilot station — that flash firmware once per site and\nfunnel telemetry home."
+      }
+    ]
+  },
+  {
+    "id": "q-pl-03",
+    "category": "point-lookup",
+    "question": "What is the current status of the Beacon Grid project?",
+    "gold_answer": "Beacon Grid is paused (since 2026-05-26) pending Greenline Utilities' data-access clarification; Noor Haddad moved to Wayfare's final stretch.",
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch."
+      }
+    ]
+  },
+  {
+    "id": "q-pl-04",
+    "category": "point-lookup",
+    "question": "Which three pilot stations did the Wayfare program cover?",
+    "gold_answer": "Ashport Central, Ferry Quay, and Millbrook Bridge — platform displays for three pilot stations fed by live vehicle-position data.",
+    "citations": [
+      {
+        "record": "projects/wayfare.md",
+        "passage": "platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data."
+      }
+    ]
+  },
+  {
+    "id": "q-pl-05",
+    "category": "point-lookup",
+    "question": "What does Northpost Analytics supply, and who consumes it?",
+    "gold_answer": "Northpost Analytics is a regional data vendor supplying load-forecast feeds; Beacon Grid consumes its CSV exports alongside Greenline's raw sensor data.",
+    "citations": [
+      {
+        "record": "orgs/northpost-analytics.md",
+        "passage": "Northpost Analytics is a regional data vendor supplying load-forecast feeds.\nBeacon Grid consumes its CSV exports alongside Greenline's raw sensor data."
+      }
+    ]
+  },
+  {
+    "id": "q-pl-06",
+    "category": "point-lookup",
+    "question": "Who signed off Wayfare's ship, and on what date?",
+    "gold_answer": "Katrin Ilic, Meridian Studio's QA lead, signed off Wayfare's ship on 2026-06-12.",
+    "citations": [
+      {
+        "record": "people/katrin-ilic.md",
+        "passage": "client portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff"
+      }
+    ]
+  },
+  {
+    "id": "q-pl-07",
+    "category": "point-lookup",
+    "question": "What source is recorded for the IIIF overview reading notes?",
+    "gold_answer": "The IIIF overview notes record their source as reading notes on the IIIF Image and Presentation APIs.",
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "source: \"reading notes, IIIF Image and Presentation APIs\""
+      }
+    ]
+  },
+  {
+    "id": "q-pl-08",
+    "category": "point-lookup",
+    "question": "How many contacts were exported when the Kestrel prototype was torn down?",
+    "gold_answer": "Sixty-one contacts were exported from the Kestrel trial data into Ledgerline notes before the prototype was torn down.",
+    "citations": [
+      {
+        "record": "sessions/s-009.md",
+        "passage": "Two weeks of trial, sixty-one contacts, no regrets."
+      }
+    ]
+  },
+  {
+    "id": "q-pl-09",
+    "category": "point-lookup",
+    "question": "What is Quill & Marrow's role on the Larkspur Archive?",
+    "gold_answer": "Quill & Marrow is a content-strategy partner of the studio; it advised the metadata descriptions for the Larkspur Archive's digitized items, drafting the house style on top of Dublin Core fields.",
+    "citations": [
+      {
+        "record": "orgs/quill-and-marrow.md",
+        "passage": "It advised the\nmetadata descriptions for the Larkspur Archive's digitized items, drafting the\nhouse style on top of Dublin Core fields."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-01",
+    "category": "multi-hop",
+    "question": "Which decision superseded Wayfare's per-display autonomy, and what field findings justified the change?",
+    "gold_answer": "Decision d-008 (each pilot station gets an edge gateway hub) superseded d-003. The field findings in s-004 justified it: three firmware versions across three stations, a board that lost power would not recover its clock, and reflashing took roughly ninety minutes per display carried to the platform.",
+    "citations": [
+      {
+        "record": "decisions/d-008.md",
+        "passage": "  - type: supersedes\n    to: decisions/d-003.md"
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "This supersedes d-003."
+      },
+      {
+        "record": "sessions/s-004.md",
+        "passage": "Reflashing takes roughly ninety minutes per display carried to the platform."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-02",
+    "category": "multi-hop",
+    "question": "Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+    "gold_answer": "The MQTT 3.1.1 reading notes (mqtt-311-notes) informed both d-002 (Wayfare displays speak MQTT) and d-007 (Beacon Grid ingests over MQTT rather than REST polling); d-007 reuses the same protocol notes that shaped Wayfare's transport.",
+    "citations": [
+      {
+        "record": "references/mqtt-311-notes.md",
+        "passage": "Informed Wayfare's transport decision (d-002) and Beacon Grid's ingest\ndecision (d-007)."
+      },
+      {
+        "record": "decisions/d-007.md",
+        "passage": "Decision: Beacon Grid ingests via MQTT subscriptions, reusing the same\nprotocol notes that shaped Wayfare's transport (mqtt-311-notes, also behind\nd-002)."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-03",
+    "category": "multi-hop",
+    "question": "What evidence contradicted the Larkspur OCR decision, and what did it find?",
+    "gold_answer": "Session s-006's OCR latency benchmark contradicted d-004: on real archival page scans — foxed paper, old typefaces — throughput ran at roughly forty percent of the assumed rate once image preprocessing landed, so the linearity assumption behind d-004 does not hold for archival material; batching and preprocessing now set the schedule, not API capacity.",
+    "citations": [
+      {
+        "record": "sessions/s-006.md",
+        "passage": "  - type: contradicts\n    to: decisions/d-004.md"
+      },
+      {
+        "record": "sessions/s-006.md",
+        "passage": "The linearity assumption behind d-004 does not hold for archival material;\nbatching and preprocessing now set the schedule, not API capacity."
+      },
+      {
+        "record": "decisions/d-004.md",
+        "passage": "Later contradicted by the latency benchmark in\ns-006, which found archival page scans far below the assumed rate."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-04",
+    "category": "multi-hop",
+    "question": "Which meeting reviewed the field findings behind the Wayfare edge-gateway decision?",
+    "gold_answer": "Meeting m-005 (the Wayfare architecture review, 2026-04-08) reviewed the field findings from s-004 — three firmware versions across three stations, ninety-minute reflashes per display — and d-008 landed the same day. Session s-004 and meeting m-005 are both recorded as influencing d-008.",
+    "citations": [
+      {
+        "record": "meetings/m-005.md",
+        "passage": "Architecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display."
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md"
+      }
+    ]
+  },
+  {
+    "id": "q-mh-05",
+    "category": "multi-hop",
+    "question": "Trace the influence chain behind Wayfare's green-and-amber palette decision.",
+    "gold_answer": "Decision d-009 was influenced by session s-008 — Odessa's contrast testing with June at Ashport Central's sunlit platform, where the original blue-on-dark palette washed out by mid-morning while green-on-dark and amber-on-dark stayed readable — and by the WCAG contrast reading notes, which record that green-on-dark and amber-on-dark both test well in daylight.",
+    "citations": [
+      {
+        "record": "decisions/d-009.md",
+        "passage": "Decision: Wayfare's displays render in green-and-amber — green for live\ndepartures, amber for alerts and delays — both testing well above the\ncontrast floor in daylight."
+      },
+      {
+        "record": "sessions/s-008.md",
+        "passage": "Odessa ran contrast testing at Ashport Central's sunlit platform with June:"
+      },
+      {
+        "record": "references/wcag-contrast-notes.md",
+        "passage": "Informed the Wayfare palette decision (d-009)."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-06",
+    "category": "multi-hop",
+    "question": "What influenced the cancellation of the Kestrel CRM experiment?",
+    "gold_answer": "The go/no-go meeting m-006 influenced d-010: after the two-week trial, Theo's prototype worked, but the ops load fell on Lorna alone and no one could own the tool going forward — the studio's client count did not justify the maintenance surface. No-go was called, d-010 cancelled the experiment the next day, and export plus teardown happened in s-009.",
+    "citations": [
+      {
+        "record": "decisions/d-010.md",
+        "passage": "Decision: cancel the Kestrel CRM experiment, agreed at the go/no-go (m-006)\n— the studio's client count does not justify the maintenance surface. Export\nthe trial data and tear down (s-009)."
+      },
+      {
+        "record": "meetings/m-006.md",
+        "passage": "Go/no-go on Kestrel after the two-week trial: Theo's prototype works, but\nthe ops load fell on Lorna alone and no one can own the tool going forward —"
+      }
+    ]
+  },
+  {
+    "id": "q-mh-07",
+    "category": "multi-hop",
+    "question": "How does the fleet-provisioning ops note connect the Wayfare field pain to the edge-gateway decision?",
+    "gold_answer": "The fleet-provisioning ops note lays out two provisioning topologies — point-wise flashing scales linearly and fails quietly, while a gateway-hub topology flashes once per site and funnels telemetry home — and was written after the Wayfare field pain (s-004); its hub topology is the direction d-008 adopted.",
+    "citations": [
+      {
+        "record": "references/fleet-provisioning-notes.md",
+        "passage": "Provisioning a fleet of small boards two ways: point-wise flashing scales\nlinearly with board count and fails quietly; a gateway-hub topology flashes\nonce per site and funnels telemetry home."
+      },
+      {
+        "record": "references/fleet-provisioning-notes.md",
+        "passage": "Written after the Wayfare field pain (s-004); the hub topology is the\ndirection d-008 adopted."
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Decision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-08",
+    "category": "multi-hop",
+    "question": "How did the Ledgerline pricing discussion lead to its billing decision?",
+    "gold_answer": "Meeting m-003 weighed hourly billing assembled from raw timesheets against flat monthly billing per client; flat monthly won — one predictable number per client, timesheets kept internal for capacity planning — and d-005 landed three days later: Ledgerline moves to flat monthly billing per client.",
+    "citations": [
+      {
+        "record": "meetings/m-003.md",
+        "passage": "with timesheets kept internal for capacity planning. Flat monthly won, and\nd-005 landed three days later."
+      },
+      {
+        "record": "decisions/d-005.md",
+        "passage": "Decision: Ledgerline moves to flat monthly billing per client, agreed in the\npricing discussion (m-003) — clients see one predictable number; timesheets\nstay internal for capacity planning."
+      }
+    ]
+  },
+  {
+    "id": "q-mh-09",
+    "category": "multi-hop",
+    "question": "The IIIF viewer decision drew on which reference note, and how does that note connect to the earlier metadata work?",
+    "gold_answer": "Decision d-011 (Larkspur ships an IIIF viewer) was influenced by the iiif-overview reading notes, which argue IIIF keeps a client's scans portable across viewer implementations; those notes relate to the archive-metadata notes, which record that Quill & Marrow drafted the Larkspur house style on top of fifteen Dublin Core elements.",
+    "citations": [
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "IIIF gives archival viewers standardized deep-zoom image serving plus\nmanifests that carry page order and metadata; adopting it means a client's\nscans stay portable across viewer implementations instead of locked to a\ncustom gallery."
+      },
+      {
+        "record": "references/iiif-overview.md",
+        "passage": "  - type: relates_to\n    to: references/archive-metadata-notes.md"
+      },
+      {
+        "record": "references/archive-metadata-notes.md",
+        "passage": "Fifteen Dublin Core elements cover the descriptive fields the archive needs\n— title, creator, date, subject, rights — without a bespoke schema; Quill &\nMarrow drafted the house style on top of them for the Larkspur metadata."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-01",
+    "category": "synthesis",
+    "question": "Summarize the Wayfare program: client, scope, architecture arc, palette, and ship date.",
+    "gold_answer": "Wayfare is Meridian Studio's realtime departure-display program for Halcyon Transit: platform displays for three pilot stations (Ashport Central, Ferry Quay, Millbrook Bridge) fed by live vehicle-position data, with sub-second perceived freshness, outdoor readability, and a June ship target set at the kickoff. The displays speak MQTT (d-002), went from per-display autonomy (d-003) to an edge-gateway hub per station (d-008) after field maintenance pain, and render green-and-amber for outdoor readability (d-009). It shipped 2026-06-12.",
+    "citations": [
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Wayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data."
+      },
+      {
+        "record": "projects/wayfare.md",
+        "passage": "edge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009)."
+      },
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Shipped 2026-06-12; ship retro in m-008."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-02",
+    "category": "synthesis",
+    "question": "Who built Wayfare's display firmware and renderer, and what did each contribute?",
+    "gold_answer": "Dev Okonkwo, the backend engineer, owns the Wayfare display firmware — he brought up the first Wayfare display on the bench and spent the April field day that surfaced the maintenance pain. Noor Haddad, the frontend engineer, built the Wayfare display renderer (she also built the Ledgerline interface and started the Beacon Grid dashboard).",
+    "citations": [
+      {
+        "record": "people/dev-okonkwo.md",
+        "passage": "He owns the Ledgerline\nservice, the Wayfare display firmware, and the Larkspur OCR pipeline."
+      },
+      {
+        "record": "people/noor-haddad.md",
+        "passage": "She built the Ledgerline\ninterface, the Wayfare display renderer, and started the Beacon Grid\ndashboard."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-03",
+    "category": "synthesis",
+    "question": "Compare the outcomes of the studio's two internal tools, Ledgerline and Kestrel.",
+    "gold_answer": "Ledgerline is active: the internal timesheet and invoicing service the studio bills its clients through, SQLite-backed with flat monthly billing per client. Kestrel was cancelled 2026-04-21 (d-010): with the ops trial load falling on Lorna alone, no one could own it, and client tracking stayed in Ledgerline notes.",
+    "citations": [
+      {
+        "record": "projects/ledgerline.md",
+        "passage": "Ledgerline is Meridian Studio's internal timesheet and invoicing service —\nthe studio bills its clients through it."
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it. Data export and teardown happened in s-009."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-04",
+    "category": "synthesis",
+    "question": "What did the March all-hands report about each of the studio's five client projects?",
+    "gold_answer": "Per m-004 (2026-03-30): Ledgerline invoicing was live with flat monthly runs; Wayfare was in the field across the pilot stations; Larkspur Archive was scanning and OCR underway. New: Theo proposed the Kestrel CRM experiment and got a two-week trial window; the Beacon Grid engagement with Greenline Utilities would start the next week on the Northpost feeds.",
+    "citations": [
+      {
+        "record": "meetings/m-004.md",
+        "passage": "March all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway."
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "lightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-05",
+    "category": "synthesis",
+    "question": "How did the studio's approach to Wayfare display maintenance change between March and June, and what drove it?",
+    "gold_answer": "In March each display ran its own single-board computer with local fallback rendering and no central station server (d-003). After six weeks in the field showed firmware drift and roughly ninety-minute manual reflashes per display (s-004, reviewed in m-005), each pilot station got an edge-gateway hub (d-008). By the June ship retro the reversal had collapsed the maintenance surface — flashing became a station visit, not a fleet archaeology dig.",
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "Decision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,"
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Context: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005)."
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "What worked: the edge-gateway\nreversal (d-008) collapsed the maintenance surface — flashing is now a\nstation visit, not a fleet archaeology dig;"
+      }
+    ]
+  },
+  {
+    "id": "q-sy-06",
+    "category": "synthesis",
+    "question": "Synthesize the Larkspur OCR story: original assumption, benchmark finding, and schedule consequence.",
+    "gold_answer": "The ocr-comparison benchmark notes assumed a remote OCR API at roughly four times local throughput, with the assumption on record that throughput scales linearly with scan volume — that informed d-004. Session s-006 then found real archival scans (foxed paper, old typefaces) running at roughly forty percent of the assumed rate once preprocessing landed, so the linearity assumption does not hold for archival material. At the Bellweather review (m-007), the digitization schedule was stretched accordingly.",
+    "citations": [
+      {
+        "record": "references/ocr-comparison.md",
+        "passage": "Assumption on record: throughput scales linearly with scan volume."
+      },
+      {
+        "record": "sessions/s-006.md",
+        "passage": "Silas benchmarked the OCR pipeline against the ocr-comparison assumption: on\nreal archival page scans — foxed paper, old typefaces — throughput ran at\nroughly forty percent of the assumed rate once image preprocessing landed."
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "archival scans run at roughly forty percent of\nthe assumed rate, so the digitization schedule stretches"
+      }
+    ]
+  },
+  {
+    "id": "q-sy-07",
+    "category": "synthesis",
+    "question": "Which studio members worked on Beacon Grid, and in what roles?",
+    "gold_answer": "Silas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built the ingestion spike. Silas owns Beacon Grid's ingestion, where he spiked the DuckDB pipeline; Theo works the ingest; Noor started the dashboard before the project paused.",
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Silas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built\nthe ingestion spike (s-007)."
+      },
+      {
+        "record": "people/silas-brandt.md",
+        "passage": "He owns the Larkspur OCR\ndata work — including the latency benchmark that overturned its throughput\nassumption — and Beacon Grid's ingestion, where he spiked the DuckDB\npipeline."
+      },
+      {
+        "record": "people/theo-kanda.md",
+        "passage": "He proposed the edge-gateway hub that reversed Wayfare's display\narchitecture, works Beacon Grid's ingest, and championed the Kestrel CRM\nexperiment until its cancellation."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-08",
+    "category": "synthesis",
+    "question": "What do the records say about June Park's contributions across the studio's projects?",
+    "gold_answer": "June Park is the product designer: she designed the Wayfare display interface and owns its design tokens, designed the Larkspur Archive's reading experience, ran the platform contrast testing with Odessa, prototyped the IIIF viewer with Dev, and took the wallboard-style collection status page that Rowan asked for at the Bellweather review.",
+    "citations": [
+      {
+        "record": "people/june-park.md",
+        "passage": "She designed the Wayfare\ndisplay interface and owns its design tokens, and she designed the Larkspur\nArchive's reading experience. She ran the platform contrast testing with\nOdessa and prototyped the IIIF viewer with Dev."
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "Rowan asked for a\nwallboard-style collection status page; June takes it."
+      }
+    ]
+  },
+  {
+    "id": "q-sy-09",
+    "category": "synthesis",
+    "question": "What happened to the Beacon Grid project between April and June?",
+    "gold_answer": "In early April the ingestion spike landed: MQTT sensor topics into Parquet batches, DuckDB joining two weeks of sensor rows with Northpost forecast CSVs in under a second (s-007), with Noor to start the dashboard. Greenline later flagged access-approval processes and the project paused on 2026-05-26; Noor moved to Wayfare's final stretch, and the project remained paused through June.",
+    "citations": [
+      {
+        "record": "sessions/s-007.md",
+        "passage": "MQTT sensor topics\nlanding into Parquet batches, DuckDB joining two weeks of sensor rows with\nNorthpost forecast CSVs in under a second on a laptop."
+      },
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch."
+      },
+      {
+        "record": "decisions/d-006.md",
+        "passage": "Greenline later flagged access-approval processes, and the project paused\n(2026-05-26)."
+      }
+    ]
+  },
+  {
+    "id": "q-te-01",
+    "category": "temporal",
+    "question": "When did Wayfare ship, and when was its ship retro held?",
+    "gold_answer": "Wayfare shipped 2026-06-12; the ship retro (m-008) was held 2026-06-16.",
+    "citations": [
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Shipped 2026-06-12; ship retro in m-008."
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "Retro after shipping Wayfare on 2026-06-12."
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "created: 2026-06-16"
+      }
+    ]
+  },
+  {
+    "id": "q-te-02",
+    "category": "temporal",
+    "question": "Order the three Wayfare architecture-related decisions chronologically.",
+    "gold_answer": "d-003 (per-display autonomy) on 2026-03-04, then d-008 (edge-gateway hub, which supersedes d-003) on 2026-04-08, then d-009 (green-and-amber palette) on 2026-04-15.",
+    "citations": [
+      {
+        "record": "decisions/d-003.md",
+        "passage": "created: 2026-03-04"
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "created: 2026-04-08"
+      },
+      {
+        "record": "decisions/d-009.md",
+        "passage": "created: 2026-04-15"
+      }
+    ]
+  },
+  {
+    "id": "q-te-03",
+    "category": "temporal",
+    "question": "How long did Wayfare run on per-display autonomy before the architecture changed?",
+    "gold_answer": "About six weeks: the per-display decision (d-003) was recorded 2026-03-04, d-008 notes six weeks in the field before the edge-gateway reversal, and d-008 landed 2026-04-08.",
+    "citations": [
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Context: after six weeks in the field, per-display autonomy shows its cost —"
+      },
+      {
+        "record": "decisions/d-003.md",
+        "passage": "created: 2026-03-04"
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "created: 2026-04-08"
+      }
+    ]
+  },
+  {
+    "id": "q-te-04",
+    "category": "temporal",
+    "question": "When was Beacon Grid paused, and when did its engagement begin?",
+    "gold_answer": "Beacon Grid was paused 2026-05-26. The engagement began the week after the March all-hands (m-004, 2026-03-30, recorded as starting next week): the Greenline org record is dated 2026-04-01 and the Beacon Grid project record 2026-04-02.",
+    "citations": [
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch."
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "created: 2026-03-30"
+      },
+      {
+        "record": "meetings/m-004.md",
+        "passage": "Beacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds."
+      },
+      {
+        "record": "orgs/greenline-utilities.md",
+        "passage": "created: 2026-04-01"
+      },
+      {
+        "record": "projects/beacon-grid.md",
+        "passage": "created: 2026-04-02"
+      }
+    ]
+  },
+  {
+    "id": "q-te-05",
+    "category": "temporal",
+    "question": "What dates bracket the Kestrel experiment: announcement, start, cancellation, and teardown?",
+    "gold_answer": "Announced at the March all-hands (m-004, 2026-03-30); started 2026-03-31, the day after the all-hands; cancelled 2026-04-21 (d-010); data export and teardown 2026-04-24 (s-009).",
+    "citations": [
+      {
+        "record": "meetings/m-004.md",
+        "passage": "created: 2026-03-30"
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Kestrel started 2026-03-31, the day after the all-hands;"
+      },
+      {
+        "record": "projects/kestrel-crm.md",
+        "passage": "Cancelled 2026-04-21 (decision d-010): with the ops trial load falling on\nLorna alone, no one could own it."
+      },
+      {
+        "record": "sessions/s-009.md",
+        "passage": "created: 2026-04-24"
+      }
+    ]
+  },
+  {
+    "id": "q-te-06",
+    "category": "temporal",
+    "question": "On what date did the Ledgerline billing decision land, relative to its pricing discussion?",
+    "gold_answer": "The pricing discussion was recorded 2026-03-17 (m-003) and the flat-monthly decision d-005 landed 2026-03-20 — three days later.",
+    "citations": [
+      {
+        "record": "meetings/m-003.md",
+        "passage": "created: 2026-03-17"
+      },
+      {
+        "record": "decisions/d-005.md",
+        "passage": "created: 2026-03-20"
+      },
+      {
+        "record": "meetings/m-003.md",
+        "passage": "d-005 landed three days later."
+      }
+    ]
+  },
+  {
+    "id": "q-te-07",
+    "category": "temporal",
+    "question": "Which Wayfare-related session is the earliest dated, and what did it achieve?",
+    "gold_answer": "Session s-002 (2026-03-05, Wayfare display firmware first light): the first firmware boot on the bench — one single-board computer rendering the departure board, pulling MQTT retained messages, with local fallback rendering repainting the last-known board in under two seconds after a power cycle.",
+    "citations": [
+      {
+        "record": "sessions/s-002.md",
+        "passage": "created: 2026-03-05"
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "First firmware boot on the bench: one single-board computer rendering the\ndeparture board, pulling MQTT retained messages per d-002."
+      },
+      {
+        "record": "sessions/s-002.md",
+        "passage": "rendering works — power-cycle the board and it paints the last-known board in\nunder two seconds."
+      }
+    ]
+  },
+  {
+    "id": "q-te-08",
+    "category": "temporal",
+    "question": "In what order were the Larkspur project's three major work sessions recorded?",
+    "gold_answer": "The OCR pipeline wiring (s-003) on 2026-03-16, then the OCR latency benchmark (s-006) on 2026-04-18, then the IIIF viewer prototype (s-010) on 2026-05-10.",
+    "citations": [
+      {
+        "record": "sessions/s-003.md",
+        "passage": "created: 2026-03-16"
+      },
+      {
+        "record": "sessions/s-006.md",
+        "passage": "created: 2026-04-18"
+      },
+      {
+        "record": "sessions/s-010.md",
+        "passage": "created: 2026-05-10"
+      }
+    ]
+  },
+  {
+    "id": "q-te-09",
+    "category": "temporal",
+    "question": "When did the Larkspur engagement begin, relative to Wayfare's kickoff?",
+    "gold_answer": "Wayfare's kickoff with Halcyon Transit was recorded 2026-02-20 (m-001). The Larkspur engagement followed in March: the Bellweather Books org record and the Larkspur Archive project record are both dated 2026-03-02.",
+    "citations": [
+      {
+        "record": "meetings/m-001.md",
+        "passage": "created: 2026-02-20"
+      },
+      {
+        "record": "orgs/bellweather-books.md",
+        "passage": "created: 2026-03-02"
+      },
+      {
+        "record": "projects/larkspur-archive.md",
+        "passage": "created: 2026-03-02"
+      }
+    ]
+  },
+  {
+    "id": "q-ab-01",
+    "category": "absence",
+    "question": "Is there any record of blockchain or cryptocurrency work by the studio or its clients?",
+    "gold_answer": "No evidence found — no corpus record mentions blockchain or cryptocurrency work.",
+    "citations": [],
+    "absence_terms": ["blockchain", "cryptocurrency"]
+  },
+  {
+    "id": "q-ab-02",
+    "category": "absence",
+    "question": "Did the studio or any client ever deploy or evaluate delivery drones?",
+    "gold_answer": "No evidence found — no corpus record mentions drones.",
+    "citations": [],
+    "absence_terms": ["drone"]
+  },
+  {
+    "id": "q-ab-03",
+    "category": "absence",
+    "question": "Has the studio ever run an internship or apprenticeship program?",
+    "gold_answer": "No evidence found — no corpus record mentions an internship or apprenticeship program.",
+    "citations": [],
+    "absence_terms": ["internship", "apprentice"]
+  },
+  {
+    "id": "q-ab-04",
+    "category": "absence",
+    "question": "Is any patent filing mentioned anywhere in the corpus?",
+    "gold_answer": "No evidence found — no corpus record mentions a patent.",
+    "citations": [],
+    "absence_terms": ["patent"]
+  },
+  {
+    "id": "q-ab-05",
+    "category": "absence",
+    "question": "Does any record mention an insurance policy covering the display fleet or the studio?",
+    "gold_answer": "No evidence found — no corpus record mentions insurance.",
+    "citations": [],
+    "absence_terms": ["insurance"]
+  },
+  {
+    "id": "q-ab-06",
+    "category": "absence",
+    "question": "Is any lawsuit or legal dispute mentioned in the corpus?",
+    "gold_answer": "No evidence found — no corpus record mentions a lawsuit or legal dispute.",
+    "citations": [],
+    "absence_terms": ["lawsuit", "litigation"]
+  },
+  {
+    "id": "q-ab-07",
+    "category": "absence",
+    "question": "Did anyone propose machine learning or neural networks for OCR or any other pipeline?",
+    "gold_answer": "No evidence found — no corpus record mentions machine learning or neural networks.",
+    "citations": [],
+    "absence_terms": ["machine learning", "neural network"]
+  },
+  {
+    "id": "q-ab-08",
+    "category": "absence",
+    "question": "Is there any virtual-reality exhibit or headset project anywhere in the corpus?",
+    "gold_answer": "No evidence found — no corpus record mentions virtual reality or headsets.",
+    "citations": [],
+    "absence_terms": ["virtual reality", "headset"]
+  },
+  {
+    "id": "q-ab-09",
+    "category": "absence",
+    "question": "Does the corpus mention 3D printing anywhere?",
+    "gold_answer": "No evidence found — no corpus record mentions 3D printing.",
+    "citations": [],
+    "absence_terms": ["3D printing"]
+  }
+]

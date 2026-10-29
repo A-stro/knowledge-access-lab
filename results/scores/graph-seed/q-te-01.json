@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-01",
+  "category": "temporal",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-te-01.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "projects/wayfare.md",
+        "passage": "Shipped 2026-06-12; ship retro in m-008.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          4,
+          16
+        ]
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "Retro after shipping Wayfare on 2026-06-12.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          5,
+          16
+        ]
+      },
+      {
+        "record": "meetings/m-008.md",
+        "passage": "created: 2026-06-16",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          3,
+          5,
+          16
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 16,
+    "error_steps": 0,
+    "result_bytes": 10599
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T17:49:56.462Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference provides specific dates (shipped 2026-06-12; ship retro held 2026-06-16), while the agent incorrectly claims no evidence was found and provides neither date.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T17:49:58.526Z"
+  }
+}

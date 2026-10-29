@@ -1,0 +1,123 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-09",
+  "category": "temporal",
+  "question_text": "When did the Larkspur engagement begin, relative to Wayfare's kickoff?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When did the Larkspur engagement begin, relative to Wayfare's kickoff?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When did the Larkspur engagement begin, relative to Wayfare's kickoff?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "When did the Larkspur engagement begin, relative to Wayfare's kickoff?"
+      },
+      "result_text": "{\n  \"question\": \"q-te-09\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"meetings/m-004.md\",\n      \"para\": 0,\n      \"score\": 0.618494,\n      \"passage\": \"March all-hands. Status: Ledgerline invoicing live with flat monthly runs,\\nWayfare in the field across the pilot stations, Larkspur Archive scanning\\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\\nlightweight internal client tracker — and got a two-week trial window; the\\nBeacon Grid engagement with Greenline Utilities starts next week on the\\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"para\": 0,\n      \"score\": 0.582879,\n      \"passage\": \"Kickoff for the Wayfare departure-display program at Halcyon's operations\\noffice. Scope agreed: platform displays for three pilot stations — Ashport\\nCentral, Ferry Quay, Millbrook Bridge — live vehicle positions, sub-second\\nperceived freshness, and outdoor readability. Petra sponsors; the ship target\\nis June. Transport and architecture decisions followed within days (d-002,\\nd-003).\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 2,\n      \"score\": 0.54333,\n      \"passage\": \"Decision: route Larkspur OCR through a remote API — roughly four times local\\nthroughput at an absorbable per-page cost, informed by the ocr-comparison\\nbenchmark notes.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 2,\n      \"score\": 0.540835,\n      \"passage\": \"Team: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\\nShipped 2026-06-12; ship retro in m-008.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.538382,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"para\": 0,\n      \"score\": 0.537068,\n      \"passage\": \"Retro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\\nreversal (d-008) collapsed the maintenance surface — flashing is now a\\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\\ntesting made the green-and-amber palette readable in full sun; MQTT retained\\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\\nduplicate renders during reconnects — next time, dedupe on the display, not\\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\\nclient ships.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 1,\n      \"score\": 0.531801,\n      \"passage\": \"Options considered: local OCR on the studio's machines; a remote OCR API.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 1,\n      \"score\": 0.524308,\n      \"passage\": \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\\nperceived freshness, outdoor readability, and a June ship date. The displays\\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\\nedge-gateway hub (d-008) after field maintenance pain. The palette is\\ngreen-and-amber for outdoor readability (d-009).\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 0,\n      \"score\": 0.521643,\n      \"passage\": \"Context: Bellweather's archive scans number in the tens of thousands of\\npages; OCR throughput sets the digitization schedule.\"\n    },\n    {\n      \"path\": \"people/dev-okonkwo.md\",\n      \"para\": 0,\n      \"score\": 0.52098,\n      \"passage\": \"Dev Okonkwo is Meridian Studio's backend engineer. He owns the Ledgerline\\nservice, the Wayfare display firmware, and the Larkspur OCR pipeline. He\\nbootstrapped the Ledgerline schema, brought up the first Wayfare display on\\nthe bench, and spent the April field day with Theo that surfaced the\\nmaintenance pain behind the architecture change.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 3,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Larkspur engagement began started kickoff"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Larkspur engagement"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/larkspur.md"
+      },
+      "result_text": "Tool error (get): Error: record not found: projects/larkspur.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "meetings/m-004.md"
+      },
+      "result_text": "---\nid: m-004\ngenre: meetings\ntitle: \"Studio all-hands, March\"\ncreated: 2026-03-30\nprovenance: hand-authored\ntags: [all-hands, planning]\nattendees: [mara-voss, dev-okonkwo, june-park, silas-brandt, noor-haddad, katrin-ilic, odessa-klein, bram-oyelaran, theo-kanda, lorna-vey]\nrelated:\n  - type: mentions\n    to: projects/ledgerline.md\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: projects/larkspur-archive.md\n  - type: mentions\n    to: projects/kestrel-crm.md\n  - type: mentions\n    to: projects/beacon-grid.md\n---\n\nMarch all-hands. Status: Ledgerline invoicing live with flat monthly runs,\nWayfare in the field across the pilot stations, Larkspur Archive scanning\nand OCR underway. New: Theo proposed the Kestrel CRM experiment — a\nlightweight internal client tracker — and got a two-week trial window; the\nBeacon Grid engagement with Greenline Utilities starts next week on the\nNorthpost feeds. Capacity: everyone heads down until Wayfare ships.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "projects/larkspur-archive.md"
+      },
+      "result_text": "---\nid: larkspur-archive\ngenre: projects\ntitle: \"Larkspur Archive — digitized collections platform for Bellweather Books\"\ncreated: 2026-03-02\nupdated: 2026-06-15\nstatus: active\nclient: bellweather-books\nprovenance: hand-authored\ntags: [archive, ocr, iiif]\nrelated:\n  - type: mentions\n    to: orgs/bellweather-books.md\n  - type: mentions\n    to: orgs/quill-and-marrow.md\n  - type: mentions\n    to: decisions/d-004.md\n  - type: mentions\n    to: decisions/d-011.md\n  - type: mentions\n    to: sessions/s-003.md\n  - type: mentions\n    to: sessions/s-006.md\n  - type: mentions\n    to: sessions/s-010.md\n  - type: mentions\n    to: meetings/m-007.md\n---\n\nThe Larkspur Archive is a digitized-collection platform for Bellweather\nBooks: scanning, OCR, searchable metadata, and an online viewer. The OCR\npipeline uses a remote OCR API over local OCR (decision d-004, informed by\nthe ocr-comparison notes); a later latency benchmark (s-006) showed archival\npage scans running far below the assumed throughput, which sent Dev and\nSilas back to preprocessing. The viewer is IIIF-based (decision d-011),\nprototyped in s-010.\n\nTeam: Silas Brandt (data), June Park (interface), Dev Okonkwo (OCR pipeline),\nOdessa Klein (user research). Rowan Ellery is the client sponsor; Quill &\nMarrow advised the metadata descriptions. Mid-project review with Bellweather\nis m-007.\n\nAs of mid-June the project is active: OCR continues at the corrected rate and\nthe IIIF viewer is in integration.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "Based on the project records:\n\n- **Wayfare kickoff**: February 20, 2026 (from `projects/wayfare.md`: \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist\")\n- **Larkspur Archive created**: March 2, 2026 (from `projects/larkspur-archive.md`: \"created: 2026-03-02\")\n\n**Answer**: The Larkspur engagement began on **March 2, 2026** — **10 days (about 1.5 weeks) after** Wayfare's kickoff on February 20, 2026.\n\n**Evidence**:\n- `projects/wayfare.md`: \"Scope agreed at the kickoff (2026-02-20) with Petra Lindqvist\"\n- `projects/larkspur-archive.md`: \"created: 2026-03-02\"",
+  "started_at": "2026-10-27T21:47:57.647Z",
+  "finished_at": "2026-10-27T21:48:24.843Z"
+}

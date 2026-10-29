@@ -1,0 +1,52 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-sy-08",
+  "category": "synthesis",
+  "lane": "wiki",
+  "trace_ref": "results/runs/wiki/q-sy-08.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "people/june-park.md",
+        "passage": "She designed the Wayfare\ndisplay interface and owns its design tokens, and she designed the Larkspur\nArchive's reading experience. She ran the platform contrast testing with\nOdessa and prototyped the IIIF viewer with Dev.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          2
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          2,
+          3
+        ]
+      },
+      {
+        "record": "meetings/m-007.md",
+        "passage": "Rowan asked for a\nwallboard-style collection status page; June takes it.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0.5,
+    "records_found_ratio": 0.5
+  },
+  "retrieval": {
+    "steps": 8,
+    "error_steps": 0,
+    "result_bytes": 9597
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T22:01:52.201Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The answer correctly identifies June Park's product design work, including the Wayfare interface and design tokens, the Larkspur reading experience, contrast testing with Odessa, and the IIIF viewer prototype with Dev. However, it omits her wallboard-style collection status page for Rowan at the Bellweather review and adds project-specific details not stated in the reference.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T22:02:01.009Z"
+  }
+}

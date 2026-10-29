@@ -1,0 +1,90 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-ab-09",
+  "category": "absence",
+  "question_text": "Does the corpus mention 3D printing anywhere?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does the corpus mention 3D printing anywhere?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Does the corpus mention 3D printing anywhere?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "3D printing"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Does the corpus mention 3D printing anywhere?"
+      },
+      "result_text": "{\n  \"question\": \"q-ab-09\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"para\": 1,\n      \"score\": 0.574622,\n      \"passage\": \"Informed Driftline (d-116).\"\n    },\n    {\n      \"path\": \"sessions/s-139.md\",\n      \"para\": 0,\n      \"score\": 0.536612,\n      \"passage\": \"Pavel and Nils wired the Driftline print service per d-116: pull the day's\\ntimetable from Bayline's feed, render to the thermal-printer house template,\\nand print proof sheets at the three ticket counters. The first proof sheet\\nmatched the posted schedule to the minute.\"\n    },\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"para\": 1,\n      \"score\": 0.531809,\n      \"passage\": \"Options considered: a maintained local timetable file; rendering from\\nBayline's timetable feed.\"\n    },\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"para\": 3,\n      \"score\": 0.53041,\n      \"passage\": \"Consequences: counters depend on the feed being up; the runbook covers the\\noffline fallback sheet.\"\n    },\n    {\n      \"path\": \"decisions/d-108.md\",\n      \"para\": 3,\n      \"score\": 0.526937,\n      \"passage\": \"Consequences: one consumption pattern across two projects; feeder gateways\\nstay quiet.\"\n    },\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"para\": 0,\n      \"score\": 0.518528,\n      \"passage\": \"Thermal paper fades in sunlight, jams on humidity, and reads best at arm's\\nlength — a print service is a scheduled job plus a paper drill and a runbook\\nline for both.\"\n    },\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"para\": 1,\n      \"score\": 0.516013,\n      \"passage\": \"Informed the original Wayfare per-display architecture (d-003).\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 0,\n      \"score\": 0.513455,\n      \"passage\": \"Context: each platform display needs local rendering; per-display autonomy\\navoids putting a central server in stations.\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 1,\n      \"score\": 0.511189,\n      \"passage\": \"Options considered: per-display autonomy with single-board computers; a\\nstation hub coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 1,\n      \"score\": 0.51048,\n      \"passage\": \"Options considered: local OCR on the studio's machines; a remote OCR API.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 3,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "3d printing additive manufacturing"
+      },
+      "result_text": "Tool error (semantic_search): Error: unknown question — pass question_id (a gold-set id) or the exact gold question text; query vectors are committed at build time and this lane never embeds at runtime",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "question_id": "q-ab-09"
+      },
+      "result_text": "{\n  \"question\": \"q-ab-09\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"para\": 1,\n      \"score\": 0.574622,\n      \"passage\": \"Informed Driftline (d-116).\"\n    },\n    {\n      \"path\": \"sessions/s-139.md\",\n      \"para\": 0,\n      \"score\": 0.536612,\n      \"passage\": \"Pavel and Nils wired the Driftline print service per d-116: pull the day's\\ntimetable from Bayline's feed, render to the thermal-printer house template,\\nand print proof sheets at the three ticket counters. The first proof sheet\\nmatched the posted schedule to the minute.\"\n    },\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"para\": 1,\n      \"score\": 0.531809,\n      \"passage\": \"Options considered: a maintained local timetable file; rendering from\\nBayline's timetable feed.\"\n    },\n    {\n      \"path\": \"decisions/d-116.md\",\n      \"para\": 3,\n      \"score\": 0.53041,\n      \"passage\": \"Consequences: counters depend on the feed being up; the runbook covers the\\noffline fallback sheet.\"\n    },\n    {\n      \"path\": \"decisions/d-108.md\",\n      \"para\": 3,\n      \"score\": 0.526937,\n      \"passage\": \"Consequences: one consumption pattern across two projects; feeder gateways\\nstay quiet.\"\n    },\n    {\n      \"path\": \"references/thermal-printer-notes.md\",\n      \"para\": 0,\n      \"score\": 0.518528,\n      \"passage\": \"Thermal paper fades in sunlight, jams on humidity, and reads best at arm's\\nlength — a print service is a scheduled job plus a paper drill and a runbook\\nline for both.\"\n    },\n    {\n      \"path\": \"references/embedded-single-board-notes.md\",\n      \"para\": 1,\n      \"score\": 0.516013,\n      \"passage\": \"Informed the original Wayfare per-display architecture (d-003).\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 0,\n      \"score\": 0.513455,\n      \"passage\": \"Context: each platform display needs local rendering; per-display autonomy\\navoids putting a central server in stations.\"\n    },\n    {\n      \"path\": \"decisions/d-003.md\",\n      \"para\": 1,\n      \"score\": 0.511189,\n      \"passage\": \"Options considered: per-display autonomy with single-board computers; a\\nstation hub coordinating its displays.\"\n    },\n    {\n      \"path\": \"decisions/d-004.md\",\n      \"para\": 1,\n      \"score\": 0.51048,\n      \"passage\": \"Options considered: local OCR on the studio's machines; a remote OCR API.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    }
+  ],
+  "final_answer": "Based on the search results for the gold question **q-ab-09** (\"Does the corpus mention 3D printing anywhere?\"), the corpus only contains references to **thermal printing** (receipt/ticket printing), not 3D printing.\n\n**Evidence from the search results:**\n\n- **references/thermal-printer-notes.md** (para 0): \"Thermal paper fades in sunlight, jams on humidity, and reads best at arm's length — a print service is a scheduled job plus a paper drill and a runbook line for both.\"\n- **sessions/s-139.md** (para 0): \"Pavel and Nils wired the Driftline print service per d-116: pull the day's timetable from Bayline's feed, render to the thermal-printer house template, and print proof sheets at the three ticket counters.\"\n- **decisions/d-116.md** (para 1): \"Options considered: a maintained local timetable file; rendering from Bayline's timetable feed.\"\n\nAll passages reference **thermal printers**, **thermal paper**, **proof sheets**, and **ticket counters** — i.e., 2D receipt/ticket printing for transit schedules. There are no mentions of 3D printing, additive manufacturing, 3D printers, filaments, or related concepts.\n\n**Answer:** No, the corpus does not mention 3D printing. It only discusses thermal printing for ticket/schedule output.",
+  "started_at": "2026-10-27T21:52:32.886Z",
+  "finished_at": "2026-10-27T21:53:01.273Z"
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-pl-06",
+  "category": "point-lookup",
+  "question_text": "Who signed off Wayfare's ship, and on what date?",
+  "lane": "rag",
+  "lane_tools": [
+    "get",
+    "semantic_search"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__rag_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Who signed off Wayfare's ship, and on what date?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "semantic_search",
+      "harness_tool": "mcp__rag_lane__semantic_search",
+      "arguments": {
+        "query": "Who signed off Wayfare's ship, and on what date?"
+      },
+      "result_text": "{\n  \"question\": \"q-pl-06\",\n  \"dims\": 1024,\n  \"results\": [\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 2,\n      \"score\": 0.617321,\n      \"passage\": \"Team: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\\nShipped 2026-06-12; ship retro in m-008.\"\n    },\n    {\n      \"path\": \"meetings/m-008.md\",\n      \"para\": 0,\n      \"score\": 0.607634,\n      \"passage\": \"Retro after shipping Wayfare on 2026-06-12. What worked: the edge-gateway\\nreversal (d-008) collapsed the maintenance surface — flashing is now a\\nstation visit, not a fleet archaeology dig; Odessa's platform contrast\\ntesting made the green-and-amber palette readable in full sun; MQTT retained\\nmessages recovered cleanly through network drops. What hurt: QoS 1 delivered\\nduplicate renders during reconnects — next time, dedupe on the display, not\\nin ops. Katrin's QA signoff checklist is adopted as the studio default for\\nclient ships.\"\n    },\n    {\n      \"path\": \"meetings/m-001.md\",\n      \"para\": 0,\n      \"score\": 0.573081,\n      \"passage\": \"Kickoff for the Wayfare departure-display program at Halcyon's operations\\noffice. Scope agreed: platform displays for three pilot stations — Ashport\\nCentral, Ferry Quay, Millbrook Bridge — live vehicle positions, sub-second\\nperceived freshness, and outdoor readability. Petra sponsors; the ship target\\nis June. Transport and architecture decisions followed within days (d-002,\\nd-003).\"\n    },\n    {\n      \"path\": \"sessions/s-138.md\",\n      \"para\": 0,\n      \"score\": 0.549449,\n      \"passage\": \"Amara ran the pre-ship QA sweep across the depot bench and all three\\nstations with Rashid and Sofia: firmware 1.4.0 matching on every board,\\nretained-message recovery timed under three seconds, enclosure seals fresh\\nafter the pier swap. Signed off for the 2026-05-22 ship.\"\n    },\n    {\n      \"path\": \"sessions/s-142.md\",\n      \"para\": 0,\n      \"score\": 0.525066,\n      \"passage\": \"Weekly review: Perchboard shipped on the 22nd and the retro (m-116) landed\\nthe marine-enclosure decision; Driftline shipped in the gap; word from\\nRidgeway is the data-sharing agreement is close. Summer planning (m-120) is\\non the calendar.\"\n    },\n    {\n      \"path\": \"people/katrin-ilic.md\",\n      \"para\": 0,\n      \"score\": 0.524588,\n      \"passage\": \"Katrin Ilic is Meridian Studio's QA lead — she owns release QA across the\\nclient portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff\\nchecklist from the Wayfare retro is now the studio default for client ships.\"\n    },\n    {\n      \"path\": \"decisions/d-002.md\",\n      \"para\": 3,\n      \"score\": 0.51596,\n      \"passage\": \"Consequences: one broker to operate at Halcyon; occasional QoS-1 duplicate\\nrenders, accepted for freshness.\"\n    },\n    {\n      \"path\": \"sessions/s-140.md\",\n      \"para\": 0,\n      \"score\": 0.515281,\n      \"passage\": \"Amara ran the ship checklist on Driftline: proof-sheet legibility at arm's\\nlength, a paper-roll replacement drill with counter staff, and the one-page\\nrunbook from Tomas's docs. Shipped the same afternoon.\"\n    },\n    {\n      \"path\": \"projects/wayfare.md\",\n      \"para\": 0,\n      \"score\": 0.513368,\n      \"passage\": \"Wayfare is Meridian Studio's realtime departure-display program for Halcyon\\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\\nQuay, Millbrook Bridge — fed by live vehicle-position data.\"\n    },\n    {\n      \"path\": \"projects/perchboard.md\",\n      \"para\": 2,\n      \"score\": 0.512668,\n      \"passage\": \"Team: Rashid Bello (firmware), Pavel Sorokin (renderer), Gwen Torvald\\n(design), Sofia Reyes (fleet), Amara Diallo (QA), Yusuf Adeyemi (systems).\\nEnclosures installed with Juniper Field Services. Shipped 2026-05-22; ship\\nretro in m-116.\"\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "get",
+      "harness_tool": "mcp__rag_lane__get",
+      "arguments": {
+        "path": "people/katrin-ilic.md"
+      },
+      "result_text": "---\nid: katrin-ilic\ngenre: people\ntitle: \"Katrin Ilic\"\ncreated: 2026-02-10\nupdated: 2026-06-16\nprovenance: hand-authored\ntags: [qa]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: meetings/m-008.md\nrole: \"QA lead\"\n---\n\nKatrin Ilic is Meridian Studio's QA lead — she owns release QA across the\nclient portfolio and signed off Wayfare's ship on 2026-06-12. Her QA signoff\nchecklist from the Wayfare retro is now the studio default for client ships.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "**Answer:** Katrin Ilic signed off Wayfare's ship on 2026-06-12.\n\n**Evidence:** From `people/katrin-ilic.md`: \"Katrin Ilic is Meridian Studio's QA lead — she owns release QA across the client portfolio and **signed off Wayfare's ship on 2026-06-12**.\"",
+  "started_at": "2026-10-27T21:39:45.268Z",
+  "finished_at": "2026-10-27T21:39:55.564Z"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-08",
+  "category": "absence",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-ab-08.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 30,
+    "error_steps": 0,
+    "result_bytes": 7012
+  },
+  "absence_stated": false,
+  "scored_at": "2026-10-28T18:31:43.073Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly concludes that no virtual-reality or headset evidence was found, but it adds unsupported claims about zero matches for multiple terms and a Cometline exhibit-kiosk record that are not present in the reference answer.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T18:31:56.754Z"
+  }
+}

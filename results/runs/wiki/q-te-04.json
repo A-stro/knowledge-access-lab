@@ -1,0 +1,80 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-04",
+  "category": "temporal",
+  "question_text": "When was Beacon Grid paused, and when did its engagement begin?",
+  "lane": "wiki",
+  "lane_tools": [
+    "links",
+    "list",
+    "open"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__wiki_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When was Beacon Grid paused, and when did its engagement begin?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: When was Beacon Grid paused, and when did its engagement begin?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list",
+      "harness_tool": "mcp__wiki_lane__list",
+      "arguments": {
+        "genre": "projects"
+      },
+      "result_text": "{\n  \"taxonomy\": {\n    \"projects\": \"project records with status and an optional client org\"\n  },\n  \"genres\": [\n    {\n      \"genre\": \"projects\",\n      \"count\": 12,\n      \"records\": [\n        {\n          \"id\": \"beacon-grid\",\n          \"title\": \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\",\n          \"path\": \"projects/beacon-grid.md\"\n        },\n        {\n          \"id\": \"cinderboard\",\n          \"title\": \"Cinderboard — load-monitoring wallboard for Ridgeway Power\",\n          \"path\": \"projects/cinderboard.md\"\n        },\n        {\n          \"id\": \"cometline\",\n          \"title\": \"Cometline — exhibit kiosk for Millhaven Observatory\",\n          \"path\": \"projects/cometline.md\"\n        },\n        {\n          \"id\": \"curlew-crm\",\n          \"title\": \"Curlew CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/curlew-crm.md\"\n        },\n        {\n          \"id\": \"driftline\",\n          \"title\": \"Driftline — ferry-schedule print service for Bayline Transit\",\n          \"path\": \"projects/driftline.md\"\n        },\n        {\n          \"id\": \"foxglove-archive\",\n          \"title\": \"Foxglove Archive — digitized collections platform for Harrowgate Press\",\n          \"path\": \"projects/foxglove-archive.md\"\n        },\n        {\n          \"id\": \"kestrel-crm\",\n          \"title\": \"Kestrel CRM — cancelled internal client-tracker experiment\",\n          \"path\": \"projects/kestrel-crm.md\"\n        },\n        {\n          \"id\": \"larkspur-archive\",\n          \"title\": \"Larkspur Archive — digitized collections platform for Bellweather Books\",\n          \"path\": \"projects/larkspur-archive.md\"\n        },\n        {\n          \"id\": \"ledgerline\",\n          \"title\": \"Ledgerline — internal timesheet and invoicing service\",\n          \"path\": \"projects/ledgerline.md\"\n        },\n        {\n          \"id\": \"perchboard\",\n          \"title\": \"Perchboard — realtime departure displays for Bayline Transit\",\n          \"path\": \"projects/perchboard.md\"\n        },\n        {\n          \"id\": \"rill\",\n          \"title\": \"Rill — internal timesheet and invoicing service\",\n          \"path\": \"projects/rill.md\"\n        },\n        {\n          \"id\": \"wayfare\",\n          \"title\": \"Wayfare — realtime departure displays for Halcyon Transit\",\n          \"path\": \"projects/wayfare.md\"\n        }\n      ]\n    }\n  ]\n}",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 2,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "projects/beacon-grid.md"
+      },
+      "result_text": "---\nid: beacon-grid\ngenre: projects\ntitle: \"Beacon Grid — load-monitoring dashboard for Greenline Utilities\"\ncreated: 2026-04-02\nupdated: 2026-05-26\nstatus: paused\nclient: greenline-utilities\nprovenance: hand-authored\ntags: [utilities, monitoring, duckdb]\nrelated:\n  - type: mentions\n    to: orgs/greenline-utilities.md\n  - type: mentions\n    to: orgs/northpost-analytics.md\n  - type: mentions\n    to: decisions/d-006.md\n  - type: mentions\n    to: decisions/d-007.md\n  - type: mentions\n    to: sessions/s-007.md\n---\n\nBeacon Grid is a load-monitoring dashboard for Greenline Utilities: ingesting\nsensor feeds and Northpost Analytics load forecasts into DuckDB (decision\nd-006) over MQTT (decision d-007), queried for the operations wallboard.\nSilas Brandt (data), Theo Kanda (systems), and Noor Haddad (dashboard) built\nthe ingestion spike (s-007).\n\nPaused 2026-05-26 pending Greenline's data-access clarification; Noor moved\nto Wayfare's final stretch.\n",
+      "is_error": false,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "open",
+      "harness_tool": "mcp__wiki_lane__open",
+      "arguments": {
+        "path": "sessions/s-007.md"
+      },
+      "result_text": "---\nid: s-007\ngenre: sessions\ntitle: \"Beacon Grid DuckDB ingestion spike\"\ncreated: 2026-04-06\nprovenance: hand-authored\ntags: [beacon-grid, ingestion]\nrelated:\n  - type: mentions\n    to: projects/beacon-grid.md\n  - type: mentions\n    to: decisions/d-006.md\n  - type: mentions\n    to: decisions/d-007.md\n---\n\nSilas and Theo spiked ingestion per d-006 and d-007: MQTT sensor topics\nlanding into Parquet batches, DuckDB joining two weeks of sensor rows with\nNorthpost forecast CSVs in under a second on a laptop. The wallboard query\npattern works; Noor starts the dashboard next week.\n",
+      "is_error": false,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "**Beacon Grid was paused on 2026-05-26**, and its engagement began on **2026-04-02** (the project's creation date).\n\n**Evidence:**\n\n- **projects/beacon-grid.md** (frontmatter): `created: 2026-04-02` — the project/engagement start date.\n- **projects/beacon-grid.md** (body): *\"Paused 2026-05-26 pending Greenline's data-access clarification; Noor moved to Wayfare's final stretch.\"* — explicit pause date.",
+  "started_at": "2026-10-27T22:04:15.391Z",
+  "finished_at": "2026-10-27T22:04:53.698Z"
+}

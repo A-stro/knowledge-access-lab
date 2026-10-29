@@ -1,0 +1,30 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-ab-08",
+  "category": "absence",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-ab-08.json",
+  "evidence": {
+    "evidence_expected": false,
+    "citations": [],
+    "passages_exact_ratio": null,
+    "records_found_ratio": null
+  },
+  "retrieval": {
+    "steps": 33,
+    "error_steps": 3,
+    "result_bytes": 22382
+  },
+  "absence_stated": false,
+  "scored_at": "2026-10-27T23:38:54.430Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The answer correctly states that no evidence of a virtual-reality exhibit or headset project was found, matching the reference. However, it adds unsupported details about Cometline, kiosk-browser files, and the contents of other corpus files that are not established by the reference answer.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:39:07.789Z"
+  }
+}

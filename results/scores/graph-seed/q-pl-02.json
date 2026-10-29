@@ -1,0 +1,42 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-pl-02",
+  "category": "point-lookup",
+  "lane": "graph-seed",
+  "trace_ref": "results/runs/graph-seed/q-pl-02.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "people/bram-oyelaran.md",
+        "passage": "He owns the\nWayfare display fleet and, since the April architecture review, the edge\ngateways — one per pilot station — that flash firmware once per site and\nfunnel telemetry home.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": true,
+        "record_in_steps": [
+          25,
+          26
+        ]
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 33,
+    "error_steps": 0,
+    "result_bytes": 19921
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-28T16:23:17.117Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference identifies Bram Oyelaran as the owner of both the Wayfare display fleet and the per-station edge gateways, but the agent concludes that no evidence was found and never provides the owner.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-28T16:23:24.528Z"
+  }
+}

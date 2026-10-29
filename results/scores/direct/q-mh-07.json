@@ -1,0 +1,67 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-mh-07",
+  "category": "multi-hop",
+  "lane": "direct",
+  "trace_ref": "results/runs/direct/q-mh-07.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "references/fleet-provisioning-notes.md",
+        "passage": "Provisioning a fleet of small boards two ways: point-wise flashing scales\nlinearly with board count and fails quietly; a gateway-hub topology flashes\nonce per site and funnels telemetry home.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          24
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          24
+        ]
+      },
+      {
+        "record": "references/fleet-provisioning-notes.md",
+        "passage": "Written after the Wayfare field pain (s-004); the hub topology is the\ndirection d-008 adopted.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          24
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          24
+        ]
+      },
+      {
+        "record": "decisions/d-008.md",
+        "passage": "Decision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.",
+        "passage_exact": true,
+        "passage_in_steps": [
+          11
+        ],
+        "record_found": true,
+        "record_in_steps": [
+          11
+        ]
+      }
+    ],
+    "passages_exact_ratio": 1,
+    "records_found_ratio": 1
+  },
+  "retrieval": {
+    "steps": 24,
+    "error_steps": 8,
+    "result_bytes": 9736
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:20:14.525Z",
+  "judge": {
+    "verdict": "partial",
+    "rationale": "The agent correctly identifies the chronology and adoption link—written after Wayfare pain s-004, with d-008 adopting the hub topology—but omits the note’s key comparison of point-wise versus gateway-hub provisioning, including linear scaling, quiet failure, per-site flashing, and telemetry funneling.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:20:26.567Z"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "knowledge-access-lab/score@2",
+  "question_id": "q-te-06",
+  "category": "temporal",
+  "lane": "graph",
+  "trace_ref": "results/runs/graph/q-te-06.json",
+  "evidence": {
+    "evidence_expected": true,
+    "citations": [
+      {
+        "record": "meetings/m-003.md",
+        "passage": "created: 2026-03-17",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "decisions/d-005.md",
+        "passage": "created: 2026-03-20",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      },
+      {
+        "record": "meetings/m-003.md",
+        "passage": "d-005 landed three days later.",
+        "passage_exact": false,
+        "passage_in_steps": [],
+        "record_found": false,
+        "record_in_steps": []
+      }
+    ],
+    "passages_exact_ratio": 0,
+    "records_found_ratio": 0
+  },
+  "retrieval": {
+    "steps": 16,
+    "error_steps": 16,
+    "result_bytes": 906
+  },
+  "absence_stated": null,
+  "scored_at": "2026-10-27T23:07:15.767Z",
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference answer states that the pricing discussion was recorded on 2026-03-17 and the flat-monthly decision landed on 2026-03-20, three days later. The agent incorrectly claims that no evidence was found.",
+    "model": {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m3.1-flash"
+    },
+    "blind": true,
+    "judged_at": "2026-10-27T23:07:20.491Z"
+  }
+}

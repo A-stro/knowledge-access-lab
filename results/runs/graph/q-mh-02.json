@@ -1,0 +1,740 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-mh-02",
+  "category": "multi-hop",
+  "question_text": "Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "lane": "graph",
+  "lane_tools": [
+    "neighbors",
+    "paths"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "-e",
+      "builtin:mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "mcp__graph_lane__*",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: Which reference note influenced both a Wayfare transport decision and a Beacon Grid ingest decision, and which decisions were they?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/references"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /references",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 2,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /notes",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 3,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/reference-notes"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /reference-notes",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 4,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 5,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/beacon-grid"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /beacon-grid",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 6,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/decisions"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /decisions",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 7,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/records"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /records",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 8,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 9,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/knowledge"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /knowledge",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 10,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/ref"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /ref",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 11,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/doc"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /doc",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 12,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/kb"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /kb",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 13,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/wayfare-transport-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /wayfare-transport-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 14,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/beacon-grid-ingest-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /beacon-grid-ingest-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 15,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/transport-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /transport-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 16,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/ingest-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /ingest-decision",
+      "is_error": true,
+      "duration_ms": 2
+    },
+    {
+      "seq": 17,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/ref/wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /ref/wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 18,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/reference-note"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /reference-note",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 19,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/graph"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /graph",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 20,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/wayfare/transport-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /wayfare/transport-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 21,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/beacon-grid/ingest-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /beacon-grid/ingest-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 22,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/Wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /Wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 23,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/BeaconGrid"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /BeaconGrid",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 24,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 25,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/ref"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /ref",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 26,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "reference"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: reference",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 27,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 28,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "beacon-grid"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: beacon-grid",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 29,
+      "tool": "paths",
+      "harness_tool": "mcp__graph_lane__paths",
+      "arguments": {
+        "to": "/beacon-grid",
+        "from": "/wayfare"
+      },
+      "result_text": "Tool error (paths): Error: record not found: /wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 30,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/note"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /note",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 31,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/refs"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /refs",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 32,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/records"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /records",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 33,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/data"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /data",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 34,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/store"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /store",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 35,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: .",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 36,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": ""
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: ",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 37,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "00000000-0000-0000-0000-000000000000"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: 00000000-0000-0000-0000-000000000000",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 38,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/main"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /main",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 39,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/index"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /index",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 40,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/home"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /home",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 41,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/root"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /root",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 42,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "urn:wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: urn:wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 43,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "wayfare-transport"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: wayfare-transport",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 44,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "beacon-grid-ingest"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: beacon-grid-ingest",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 45,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "wayfare-transport-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: wayfare-transport-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 46,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "beacon-grid-ingest-decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: beacon-grid-ingest-decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 47,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "wayfare_transport_decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: wayfare_transport_decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 48,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "beacon_grid_ingest_decision"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: beacon_grid_ingest_decision",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 49,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/2024"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /2024",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 50,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/2025"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /2025",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 51,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "/v1"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: /v1",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 52,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "record:wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: record:wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 53,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "ref:wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: ref:wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 54,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "note:wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: note:wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 55,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "wayfare.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: wayfare.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 56,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "beacon-grid.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: beacon-grid.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 57,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "notes/wayfare.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: notes/wayfare.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 58,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "decisions/wayfare-transport.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: decisions/wayfare-transport.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 59,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "references/wayfare.md"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: references/wayfare.md",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 60,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "a"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: a",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 61,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "test"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: test",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 62,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "example"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: example",
+      "is_error": true,
+      "duration_ms": 1
+    },
+    {
+      "seq": 63,
+      "tool": "neighbors",
+      "harness_tool": "mcp__graph_lane__neighbors",
+      "arguments": {
+        "path": "graph-lane:wayfare"
+      },
+      "result_text": "Tool error (neighbors): Error: record not found: graph-lane:wayfare",
+      "is_error": true,
+      "duration_ms": 1
+    }
+  ],
+  "final_answer": "no evidence found",
+  "started_at": "2026-10-27T22:57:32.109Z",
+  "finished_at": "2026-10-27T23:00:55.204Z"
+}

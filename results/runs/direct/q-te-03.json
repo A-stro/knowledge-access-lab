@@ -1,0 +1,158 @@
+{
+  "schema": "knowledge-access-lab/trace@2",
+  "question_id": "q-te-03",
+  "category": "temporal",
+  "question_text": "How long did Wayfare run on per-display autonomy before the architecture changed?",
+  "lane": "direct",
+  "lane_tools": [
+    "find",
+    "grep",
+    "ls",
+    "read"
+  ],
+  "model": {
+    "provider": "nvidia",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "harness": {
+    "name": "pi",
+    "version": "1.4.0",
+    "argv": [
+      "--approve",
+      "-nc",
+      "-ns",
+      "-np",
+      "-ne",
+      "--no-mcp",
+      "--no-session",
+      "--mode",
+      "json",
+      "--provider",
+      "nvidia",
+      "--model",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "--tools",
+      "read,grep,find,ls",
+      "--print",
+      "--",
+      "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How long did Wayfare run on per-display autonomy before the architecture changed?"
+    ]
+  },
+  "prompt": "You are answering one question over a private knowledge base using the tools available to you.\nRetrieve evidence with your tools before answering; never answer from memory alone.\nPass relative paths to tools; never absolute paths.\n\nAnswer the question, then cite your evidence: for each fact, name the record it came from and quote the exact supporting passage.\nIf the knowledge base contains no evidence that answers the question, reply with exactly: no evidence found\n\nQuestion: How long did Wayfare run on per-display autonomy before the architecture changed?",
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Wayfare"
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 6
+    },
+    {
+      "seq": 2,
+      "tool": "find",
+      "harness_tool": "find",
+      "arguments": {
+        "pattern": "**/*Wayfare*"
+      },
+      "result_text": "fd is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 7
+    },
+    {
+      "seq": 3,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "."
+      },
+      "result_text": "decisions/\nmeetings/\norgs/\npeople/\nprojects/\nreferences/\nsessions/",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 4,
+      "tool": "grep",
+      "harness_tool": "grep",
+      "arguments": {
+        "pattern": "Wayfare",
+        "path": "."
+      },
+      "result_text": "ripgrep (rg) is not available and could not be downloaded",
+      "is_error": true,
+      "duration_ms": 4
+    },
+    {
+      "seq": 5,
+      "tool": "ls",
+      "harness_tool": "ls",
+      "arguments": {
+        "path": "projects"
+      },
+      "result_text": ".gitkeep\nbeacon-grid.md\ncinderboard.md\ncometline.md\ncurlew-crm.md\ndriftline.md\nfoxglove-archive.md\nkestrel-crm.md\nlarkspur-archive.md\nledgerline.md\nperchboard.md\nrill.md\nwayfare.md",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 6,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "projects/wayfare.md"
+      },
+      "result_text": "---\nid: wayfare\ngenre: projects\ntitle: \"Wayfare — realtime departure displays for Halcyon Transit\"\ncreated: 2026-02-26\nupdated: 2026-06-16\nstatus: shipped\nclient: halcyon-transit\nprovenance: hand-authored\ntags: [transit, displays, mqtt]\nrelated:\n  - type: mentions\n    to: orgs/halcyon-transit.md\n  - type: mentions\n    to: meetings/m-001.md\n  - type: mentions\n    to: decisions/d-002.md\n  - type: mentions\n    to: decisions/d-003.md\n  - type: mentions\n    to: decisions/d-008.md\n  - type: mentions\n    to: decisions/d-009.md\n  - type: mentions\n    to: meetings/m-008.md\n---\n\nWayfare is Meridian Studio's realtime departure-display program for Halcyon\nTransit: platform displays for three pilot stations — Ashport Central, Ferry\nQuay, Millbrook Bridge — fed by live vehicle-position data.\n\nScope agreed at the kickoff (2026-02-20) with Petra Lindqvist: sub-second\nperceived freshness, outdoor readability, and a June ship date. The displays\nspeak MQTT (decision d-002) and went from per-display autonomy (d-003) to an\nedge-gateway hub (d-008) after field maintenance pain. The palette is\ngreen-and-amber for outdoor readability (d-009).\n\nTeam: Dev Okonkwo (firmware), Noor Haddad (renderer), June Park (design),\nBram Oyelaran (fleet), Katrin Ilic (QA), Theo Kanda (systems).\nShipped 2026-06-12; ship retro in m-008.\n",
+      "is_error": false,
+      "duration_ms": 3
+    },
+    {
+      "seq": 7,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-003.md"
+      },
+      "result_text": "---\nid: d-003\ngenre: decisions\ntitle: \"Wayfare runs one single-board computer per display, no central server\"\ncreated: 2026-03-04\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: superseded\nrelated:\n  - type: influenced_by\n    to: references/embedded-single-board-notes.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: each platform display needs local rendering; per-display autonomy\navoids putting a central server in stations.\n\nOptions considered: per-display autonomy with single-board computers; a\nstation hub coordinating its displays.\n\nDecision: each Wayfare display runs its own single-board computer with local\nfallback rendering and no central station server — autonomy per display,\ninformed by the single-board field notes (embedded-single-board-notes).\n\nConsequences: wiring stays simple; firmware updates must be flashed board by\nboard. Superseded by d-008 after field maintenance pain (s-004, m-005).\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 8,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "decisions/d-008.md"
+      },
+      "result_text": "---\nid: d-008\ngenre: decisions\ntitle: \"Wayfare moves to an edge-gateway hub per station\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nstatus: accepted\nrelated:\n  - type: supersedes\n    to: decisions/d-003.md\n  - type: influenced_by\n    to: sessions/s-004.md\n  - type: influenced_by\n    to: meetings/m-005.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nContext: after six weeks in the field, per-display autonomy shows its cost —\nfirmware drift across boards and roughly ninety minutes of manual reflash per\ndisplay when updates land (documented in s-004, reviewed in m-005).\n\nOptions considered: keep per-display autonomy with a better flashing ritual;\none edge gateway per station coordinating its displays.\n\nDecision: each pilot station gets an edge gateway hub — firmware flashes once\nper station, displays pull from the gateway, telemetry funnels through it.\nThis supersedes d-003.\n\nConsequences: one more box per station, collapsed maintenance surface; Bram\nowns gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 9,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "sessions/s-004.md"
+      },
+      "result_text": "---\nid: s-004\ngenre: sessions\ntitle: \"Wayfare field maintenance pain\"\ncreated: 2026-04-02\nprovenance: hand-authored\ntags: [wayfare, fieldwork]\nrelated:\n  - type: contradicts\n    to: decisions/d-003.md\n  - type: mentions\n    to: projects/wayfare.md\n---\n\nTheo and Dev spent the day in the field at Ashport Central and Ferry Quay:\nafter the last firmware update, the three pilot stations drifted to three\nfirmware versions, and a board that lost power would not recover its clock.\nReflashing takes roughly ninety minutes per display carried to the platform.\nPer-display autonomy (d-003) is failing on maintenance, not on rendering.\n",
+      "is_error": false,
+      "duration_ms": 2
+    },
+    {
+      "seq": 10,
+      "tool": "read",
+      "harness_tool": "read",
+      "arguments": {
+        "path": "meetings/m-005.md"
+      },
+      "result_text": "---\nid: m-005\ngenre: meetings\ntitle: \"Wayfare architecture review\"\ncreated: 2026-04-08\nprovenance: hand-authored\ntags: [wayfare, architecture]\nattendees: [dev-okonkwo, theo-kanda, june-park, silas-brandt, mara-voss, bram-oyelaran]\nrelated:\n  - type: mentions\n    to: projects/wayfare.md\n  - type: mentions\n    to: sessions/s-004.md\n  - type: mentions\n    to: decisions/d-008.md\n---\n\nArchitecture review on the field findings (s-004): three firmware versions\nacross three stations, ninety-minute reflashes per display. Theo proposed the\nedge-gateway hub — flash once per station, displays pull from the gateway —\nover keeping per-display autonomy with a better flashing ritual. The room\nagreed, and d-008 landed the same day. Bram takes gateway provisioning.\n",
+      "is_error": false,
+      "duration_ms": 2
+    }
+  ],
+  "final_answer": "The per-display autonomy architecture ran for **about six weeks** (from March 4 to April 8, 2026).\n\n**Evidence:**\n\n1. **Decision d-003** (per-display autonomy) was created on **2026-03-04** — \"Wayfare runs one single-board computer per display, no central server\" [decisions/d-003.md]\n\n2. **Decision d-008** (edge-gateway hub) was created on **2026-04-08** and explicitly states: \"after **six weeks in the field**, per-display autonomy shows its cost\" [decisions/d-008.md]\n\n3. The field session s-004 (2026-04-02) documents the maintenance pain that triggered the change: firmware drift across three stations and 90-minute reflashes per display [sessions/s-004.md]\n\n4. Meeting m-005 (2026-04-08) records the architecture review that led to d-008 being approved the same day [meetings/m-005.md]\n\nThe timeline: d-003 created 2026-03-04 → field deployment → ~6 weeks later (early April) maintenance issues documented → d-008 supersedes d-003 on 2026-04-08.",
+  "started_at": "2026-10-27T23:24:22.411Z",
+  "finished_at": "2026-10-27T23:25:02.565Z"
+}
